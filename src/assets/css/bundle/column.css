@@ -1,0 +1,14 @@
+.column {
+  column-count: 1;
+}
+
+.column > * {
+  break-inside: avoid;
+}
+
+@media screen(sm) {
+  .column:not(:has(p:only-child, li:only-child)) {
+    column-count: 2;
+    gap: var(--gutter, var(--space-l-xl));
+  }
+}

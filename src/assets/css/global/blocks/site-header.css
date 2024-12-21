@@ -1,0 +1,4 @@
+.site-header {
+  background: var(--color-bg-accent);
+  z-index: 2;
+}

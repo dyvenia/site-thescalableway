@@ -1,0 +1,50 @@
+---
+layout: base
+title: Blog
+description: 'All blog posts can be found here'
+bodyClass: insights
+footerSpace: mt-2xl
+pagination:
+  data: collections.allPosts
+  size: 6
+permalink: 'insights/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html'
+intro: >
+  Welcome to The Scalable Way Blog — your source for insights, strategies, and best practices in data platform engineering, analytics, and data science.
+---
+
+<article class="wrapper">
+  <header class="full | section">
+    <div class="section__inner flow region">
+      <h1 class="text-center text-base-light">{{ title }}</h1>
+    </div>
+  </header>
+
+  <div class="region flow prose">
+
+    <div id="search" class="search"></div>
+
+    {{ intro | markdownFormat | safe }}
+  </div>
+
+<section class="feature" aria-describedby="blog-section">
+  <h2 id="blog-section" class="visually-hidden">Blog posts</h2>
+
+  <custom-masonry layout="50-50">
+		{% asyncEach item in pagination.items %}
+			{% set definedDate = item.date %}
+
+			{% include "partials/card-blog.njk" %}
+		{% endeach %}
+	</custom-masonry>
+</section>
+
+  <!-- set collection to paginate -->
+  {% set collectionToPaginate = collections.posts %}
+  <!-- set target pagination settings in meta.js -->
+  {% set metaKey = "blog" %}
+  <!-- if the number of items in the collection is greater than the number of items shown on one page -->
+  {% if collectionToPaginate.length > pagination.size %}
+    <!-- include pagination -->
+    {% include 'partials/pagination.njk' %}
+  {% endif %}
+</article>

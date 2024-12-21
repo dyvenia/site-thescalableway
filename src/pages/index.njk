@@ -1,0 +1,251 @@
+---
+layout: base
+permalink: /index.html
+title: 'The Scalable Way'
+description: 'Eleventy starter using modern CSS, fluid type, fluid spacing, flexible layout and progressive enhancement.'
+bodyClass: home
+
+hero:
+  title: 'Empowering Data Platforms with Precision and Scale'
+  subtitle: |
+    **The Scalable Way** is a professional services agency focusing on "as a code" data platform infrastructure, analytics and data science workflows.
+  button_text: Learn more
+  button_target: #
+
+intro:
+  title: 'Is your data tech stack working with you or against you?'
+  content: |
+    Most data professionals are stuck navigating complex analytics workflows. They deal with fragmented access, manual maintenance, “ad hoc” pipelines, and weak security and governance—largely because they rely on a patchwork of poorly integrated tools instead of a cohesive data platform.
+
+    In contrast, high-performing analytics teams prioritize scalable solutions, borrowing best practices from software development. These solutions are automated, provide streamlined workflows, ensure a strong developer experience, are secure by default, and consistently deliver reliable production insights. A well-designed data platform is essential to achieve these outcomes.
+
+highlight_one:
+  title: 'We help data analytics teams & departments achieve greater efficiency and more robust solutions in production'
+  subtitle: 'by helping with developing infrastructure, ingestion, transformation, and documentation as code; training your teams on the enhanced development workflow; servicing recurring data ops and data platform needs.'
+
+highlight_two:
+  title1: The ultimate data platform goal?
+  title2: Stuff just works!
+  content: 'Unfortunately, data analytics departments I meet often don’t end up where they had hoped. They struggle to build reliable data pipelines. They don’t manage to automate, and because of that they have problems onboarding users and excessive manual work.'
+
+foundations:
+  title1: The 5 data platform
+  title2: foundations
+  keys:
+    - title: Automation
+      content: 'with solid CI/CD and documentation'
+    - title: Developer Experience
+      content: 'Intuitive tools, clear APIs, and robust frameworks'
+    - title: Scalability
+      content: 'Growing usage without exponentially growing tech debt and costs'
+    - title: Governance & Security
+      content: 'Data governance, networking, and access'
+    - title: Data Readiness
+      content: 'Clean, consistent, and enriched data for analysis'
+
+about:
+  title: About us
+  content: |
+    We believe in automation and good developer experience!
+
+    With a combined 30+ years of experience in infrastructure, data platforms, and data engineering, we are on a mission to help data analytics teams build more robust and scalable solutions.
+
+why:
+  title: 'Why do clients come to us?'
+  intro: >
+    Analytics Departments and Teams typically suffer from one or more of these **11 challenges**
+  keys:
+    - title: Unscalable.
+      content: 'Lacking strong tech foundations to build a scalable and long term solution'
+    - title: Unclear reference architecture.
+      content: 'Struggling to define a target architecture and to address specific analytics pain points'
+    - title: Unclear security model.
+      content: 'Not being sure what security and access management is needed to fulfil company policies'
+    - title: Shaky production.
+      content: 'Lacking a proper split of dev and prod environments and thereby making production less stable'
+    - title: Increasing tech debt.
+      content: 'Lacking a robust code review process to avoid accumulation of tech debt'
+    - title: Inadequate networking configuration.
+      content: 'Networking designed with applications in mind, making it difficult to stay secure and fast when developing analytical capabilities'
+    - title: Manual operations.
+      content: 'Time intensive, error prone, tedious daily manual work'
+    - title: Slow data ingestions.
+      content: 'Experiencing difficulties ingesting data from many applications and APIs'
+    - title: Struggling with best practices.
+      content: 'Lacking guidance in what tools to choose and avoiding making expensive mistakes'
+    - title: Difficulty in retaining key talent.
+      content: 'Experiencing challenges in keeping team members motivated'
+    - title: Difficulty in onboarding talent.
+      content: 'Experiencing challenges when onboarding new analysts to the complex web of tools in use'
+
+services:
+  title: 'Our Services'
+  items:
+    - title: Development
+      prefix: Data Platform
+      description: >
+        Build scalable, reliable, and efficient data infrastructure with modern "as code" practices, enabling seamless data integration, transformation, and analysis.
+
+    - title: Operations
+      prefix: Data Platform
+      description: >
+        Ensure continuous, reliable data platform performance through proactive monitoring, maintenance, and automated operational workflows.
+
+blog:
+  title: 'Our Insights'
+  intro: 'Selected Articles. Check our blog for more.'
+---
+
+<div class="wrapper">
+  <div class="hero | wrapper">
+    <header class="flow">
+      <h1>{{ hero.title }}</h1>
+      {{ hero.subtitle | markdownFormat | safe }}
+      <a href="{{ hero.button_target }}" class="button"> {{ hero.button_text }} {% svg "misc/arrow" %}</a>
+    </header>
+    {% svg "brand/simple" %}
+    {% svg "brand/staggered" %}
+  </div>
+</div>
+
+<div class="intro | wrapper">
+  <article class="region flow prose">
+    <h2 class="text-step-2">{{ intro.title }}</h2>
+    {{ intro.content | markdownFormat | safe }}
+  </article>
+</div>
+
+<div class="highlight-one | wrapper">
+  <div class="full wrapper section" style="--spot-color: var(--color-blue-accent)">
+    <article class="full  intro | section__inner wrapper  region">
+      <div class="feature flow prose">
+        <h2 class="text-step-3">{{ highlight_one.title }} <span>*</span></h2>
+        <p class="text-step-min-1"><span>*</span> {{ highlight_one.subtitle }}</p>
+      </div>
+      {% svg "brand/rings" %}
+    </article>
+  </div>
+</div>
+
+<div class="highlight-two | wrapper">
+  <div class="full wrapper section" style="--spot-color: var(--color-dove-gray-700)">
+    <article class="full  intro | section__inner wrapper region flow prose text-center text-dove-gray-50">
+      <h2 class="text-step-2">
+        {{ highlight_two.title1 }}
+        <span class="block text-step-3 text-pink">{{ highlight_two.title2 }} </span>
+      </h2>
+      <p>{{ highlight_two.content }}</p>
+    </article>
+  </div>
+</div>
+
+<div class="foundations | wrapper">
+  <article class="full region flow">
+    <h2 class="text-step-3 text-center">
+      {{ foundations.title1 }}
+      <span class="block uppercase text-royal-blue-500">{{ foundations.title2 }} </span>
+    </h2>
+    <div class="split region">
+      {% svg "brand/brick" %}
+      <ol class="timeline">
+        {% for key in foundations.keys %}
+          <li>
+            <span>{{ loop.index }}</span>
+            <div class="flow flow-space-3xs">
+              <h3 class="text-step-1">{{ key.title }}</h3>
+              <p>{{ key.content }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </article>
+</div>
+
+<div class="about | wrapper">
+  <article class="feature | region">
+    <header class="grid" data-layout="thirds">
+      <h2>{{ about.title }}</h2>
+      <div class="flow">{{ about.content | markdownFormat | safe }}</div>
+    </header>
+    <div class="grid region" data-layout="thirds">
+      {% for member in team %}
+        <div class="about__content flow">
+          {% image "./src/assets/images/team/" + member.image, "" %}
+
+          <h3>{{ member.name }}</h3>
+          {{ member.description_short | markdownFormat | safe }}
+        </div>
+      {% endfor %}
+    </div>
+  </article>
+</div>
+
+<div class="why | wrapper">
+  <article class="feature | region flow">
+    <header class="flow">
+    <h2>{{ why.title }}</h2>
+      {{ why.intro | markdownFormat | safe }}
+      </header>
+
+      <dl class="flow region column" role="list">
+        {% for key in why.keys %}
+          <div class="flow">
+            <dt class="font-bold text-pink">{{ key.title }}</dt>
+            <dd>{{ key.content }}</dd>
+          </div>
+        {% endfor %}
+      </dl>
+  </article>
+</div>
+
+<div class="services | wrapper">
+  <div class="full wrapper section" style="--spot-color: var(--color-blue-accent)">
+    <article class="full intro | section__inner wrapper region flow">
+      {% svg "brand/arrows" %}
+        <h2 class="text-center">{{ services.title }}</h2>
+        <div class="mt-m">
+          {% for item in services.items %}
+
+            <div class="grid" data-layout="thirds">
+              <h3>{{ item.prefix }} <span>{{ item.title }}</span></h3>
+              <div>
+              {{ item.description | markdownFormat | safe }}
+            </div>
+            </div>
+
+          {% endfor %}
+    </article>
+  </div>
+</div>
+
+<div class="wrapper">
+  <section class="full | region">
+    <div class="wrapper flow prose">
+      <h2>{{ blog.title }}</h2>
+
+      {% if blog.intro %}
+        <p>{{ blog.intro }}</p>
+      {% endif %}
+
+      <div class="feature |  region">
+        <custom-masonry layout="50-50">
+
+                   <!-- loop posts -->
+         {% set itemList = collections.allPosts %}
+         {% asyncEach item in itemList.slice(0, 4) %}
+           {% set definedDate = item.date %}
+           {% include "partials/card-blog.njk" %}
+         {% endeach %}
+
+        </custom-masonry>
+      </div>
+    </div>
+  </section>
+</div>
+
+{%- css "inline" -%}
+  {%- include 'css/home.css' -%}
+  {%- include 'css/column.css' -%}
+  {%- include "css/custom-card.css" -%}
+{%- endcss -%}

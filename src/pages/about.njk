@@ -1,0 +1,36 @@
+---
+title: About
+permalink: /about/index.html
+description: 'Eleventy Excellent is inspired bythe companion website of Andy Bell’s talk "Be the browser’s mentor, not its micromanager".'
+layout: base
+bodyClass: about
+footerSpace: mt-2xl
+intro: |
+  At The Scalable Way, we believe that data-driven success comes from precise execution and scalable solutions.
+
+  Our mission is to empower businesses by building resilient data platforms, streamlining analytics pipelines, and optimizing data science workflows — all with an "as a code" approach that ensures reliability, agility, and long-term value.
+
+  With a team of experts passionate about data infrastructure and cloud-native technologies, we transform complex data challenges into scalable, actionable solutions tailored to our clients' unique needs.
+---
+
+<div class="wrapper">
+  <header class="region flow">
+    <h1>{{ title }}</h1>
+    <div class="flow">{{ intro | markdownFormat | safe }}</div>
+  </header>
+  <article class="feature flow flow-space-l">
+    {% for member in team %}
+      <div class="about__content flow grid gutter-m" data-layout="50-50">
+        {% image "./src/assets/images/team/" + member.image, "" %}
+        <div class="flow prose">
+          <h3>{{ member.name }}</h3>
+          {{ member.description_long | markdownFormat | safe }}
+        </div>
+      </div>
+    {% endfor %}
+  </article>
+</div>
+
+{%- css "inline" -%}
+  {%- include 'css/about.css' -%}
+{%- endcss -%}

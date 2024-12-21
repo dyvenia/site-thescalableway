@@ -1,0 +1,15 @@
+<header class="site-header | wrapper">
+  <a href="#main" class="skip-link">{{ meta.skipContent }}</a>
+
+  <div class="popout | relative repel ontop gutter-3xs">
+    <a href="/" class="logo | cluster gutter-2xs" {% if page.url == "/" %}aria-current="page"{% endif %}>
+      {% svg "brand/logo" %}
+
+      {{ meta.siteName }}
+    </a>
+
+    <!-- Search Wrapper for Both Views -->
+    {% include "partials/main-nav.njk" %}
+    {% include 'partials/search.njk' %}
+  </div>
+</header>

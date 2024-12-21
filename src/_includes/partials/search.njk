@@ -1,0 +1,67 @@
+<script type="module" src="/assets/scripts/components/pagefind-search.js"></script>
+
+<button id="search-toggle" class="search-toggle" aria-expanded="false" aria-controls="search-ui">
+  {% svg "misc/search" %}
+  <span class="visually-hidden">Search</span>
+</button>
+
+<pagefind-search id="search-ui" manual _bundle_path="/pagefind/"></pagefind-search>
+
+<script type="module">
+  const searchToggle = document.querySelector('#search-toggle');
+  const searchComponent = document.querySelector('#search-ui');
+
+  const closeSearch = (shouldFocus = false) => {
+    searchToggle.setAttribute('aria-expanded', 'false');
+    searchComponent.classList.add('hidden');
+    if (shouldFocus) {
+      searchToggle.focus();
+    }
+  };
+
+  const openSearch = async () => {
+    if (!searchComponent.pagefindUI) {
+      const options = {
+        pageSize: 10,
+        showSubResults: false,
+        showImages: false,
+        excerptLength: 20,
+        resetStyles: false,
+        translations: {
+          placeholder: 'Search',
+          zero_results: "No results found for '[SEARCH_TERM]'."
+        }
+      };
+
+      console.log('Initializing Pagefind with options:', options);
+      await searchComponent.pagefind(options);
+    }
+
+    searchToggle.setAttribute('aria-expanded', 'true');
+    searchComponent.classList.remove('hidden');
+    const searchInput = searchComponent.querySelector('input');
+    searchInput?.focus();
+  };
+
+  searchToggle.addEventListener('click', async event => {
+    event.stopPropagation();
+    const expanded = searchToggle.getAttribute('aria-expanded') === 'true';
+    if (expanded) {
+      closeSearch();
+    } else {
+      await openSearch();
+    }
+  });
+
+  document.addEventListener('click', event => {
+    if (!searchComponent.contains(event.target) && !searchToggle.contains(event.target)) {
+      closeSearch();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeSearch(true);
+    }
+  });
+</script>

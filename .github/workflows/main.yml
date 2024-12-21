@@ -1,0 +1,36 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: ['20.11.0']
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: Install packages
+        run: npm install
+
+      - name: Run npm build
+        run: npm run build:11ty
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site # Adjust to your Eleventy output directory
+          destination_branch: gh-pages # Ensure this branch exists or can be created
+          force_orphan: true # Optional: Fixes potential branch conflicts

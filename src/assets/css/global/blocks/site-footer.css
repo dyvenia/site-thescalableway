@@ -1,0 +1,45 @@
+.site-footer {
+  padding: var(--space-s-m);
+  color: var(--color-text);
+}
+
+.site-footer .footer__meta {
+  --gutter: var(--space-xs);
+  --cluster-horizontal-alignment: center;
+}
+
+/* increase tab size */
+.site-footer .footer__meta a {
+  padding: var(--space-3xs);
+}
+
+.site-footer svg {
+  stroke-width: 2;
+  inline-size: 1.1em;
+  block-size: 1em;
+}
+
+.site-footer .creator {
+  font-size: var(--size-step-min-1);
+  margin-block-start: var(--space-xl);
+  display: grid;
+  place-items: center;
+}
+
+.site-footer .creator a {
+  --gutter: var(--space-xs);
+  --cluster-horizontal-alignment: center;
+  text-decoration: none;
+}
+
+.site-footer .creator a:hover {
+  color: transparent;
+  background-image: var(--gradient-rainbow);
+  background-size: 100%;
+  background-repeat: repeat;
+  background-clip: text;
+}
+
+.site-footer .creator:hover svg {
+  color: var(--color-text);
+}

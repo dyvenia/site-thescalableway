@@ -1,0 +1,86 @@
+/* Basic variable definitions for color schemes */
+:root {
+  --gap: clamp(1rem, 6vw, 3rem);
+  --gutter: var(--space-m-l);
+  --transition-duration: 250ms;
+  --transition-timing: ease;
+  --tracking: -0.05ch;
+  --tracking-s: -0.075ch;
+  --tracking-wide: 0.05ch;
+
+  --gradient-rainbow: linear-gradient(90deg, #cf4662 10%, #fbbe25 30%, #62c95c 50%, #08bccb 75%, #a977d5 90%);
+  --gradient-conic: conic-gradient(
+    var(--color-blue) 0 28%,
+    var(--color-pink) 0 67%,
+    var(--color-gold) 0 100%
+  );
+  --gradient-stripes: linear-gradient(
+    45deg,
+    var(--color-base-dark) 0 75%,
+    var(--color-blue) 0 85%,
+    var(--color-pink) 0 92%,
+    var(--color-gold) 0 100%
+  );
+}
+
+/* Default / Light theme specific variables */
+:root,
+:root[data-theme='light'] {
+  --color-dark: var(--color-dove-gray-900);
+  --color-light: var(--color-dove-gray-50);
+  --color-text: var(--color-dove-gray-900);
+  --color-text-accent: var(--color-dove-gray-800);
+  --color-bg: white;
+  --color-bg-accent: var(--color-dove-gray-50);
+  --color-bg-accent-2: var(--color-dove-gray-100);
+  --color-bg-accent-3: var(--color-dove-gray-200);
+  --color-blue: var(--color-royal-blue-500);
+  --color-blue-accent: var(--color-royal-blue-50);
+  --color-blue-accent-2: var(--color-royal-blue-900);
+  --color-blue-accent-3: var(--color-royal-blue-200);
+  --color-blue-accent-4: var(--color-royal-blue-600);
+
+  img {
+    filter: brightness(1);
+  }
+}
+
+/* Dark theme specific variables based on system preference */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: var(--color-dove-gray-50);
+    --color-bg: var(--color-dove-gray-800);
+    --color-blue: var(--color-royal-blue-600);
+    --color-blue-accent: var(--color-dove-gray-900);
+    --color-blue-accent-2: var(--color-royal-blue-300);
+    --color-blue-accent-3: var(--color-dove-gray-100);
+    --color-blue-accent-4: var(--color-royal-blue-400);
+    --color-text-accent: var(--color-dove-gray-100);
+    --color-bg-accent: var(--color-dove-gray-900);
+    --color-bg-accent-2: var(--color-dove-gray-700);
+    --color-bg-accent-3: var(--color-dove-gray-700);
+
+    img {
+      filter: brightness(0.9);
+    }
+  }
+}
+
+/* Dark theme specific variables based on manual override */
+:root[data-theme='dark'] {
+  --color-text: var(--color-dove-gray-50);
+  --color-bg: var(--color-dove-gray-800);
+  --color-blue: var(--color-royal-blue-600);
+  --color-blue-accent: var(--color-dove-gray-900);
+  --color-blue-accent-2: var(--color-royal-blue-300);
+  --color-blue-accent-3: var(--color-dove-gray-100);
+  --color-blue-accent-4: var(--color-royal-blue-400);
+  --color-text-accent: var(--color-dove-gray-100);
+  --color-bg-accent: var(--color-dove-gray-900);
+  --color-bg-accent-2: var(--color-dove-gray-700);
+  --color-bg-accent-3: var(--color-dove-gray-700);
+
+  img {
+    filter: brightness(0.9);
+  }
+}

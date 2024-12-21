@@ -1,0 +1,102 @@
+{
+  "title": "Colors",
+  "description": "Hex color codes that can be shared, cross-platform. They can be converted at point of usage, such as HSL for web or CMYK for print. neutral and colors are converted to color scales, fixedColors are kept as they are",
+  "items": [
+    {
+      "name": "Dove Gray 50",
+      "value": "#f5f5f6"
+    },
+    {
+      "name": "Dove Gray 100",
+      "value": "#ddddde"
+    },
+    {
+      "name": "Dove Gray 200",
+      "value": "#bdbdbe"
+    },
+    {
+      "name": "Dove Gray 300",
+      "value": "#9e9e9f"
+    },
+    {
+      "name": "Dove Gray 400",
+      "value": "#807f81"
+    },
+    {
+      "name": "Dove Gray 500",
+      "value": "#636264"
+    },
+    {
+      "name": "Dove Gray 600",
+      "value": "#555456"
+    },
+    {
+      "name": "Dove Gray 700",
+      "value": "#3f3f40"
+    },
+    {
+      "name": "Dove Gray 800",
+      "value": "#353536"
+    },
+    {
+      "name": "Dove Gray 900",
+      "value": "#262627"
+    },
+    {
+      "name": "Dove Gray 950",
+      "value": "#1f1f1f"
+    },
+    {
+      "name": "Royal Blue 50",
+      "value": "#e7f1ff"
+    },
+    {
+      "name": "Royal Blue 100",
+      "value": "#deeaff"
+    },
+    {
+      "name": "Royal Blue 200",
+      "value": "#b9ceff"
+    },
+    {
+      "name": "Royal Blue 300",
+      "value": "#9fb9ff"
+    },
+    {
+      "name": "Royal Blue 400",
+      "value": "#7494ff"
+    },
+    {
+      "name": "Royal Blue 500",
+      "value": "#5977fc"
+    },
+    {
+      "name": "Royal Blue 600",
+      "value": "#3a50d2"
+    },
+    {
+      "name": "Royal Blue 700",
+      "value": "#2936b7"
+    },
+    {
+      "name": "Royal Blue 800",
+      "value": "#1f2a94"
+    },
+    {
+      "name": "Royal Blue 900",
+      "value": "#0d0c64"
+    },
+    {
+      "name": "Royal Blue 950",
+      "value": "#070846"
+    },
+    {
+      "name": "Gold",
+      "value": "#DFBA56"
+    },
+    {
+      "name": "Pink",
+      "value": "#C23797"
+    }
+  ]
+}
