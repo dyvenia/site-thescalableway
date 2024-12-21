@@ -9,6 +9,18 @@ Blog articles are markdown files inside the `src/posts` folder. The top of the m
 
 **images** should be stored in `src/images`.
 
+### running the site locally
+
+This site is using a static page generator called `eleventy`, you can read its documentation [here](https://www.11ty.dev/).
+
+If you have `npm` installed, you should be able to run a local version running the commands below. Typically the local site will run on `http://127.0.0.1:8080/`.
+
+```bash
+cd site-thescalableway
+
+npm run start
+```
+
 ### To Dos
 - optimize the syntax css load in css-inline.njk (now using a CDN)
 - Add a section on this readme on how to use chatgpt in visual studio to correct and clean up the english
