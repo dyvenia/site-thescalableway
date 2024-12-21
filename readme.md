@@ -1,5 +1,6 @@
 # The Scalable Way
 
+The website of thescalable way dyvenia division.
 
 ### Blog Contribution Guidelines
 
@@ -9,7 +10,7 @@ Blog articles are markdown files inside the `src/posts` folder. The top of the m
 
 **images** should be stored in `src/images`.
 
-### running the site locally
+### Running the Site Locally
 
 This site is using a static page generator called `eleventy`, you can read its documentation [here](https://www.11ty.dev/).
 
@@ -20,10 +21,6 @@ cd site-thescalableway
 
 npm run start
 ```
-
-### To Dos
-- optimize the syntax css load in css-inline.njk (now using a CDN)
-- Add a section on this readme on how to use chatgpt in visual studio to correct and clean up the english
 
 ### Theme Support
 
