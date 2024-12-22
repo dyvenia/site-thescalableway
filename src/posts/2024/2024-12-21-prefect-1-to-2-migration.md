@@ -1,14 +1,16 @@
 ---
-title: 'Prefect 1.0 to 2.0 Migration: Motivation, Process  and Workflow'
-description: 'This article outlines the motivation and steps for migrating from Prefect 1 to Prefect 2. Additionally, it provides guidance on how to coordinate work between teams to ensure the migration is performed with zero downtime'
+title: "Prefect 1.0 to 2.0 Migration: Motivation, Process  and Workflow"
 date: 2024-12-21
+author: Alessio Civitillo
+description: This article outlines the motivation and steps for migrating from Prefect 1 to Prefect 2. Additionally, it provides guidance on how to coordinate work between teams to ensure the migration is performed with zero downtime
+tags:
+  - prefect
 ---
-
-
 Prefect 1.x was the original version of Prefect, a data orchestration platform designed to streamline the development, scheduling, and monitoring of workflows. It used a monolithic server that acted as an API layer and a task scheduler.
  
 Prefect 2.x brings several architectural changes that offer a more flexible, scalable, and cloud-native solution for orchestrating workflows. With the focus on Kubernetes, containers, and a more modular API, Prefect 2.x aims to be a better fit for modern cloud infrastructure and CI/CD pipelines.
  
+
 ## Why Migrate?
 
 Scalability: Prefect 2.x offers better scalability through dynamic task mapping and execution in various environments (Kubernetes, Docker).
@@ -16,6 +18,7 @@ Scheduling: Prefect 2.x introduces more powerful scheduling and retry logic.
 Cloud-Native: Enhanced integration with cloud-native tools, such as Kubernetes, and an improved deployment model.
 Flexibility: Granular control over deployments and orchestration.
  
+
 1.       Key Differences Between Prefect 1 and Prefect 2
 2.1 Architecture Changes
 Prefect 1.x used a single monolithic server and agent system for managing workflows and executions.
@@ -65,6 +68,7 @@ def my_task():
 with Flow("my_flow") as flow:
 	my_task()
 ```
+
  
 Prefect 2.x:
  
@@ -112,6 +116,7 @@ o   In the Prefect UI, navigate to the storage block and set the correct product
 
  
 Set Notifications:
+
 1.  	Define Trigger Events:
 Use Prefect's event triggers or monitor task/flow state transitions. Specifically:
 o   Failed state for deployments (e.g., using a StateHandler or flow/task callbacks).
@@ -123,7 +128,7 @@ o   Configure these in the Prefect UI under Blocks.
 o   Example: Slack Notification Block to send messages on failures.
  
  
-4. Common Migration Issues and How to Resolve Them
+3. Common Migration Issues and How to Resolve Them
 4.1 Task State Issues
 In Prefect 1.x, task states were relatively simple. In Prefect 2.x, the task state model is more granular, including states like Pending, Running, Failed, Success, and custom states.
  
@@ -148,14 +153,13 @@ The transition from the old scheduler to the new scheduling system in Prefect 2.
 Solution:
 Double-check the cron syntax, and ensure that the IntervalSchedule and CronSchedule are configured correctly.
  
-5. Conclusion
+4. Conclusion
 Migrating from Prefect 1.x to Prefect 2.x can be an involved process, but the flexibility, scalability, and performance improvements offered by Prefect 2.x are well worth the effort. With better integration into cloud-native tools, an object-oriented approach to flows and tasks, and improved scheduling and retry logic, Prefect 2.x provides a future-proof solution for orchestrating modern data flows.
  
 
-
-
 2       Zero-Downtime Migration Workflow Between Teams
  
+
 1. Planning Phase
 1.1 Define the Migration Scope
 Identify the flows to be migrated, including their dependencies and critical components.
@@ -196,10 +200,10 @@ o   Use tools such as Prometheus, Grafana, or Datadog to track metrics.
 3.1 Continuous Validation and Monitoring
 ·       Run Validation Tests (samples, cols name): After migrating, validate that all flows and services are functioning as expected. This includes end-to-end tests for data pipelines, integrations, and error handling.
 For example, within the ingestion layer, where data flows from the data source to ADLS, a parallel architecture can be implemented: Prefect 1 pointing to the Production ADLS, and Prefect 2 pointing to the Development ADLS. There are two levels of validation:
-1.      Path Validation
+2.      Path Validation
 o   The paths where data is loaded into the Production and Development ADLS must be identical.
 o   Note: If the file name includes a timestamp, remove the date portion before performing the comparison.
-2.      Data Frame Validation
+3.      Data Frame Validation
 o   Ensure that the number of rows in the Development ADLS matches the order of the values extracted from the Production ADLS.
 o   Verify that all columns in the Production data are present in the Development data. Any differences can be attributed to new columns added in the updated flow version.
  
@@ -240,4 +244,3 @@ Once Prefect 2 is fully operational, stop Prefect 1 workflows and switch to Pref
 6 Conclusion
 Zero-downtime migration requires meticulous planning, careful execution, and proactive monitoring. By adopting strategies such as incremental migration, dual-environment deployment, real-time monitoring, and automated rollback mechanisms, teams can successfully migrate workflows without impacting day-to-day operations.
 As recap, the chart shown below represents a state-flow of the migration process:
-
