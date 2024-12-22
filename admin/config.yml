@@ -114,3 +114,16 @@ collections:
                 - { label: "Profile Picture", name: "image", widget: "image" }
                 - { label: "Short Description", name: "description_short", widget: "text" }
                 - { label: "Long Description", name: "description_long", widget: "text" }
+
+  - name: "meta"
+    label: "Meta Fields"
+    icon: "settings"
+    extension: "yaml"
+    format: "yaml"
+    files:
+      - file: "src/_data/meta.yaml"
+        label: "Meta Fields"
+        name: "meta"
+        fields:
+          - { label: "Book Call Text", name: "book_call", widget: "string", hint: "The text of the book a call button" }
+          - { label: "Book Call Link", name: "book_call_link", widget: "string", hint: "The link  of the book a call button" }

@@ -13,14 +13,16 @@ Prefect 2.x brings several architectural changes that offer a more flexible, sca
 
 ## Why Migrate?
 
-Scalability: Prefect 2.x offers better scalability through dynamic task mapping and execution in various environments (Kubernetes, Docker).
-Scheduling: Prefect 2.x introduces more powerful scheduling and retry logic.
-Cloud-Native: Enhanced integration with cloud-native tools, such as Kubernetes, and an improved deployment model.
-Flexibility: Granular control over deployments and orchestration.
+- **Scalability**: Prefect 2.x offers better scalability through dynamic task mapping and execution in various environments (Kubernetes, Docker).
+- **Scheduling**: Prefect 2.x introduces more powerful scheduling and retry logic.
+- **Cloud-Native**: Enhanced integration with cloud-native tools, such as Kubernetes, and an improved deployment model.
+- **Flexibility**: Granular control over deployments and orchestration.
  
 
-1.       Key Differences Between Prefect 1 and Prefect 2
-2.1 Architecture Changes
+### Key Differences Between Prefect 1 and Prefect 2
+
+##### Architecture Changes
+
 Prefect 1.x used a single monolithic server and agent system for managing workflows and executions.
 Prefect 2.x introduces a new flow/task-level orchestration model that allows to define flows and tasks independently and deploy them in any execution environment.
  
@@ -28,7 +30,9 @@ In Prefect 2.x:
 Flows are now first-class objects, and they represent the unit of orchestration.
 Tasks are now defined using the @task decorator and must be explicitly invoked inside a flow.
  
-2.2 API and SDK Changes
+
+##### API and SDK Changes
+
 Task and Flow Definitions:
 Prefect 1.x:
 
@@ -38,16 +42,21 @@ The flow and task decorators in Prefect 2.x are now separated and function diffe
  
 State Management: Prefect 2.x has introduced a more granular approach to task states, handling retries, failure states, and task dependencies with greater flexibility.
  
- 
-2.3 Configuration and Deployment
+
+##### Configuration and Deployment
+
 Prefect 1.x: Deployment was managed through Prefect Cloud or a local server instance.
 Prefect 2.x: The deployment model has changed, with deployments being independent from the core orchestration engine. It’s possible to define and deploy flows via the prefect deployment CLI commands or programmatically, giving more control over the environment and resources used.
  
-2.4 Scheduler and Triggering
+
+##### Scheduler and Triggering
+
 Prefect 1.x used the traditional cron-based scheduler or periodic triggers.
 Prefect 2.x uses more sophisticated scheduling tools, such as IntervalSchedule and CronSchedule, which are easier to configure and integrate with cloud services.
  
-3         Migrating to Prefect 2.x
+
+### Migrating to Prefect 2.x
+
  
 The following tasks must be completed as part of the migration process to ensure a smooth and successful transition.
  
