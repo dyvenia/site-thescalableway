@@ -1,0 +1,1 @@
+.column{-moz-column-count:1;column-count:1}.column>*{-moz-column-break-inside:avoid;break-inside:avoid}@media (min-width:640px){.column:not(:has(p:only-child,li:only-child)){-moz-column-count:2;column-count:2;gap:var(--gutter,var(--space-l-xl))}}

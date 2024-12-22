@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/breaking-down-prefect-flows-to-improve-obsevability-and-data-ops/</loc>
+        <lastmod>2024-11-20T00:00:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/using-k3s-as-a-lightweight-scalable-solution-to-deploy-prefect-flows-on-vms/</loc>
+        <lastmod>2024-11-20T00:00:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/comparing-dbt-and-sqlmesh/</loc>
+        <lastmod>2024-11-20T00:00:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/prefect-10-to-20-migration-motivation-process-and-workflow/</loc>
+        <lastmod>2024-12-21T00:00:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/tags/prefect/</loc>
+        <lastmod>2024-12-22T09:12:54.669Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/tags/</loc>
+        <lastmod>2024-12-22T09:12:54.669Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/about/</loc>
+        <lastmod>2024-12-22T09:12:54.669Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/</loc>
+        <lastmod>2024-12-22T09:12:54.669Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/insights/</loc>
+        <lastmod>2024-12-22T09:12:54.669Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/imprint/</loc>
+        <lastmod>2024-12-22T09:12:54.669Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/privacy/</loc>
+        <lastmod>2024-12-22T09:12:54.669Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+</urlset>
