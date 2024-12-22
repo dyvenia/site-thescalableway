@@ -84,6 +84,12 @@ export default async function (eleventyConfig) {
 
   // --------------------- Passthrough File Copy
 
+  eleventyConfig.addPassthroughCopy("admin/"); // don't process the CMS folder
+  // Disable 11ty dev server live reload when using CMS locally
+  eleventyConfig.setServerOptions({
+    liveReload: false
+  });
+
   // -- same path
   ['src/assets/fonts/', 'src/assets/images/template', 'src/assets/og-images'].forEach(path =>
     eleventyConfig.addPassthroughCopy(path)
