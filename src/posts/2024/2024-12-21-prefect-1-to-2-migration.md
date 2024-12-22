@@ -22,9 +22,7 @@ Prefect 2.x brings several architectural changes that offer a more flexible, sca
 ### Key Differences Between Prefect 1 and Prefect 2
 
 ##### Architecture Changes
-
-Prefect 1.x used a single monolithic server and agent system for managing workflows and executions.
-Prefect 2.x introduces a new flow/task-level orchestration model that allows to define flows and tasks independently and deploy them in any execution environment.
+Prefect 1.x used a single monolithic server and agent system for managing workflows and executions, while Prefect 2.x introduces a new flow/task-level orchestration model that allows to define flows and tasks independently and deploy them in any execution environment.
  
 In Prefect 2.x:
 Flows are now first-class objects, and they represent the unit of orchestration.
