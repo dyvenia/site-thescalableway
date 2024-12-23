@@ -7,9 +7,11 @@ description: A pattern to improve observability, monitoring and, ultimately, dat
 # The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platform (GCP)
 
 ## 0. Outline (Internal usage only, to be removed before publishing)
+
 Choosing the right approach to build and maintain a data platform is often a daunting task for organizations. With an overwhelming number of options available, finding a solution that balances simplicity, scalability, and future-proofing while also addressing the challenges of hiring people skilled enough for developing this solution can be a complex endeavor.
 
 In this article, I aim to:   
+
 - Highlight the key challenges organizations face when deciding on data platform architecture, such as simplicity versus scalability, designing a future-proof solution, and acquiring the right talent for maintenance.   
 - Focus on a practical solution without opening debate about orchestration tools like Prefect, Airflow, or Dagster. For the sake of clarity, this article assumes the use of Prefect as the orchestration tool and there will be dedicated article for comparison of those orchestrator tools.   
 - Present the most viable options for running Prefect flows and discuss why a single VM with K3s is an excellent choice.   
@@ -64,6 +66,7 @@ While data generation is an external process for a data platform, its main purpo
 Ideally, a data platform should be as simple as possible. Ingestion, transformation, and serving should integrate seamlessly, sharing the same storage solution and functioning as a unified system. Achieving this simplicity often requires careful attention to underlying dependencies, as Joe Reis and Matt Housley outline in their book [Fundamentals of Data Engineering](https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/).
 
 They highlight several critical concepts that must be considered throughout the lifecycle and call them "undercurrents". They include:   
+
 - Security   
 - Data Management   
 - DataOps   
@@ -95,9 +98,7 @@ These challenges can be resolved by implementing a workflow management platform 
 The three leading orchestration tools in the market are:
 
 - **Apache Airflow** is an open-source orchestrator with the largest community and ecosystem. However, it comes with a steep learning curve. Airflow requires configuring the server component, which can be overly complex for teams just starting with ELT processes. Managed cloud options for Airflow—such as Google Cloud Composer (tied to GCP) and Amazon Managed Workflows for Apache Airflow (AWS) — reduce this burden but are typically locked into a specific cloud provider.
-
 - **Prefect** offers a compelling alternative to Airflow. Prefect Cloud is a cloud-agnostic, easy-to-configure solution that enables teams to get started quickly. Its biggest advantages include scalability, portability, and developer-friendly features that allow for flexible orchestration. Prefect’s architecture also supports running workflows in hybrid environments, seamlessly bridging on-premises and cloud solutions.  
-
 - **Dagster** focuses on data-aware orchestration, with strong capabilities for testing and validating pipelines. It’s particularly appealing for teams that value robust data lineage and higher developer productivity.   
 
 ### 2.2 Why Prefect Cloud?
@@ -171,10 +172,8 @@ Security is non-negotiable. Without proper safeguards, the platform can be vulne
 
 - **No public access to any of the resources**   
 The entire infrastructure is designed to operate within a private network, eliminating any public exposure. Access to the Compute Engine virtual machine is managed through Google Cloud Identity-Aware Proxy (IAP), which handles authentication and authorization. IAP creates a secure tunnel for SSH connections without requiring public IPs, eliminating the complexity of setting up a VPN. This streamlines operations, especially for organizations without dedicated networking teams, while improving operational velocity. 
-
 - **GitHub runner for automation**   
 Automation is critical to maintaining this environment efficiently. Since shared GitHub-hosted runners cannot access private infrastructure, a self-hosted GitHub runner is deployed directly on the virtual machine. This enables secure automation for configuring the environment, deploying Prefect flows, and managing updates, all within the private network. By keeping the runner internal, security is maintained without sacrificing automation capabilities.
-
 - **Controlled outbound traffic**   
 While incoming access is tightly restricted, the virtual machine still requires outbound connectivity to services like Prefect Cloud, GitHub, or external systems for data ingestion and serving. To minimize risk, all outbound traffic is routed through a fixed Cloud NAT IP. This ensures predictable and secure communication without unnecessary exposure. When dealing with private or non-public services, a VPN is required. Solutions like GCP Cloud VPN or software-based tools such as strongSwan enable secure and encrypted connections, ensuring data integrity and protection.
 
