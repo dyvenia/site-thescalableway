@@ -5,6 +5,7 @@ author: Alessio Civitillo
 description: This article outlines the motivation and steps for migrating from Prefect 1 to Prefect 2. Additionally, it provides guidance on how to coordinate work between teams to ensure the migration is performed with zero downtime
 tags:
   - prefect
+internal_notes: none
 ---
 Prefect 1.x was the original version of Prefect, a data orchestration platform designed to streamline the development, scheduling, and monitoring of workflows. It used a monolithic server that acted as an API layer and a task scheduler.
  
@@ -22,6 +23,7 @@ Prefect 2.x brings several architectural changes that offer a more flexible, sca
 ### Key Differences Between Prefect 1 and Prefect 2
 
 ##### Architecture Changes
+
 Prefect 1.x used a single monolithic server and agent system for managing workflows and executions, while Prefect 2.x introduces a new flow/task-level orchestration model that allows to define flows and tasks independently and deploy them in any execution environment.
  
 In Prefect 2.x:

@@ -3,23 +3,25 @@ title: Using K3S as a lightweight scalable solution to deploy Prefect flows on V
 date: 2024-11-20
 author: Karol Wolski
 description: A pattern to improve observability, monitoring and, ultimately, data operations with Prefect. We show how to find the right trade off between number of deployments and improved operations.
+internal_notes: |-
+  # The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platform (GCP)
+
+  ## 0. Outline (Internal usage only, to be removed before publishing)
+
+  Choosing the right approach to build and maintain a data platform is often a daunting task for organizations. With an overwhelming number of options available, finding a solution that balances simplicity, scalability, and future-proofing while also addressing the challenges of hiring people skilled enough for developing this solution can be a complex endeavor.
+
+  In this article, I aim to:   
+
+  - Highlight the key challenges organizations face when deciding on data platform architecture, such as simplicity versus scalability, designing a future-proof solution, and acquiring the right talent for maintenance.   
+  - Focus on a practical solution without opening debate about orchestration tools like Prefect, Airflow, or Dagster. For the sake of clarity, this article assumes the use of Prefect as the orchestration tool and there will be dedicated article for comparison of those orchestrator tools.   
+  - Present the most viable options for running Prefect flows and discuss why a single VM with K3s is an excellent choice.   
+  - Provide a high-level overview of the proposed architecture and the required steps for implementation. This is not a step-by-step guide, so specifics like Terraform scripts or GitHub workflow configurations are intentionally omitted.   
+
+  By the end, readers should have a clearer understanding of how to approach a straightforward and scalable data platform setup using Prefect and K3s using single Virtual Machine on GCP.
+
+  Article starts below.
 ---
-# The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platform (GCP)
-
-## 0. Outline (Internal usage only, to be removed before publishing)
-
-Choosing the right approach to build and maintain a data platform is often a daunting task for organizations. With an overwhelming number of options available, finding a solution that balances simplicity, scalability, and future-proofing while also addressing the challenges of hiring people skilled enough for developing this solution can be a complex endeavor.
-
-In this article, I aim to:   
-
-- Highlight the key challenges organizations face when deciding on data platform architecture, such as simplicity versus scalability, designing a future-proof solution, and acquiring the right talent for maintenance.   
-- Focus on a practical solution without opening debate about orchestration tools like Prefect, Airflow, or Dagster. For the sake of clarity, this article assumes the use of Prefect as the orchestration tool and there will be dedicated article for comparison of those orchestrator tools.   
-- Present the most viable options for running Prefect flows and discuss why a single VM with K3s is an excellent choice.   
-- Provide a high-level overview of the proposed architecture and the required steps for implementation. This is not a step-by-step guide, so specifics like Terraform scripts or GitHub workflow configurations are intentionally omitted.   
-
-By the end, readers should have a clearer understanding of how to approach a straightforward and scalable data platform setup using Prefect and K3s using single Virtual Machine on GCP.
-
-Article starts below.
+# 
 
 Choosing the right data platform architecture is a critical decision for any organization. The challenge lies in finding a solution that delivers immediate value while staying flexible enough for future growth—all without sacrificing scalability, simplicity, or efficiency.
 
@@ -183,7 +185,6 @@ With the environment completely blocked from the internet, it’s necessary to e
 > When an application or resource is protected by IAP, it can only be accessed through the proxy by principals, also known as users, who have the correct Identity and Access Management (IAM) role. When you grant a user access to an application or resource by IAP, they're subject to the fine-grained access controls implemented by the product in use without requiring a VPN. When a user tries to access an IAP-secured resource, IAP performs authentication and authorization checks.
 
 This [diagram from Google](https://cloud.google.com/iap/images/iap-load-balancer.png) further illustrates the components required to implement this configuration:
-
 
 **REPLACE GCP IAP**
 
