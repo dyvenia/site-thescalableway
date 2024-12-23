@@ -1,6 +1,6 @@
 admin:
   - name: Alessio Civitillo
-    image: alessio.jpg
+    image: /src/assets/images/team/alessio.jpg
     description_short: |
       An experienced financial analyst and software engineer, Alessio brings a unique blend of expertise and vision to the world of data, ensuring that our clients unlock the hidden connections in their data and deliver value to their stakeholders.
     description_long: |
@@ -9,7 +9,7 @@ admin:
       By merging data science with strategic thinking, Alessio consistently delivers solutions that drive measurable business success.
 
   - name: Karol
-    image: karol.jpg
+    image: /src/assets/images/team/karol.jpg
     description_short: |
       A dedicated data strategist focused on actionable insights and innovative data-driven solutions.
     description_long: |
@@ -18,7 +18,7 @@ admin:
       With a background in finance and tech, Karol bridges the gap between complex data sets and meaningful business decisions.
 
   - name: Mateusz
-    image: mateusz.jpg
+    image: /src/assets/images/team/mateusz.jpg
     description_short: |
       Passionate about turning complex data into clear, actionable intelligence for better decision-making.
     description_long: |

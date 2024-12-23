@@ -21,7 +21,7 @@ intro: |
   <article class="feature flow flow-space-l">
     {% for member in team.admin %}
       <div class="about__content flow grid gutter-m" data-layout="50-50">
-        {% image "./src/assets/images/team/" + member.image, "" %}
+        {% image "." + member.image, "" %}
         <div class="flow prose">
           <h3>{{ member.name }}</h3>
           {{ member.description_long | markdownFormat | safe }}
