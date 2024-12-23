@@ -14,7 +14,7 @@ backend:
   branch: dev
 
 # The folder used to store uploaded images
-media_folder: "assets/images"
+media_folder: "src/assets/images"
 
 # The CMS collections and their fields
 collections:

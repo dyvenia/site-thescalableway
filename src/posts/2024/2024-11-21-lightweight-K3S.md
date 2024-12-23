@@ -20,10 +20,6 @@ In this article, I aim to:
 By the end, readers should have a clearer understanding of how to approach a straightforward and scalable data platform setup using Prefect and K3s using single Virtual Machine on GCP.
 
 Article starts below.
-</br>
-</br>
-</br>
----
 
 Choosing the right data platform architecture is a critical decision for any organization. The challenge lies in finding a solution that delivers immediate value while staying flexible enough for future growth—all without sacrificing scalability, simplicity, or efficiency.
 
@@ -164,7 +160,7 @@ Here’s a practical, streamlined setup for orchestrating workflows with Prefect
 - **Cloud NAT**: Configures a NAT gateway that directs the virtual machine to the Cloud Router for outbound internet access. It also makes sure that public IP is fixed, as long as the Cloud NAT object is not destroyed and configured for the same zone.   
 - **Cloud Storage**: Sets up a Google Cloud Storage bucket to store ingested data as Parquet files before transforming and loading it into the database as tables.   
 
-![Infrastructure](blob:https://thescalableway-admin.netlify.app/74a3e9fc-39c3-4f7a-be3e-9afefb14d1da "Infrastructure")
+**REPLACE Infrastructure**
 
 ### 3.1 Security
 
@@ -188,7 +184,8 @@ With the environment completely blocked from the internet, it’s necessary to e
 
 This [diagram from Google](https://cloud.google.com/iap/images/iap-load-balancer.png) further illustrates the components required to implement this configuration:
 
-![GCP IAP](blob:https://thescalableway-admin.netlify.app/996b4320-c9b7-425b-877f-9e2f900e527b "GCP IAP")
+
+**REPLACE GCP IAP**
 
 ### 3.2 Configuration Steps
 
