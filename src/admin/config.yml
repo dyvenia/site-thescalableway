@@ -102,6 +102,7 @@ collections:
     create: true
     extension: "yaml"
     format: "yaml"
+    media_folder: "src/assets/images/team"
     files:
       - file: "src/_data/team.yaml"
         label: "Team"
