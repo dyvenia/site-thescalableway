@@ -8,3 +8,5 @@ tags:
 internal_notes: test
 ---
 Testing if uploading images from CMS works
+
+![](/src/assets/images/Screenshot 2023-03-14 161339.png)
