@@ -1,11 +1,9 @@
 ---
-title: Using K3S as a lightweight scalable solution to deploy Prefect flows on VMs
+title: The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platform (GCP)
 date: 2024-11-20
 author: Karol Wolski
 description: A pattern to improve observability, monitoring and, ultimately, data operations with Prefect. We show how to find the right trade off between number of deployments and improved operations.
 ---
-# The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platform (GCP)
-
 ## 0. Outline (Internal usage only, to be removed before publishing)
 
 Choosing the right approach to build and maintain a data platform is often a daunting task for organizations. With an overwhelming number of options available, finding a solution that balances simplicity, scalability, and future-proofing while also addressing the challenges of hiring people skilled enough for developing this solution can be a complex endeavor.
