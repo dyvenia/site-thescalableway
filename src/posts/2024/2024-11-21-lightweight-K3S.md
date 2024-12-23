@@ -1,5 +1,5 @@
 ---
-title: Using K3S as a lightweight scalable solution to deploy Prefect flows on VMs
+title: The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platform (GCP)
 date: 2024-11-20
 author: Karol Wolski
 description: A pattern to improve observability, monitoring and, ultimately, data operations with Prefect. We show how to find the right trade off between number of deployments and improved operations.
@@ -43,7 +43,7 @@ It’s also tempting to start too small. Early shortcuts in data platform design
 
 For decision-makers, this journey begins by stepping back and evaluating both the current state of their team and the platform they rely on. The Data Platform Maturity Curve offers a valuable framework for this assessment:
 
-![Data Platform Maturity Curve](/assets/images/gcp_a1_data_platform_maturity_curve.png "Data Platform Maturity Curve")
+![Data Platform Maturity Curve](/src/assets/images/gcp_a1_data_platform_maturity_curve-1.png "Data Platform Maturity Curve")
 
 Depending on the organization’s data technology maturity, the approach to maintaining a data platform must adapt. This article focuses on those in the middle of the maturity curve—where simple scripts and ad-hoc solutions are no longer enough, but the platform hasn’t yet reached the point of processing terabytes of data or requiring advanced features like autoscaling. At this stage, the platform is delivering tangible business value and is steadily becoming integral to operations. Downtime—whether it lasts hours, a day, or even a week—is growing increasingly expensive.
 
@@ -57,7 +57,7 @@ Focusing on batch processing is typically more beneficial for companies early in
 
 Another critical consideration is improving processes across the data engineering lifecycle by selecting tools that work together seamlessly to deliver value to the organization.
 
-![Data Engineering Lifecycle](/assets/images/gcp_a1_data_engineering_lifecycle.png "Data Engineering Lifecycle")
+![Data Engineering Lifecycle](blob:https://thescalableway-admin.netlify.app/a42ea5aa-4c7c-4dd7-8d0a-37f66bd6b926 "Data Engineering Lifecycle")
 
 While data generation is an external process for a data platform, its main purpose is to consolidate valuable data from multiple sources and serve them in a more readable way. Technically, it’s possible to build a platform where different applications are used for each phase of the ELT process (e.g., ingestion, transformation, and serving). However, this approach quickly becomes overly complex and fails to deliver significant value.
 
@@ -162,7 +162,7 @@ Here’s a practical, streamlined setup for orchestrating workflows with Prefect
 - **Cloud NAT**: Configures a NAT gateway that directs the virtual machine to the Cloud Router for outbound internet access. It also makes sure that public IP is fixed, as long as the Cloud NAT object is not destroyed and configured for the same zone.   
 - **Cloud Storage**: Sets up a Google Cloud Storage bucket to store ingested data as Parquet files before transforming and loading it into the database as tables.   
 
-**REPLACE Infrastructure**
+![Infrastructure](blob:https://thescalableway-admin.netlify.app/57bd9cc1-517b-4a67-bbbd-62023c0ee0a4 "Infrastructure")
 
 ### 3.1 Security
 
