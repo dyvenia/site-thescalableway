@@ -58,7 +58,7 @@ export const markdownLib = markdownIt({
     },
     // prepend src for markdown images
     resolvePath: (filepath, env) => {
-      return path.join('src', filepath);
+      return path.join('.', filepath);
     },
     renderImage(image, attributes) {
       const [Image, options] = image;

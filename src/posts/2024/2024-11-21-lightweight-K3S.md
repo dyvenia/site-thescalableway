@@ -43,7 +43,7 @@ It’s also tempting to start too small. Early shortcuts in data platform design
 
 For decision-makers, this journey begins by stepping back and evaluating both the current state of their team and the platform they rely on. The Data Platform Maturity Curve offers a valuable framework for this assessment:
 
-![Data Platform Maturity Curve](assets/images/gcp_a1_data_platform_maturity_curve-1.png "Data Platform Maturity Curve")
+![Data Platform Maturity Curve](src/assets/images/gcp_a1_data_platform_maturity_curve-1.png "Data Platform Maturity Curve")
 
 Depending on the organization’s data technology maturity, the approach to maintaining a data platform must adapt. This article focuses on those in the middle of the maturity curve—where simple scripts and ad-hoc solutions are no longer enough, but the platform hasn’t yet reached the point of processing terabytes of data or requiring advanced features like autoscaling. At this stage, the platform is delivering tangible business value and is steadily becoming integral to operations. Downtime—whether it lasts hours, a day, or even a week—is growing increasingly expensive.
 
