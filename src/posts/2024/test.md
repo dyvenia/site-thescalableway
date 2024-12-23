@@ -9,4 +9,4 @@ internal_notes: test
 ---
 Testing if uploading images from CMS works
 
-![](src/assets/images/Screenshot 2023-04-21 151952.png)
+![](/src/assets/images/modern_architecture-1.png)
