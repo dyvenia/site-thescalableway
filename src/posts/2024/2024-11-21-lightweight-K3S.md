@@ -28,6 +28,8 @@ internal_notes: |-
   - Trim unnecessary words, here the word "powerful" adds no value: Example: Simple and Powerful Setup for GCP
   - Remove 3 completely, it's not providing a full guide, I understand you want to hide some information to get their email address, but this is now half baked and it will annoy people. Let's focus this article on the following outline:
 
+  Outline:
+
   - Introduction
   - Challenges with Deploying Prefect
   - Why Serveless might not be the best choice
