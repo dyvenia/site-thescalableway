@@ -19,7 +19,21 @@ internal_notes: |-
 
   By the end, readers should have a clearer understanding of how to approach a straightforward and scalable data platform setup using Prefect and K3s using single Virtual Machine on GCP.
 
-  Article starts below.
+  ## Comments from AC (Dec 31st 2024)
+
+  - I think a better title would be: Deploying Prefect on any Cloud using a simple VM
+  - This article is about deploying Prefect at this point, so better you own it, it also makes SEO easier, since you would be targeting people struggling to deploy prefect
+  - You  can remove the streaming paragraph, we can address this topic in another article
+  - You need to address serverless in more detail, maybe even a separate paragraph, this is because serverless is the main counter argument to VM + K3S
+  - Trim unnecessary words, here the word "powerful" adds no value: Example: Simple and Powerful Setup for GCP
+  - Remove 3 completely, it's not providing a full guide, I understand you want to hide some information to get their email address, but this is now half baked and it will annoy people. Let's focus this article on the following outline:
+
+  - Introduction
+  - Challenges with Deploying Prefect
+  - Why Serveless might not be the best choice
+  - Prefect Deployment Options
+  - Lightweight Prefect Deployment Solution
+  - Conclusion
 ---
 # 
 
@@ -161,8 +175,6 @@ Here’s a practical, streamlined setup for orchestrating workflows with Prefect
 - **Cloud Router**: Provides internet connectivity for the virtual machine.   
 - **Cloud NAT**: Configures a NAT gateway that directs the virtual machine to the Cloud Router for outbound internet access. It also makes sure that public IP is fixed, as long as the Cloud NAT object is not destroyed and configured for the same zone.   
 - **Cloud Storage**: Sets up a Google Cloud Storage bucket to store ingested data as Parquet files before transforming and loading it into the database as tables.   
-
-
 
 **replace Infrastructure something not working**
 
