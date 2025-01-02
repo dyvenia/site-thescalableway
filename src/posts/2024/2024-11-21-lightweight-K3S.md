@@ -3,6 +3,8 @@ title: The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platfor
 date: 2024-11-20
 author: Karol Wolski
 description: A pattern to improve observability, monitoring and, ultimately, data operations with Prefect. We show how to find the right trade off between number of deployments and improved operations.
+tags:
+  - prefect
 internal_notes: |-
   # The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platform (GCP)
 
