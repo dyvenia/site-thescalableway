@@ -9,6 +9,8 @@ import markdownItFootnote from 'markdown-it-footnote';
 import markdownitMark from 'markdown-it-mark';
 import markdownitAbbr from 'markdown-it-abbr';
 import {slugifyString} from '../filters/slugify.js';
+import {optimize} from 'svgo';
+import {readFileSync} from 'node:fs';
 import path from 'node:path';
 
 export const markdownLib = markdownIt({
@@ -63,6 +65,33 @@ export const markdownLib = markdownIt({
     renderImage(image, attributes) {
       const [Image, options] = image;
       const [src, attrs] = attributes;
+
+      // check if source is SVG
+      if (path.extname(src).toLowerCase() === '.svg') {
+        const svgData = readFileSync(src, 'utf8');
+        const {data: optimizedSvg} = optimize(svgData, {
+          plugins: [
+            {
+              name: 'removeDimensions',
+              params: {
+                enableViewBox: true
+              }
+            }
+          ]
+        });
+
+        const svgWithAttrs = attrs.alt
+          ? optimizedSvg.replace('<svg', `<svg class="svg-image" aria-label="${attrs.alt}"`)
+          : optimizedSvg.replace('<svg', '<svg class="svg-image" role="presentation" aria-hidden="true"');
+
+        const svgElement = attrs.title
+          ? `<figure class="flow">
+                    ${svgWithAttrs}
+                    <figcaption>${attrs.title}</figcaption>
+                 </figure>`
+          : optimizedSvg;
+        return svgElement;
+      }
 
       Image(src, options);
 
