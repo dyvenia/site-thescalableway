@@ -1,9 +1,9 @@
 ---
 hero:
-  title: Empowering Analytics Teams with Scalable & Automated Data Platforms
-  subtitle: "**The Scalable Way** is a professional services agency bringing software engineering practices to data platforms in order to achieve higher scalability, cost effectiveness, usability and reliability."
-  button_text: Learn more
-  button_target: ""
+  title: Empowering Analytics Teams with Scalable and Automated Data Platforms
+  subtitle: '**The Scalable Way** is a professional services agency bringing software engineering practices to data platforms in order to achieve higher scalability, cost effectiveness, usability and reliability.'
+  button_text: Let's talk
+  button_target: https://meetings-eu1.hubspot.com/alessio-civitillo/the-scalable-way
 intro:
   title: Is your data tech stack working with you or against you?
   content: |-
@@ -16,7 +16,7 @@ highlight_one:
 highlight_two:
   title1: The ultimate data platform goal?
   title2: Stuff just works!
-  content: Unfortunately, data analytics departments I meet often don’t end up where they had hoped. They struggle to build reliable data pipelines. They don’t manage to automate, and because of that they have problems onboarding users and excessive manual work.
+  content: Unfortunately, many data analytics departments don’t end up where they had hoped. They struggle to build reliable data pipelines, they don’t manage to automate, and because of that, they have problems onboarding users and excessive manual work.
 foundations_titles:
   title1: The 5 data platform
   title2: foundations
@@ -34,7 +34,7 @@ foundations_elements:
 about:
   title: About us
   content: |-
-    We believe in automation and good developer experience!
+    We believe in automation and good developer experience.
 
     With a combined 30+ years of experience in infrastructure, data platforms, and data engineering, we are on a mission to help data analytics teams build more robust and scalable solutions.
 whyus_intro:
@@ -72,11 +72,11 @@ our_services_items:
   - title: Operations
     prefix: Data Platform
     description: Ensure continuous, reliable data platform performance through proactive monitoring, maintenance, and automated operational workflows.
-description: Eleventy starter using modern CSS, fluid type, fluid spacing, flexible layout and progressive enhancement.
-bodyClass: home
 blog:
-  title: Our Insights
   intro: Selected Articles. Check our blog for more.
+  title: Our Insights
+bodyClass: home
+description: Eleventy starter using modern CSS, fluid type, fluid spacing, flexible layout and progressive enhancement.
 layout: base
 permalink: /index.html
 title: The Scalable Way
@@ -154,9 +154,9 @@ title: The Scalable Way
       <div class="flow">{{ about.content | markdownFormat | safe }}</div>
     </header>
     <div class="grid region" data-layout="thirds">
-      {% for member in admin.team %}
+      {% for member in team.admin %}
         <div class="about__content flow">
-          {% image "./src/assets/images/team/" + member.image, "" %}
+          {% image "." + member.image, "" %}
 
           <h3>{{ member.name }}</h3>
           {{ member.description_short | markdownFormat | safe }}

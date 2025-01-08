@@ -14,7 +14,7 @@ backend:
   branch: dev
 
 # The folder used to store uploaded images
-media_folder: "assets/images"
+media_folder: "src/assets/images"
 
 # The CMS collections and their fields
 collections:
@@ -74,12 +74,14 @@ collections:
     folder: "src/posts/2024"
     create: true
     slug: "{{slug}}"
+    media_folder: "/src/assets/images"
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Author", name: "author", widget: "string"}
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Tags", name: "tags", widget: "list", default: ["post"], hint: "Enter tags separated by a comma" }
+      - { label: "Internal Notes", name: "internal_notes", widget: "markdown" }
       - { label: "Body", name: "body", widget: "markdown" }
 
   - name: "imprint"
@@ -101,6 +103,7 @@ collections:
     create: true
     extension: "yaml"
     format: "yaml"
+    media_folder: "src/assets/images/team"
     files:
       - file: "src/_data/team.yaml"
         label: "Team"
@@ -114,3 +117,16 @@ collections:
                 - { label: "Profile Picture", name: "image", widget: "image" }
                 - { label: "Short Description", name: "description_short", widget: "text" }
                 - { label: "Long Description", name: "description_long", widget: "text" }
+
+  - name: "meta"
+    label: "Meta Fields"
+    icon: "settings"
+    extension: "yaml"
+    format: "yaml"
+    files:
+      - file: "src/_data/meta.yaml"
+        label: "Meta Fields"
+        name: "meta"
+        fields:
+          - { label: "Book Call Text", name: "book_call", widget: "string", hint: "The text of the book a call button" }
+          - { label: "Book Call Link", name: "book_call_link", widget: "string", hint: "The link  of the book a call button" }
