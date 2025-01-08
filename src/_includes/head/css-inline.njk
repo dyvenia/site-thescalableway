@@ -3,12 +3,10 @@
 		<!-- External CSS for local dev (refresh without page reload) -->
 		<link rel="stylesheet" href="{% getBundleFileUrl "css", "global" %}">
 		<link rel="stylesheet" href="{% getBundleFileUrl "css", "inline" %}">
-		<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet"/>
 	{%- else  %}
 		<!-- Inlined CSS (fastest site performance in production)  -->
 		<style>{% getBundle "css", "global" %}</style>
 		<style>{% getBundle "css", "inline" %}</style>
-		<link href="https://unpkg.com/prismjs@1.20.0/themes/prism-okaidia.css" rel="stylesheet"/>
 	{%- endif %}
 
 	{% css "global" %}{% include "css/global.css" %}{% endcss %}
