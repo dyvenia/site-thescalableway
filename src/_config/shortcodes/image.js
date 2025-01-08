@@ -16,31 +16,19 @@ const stringifyAttributes = attributeMap => {
     .join(' ');
 };
 
-/**
- * Generates an HTML image element with responsive images and optional caption.
- * @param {string} src - The path to the image source file.
- * @param {string} [alt=''] - The alternative text for the image.
- * @param {string} [caption=''] - The caption for the image.
- * @param {string} [loading='lazy'] - The loading attribute for the image.
- * @param {string} [className] - The CSS class name for the image element.
- * @param {string} [sizes='90vw'] - The sizes attribute for the image.
- * @param {number[]} [widths=[440, 650, 960, 1200]] - The widths for generating responsive images.
- * @param {string[]} [formats=['avif', 'webp', 'jpeg']] - The formats for generating responsive images.
- * @returns {string} - The HTML image element.
- */
 export const imageShortcode = async (
   src,
   alt = '',
   caption = '',
   loading = 'lazy',
   className,
-  sizes = '90vw',
-  widths = [440, 650, 960, 1200],
-  formats = ['avif', 'webp', 'jpeg']
+  sizes = '100vw',
+  widths = [650, 960, 1200],
+  formats = ['webp', 'jpeg']
 ) => {
   const metadata = await Image(src, {
-    widths: [...widths],
-    formats: [...formats],
+    widths: [...widths, null],
+    formats: [...formats, null],
     urlPath: '/assets/images/',
     outputDir: './_site/assets/images/',
     filenameFormat: (id, src, width, format, options) => {

@@ -46,7 +46,7 @@ export const markdownLib = markdownIt({
   .use(markdownItEmoji)
   .use(markdownItEleventyImg, {
     imgOptions: {
-      widths: [440, 880, 1024],
+      widths: [650, 960, null],
       urlPath: '/assets/images/',
       outputDir: './_site/assets/images/',
       formats: ['webp', 'jpeg']
@@ -54,7 +54,7 @@ export const markdownLib = markdownIt({
     globalAttributes: {
       loading: 'lazy',
       decoding: 'async',
-      sizes: '90vw'
+      sizes: '100vw'
     },
     // prepend src for markdown images
     resolvePath: (filepath, env) => {
