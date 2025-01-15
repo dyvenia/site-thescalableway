@@ -1,14 +1,14 @@
 ---
-title: The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platform (GCP)
-date: 2024-11-20
+title: Deploying Prefect on any Cloud Using a Single VM
+date: 2025-01-15T09:29:00
 author: Karol Wolski
 description: A pattern to improve observability, monitoring and, ultimately, data operations with Prefect. We show how to find the right trade off between number of deployments and improved operations.
 tags:
   - prefect
 internal_notes: |-
-  # The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platform (GCP)
+  ### The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platform (GCP)
 
-  ## 0. Outline (Internal usage only, to be removed before publishing)
+  ### 0. Outline (Internal usage only, to be removed before publishing)
 
   Choosing the right approach to build and maintain a data platform is often a daunting task for organizations. With an overwhelming number of options available, finding a solution that balances simplicity, scalability, and future-proofing while also addressing the challenges of hiring people skilled enough for developing this solution can be a complex endeavor.
 
@@ -39,223 +39,127 @@ internal_notes: |-
   - Lightweight Prefect Deployment Solution
   - Conclusion
 ---
-# 
+Choosing the right data platform architecture is quite a challenge for any organization. It’s a balancing act: you need something that delivers immediate value while staying flexible enough for future growth—all without sacrificing scalability, simplicity, or efficiency.
 
-Choosing the right data platform architecture is a critical decision for any organization. The challenge lies in finding a solution that delivers immediate value while staying flexible enough for future growth—all without sacrificing scalability, simplicity, or efficiency.
+This article offers a thoughtful guide to the decision-making process behind choosing Prefect with lightweight Kubernetes (K3S) on a single Virtual Machine (VM) with any cloud provider. You’ll explore:
 
-This article offers a clear roadmap for building a streamlined, scalable platform using Prefect and lightweight Kubernetes (K3S) on a single Virtual Machine (VM) in Google Cloud Platform (GCP). You’ll learn:
+- Why simplicity and flexibility are essential for modern data platforms.
+- Key considerations for selecting the right data orchestration tool.
+- Insights into serverless vs server-based execution of Prefect flows.
+- Approaches to run a server-based Prefect worker
 
-- Why simplicity and adaptability are essential for modern data platforms.   
-- How to approach batch and stream processing to meet evolving needs.   
-- Practical steps for combining Prefect and K3S into a future-proof architecture.   
+Rather than a step-by-step tutorial, this guide is designed to help you make solid platform architecture decisions and design a solution tailored to your organization’s unique needs. Let’s dive in.
 
-To help you put these insights into action, we've also prepared a [free guide](https://share-eu1.hsforms.com/1xWSEuA-aQI6DWKwgmcXNwA2dihx8) packed with detailed instructions. Whether you’re just starting or refining an existing setup, this resource will save you time and effort.
+### Challenges With Picking Data Platform Architecture
 
-This is not a step-by-step tutorial but a guide to help you confidently design a scalable solution tailored to your organization’s needs. Let’s delve in.
+The options for building a data platform are endless—but many fall short. With the rise of affordable cloud storage, expectations have changed, leaving many once-revolutionary legacy systems struggling to keep up. At the same time, new solutions making big claims often fail, either missing critical features or bogging organizations down with unnecessary complexity. For smaller companies, the challenge is even greater—a data platform should drive business value, not require a dedicated team just to maintain it. 
 
-## 1. Challenges With Picking Data Platform Architecture
+Starting small may seem practical, but early shortcuts can turn into major obstacles as the platform grows. Undoing poor architectural choices later is often costly and disruptive. That’s why **choosing a solution that is both simple and scalable from the outset is essential**. 
 
-The options for building a data platform today are endless—but not all are fit for the modern era. With the rise of affordable cloud storage, expectations have changed, leaving many once-revolutionary legacy systems struggling to keep up. At the same time, flashy new solutions often fall short, either missing critical features or bogging organizations down with unnecessary complexity. For smaller companies, the challenge is even greater—maintaining a data platform shouldn’t demand a dedicated team when the real goal is driving business value.
+For decision-makers, this journey begins by stepping back and evaluating both the current state of their team and the platform they rely on. The **Data Platform Maturity Curve** is a helpful framework for this:
 
-It’s also tempting to start too small. Early shortcuts in data platform design can seem harmless at first but can evolve into major roadblocks as the platform grows in importance. Undoing those decisions—especially ones tied to architecture—can be prohibitively complex once the platform becomes central to operations. That’s why choosing a solution that is both simple and scalable from the outset is essential. Planning for growth and ensuring a smooth path for future upgrades can save significant headaches down the line.
+![data maturity](/src/assets/images/data_maturity_curve.png)
 
-For decision-makers, this journey begins by stepping back and evaluating both the current state of their team and the platform they rely on. The Data Platform Maturity Curve offers a valuable framework for this assessment:
+Depending on the organization’s data technology maturity level, your platform must adapt. This article focuses on those in the middle of the curve—where simple scripts and ad-hoc solutions are no longer enough, but advanced features like autoscaling aren’t yet necessary. At this stage, the platform delivers tangible business value and is steadily becoming integral to operations. Downtime—whether it lasts hours, a day, or even a week—is growing increasingly expensive.
 
-![Data Platform Maturity Curve](src/assets/images/gcp_a1_data_platform_maturity_curve-1.png "Data Platform Maturity Curve")
+The goal? A platform that’s lightweight, scalable, and future-ready without overcomplicating things.
 
-Depending on the organization’s data technology maturity, the approach to maintaining a data platform must adapt. This article focuses on those in the middle of the maturity curve—where simple scripts and ad-hoc solutions are no longer enough, but the platform hasn’t yet reached the point of processing terabytes of data or requiring advanced features like autoscaling. At this stage, the platform is delivering tangible business value and is steadily becoming integral to operations. Downtime—whether it lasts hours, a day, or even a week—is growing increasingly expensive.
+### Data Platform Orchestration: the Key to Seamless Integration 
 
-### 1.1 The Reality of Stream Processing
+Even the best-designed data platform is useless if it’s not integrated. No matter how carefully you choose your architecture, your platform’s success hinges on how well its core components—ingestion, transformation, and serving—work together. These phases can only operate efficiently when they are tightly aligned.
 
-There has been a lot of hype recently about stream processing, with many organizations eager to benefit from real-time data. While this acceleration offers exciting possibilities, the market for stream processing is still evolving, and the tools available today may change drastically in the coming years.
+![](/src/assets/images/data_engineering_lifecycle.png)
 
-Focusing on batch processing is typically more beneficial for companies early in the data maturity curve. In many cases, real-time needs can be addressed through micro-batch processing, which allows new data to be received and processed every few minutes. While not a perfect substitute for true streaming, this approach is an excellent way to validate the business value of real-time data. Stream processing should only be implemented when a skilled team with experience in collecting and processing data encounters clear limits in meeting business requirements.
+Early-stage platforms often rely on manual orchestration, which works at first but quickly becomes a bottleneck as data grows and workflows become more complex. Managing, ensuring accuracy, and reducing downtime requires a more structured approach. 
 
-### 1.2 Simplifying the Data Engineering Lifecycle
+A few basic improvements can help push the boundaries further. For instance:
 
-Another critical consideration is improving processes across the data engineering lifecycle by selecting tools that work together seamlessly to deliver value to the organization.
-
-**REPLACE Data Engineering Lifecycle  something is not working **
-
-While data generation is an external process for a data platform, its main purpose is to consolidate valuable data from multiple sources and serve them in a more readable way. Technically, it’s possible to build a platform where different applications are used for each phase of the ELT process (e.g., ingestion, transformation, and serving). However, this approach quickly becomes overly complex and fails to deliver significant value.
-
-Ideally, a data platform should be as simple as possible. Ingestion, transformation, and serving should integrate seamlessly, sharing the same storage solution and functioning as a unified system. Achieving this simplicity often requires careful attention to underlying dependencies, as Joe Reis and Matt Housley outline in their book [Fundamentals of Data Engineering](https://www.oreilly.com/library/view/fundamentals-of-data/9781098108298/).
-
-They highlight several critical concepts that must be considered throughout the lifecycle and call them "undercurrents". They include:   
-
-- Security   
-- Data Management   
-- DataOps   
-- Data Architecture   
-- Orchestration   
-- Software Engineering   
-
-While this article focuses on a few of these areas, it’s important to consider all of them when planning the architecture for your data engineering lifecycle.
-
-## 2. Data Platform Orchestration
-
-In the early phases of a data platform, its use within the business is often limited, and availability is not yet a critical concern. Reports can be prepared manually and sent via email to management. Instead of exposing a database with valuable data to the ML team, it may suffice to share raw data files.
-
-However, this approach quickly becomes a bottleneck. A few basic improvements can help push the boundaries further. For instance:   
-
-- Instead of running all scripts locally, they can be executed on a virtual machine.   
-- Setting up a database helps centralize data and reduces reliance on the availability of the data engineering team.   
-- Basic automation of workflows can be managed with cron jobs in Linux.   
+- Instead of running all scripts locally, they can be executed on a virtual machine.
+- Setting up a database helps centralize data
+- Basic automation of workflows can be managed with cron jobs in Linux.
 
 While these incremental improvements help in the short term, significant challenges remain:
 
-- **Manual code execution** becomes increasingly error-prone as the scale of operations grows.   
+- **Manual code execution** becomes increasingly error-prone as the scale of operations grows.
 - **Cron jobs** become difficult to manage as workflows become more complex and interdependent. Debugging failures can quickly turn into a nightmare, especially with cascading issues across multiple flows.
 
-### 2.1 Addressing Complexity With Workflow Management Tools
+This is where automated data orchestration becomes the key to streamlining workflows across the entire lifecycle. It allows teams to automate, monitor, and scale operations by transforming disconnected processes into a cohesive system, minimizing manual intervention and reducing errors. 
 
-These challenges can be resolved by implementing a workflow management platform for data engineering pipelines. Such tools allow teams to orchestrate, schedule, and monitor complex workflows while reducing manual effort and improving reliability.
+Let’s review the most popular options available in the market. 
+
+### Data Orchestration Tools 
 
 The three leading orchestration tools in the market are:
 
-- **Apache Airflow** is an open-source orchestrator with the largest community and ecosystem. However, it comes with a steep learning curve. Airflow requires configuring the server component, which can be overly complex for teams just starting with ELT processes. Managed cloud options for Airflow—such as Google Cloud Composer (tied to GCP) and Amazon Managed Workflows for Apache Airflow (AWS) — reduce this burden but are typically locked into a specific cloud provider.
-- **Prefect** offers a compelling alternative to Airflow. Prefect Cloud is a cloud-agnostic, easy-to-configure solution that enables teams to get started quickly. Its biggest advantages include scalability, portability, and developer-friendly features that allow for flexible orchestration. Prefect’s architecture also supports running workflows in hybrid environments, seamlessly bridging on-premises and cloud solutions.  
-- **Dagster** focuses on data-aware orchestration, with strong capabilities for testing and validating pipelines. It’s particularly appealing for teams that value robust data lineage and higher developer productivity.   
+- **Apache Airflow:** An open-source and community-driven tool with robust features but a steep learning curve. Managed versions like Google Cloud Composer and Amazon MWAA simplify deployment but tie users to specific cloud providers.
+- **Prefect:** A modern, cloud-agnostic, and easy-to-configure solution emphasizing scalability, portability, and developer-friendly features that allow for flexible orchestration. Prefect’s architecture also supports running workflows in hybrid environments, seamlessly bridging on-premises and cloud solutions.
+- **Dagster:** Designed for data-aware orchestration, Dagster prioritizes validation, lineage, and developer productivity, making it ideal for teams handling complex pipelines.
 
-### 2.2 Why Prefect Cloud?
+At The Scalable Way we have worked with both Airflow and Prefect in a few projects, we advise Prefect for lightweight setup with less deployment things to worry about.
+
+### What is Prefect Cloud?
 
 Prefect Cloud is a fully managed orchestration platform that simplifies running and monitoring Python-based workflows without the overhead of managing infrastructure. It’s well-suited for teams looking to automate data workflows, from ingestion and transformation to serving.
 
-Compared to other tools, Prefect Cloud stands out for its flexibility and ease of use:
+Its strengths include:
 
-- It scales easily to handle thousands of scheduled workflows.   
-- Built-in monitoring and alerting make it straightforward to identify and address failures.   
-- Its cloud-agnostic design ensures workflows can run across different environments, avoiding vendor lock-in.   
+- **Scalability**: Handles thousands of workflows with ease.
+- **Monitoring and alerting**: Built-in features simplify issue detection and resolution.
+- **Cloud-agnostic architecture**: Runs seamlessly across environments, avoiding vendor lock-in.
 
-Prefect Cloud reduces the operational complexity of orchestration, allowing teams to focus on building and improving their pipelines instead of managing infrastructure.
+By automating the orchestration layer, Prefect Cloud allows teams to focus on building robust pipelines without the overhead of managing infrastructure.
 
-### 2.3 Options for Running Prefect Flows
+### Common Struggle for Prefect Users: Deployment
 
-There are several ways to run Prefect flows, each with distinct trade-offs. Choosing the right setup is critical, as not all options offer easy migration paths. These approaches can be divided into two main categories:
+Adopting Prefect as an orchestrator unlocks many possibilities but like any powerful tool, it comes with a learning curve. Prefect flexibility and a developer-first approach can initially feel daunting for teams unfamiliar with building solid deployment solutions. 
 
-- **Server-Based**: Requires an underlying server infrastructure, such as:   
-    - A Prefect Worker running as a Systemd process on one or multiple virtual machines (VMs)   
-    - A single VM with lightweight Kubernetes (e.g., K3S)   
-    - A managed Kubernetes environment with autoscaling and advanced configuration   
-- **Serverless**: Managed options that don’t require server maintenance, such as:   
-    - Prefect Cloud’s managed service   
-    - Serverless compute options from major cloud providers, such as AWS Fargate, Google Cloud Run, and Azure Container Instances   
+Prefect’s philosophy emphasizes providing tools rather than prescribing solutions, allowing users to adapt its features to their specific needs. While this approach offers flexibility and scalability, it can leave data engineers uncertain about where to start with scalable deployment practices like CI/CD pipelines and autoscaling. 
 
-While the serverless approach can be appealing, particularly for simpler workflows, it introduces significant startup overhead. The Prefect Worker images, typically heavy with dependencies, can lengthen flow initialization times. Although some optimizations are possible, a more efficient and versatile setup generally involves a long-running server with a persistent Prefect Worker process.
+### Eternal Dilemma: Server-based or Serverless  
 
-#### 2.3.1 Available Deployment Options
+Another consideration is choosing the right setup for running Prefect flows. There are two primary approaches, each designed to cater to different needs: 
 
-- **Local Prefect Worker Process**   
+- **Server-based**: This requires setting up infrastructure such as virtual machines, lightweight Kubernetes (e.g., K3S), or managed Kubernetes clusters. While these setups provide maximum control, scalability, and adaptability, they demand a higher level of expertise and upfront effort.
+- **Serverless**: Managed solutions like Prefect Cloud’s service or serverless compute options from cloud providers (AWS Fargate, Google Cloud Run, Azure Container Instances) eliminate the need for infrastructure management, making them appealing for simpler workflows.
+
+Serverless solutions, though convenient, are best suited for simpler workflows, as they come with three notable challenges:
+
+1. **Startup Overhead**: Prefect Worker images often have heavy dependencies, increasing flow initialization time. This leads to latency, as serverless platforms can introduce delays between task executions due to event-driven triggers. A long-running server with a persistent Prefect Worker is usually much quicker.
+2. **Vendor Lock-In**: Serverless solutions are often tightly integrated with specific cloud providers, making it difficult to migrate workflows across platforms. Even Prefect Work Pools, though useful, have limited functionality at the Pro tier.
+3. **Cost Management**: Serverless can be cost-effective for intermittent workloads but can become expensive with unpredictable usage patterns. Managing costs is trickier compared to traditional server-based setups.
+
+Ultimately, the choice between server-based and serverless depends on the teams’ needs and stage of data maturity. However, for most organizations aiming to scale, a Prefect Work Pool running on a long-running server is a more optimal and reliable solution. 
+
+### Deployment Options for a Server-based Data Platform
+
+- **Local Prefect Worker Process**
 
 Connects directly to Prefect Cloud and serves as an introductory setup to understand Prefect Cloud’s functionality. However, this is not suitable for production scenarios due to limited scalability and resilience.
 
-- **Systemd Process on Single or Multiple VMs**   
+- **Systemd Process on Single or Multiple VMs**
 
 Runs Prefect flows in Docker containers, providing a lightweight setup that is relatively easy to configure. This approach is well-suited to small projects and teams, as Docker limits unnecessary complexity.
 
-- **Single VM with Lightweight Kubernetes (K3S)**   
+- **Single VM with Lightweight Kubernetes (K3S)**
 
-Not as simple as Systemd setup because of introduction of Kubernetes and Helm. Thanks to these tools it's more scalable and adaptable for future growth. This setup offers flexibility for migration to more robust configurations as project demands increase.
+It's not as simple as a Systemd setup because of the introduction of Kubernetes and Helm. Thanks to these tools, it's more scalable and adaptable for future growth. This setup offers flexibility for migration to more robust configurations as project demands increase.
 
-- **Managed Kubernetes Cluster**   
+- **Managed Kubernetes Cluster**
 
-The most feature-rich solution-managed Kubernetes supports autoscaling, spot instances, and integrations with tools like Active Directory. Ideal for comprehensive data platforms. This approach, however, adds operational complexity and may be excessive for smaller projects.
+The most feature-rich solution-managed Kubernetes supports autoscaling, spot instances, and integrations with tools like Active Directory. It is ideal for comprehensive data platforms. However, this approach adds operational complexity and may be excessive for smaller projects.
 
-#### 2.3.2 Recommended Setup: Lightweight Kubernetes on a Single VM
+### Recommended Setup for getting started: Lightweight Kubernetes on a Single Virtual Machine
 
-This article explores an optimal setup for small-to-medium projects looking to balance simplicity with scalability. We will highlight the configuration of a single VM with lightweight Kubernetes (K3S) and the deployment of a Prefect Worker using a Helm chart. This approach lays a solid foundation for scaling without requiring a complete architectural overhaul in the future. While there are additional steps involved in fully implementing the Data Engineering Lifecycle with Prefect Cloud, this guide focuses specifically on the infrastructure setup. Although we use GCP as an example, a similar strategy can be applied with AWS, Azure, or other cloud providers.
+The lightweight Kubernetes on a single Virtual Machine (VM) setup strikes an ideal balance between cost efficiency and operational flexibility. By leveraging lightweight Kubernetes (K3S), you gain the core benefits of Kubernetes with significantly reduced overhead, making it perfect for smaller environments or projects with constrained resources. Its streamlined architecture ensures smooth operations without the complexity of managing a full Kubernetes cluster. The diagram illustrates a basic architecture that effectively meets most requirements for running Prefect flows in a scalable manner.
 
-## 3. Example: Simple and Powerful Setup for GCP
+![](/src/assets/images/prefect_flow_architecture.png)
 
-The components of a data platform can be combined in countless ways. For medium-sized companies still early in their data journey, this example provides a solid foundation. For more complex scenarios, engaging a data platform consultancy may be a wise step.
+Using Helm charts to deploy the Prefect Worker simplifies orchestration, ensuring seamless integration with existing systems while minimizing manual configurations. Helm also makes updates easier, promotes standardization, and reduces deployment errors. 
 
-Here’s a practical, streamlined setup for orchestrating workflows with Prefect on Google Cloud Platform (GCP):
+Running everything on a single virtual machine keeps the infrastructure simple yet scalable. If project demands grow, you can easily upgrade the VM or expand to a multi-node cluster without major changes to your architecture. Additionally, this setup simplifies maintenance, provides clear monitoring and debugging paths, and avoids vendor lock-in, preserving flexibility for future enhancements.
 
-- **Virtual Private Cloud (VPC)**: A private network that will serve as the foundational environment.   
-- **Subnet**: A private subnet where the virtual machine will reside.   
-- **Compute Engine Virtual Machine**: The instance where both the GitHub Runner and Prefect Worker will be set up.   
-- **Firewall**: Configured with rules to allow inbound access exclusively through Google Cloud Identity-Aware Proxy (IAP), blocking all other traffic.   
-- **IAP SSH Permissions**: Enables secure access to the virtual machine.   
-- **Cloud Router**: Provides internet connectivity for the virtual machine.   
-- **Cloud NAT**: Configures a NAT gateway that directs the virtual machine to the Cloud Router for outbound internet access. It also makes sure that public IP is fixed, as long as the Cloud NAT object is not destroyed and configured for the same zone.   
-- **Cloud Storage**: Sets up a Google Cloud Storage bucket to store ingested data as Parquet files before transforming and loading it into the database as tables.   
+### Conclusion
 
-**replace Infrastructure something not working**
+Building a modern data platform is no easy task. Success lies in keeping it simple while ensuring flexibility and scalability. With the right tools and setup, like Prefect and lightweight Kubernetes on a single virtual machine, you can create a platform that delivers immediate value and adapts as your needs grow. 
 
-### 3.1 Security
-
-Security is non-negotiable. Without proper safeguards, the platform can be vulnerable to unauthorized access. Below are the key measures to ensure a secure and manageable environment:
-
-- **No public access to any of the resources**   
-The entire infrastructure is designed to operate within a private network, eliminating any public exposure. Access to the Compute Engine virtual machine is managed through Google Cloud Identity-Aware Proxy (IAP), which handles authentication and authorization. IAP creates a secure tunnel for SSH connections without requiring public IPs, eliminating the complexity of setting up a VPN. This streamlines operations, especially for organizations without dedicated networking teams, while improving operational velocity. 
-- **GitHub runner for automation**   
-Automation is critical to maintaining this environment efficiently. Since shared GitHub-hosted runners cannot access private infrastructure, a self-hosted GitHub runner is deployed directly on the virtual machine. This enables secure automation for configuring the environment, deploying Prefect flows, and managing updates, all within the private network. By keeping the runner internal, security is maintained without sacrificing automation capabilities.
-- **Controlled outbound traffic**   
-While incoming access is tightly restricted, the virtual machine still requires outbound connectivity to services like Prefect Cloud, GitHub, or external systems for data ingestion and serving. To minimize risk, all outbound traffic is routed through a fixed Cloud NAT IP. This ensures predictable and secure communication without unnecessary exposure. When dealing with private or non-public services, a VPN is required. Solutions like GCP Cloud VPN or software-based tools such as strongSwan enable secure and encrypted connections, ensuring data integrity and protection.
-
-#### 3.1.1 Understanding Google Cloud Identity-Aware Proxy (IAP)
-
-With the environment completely blocked from the internet, it’s necessary to establish a secure way to connect to it. There are two viable options to achieve this:   
-
-- **VPN Connection**: In this setup, at least one resource within the VPC must be exposed to the internet to host a VPN endpoint. Alternatively, a separate VPC can be configured solely for VPN purposes, with VPC Network Peering into the main environment. This way, only the VPN-hosting VPC is exposed to the internet, while the main environment remains accessible only internally. Although effective, this configuration is more complex and falls outside the scope of this documentation.   
-- **Google Cloud Identity-Aware Proxy (IAP)**: This option offers a similar secure access model to a VPN but with simplified management through Google Cloud. As outlined in the [official documentation](https://cloud.google.com/iap/docs/concepts-overview#how_iap_works):   
-
-> When an application or resource is protected by IAP, it can only be accessed through the proxy by principals, also known as users, who have the correct Identity and Access Management (IAM) role. When you grant a user access to an application or resource by IAP, they're subject to the fine-grained access controls implemented by the product in use without requiring a VPN. When a user tries to access an IAP-secured resource, IAP performs authentication and authorization checks.
-
-This [diagram from Google](https://cloud.google.com/iap/images/iap-load-balancer.png) further illustrates the components required to implement this configuration:
-
-**REPLACE GCP IAP**
-
-### 3.2 Configuration Steps
-
-Setting up the platform involves a few key phases that ensure a smooth and scalable foundation. From installing essential tools and configuring prerequisites to provisioning infrastructure with Terraform and automating workflows through GitHub, each step plays a crucial role in building a reliable and efficient system. Let's take a closer look at the key phases of the process.
-
-#### 3.2.1 Prerequisites
-
-**Terraform**: For a basic setup, Terraform can be installed on a local machine. For a more advanced configuration, it’s better to run Terraform on a dedicated environment, such as a virtual machine or as part of a GitHub Workflow. Detailed installation instructions are available [on the official Hashicorp page](https://developer.hashicorp.com/terraform/install).
-
-**Gcloud CLI**: The gcloud CLI is a command-line tool for interacting with GCP services. It must be installed following the [official instructions](https://cloud.google.com/sdk/docs/install).
-
-**GCP Service Account**: To avoid reliance on personal accounts, it’s highly recommended to create a GCP Service Account. Unlike personal credentials, a service account remains unaffected when individual employees leave the company, ensuring continuity for the data platform. Once the account is created, two types of credentials should be generated:   
-
-- **JSON Key**: Used by both Terraform and Prefect Flows to authenticate with GCP.   
-- **HMAC Key**: Required for libraries like [DLT](https://dlthub.com/) to upload files to Google Cloud Storage.   
-
-**Enabling Essential GCP APIs**: On a fresh GCP project, some APIs may be disabled by default. To ensure the platform runs smoothly, enable the following:   
-
-- [Compute Engine API](https://console.cloud.google.com/marketplace/product/google/compute.googleapis.com)   
-- [Cloud Resource Manager API](https://console.cloud.google.com/marketplace/product/google/cloudresourcemanager.googleapis.com)   
-- [Cloud Storage](https://console.cloud.google.com/marketplace/product/google-cloud-platform/cloud-storage)   
-
-**Remote State for Terraform**: By default, Terraform saves its state locally in `tfstate` files. While this approach works for development, production environments require a centralized and reliable state storage solution. Storing the Terraform state in a Google Cloud Storage (GCS) bucket ensures it is secure, accessible, and protected from conflicts or accidental loss.
-
-However, this creates a common “chicken-and-egg” problem: Terraform cannot provision the bucket where its state will reside because it needs a state to execute. To resolve this, the GCS bucket must be created manually before running any Terraform code.
-
-#### 3.2.2 Terraform Installation
-
-The installation process uses Terraform to provision essential infrastructure components, including the VPC, subnets, Compute Engine VM, Cloud Storage bucket, and Cloud NAT. To simplify your journey, we've created a [comprehensive resource](https://share-eu1.hsforms.com/1xWSEuA-aQI6DWKwgmcXNwA2dihx8) that includes everything you need to get started:
-
-- A step-by-step instructions for meeting all prerequisites
-- Terraform file structures designed for both DEV and PROD environments   
-- Ready-to-use Terraform templates for infrastructure provisioning   
-- A complete list of Terraform commands for setup execution    
-- Instructions for verifying the setup within GCP   
-- Guidance on accessing the created clusters   
-
-#### 3.2.3 Automating Infrastructure Setup with CI/CD
-
-Once the infrastructure is in place, the next step is to configure a GitHub CI/CD workflow. This involves setting up a self-hosted GitHub Runner on the Compute Engine VM to securely orchestrate Prefect flows and other workflows without exposing your environment to the public internet.
-
-To help you implement this with ease, our **resource** also covers:   
-
-- Everything you’ll need to set up Prefect and the self-hosted GitHub Runner  
-- How to configure GitHub workflows for K3S and Helm installation   
-- Detailed guidance on deploying a Prefect Worker using GitHub Workflows   
-
-By following this setup, you can ensure seamless and secure orchestration for your workflows.
-
-### 3.3 Ready to Dive Deeper?
-
-If you’re ready to streamline your infrastructure setup and automate workflows, our free guide has you covered. It includes detailed steps for Terraform provisioning and CI/CD workflows and bonus insights into how our consulting services can help you optimize your setup.
-
-Click [here](https://share-eu1.hsforms.com/1xWSEuA-aQI6DWKwgmcXNwA2dihx8) to receive access to the guide and take the first step toward building a secure, scalable, and automated data platform on Google Cloud Platform.
+By focusing on scalable, modular solutions, you’re not just solving today’s problems—you’re building a platform ready for whatever comes next.
