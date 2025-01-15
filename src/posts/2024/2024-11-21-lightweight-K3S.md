@@ -58,7 +58,7 @@ Starting small may seem practical, but early shortcuts can turn into major obsta
 
 For decision-makers, this journey begins by stepping back and evaluating both the current state of their team and the platform they rely on. The **Data Platform Maturity Curve** is a helpful framework for this:
 
-![data maturity](/src/assets/images/data_maturity_curve.png)
+![data maturity](/src/assets/images/Data_Maturity_Curve.png)
 
 Depending on the organization’s data technology maturity level, your platform must adapt. This article focuses on those in the middle of the curve—where simple scripts and ad-hoc solutions are no longer enough, but advanced features like autoscaling aren’t yet necessary. At this stage, the platform delivers tangible business value and is steadily becoming integral to operations. Downtime—whether it lasts hours, a day, or even a week—is growing increasingly expensive.
 
