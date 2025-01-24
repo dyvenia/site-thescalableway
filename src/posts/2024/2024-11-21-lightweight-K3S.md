@@ -58,7 +58,7 @@ Starting small may seem practical, but early shortcuts can turn into major obsta
 
 For decision-makers, this journey begins by stepping back and evaluating both the current state of their team and the platform they rely on. The **Data Platform Maturity Curve** is a helpful framework for this:
 
-![data maturity](/src/assets/images/Data_Maturity_Curve-1.png)
+![data maturity](/src/assets/images/data_maturity_curve-1.png)
 
 Depending on the organization’s data technology maturity level, your platform must adapt. This article focuses on those in the middle of the curve—where simple scripts and ad-hoc solutions are no longer enough, but advanced features like autoscaling aren’t yet necessary. At this stage, the platform delivers tangible business value and is steadily becoming integral to operations. Downtime—whether it lasts hours, a day, or even a week—is growing increasingly expensive.
 
@@ -68,7 +68,7 @@ The goal? A platform that’s lightweight, scalable, and future-ready without ov
 
 Even the best-designed data platform is useless if it’s not integrated. No matter how carefully you choose your architecture, your platform’s success hinges on how well its core components—ingestion, transformation, and serving—work together. These phases can only operate efficiently when they are tightly aligned.
 
-![](/src/assets/images/data_engineering_lifecycle.png)
+![](/src/assets/images/data_engineering_lifecycle-1.png)
 
 Early-stage platforms often rely on manual orchestration, which works at first but quickly becomes a bottleneck as data grows and workflows become more complex. Managing, ensuring accuracy, and reducing downtime requires a more structured approach. 
 
@@ -152,7 +152,7 @@ The most feature-rich solution-managed Kubernetes supports autoscaling, spot ins
 
 The lightweight Kubernetes on a single Virtual Machine (VM) setup strikes an ideal balance between cost efficiency and operational flexibility. By leveraging lightweight Kubernetes (K3S), you gain the core benefits of Kubernetes with significantly reduced overhead, making it perfect for smaller environments or projects with constrained resources. Its streamlined architecture ensures smooth operations without the complexity of managing a full Kubernetes cluster. The diagram illustrates a basic architecture that effectively meets most requirements for running Prefect flows in a scalable manner.
 
-![](/src/assets/images/prefect_flow_architecture.png)
+![](/src/assets/images/prefect_flow_architecture-1.png)
 
 Using Helm charts to deploy the Prefect Worker simplifies orchestration, ensuring seamless integration with existing systems while minimizing manual configurations. Helm also makes updates easier, promotes standardization, and reduces deployment errors. 
 
