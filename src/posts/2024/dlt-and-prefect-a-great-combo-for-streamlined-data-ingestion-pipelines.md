@@ -49,7 +49,7 @@ internal_notes: |-
 Despite advances in data engineering, data ingestion—the Extract and Load (EL) steps of the [ELT](https://dyvenia.com/resources/data-glossary/) process—remains a persistent challenge for many data teams.
 
 This complexity is often due to the real-world limitations of open-source tools, leading teams to opt for UI-based solutions. While these tools are great for getting started quickly, they often lack the flexibility and scalability required for production-grade data platforms.
-In the era of AI, UI-based tools face one more limitation: they miss out on most of the benefits of the advanced code generation capacity of modern LLMs (Large Language Models)[[1](https://thescalableway-admin.netlify.app/blog/dlt-and-prefect-a-great-combo-for-streamlined-data-ingestion-pipelines/#1)].
+In the era of AI, UI-based tools face one more limitation: they miss out on most of the benefits of the advanced code generation capacity of modern LLMs (Large Language Models)[1].
 
 Even if teams do decide to use open-source solutions, they often end up creating volumes of low-quality glue code. This in-house software, typically written in a rush by non-professional engineers, often fails to meet essential requirements for modern data platforms, such as EaC (Everything as Code), security, monitoring & alerting, reliability, or extensibility. Moreover, since it’s written by non-professional engineers, such code is far more brittle and much harder to maintain and modify. Consequently, all modifications to the code (such as adding new features or fixing bugs) take much more time and are far riskier than they should be.
 
@@ -116,13 +116,21 @@ Data pipelines aren’t one-size-fits-all, and achieving a production-grade pipe
 
 To achieve modularity, it’s best to split the dlt pipeline code into the following structure:
 
-`├── pipelines`
+```
+├── pipelines
+```
 
-`│   ├── a_to_c.py`
+```
+│   ├── a_to_c.py
+```
 
-`│   ├── b_to_c.py`
+```
+│   ├── b_to_c.py
+```
 
-`│   └── utils.py`
+```
+│   └── utils.py
+```
 
 In this structure, `a_to_c.py` and `b_to_c.py` represent two example pipelines, each handling data from a source system (a and b) to a destination system ©.
 
