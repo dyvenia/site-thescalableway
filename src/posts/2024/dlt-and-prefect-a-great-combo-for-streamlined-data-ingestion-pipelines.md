@@ -118,17 +118,8 @@ To achieve modularity, it’s best to split the dlt pipeline code into the follo
 
 ```
 ├── pipelines
-```
-
-```
 │   ├── a_to_c.py
-```
-
-```
 │   ├── b_to_c.py
-```
-
-```
 │   └── utils.py
 ```
 
