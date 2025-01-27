@@ -125,7 +125,7 @@ To achieve modularity, it’s best to split the dlt pipeline code into the follo
 
 In this structure, `a_to_c.py` and `b_to_c.py` represent two example pipelines, each handling data from a source system (a and b) to a destination system ©.
 
-The `utils.py` file contains common utilities such as data masking implementation, default configuration for source and destination systems, or default pipeline configuration (except configuration specified in dlt’s `config.toml`; for more information, see the dlt config paragraph in [the dlt section](https://thescalableway-admin.netlify.app/blog/dlt-and-prefect-a-great-combo-for-streamlined-data-ingestion-pipelines/#dlt)).
+The `utils.py` file contains common utilities such as data masking implementation, default configuration for source and destination systems, or default pipeline configuration (except configuration specified in dlt’s `config.toml`; for more information, see the dlt config paragraph in [the dlt section](#dlt)).
 
 ### Extensibility
 
