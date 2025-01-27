@@ -36,138 +36,168 @@ When starting an ELT project, it’s common to build one or two monolithic flows
 
 The code usually looks then more or less like this: 
 
-`# 1. Task to fetch list of tables from MS SQL`
+```
+# ------------------------------------------------------------------------------
 
-`# ------------------------------------------------------------------------------`
+# 1. Task to fetch list of tables from MS SQL
 
-`@task`
+# ------------------------------------------------------------------------------
 
-`def get_table_names(conn_str: str) -> List[str]:`
+@task
 
-    `"""`
+def get_table_names(conn_str: str) -> List[str]:
 
-    `Connect to an MS SQL database and return a list of tables.`
+    """
 
-    `"""`
+    Connect to an MS SQL database and return a list of tables.
 
-    `query = """`
+    """
 
-    `SELECT TABLE_NAME`
+    query = """
 
-    `FROM INFORMATION_SCHEMA.TABLES`
+    SELECT TABLE_NAME
 
-    `WHERE TABLE_TYPE = 'BASE TABLE'`
+    FROM INFORMATION_SCHEMA.TABLES
 
-      `AND TABLE_CATALOG = DB_NAME()`
+    WHERE TABLE_TYPE = 'BASE TABLE'
 
-    `"""`
+      AND TABLE_CATALOG = DB_NAME()
 
-    `with pyodbc.connect(conn_str) as conn:`
+    """
 
-        `cursor = conn.cursor()`
+    with pyodbc.connect(conn_str) as conn:
 
-        `cursor.execute(query)`
+        cursor = conn.cursor()
 
-        `results = cursor.fetchall()`
+        cursor.execute(query)
 
-    `table_names = [row[0] for row in results]`
+        results = cursor.fetchall()
 
-    `return table_names`
 
-`# ------------------------------------------------------------------------------`
 
-`# 2. Task to extract data from a specific table into a DataFrame`
+    table_names = [row[0] for row in results]
 
-`# ------------------------------------------------------------------------------`
+    return table_names
 
-`@task`
 
-`def extract_table_to_df(conn_str: str, table_name: str) -> pd.DataFrame:`
 
-    `"""`
 
-    `Run SELECT * on the given table and return a Pandas DataFrame.`
 
-    `"""`
+# ------------------------------------------------------------------------------
 
-    `query = f"SELECT * FROM {table_name}"`
+# 2. Task to extract data from a specific table into a DataFrame
 
-    `with pyodbc.connect(conn_str) as conn:`
+# ------------------------------------------------------------------------------
 
-        `df = pd.read_sql(query, conn)`
+@task
 
-    `return df`
+def extract_table_to_df(conn_str: str, table_name: str) -> pd.DataFrame:
 
-`# ------------------------------------------------------------------------------`
+    """
 
-`# 3. Task to write a DataFrame to S3 as a Parquet file`
+    Run SELECT * on the given table and return a Pandas DataFrame.
 
-`# ------------------------------------------------------------------------------`
+    """
 
-`@task`
+    query = f"SELECT * FROM {table_name}"
 
-`def write_parquet_to_s3(df: pd.DataFrame, bucket: str, table_name: str):`
+    with pyodbc.connect(conn_str) as conn:
 
-    `"""`
+        df = pd.read_sql(query, conn)
 
-    `Write the given DataFrame as a Parquet file to the specified S3 bucket.`
+    return df
 
-    `"""`
 
-    `s3_path = f"s3://{bucket}/{table_name}.parquet"`
 
-    `df.to_parquet(`
 
-        `path=s3_path,`
 
-        `engine="pyarrow",`
+# ------------------------------------------------------------------------------
 
-        `index=False,`
+# 3. Task to write a DataFrame to S3 as a Parquet file
 
-        `storage_options={`
+# ------------------------------------------------------------------------------
 
-            `"key": get_secret_from_gcsm("AWS_ACCESS_KEY_ID"),`     
+@task
 
-            `"secret": get_secret_from_gcsm("AWS_SECRET_ACCESS_KEY")},`
+def write_parquet_to_s3(df: pd.DataFrame, bucket: str, table_name: str):
 
-    `)`
+    """
 
-`` 
-    `return s3_path`
+    Write the given DataFrame as a Parquet file to the specified S3 bucket.
 
-`# ------------------------------------------------------------------------------`
+    """
 
-`# 4. Main Flow orchestrating the above tasks`
 
-`# ------------------------------------------------------------------------------`
 
-`@flow`
+    s3_path = f"s3://{bucket}/{table_name}.parquet"
 
-`def ms_sql_to_s3_flow(`
 
-    `conn_str: str,`
 
-    `bucket: str,`
+    df.to_parquet(
 
-`):`
+        path=s3_path,
 
-    `"""`
+        engine="pyarrow",
 
-    `A Prefect flow that loads all tables from MS SQL into S3 as Parquet files.`
+        index=False,
 
-    `"""`
+        storage_options={
 
-    `# Fetch all table names`
+            "key": get_secret_from_gcsm("AWS_ACCESS_KEY_ID"),     
 
-    `tables = get_table_names(conn_str)`
+            "secret": get_secret_from_gcsm("AWS_SECRET_ACCESS_KEY")},
 
-    `# For each table, extract and load`
+    )
 
-    `for table_name in tables:`
 
-        `df = extract_table_to_df(conn_str, table_name)`
 
-        `write_parquet_to_s3(df, bucket, table_name)`
+ 
+
+    return s3_path
+
+
+
+
+
+# ------------------------------------------------------------------------------
+
+# 4. Main Flow orchestrating the above tasks
+
+# ------------------------------------------------------------------------------
+
+@flow
+
+def ms_sql_to_s3_flow(
+
+    conn_str: str,
+
+    bucket: str,
+
+):
+
+    """
+
+    A Prefect flow that loads all tables from MS SQL into S3 as Parquet files.
+
+    """
+
+    # Fetch all table names
+
+    tables = get_table_names(conn_str)
+
+
+
+    # For each table, extract and load
+
+    for table_name in tables:
+
+        df = extract_table_to_df(conn_str, table_name)
+
+        write_parquet_to_s3(df, bucket, table_name)
+
+
+
+```
 
 At first, this approach might seem efficient. A single flow can ingest all objects from a database in one run—straightforward and convenient, right?
 
