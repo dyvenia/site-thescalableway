@@ -4,7 +4,8 @@ date: 2025-01-27T09:45:00
 author: Mateusz Paździor
 description: Discover how breaking down monolithic ETL flows into modular deployments enhances observability, streamlines troubleshooting, and boosts scalability. Learn to design data pipelines that evolve with your needs while maintaining performance and reliability.
 tags:
-  - post
+  - prefect
+  - dataops
 internal_notes: |-
   **Audience:** Prefect users looking to optimize their orchestration flow.
 
@@ -73,7 +74,6 @@ The code usually looks then more or less like this: 
 
     `return table_names`
 
-
 `# ------------------------------------------------------------------------------`
 
 `# 2. Task to extract data from a specific table into a DataFrame`
@@ -97,7 +97,6 @@ The code usually looks then more or less like this: 
         `df = pd.read_sql(query, conn)`
 
     `return df`
-
 
 `# ------------------------------------------------------------------------------`
 
@@ -135,7 +134,6 @@ The code usually looks then more or less like this: 
 
 `` 
     `return s3_path`
-
 
 `# ------------------------------------------------------------------------------`
 
