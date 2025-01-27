@@ -137,7 +137,7 @@ For integration testing, use a local database or disk drive instead of the targe
 
 ### Reliability
 
-To maintain trust with data platform users, make sure that when production pipelines fail, you are informed immediately and can recover quickly. While we recommend [implementing alerting in the orchestration layer](#Alerting), pipeline recoverability depends on having access to detailed logs.
+To maintain trust with data platform users, make sure that when production pipelines fail, you are informed immediately and can recover quickly. While we recommend [implementing alerting in the orchestration layer](#alerting), pipeline recoverability depends on having access to detailed logs.
 
 Luckily, dlt provides rich built-in logging and error-handling mechanisms. It’s a good idea to also enable [progress monitoring](https://dlthub.com/docs/general-usage/pipeline#display-the-loading-progress) for additional useful information, such as CPU and memory usage.
 
