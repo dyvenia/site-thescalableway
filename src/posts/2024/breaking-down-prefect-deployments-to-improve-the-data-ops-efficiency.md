@@ -11,7 +11,7 @@ internal_notes: |-
 
   **Purpose:** To position TSW as a credible resource for Prefect best practices. To make the potential customer think about potential problems they might be having and trigger them to consider having a professional code review done.
 ---
-# Intro
+## Intro
 
 When building data platforms, it’s tempting to focus entirely on the technology stack—choosing shiny tools, debating between bulk loads or streaming, and designing storage and infrastructure to meet current needs. Yet, the rush to get data flowing often overshadows a crucial question: **How will we monitor and operate all of this effectively?**       
 
@@ -19,7 +19,7 @@ In the early stages, data projects typically start small: an MVP, one or two dat
 
 Observability and day-to-day functionality are the bedrock of robust, scalable, and maintainable data pipelines. Modern orchestration tools like Prefect excel at breaking down pipelines into smaller, more manageable pieces, making it easier to monitor, troubleshoot, and deploy smoothly. By designing pipelines with intention and visibility in mind, teams can ensure their data platform remains reliable—even as it evolves.  
 
-# Why Observability Matters in ETL Processes
+## Why Observability Matters in ETL Processes
 
 Observability is a cornerstone of modern data engineering and operations. As ETL pipelines become critical for decision-making, data teams need deep visibility into pipeline performance and meaningful, actionable logs. The stakes are high—when something goes wrong, time is lost (and as we all know, time is money, or at least that is what they say), and teams are left scrambling to identify issues. At best, this means tedious log analysis and guesswork; at worst—handling complaints from frustrated end-users. 
 
@@ -30,7 +30,7 @@ To avoid these pitfalls, observability is a must. It not only ensures transparen
 3. **Granularity:** Drill down to isolate performance bottlenecks, failed tasks, or long-running tasks. 
 4. **Scalability:** Expand monitoring and alerting systems to keep pace as the ETL process grows in complexity. 
 
-# The Pitfalls of a Single Monolithic Flow
+## The Pitfalls of a Single Monolithic Flow
 
 When starting an ELT project, it’s common to build one or two monolithic flows. These flows often contain dozens of tasks, which can inevitably grow as the solution scales.
 
@@ -194,9 +194,6 @@ def ms_sql_to_s3_flow(
         df = extract_table_to_df(conn_str, table_name)
 
         write_parquet_to_s3(df, bucket, table_name)
-
-
-
 ```
 
 At first, this approach might seem efficient. A single flow can ingest all objects from a database in one run—straightforward and convenient, right?
@@ -214,7 +211,7 @@ Initially, with just 10 objects in the database, it works well enough. But as th
 
 In essence, a monolithic approach limits observability, reduces performance, and complicates operations. 
 
-# The Case for Granulated, Focused Flows
+## The Case for Granulated, Focused Flows
 
 When it comes to sizing your ELT flows, trust me—you’d rather fight 100 duck-sized horses than one horse-sized duck. In other words, breaking down monolithic flows into smaller, focused units is the key to scaling effectively. 
 
@@ -242,7 +239,7 @@ Here’s why granular flow deployments are worth the effort: 
 
 ![granular flow deployments_SLA reporting](/src/assets/images/sla_reporting.png)
 
-# Conclusion
+## Conclusion
 
 In conclusion, a granular approach to orchestrated deployments is more than just a technical choice—it’s a strategic advantage. By breaking large, monolithic pipelines into focused, modular flows, data teams gain clearer observability, easier troubleshooting, and the flexibility to handle diverse scheduling needs
 
