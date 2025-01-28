@@ -50,7 +50,7 @@ This article offers a thoughtful guide to the decision-making process behind cho
 
 Rather than a step-by-step tutorial, this guide is designed to help you make solid platform architecture decisions and design a solution tailored to your organization’s unique needs. Let’s dive in.
 
-### Challenges With Picking Data Platform Architecture
+## Challenges With Picking Data Platform Architecture
 
 The options for building a data platform are endless—but many fall short. With the rise of affordable cloud storage, expectations have changed, leaving many once-revolutionary legacy systems struggling to keep up. At the same time, new solutions making big claims often fail, either missing critical features or bogging organizations down with unnecessary complexity. For smaller companies, the challenge is even greater—a data platform should drive business value, not require a dedicated team just to maintain it. 
 
@@ -64,7 +64,7 @@ Depending on the organization’s data technology maturity level, your platform 
 
 The goal? A platform that’s lightweight, scalable, and future-ready without overcomplicating things.
 
-### Data Platform Orchestration: the Key to Seamless Integration 
+## Data Platform Orchestration: the Key to Seamless Integration 
 
 Even the best-designed data platform is useless if it’s not integrated. No matter how carefully you choose your architecture, your platform’s success hinges on how well its core components—ingestion, transformation, and serving—work together. These phases can only operate efficiently when they are tightly aligned.
 
@@ -97,7 +97,7 @@ The three leading orchestration tools in the market are:
 
 At The Scalable Way we have worked with both Airflow and Prefect in a few projects, we advise Prefect for lightweight setup with less deployment things to worry about.
 
-### What is Prefect Cloud?
+## What is Prefect Cloud?
 
 Prefect Cloud is a fully managed orchestration platform that simplifies running and monitoring Python-based workflows without the overhead of managing infrastructure. It’s well-suited for teams looking to automate data workflows, from ingestion and transformation to serving.
 
@@ -148,7 +148,7 @@ It's not as simple as a Systemd setup because of the introduction of Kubernetes 
 
 The most feature-rich solution-managed Kubernetes supports autoscaling, spot instances, and integrations with tools like Active Directory. It is ideal for comprehensive data platforms. However, this approach adds operational complexity and may be excessive for smaller projects.
 
-### Recommended Setup for getting started: Lightweight Kubernetes on a Single Virtual Machine
+## Recommended Setup for getting started: Lightweight Kubernetes on a Single Virtual Machine
 
 The lightweight Kubernetes on a single Virtual Machine (VM) setup strikes an ideal balance between cost efficiency and operational flexibility. By leveraging lightweight Kubernetes (K3S), you gain the core benefits of Kubernetes with significantly reduced overhead, making it perfect for smaller environments or projects with constrained resources. Its streamlined architecture ensures smooth operations without the complexity of managing a full Kubernetes cluster. The diagram illustrates a basic architecture that effectively meets most requirements for running Prefect flows in a scalable manner.
 
@@ -158,7 +158,7 @@ Using Helm charts to deploy the Prefect Worker simplifies orchestration, ensurin
 
 Running everything on a single virtual machine keeps the infrastructure simple yet scalable. If project demands grow, you can easily upgrade the VM or expand to a multi-node cluster without major changes to your architecture. Additionally, this setup simplifies maintenance, provides clear monitoring and debugging paths, and avoids vendor lock-in, preserving flexibility for future enhancements.
 
-### Conclusion
+## Conclusion
 
 Building a modern data platform is no easy task. Success lies in keeping it simple while ensuring flexibility and scalability. With the right tools and setup, like Prefect and lightweight Kubernetes on a single virtual machine, you can create a platform that delivers immediate value and adapts as your needs grow. 
 
