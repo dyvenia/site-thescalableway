@@ -1,5 +1,5 @@
 ---
-title: dlt and Prefect, a Great Combo for Streamlined Data Ingestion Pipelines (2)
+title: dlt and Prefect, a Great Combo for Streamlined Data Ingestion Pipelines
 date: 2025-01-27T12:54:00
 author: Michał Zawadzki
 description: Streamline your data ingestion pipelines with dlt and Prefect. This article explores how combining these powerful open-source tools enables scalable, efficient, and production-ready data workflows. Learn best practices, key features, and real-world insights to simplify data engineering.
