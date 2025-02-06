@@ -1,5 +1,5 @@
 ---
-title: Deploying Prefect on any Cloud Using a Single VM
+title: Deploying Prefect on any Cloud Using a Single Virtual Machine
 date: 2025-01-15T09:29:00
 author: Karol Wolski
 description: A pattern to improve observability, monitoring and, ultimately, data operations with Prefect. We show how to find the right trade off between number of deployments and improved operations.
