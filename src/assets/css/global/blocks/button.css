@@ -88,7 +88,7 @@
   --button-border-width: 2px;
   --button-radius: var(--border-radius-small);
   --button-font-size: var(--size-step-min-2);
-  --button-padding: var(--space-3xs) var(--space-xs);
+  --button-padding: var(--space-4xs) var(--space-2xs);
   --button-text-transform: uppercase;
 }
 /* Radius variants */

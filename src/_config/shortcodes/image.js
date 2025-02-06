@@ -16,31 +16,50 @@ const stringifyAttributes = attributeMap => {
     .join(' ');
 };
 
-/**
- * Generates an HTML image element with responsive images and optional caption.
- * @param {string} src - The path to the image source file.
- * @param {string} [alt=''] - The alternative text for the image.
- * @param {string} [caption=''] - The caption for the image.
- * @param {string} [loading='lazy'] - The loading attribute for the image.
- * @param {string} [className] - The CSS class name for the image element.
- * @param {string} [sizes='90vw'] - The sizes attribute for the image.
- * @param {number[]} [widths=[440, 650, 960, 1200]] - The widths for generating responsive images.
- * @param {string[]} [formats=['avif', 'webp', 'jpeg']] - The formats for generating responsive images.
- * @returns {string} - The HTML image element.
- */
 export const imageShortcode = async (
   src,
   alt = '',
   caption = '',
   loading = 'lazy',
   className,
-  sizes = '90vw',
-  widths = [440, 650, 960, 1200],
-  formats = ['avif', 'webp', 'jpeg']
+  sizes = '100vw',
+  widths = [650, 960, 1200],
+  formats = ['webp', 'jpeg']
 ) => {
+  // check if source is SVG
+  if (path.extname(src).toLowerCase() === '.svg') {
+    const svgData = readFileSync(src, 'utf8');
+    const {data: optimizedSvg} = await optimize(svgData, {
+      plugins: [
+        {
+          name: 'removeDimensions',
+          params: {
+            enableViewBox: true
+          }
+        }
+      ]
+    });
+
+    const svgAttributes = stringifyAttributes({
+      'class': `svg-image ${className || ''}`.trim(),
+      'role': alt ? 'img' : 'presentation',
+      'aria-label': alt || undefined,
+      'aria-hidden': alt ? 'false' : 'true'
+    });
+
+    const svgElement = caption
+      ? `<figure class="flow ${className || ''}">
+            ${optimizedSvg.replace('<svg', `<svg ${svgAttributes}`)}
+            <figcaption>${caption}</figcaption>
+          </figure>`
+      : optimizedSvg.replace('<svg', `<svg ${svgAttributes}`);
+
+    return htmlmin.minify(svgElement, {collapseWhitespace: true});
+  }
+
   const metadata = await Image(src, {
-    widths: [...widths],
-    formats: [...formats],
+    widths: [...widths, null],
+    formats: [...formats, null],
     urlPath: '/assets/images/',
     outputDir: './_site/assets/images/',
     filenameFormat: (id, src, width, format, options) => {

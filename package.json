@@ -32,6 +32,7 @@
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "@11ty/eleventy-plugin-webc": "^0.11.2",
     "@11ty/is-land": "^4.0.0",
+    "@sveltia/cms": "^0.54.0",
     "lite-youtube-embed": "^0.3.2",
     "tailwindcss": "^3.0.23"
   },

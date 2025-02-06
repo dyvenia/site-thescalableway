@@ -1,28 +1,29 @@
 /* Search Toggle Visibility */
+
+.search-toggle {
+  display: flex;
+  justify-content: flex-start;
+  order: 0;
+}
+
 @media screen(navigation) {
   .search-toggle {
     position: absolute;
-    right: 0;
-  }
-}
-
-@media screen(ltnav) {
-  .search-toggle {
-    display: flex;
-    justify-content: flex-start;
-    order: 0;
+    inset-inline-end: 0;
+    inset-block-start: 0;
   }
 }
 
 .search-toggle {
   background: none;
   border: none;
-  padding: var(--space-2xs);
+  padding: var(--space-xs);
   cursor: pointer;
 }
 
 .search-toggle svg {
   block-size: auto;
+  stroke-width: 2.5px;
 }
 
 pagefind-search {

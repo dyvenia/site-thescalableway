@@ -21,17 +21,17 @@
   --nav-list-height: 100dvh;
   --nav-list-padding: var(--space-2xl) var(--space-s);
   --nav-list-position: fixed;
-  --nav-list-width: min(18rem, 100vw);
+  --nav-list-width: 100%;
   --nav-list-visibility: hidden;
+  --nav-list-margin: var(--space-2xs) 0;
 
   background: var(--nav-list-background);
   box-shadow: var(--nav-list-shadow);
   display: flex;
   flex-direction: var(--nav-list-layout);
   flex-wrap: wrap;
-  block-size: var(--nav-list-height);
   list-style: none;
-  margin: 0;
+  margin: var(--nav-list-margin);
   padding: var(--nav-list-padding);
   position: var(--nav-list-position);
   inset-block-start: 0;
@@ -42,6 +42,7 @@
     opacity 0.3 var(--nav-list-timing-function),
     visibility 0.3s ease-in-out;
   visibility: var(--nav-list-visibility);
+  block-size: var(--nav-list-height);
 }
 
 .mainnav ul[no-flash] {
@@ -100,7 +101,7 @@
   /* configuration */
   --nav-item-background: transparent;
   --nav-item-text-color: var(--color-text);
-  --nav-item-padding: var(--space-2xs) var(--space-2xs);
+  --nav-item-padding: var(--space-4xs) var(--space-2xs) var(--space-3xs) var(--space-2xs);
   --nav-item-decoration-color: transparent;
 
   background: var(--nav-item-background);
@@ -130,7 +131,6 @@
 
 .mainnav > ul:first-of-type > li:last-child a {
   --nav-item-background: var(--color-blue);
-  --nav-item-padding: var(--space-4xs) var(--space-xs);
   --nav-item-text-color: var(--color-light);
 }
 
@@ -156,10 +156,11 @@
     --nav-list-position: static;
     --nav-list-padding: 0;
     --nav-list-height: auto;
-    --nav-list-width: 100%;
+    --nav-list-width: auto;
     --nav-list-shadow: none;
     --nav-list-visibility: visible;
     --nav-list-transform: translateX(0);
+    --nav-list-margin: 0;
   }
 
   .mainnav [aria-current='page'],
@@ -178,7 +179,7 @@ assumes that the button doesn’t exist without JS, making the list the first ch
   --nav-list-position: static;
   --nav-list-padding: 0;
   --nav-list-height: auto;
-  --nav-list-width: 100%;
+  --nav-list-width: auto;
   --nav-list-shadow: none;
   --nav-list-visibility: visible;
   --nav-list-transform: translateX(0);

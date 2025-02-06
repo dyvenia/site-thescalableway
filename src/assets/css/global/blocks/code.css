@@ -4,6 +4,14 @@
  * @author ocodia
  */
 
+code,
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--size-step-min-1);
+  background-color: color-mix(in oklab, var(--color-bg) 92%, black);
+  border-radius: var(--border-radius-medium);
+}
+
 code[class*='language-'],
 pre[class*='language-'] {
   color: #f8f8f2;
@@ -17,15 +25,22 @@ pre[class*='language-'] {
   word-break: normal;
   word-wrap: normal;
   line-height: 1.5;
-
-  -moz-tab-size: 4;
-  -o-tab-size: 4;
   tab-size: 4;
-
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
   hyphens: none;
+}
+
+/* Specific Styles for <pre> Elements */
+pre {
+  grid-column: popout !important;
+  overflow-x: auto;
+  padding: var(--space-s) var(--space-l);
+}
+
+/* Style Adjustments for <code> within different contexts */
+:where(:not(pre)) > code {
+  position: relative;
+  top: -0.05em;
+  padding: 0.1em 0.4em;
 }
 
 /* Code blocks */

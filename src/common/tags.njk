@@ -5,7 +5,7 @@ eleventyComputed:
   title: '{{ meta.blog.tagPlural }}'
 ---
 
-<div class="taglist | mt-s-m cluster">
+<div class="taglist | mt-s-m cluster gutter-xs">
   {% for tag in collections.tagList %}
     <a href="/tags/{{ tag }}" class="button"> {{ tag }} </a>
   {% endfor %}

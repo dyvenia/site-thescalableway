@@ -46,7 +46,7 @@ eleventyExcludeFromCollections: true
   <text
     font-family="{{ fontBody }}, sans-serif"
     font-size="24"
-    font-weight="900"
+    font-weight="500"
     fill="{{ accent }}"
     letter-spacing="-1"
   >
@@ -62,7 +62,7 @@ eleventyExcludeFromCollections: true
     font-size="60"
     font-weight="500"
     fill="{{ text }}"
-    letter-spacing="-3"
+    letter-spacing="-1"
   >
     {% for line in titleInLines %}
       <tspan x="{{ horizontalStartingPoint }}" y="{{ verticalStartingPoint - 20 + loop.index0 * 65 }}"> {{ line }} </tspan>
@@ -78,6 +78,6 @@ eleventyExcludeFromCollections: true
     letter-spacing="-0.5"
   >
     <!-- <tspan x="160" y="580">{{ meta.siteName }} · {{ meta.url | replace("https://", "") | replace("http://", "") }}</tspan> -->
-    <tspan x="{{ horizontalStartingPoint }}" y="580">{{ meta.siteName }} — {{ siteUrl }}</tspan>
+    <tspan x="{{ horizontalStartingPoint }}" y="580">{{ meta.siteName }}</tspan>
   </text>
 </svg>
