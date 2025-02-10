@@ -56,6 +56,7 @@ export const details = {
   expand: 'expand all',
   collapse: 'collapse all'
 };
+export const toc = {title: 'Table of contents', skipLink: 'Skip table of contents'};
 export const navigation = {
   navLabel: 'Menu',
   ariaTop: 'Main',

@@ -8,7 +8,6 @@ schema: blog
     <h1>{{ title }}</h1>
 
     {% if image %}
-      <!-- image -->
       {% image image, alt or title, credit, "eager", "feature" %}
     {% endif %}
 
@@ -25,6 +24,13 @@ schema: blog
         {% endif %}{% endfor %}
       {% endif %}
     </p>
+
+    {% if toc %}
+      <div class="toc-container | relative">
+        <a href="#toc-skipped" id="skip-toc" class="visually-hidden skip-link">{{ meta.toc.skipLink }}</a>
+        <h2 id="table-of-contents">{{ meta.toc.title }}</h2>
+      </div>
+    {% endif %}
 
     {{ content | safe }}
     {% include 'partials/edit-on.njk' %}

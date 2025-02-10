@@ -8,6 +8,7 @@ import markdownItEleventyImg from 'markdown-it-eleventy-img';
 import markdownItFootnote from 'markdown-it-footnote';
 import markdownitMark from 'markdown-it-mark';
 import markdownitAbbr from 'markdown-it-abbr';
+import markdownItTocDoneRight from 'markdown-it-toc-done-right';
 import {slugifyString} from '../filters/slugify.js';
 import {optimize} from 'svgo';
 import {readFileSync} from 'node:fs';
@@ -112,4 +113,22 @@ export const markdownLib = markdownIt({
   })
   .use(markdownItFootnote)
   .use(markdownitMark)
-  .use(markdownitAbbr);
+  .use(markdownitAbbr)
+  .use(markdownItTocDoneRight, {
+    placeholder: `{:toc}`,
+    slugify: slugifyString,
+    containerId: 'toc',
+    itemClass: 'flow',
+    listType: 'ol'
+  });
+
+const originalRender = markdownLib.render.bind(markdownLib);
+
+markdownLib.render = (content, env = {}) => {
+  const shouldAddToc = env.toc !== false;
+  const tocBeforeContent = shouldAddToc
+    ? `{:toc}\n<span class="visually-hidden" id="toc-skipped"></span>\n${content}`
+    : content;
+
+  return originalRender(tocBeforeContent, env);
+};
