@@ -15,7 +15,7 @@ internal_notes: |-
   - Prefect users looking into improving their data ingestion workflow, technology and process
   - dlt users looking into improving their scheduling, orchestration and monitoring
 
-  **Purpose:** 
+  **Purpose:**
 
   Show that dyvenia knows both technologies as well as how to do data ingestion professionally and thus can help clients which struggle with it or with one of those tools.
 
@@ -44,7 +44,7 @@ internal_notes: |-
           - Features
           - Readiness for AI era
 ---
-# Doing data ingestion right is hard…
+## Doing data ingestion right is hard…
 
 Despite advances in data engineering, data ingestion—the Extract and Load (EL) steps of the [ELT](https://dyvenia.com/resources/data-glossary/) process—remains a persistent challenge for many data teams.
 
