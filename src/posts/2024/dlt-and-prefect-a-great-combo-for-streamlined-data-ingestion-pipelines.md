@@ -44,7 +44,7 @@ internal_notes: |-
           - Features
           - Readiness for AI era
 ---
-## Doing data ingestion right is hard…
+##### Doing data ingestion right is hard…
 
 Despite advances in data engineering, data ingestion—the Extract and Load (EL) steps of the [ELT](https://dyvenia.com/resources/data-glossary/) process—remains a persistent challenge for many data teams.
 
@@ -53,7 +53,7 @@ In the era of AI, UI-based tools face one more limitation: they miss out on most
 
 Even if teams do decide to use open-source solutions, they often end up creating volumes of low-quality glue code. This in-house software, typically written in a rush by non-professional engineers, often fails to meet essential requirements for modern data platforms, such as EaC (Everything as Code), security, monitoring & alerting, reliability, or extensibility. Moreover, since it’s written by non-professional engineers, such code is far more brittle and much harder to maintain and modify. Consequently, all modifications to the code (such as adding new features or fixing bugs) take much more time and are far riskier than they should be.
 
-## …but there is light at the end of the tunnel
+##### …but there is light at the end of the tunnel
 
 Luckily, in recent years, with the growing adoption of software engineering practices, we’ve seen a professionalization of the data engineering field. This has resulted in the creation of a number of high-quality, open-source tools that simplify and improve the quality of data engineering work, such as [dlt](https://dlthub.com/) and [Prefect](https://www.prefect.io/).
 
@@ -175,7 +175,7 @@ Incremental extraction allows us to download only new or modified data.
 - [Parallelization
 ](https://dlthub.com/docs/reference/performance#parallelism)dlt allows parallelizing each stage of the pipeline utilizing multithreading and multiprocessing (depending on the stage).
 In cases where further parallelization is needed (i.e., the workload exceeds the capacity of a single machine), utilizing orchestrator-layer parallelization may be required. However, this scenario is now rare, as large virtual machines capable of processing petabytes of data are widely available, and dlt can leverage the machine’s resources more efficiently than older tools or typical in-house Python code.
-- **[Various other optimizations](https://dlthub.com/docs/reference/performance)**
+- [**Various other optimizations**](https://dlthub.com/docs/reference/performance)
 
 As the topic of incremental loading can be complex even for seasoned data engineers, we’ve prepared a diagram of all the viable ELT patterns:
 
