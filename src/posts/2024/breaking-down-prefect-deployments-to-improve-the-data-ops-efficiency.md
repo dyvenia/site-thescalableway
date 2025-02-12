@@ -11,8 +11,6 @@ internal_notes: |-
 
   **Purpose:** To position TSW as a credible resource for Prefect best practices. To make the potential customer think about potential problems they might be having and trigger them to consider having a professional code review done.
 ---
-## Intro
-
 When building data platforms, it’s tempting to focus entirely on the technology stack—choosing shiny tools, debating between bulk loads or streaming, and designing storage and infrastructure to meet current needs. Yet, the rush to get data flowing often overshadows a crucial question: **How will we monitor and operate all of this effectively?**       
 
 In the early stages, data projects typically start small: an MVP, one or two data sources, and a couple of flow runs per day. At this scale, operations often feel secondary— issues can be solved on the spot, and data engineering teams are under pressure to deliver data to the end users. But as the platform scales, this oversight catches up. Within months, many teams find themselves struggling to manage DataOps, with operational gaps threatening their progress. 
