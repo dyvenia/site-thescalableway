@@ -1,5 +1,6 @@
 {
   "layout": "post",
   "tags": "posts",
-  "permalink": "/blog/{{ title | slugify }}/index.html"
+  "permalink": "/insights/{{ title | slugify }}/index.html",
+  "toc": true
 }

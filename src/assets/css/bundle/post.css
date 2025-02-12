@@ -26,3 +26,46 @@ time {
 .post .meta {
   font-size: var(--size-step-min-1);
 }
+
+.post .table-of-contents {
+  padding: var(--space-2xs) var(--space-s);
+  background: var(--color-bg-accent);
+  background: color-mix(in oklab, var(--color-bg) 97%, var(--color-text));
+  border-radius: var(--border-radius-small);
+}
+
+.post .table-of-contents a {
+  text-decoration: none;
+}
+
+.post .table-of-contents a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+}
+
+.post .toc-container {
+  --flow-space: var(--space-xl);
+}
+
+.post .toc-container h2 {
+  font-size: var(--size-step-1);
+  text-transform: uppercase;
+}
+
+.post ol {
+  line-height: 1.5em;
+}
+
+.post ol ol {
+  list-style: lower-latin;
+  padding-inline-start: 1.8ch;
+  font-size: var(--size-step-min-1);
+}
+
+.post ol > li > ol {
+  --flow-space: var(--space-3xs);
+}
+
+.post ol > li > ol > li + li {
+  padding-block-start: var(--space-3xs);
+}

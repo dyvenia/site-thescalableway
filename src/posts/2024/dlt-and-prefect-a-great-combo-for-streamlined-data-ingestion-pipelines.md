@@ -15,7 +15,7 @@ internal_notes: |-
   - Prefect users looking into improving their data ingestion workflow, technology and process
   - dlt users looking into improving their scheduling, orchestration and monitoring
 
-  **Purpose:** 
+  **Purpose:**
 
   Show that dyvenia knows both technologies as well as how to do data ingestion professionally and thus can help clients which struggle with it or with one of those tools.
 
@@ -44,7 +44,7 @@ internal_notes: |-
           - Features
           - Readiness for AI era
 ---
-# Doing data ingestion right is hard…
+#### Doing data ingestion right is hard…
 
 Despite advances in data engineering, data ingestion—the Extract and Load (EL) steps of the [ELT](https://dyvenia.com/resources/data-glossary/) process—remains a persistent challenge for many data teams.
 
@@ -53,7 +53,7 @@ In the era of AI, UI-based tools face one more limitation: they miss out on most
 
 Even if teams do decide to use open-source solutions, they often end up creating volumes of low-quality glue code. This in-house software, typically written in a rush by non-professional engineers, often fails to meet essential requirements for modern data platforms, such as EaC (Everything as Code), security, monitoring & alerting, reliability, or extensibility. Moreover, since it’s written by non-professional engineers, such code is far more brittle and much harder to maintain and modify. Consequently, all modifications to the code (such as adding new features or fixing bugs) take much more time and are far riskier than they should be.
 
-## …but there is light at the end of the tunnel
+#### …but there is light at the end of the tunnel
 
 Luckily, in recent years, with the growing adoption of software engineering practices, we’ve seen a professionalization of the data engineering field. This has resulted in the creation of a number of high-quality, open-source tools that simplify and improve the quality of data engineering work, such as [dlt](https://dlthub.com/) and [Prefect](https://www.prefect.io/).
 
@@ -153,11 +153,11 @@ Data anonymization and/or pseudonymization are crucial to ensure compliance with
 
 1. During the ingestion phase (in which case the original data never enters the destination system)
 
-![](/src/assets/images/data_masking_ingestion.jpg)
+![](/src/assets/images/data_masking_ingestion_phase.png)
 
 2. During the transformation phase (in which case private data is stored in one or more layers in the destination system but hidden from the eyes of end users)
 
-![](/src/assets/images/data_masking_transformation.jpg)
+![](/src/assets/images/data_masking_transformation_phase.png)
 
 While dlt doesn’t provide built-in anonymization features, it provides the necessary tools to implement the first option effectively.
 
@@ -175,11 +175,11 @@ Incremental extraction allows us to download only new or modified data.
 - [Parallelization
 ](https://dlthub.com/docs/reference/performance#parallelism)dlt allows parallelizing each stage of the pipeline utilizing multithreading and multiprocessing (depending on the stage).
 In cases where further parallelization is needed (i.e., the workload exceeds the capacity of a single machine), utilizing orchestrator-layer parallelization may be required. However, this scenario is now rare, as large virtual machines capable of processing petabytes of data are widely available, and dlt can leverage the machine’s resources more efficiently than older tools or typical in-house Python code.
-- **[Various other optimizations](https://dlthub.com/docs/reference/performance)**
+- [**Various other optimizations**](https://dlthub.com/docs/reference/performance)
 
 As the topic of incremental loading can be complex even for seasoned data engineers, we’ve prepared a diagram of all the viable ELT patterns:
 
-![](/src/assets/images/elt_patterns.jpg)
+![](/src/assets/images/elt_patterns-1.png)
 
 **NOTE:** dlt also provides sub-types of the “merge” disposition, including [SCD type 2](https://dlthub.com/blog/scd2-and-incremental-loading); however, for clarity, we did not include these in the diagram. For more information on these subtypes, see [relevant documentation](https://dlthub.com/docs/general-usage/incremental-loading#merge-incremental-loading).
 
@@ -187,7 +187,7 @@ The choice of a specific implementation depends on what is supported by the sour
 
 The following diagram from [dlt’s official documentation](https://dlthub.com/docs/general-usage/incremental-loading#two-simple-questions-determine-the-write-disposition-you-use) also provides a good overview of when to choose which write disposition:
 
-![](/src/assets/images/write_disposition.jpg)
+![](/src/assets/images/dlt_choosing_write_disposition-1.png)
 
 ## Orchestrating data pipelines with Prefect
 
@@ -228,7 +228,7 @@ Now that we’ve outlined the essential features of a production-grade dlt pipel
 
 The diagram below illustrates the key steps in this production workflow.
 
-![](/src/assets/images/production_workflow.jpg)
+![](/src/assets/images/ingestion_pipeline_workflow_overview-1.png)
 
 1. **Create a dlt pipeline:** We start by creating a dlt pipeline (if the one we need doesn’t exist yet). Once the pipeline is finished and tests pass, we can move on to the next step.
 2. **Create Prefect deployment**: We create a Prefect deployment for the pipeline. Notice we utilize Prefect’s `prefect.yaml` file together with a single `extract_and_load()` flow capable of executing any dlt pipeline to drastically simplify this process.
