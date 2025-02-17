@@ -14,6 +14,8 @@ import {optimize} from 'svgo';
 import {readFileSync} from 'node:fs';
 import path from 'node:path';
 
+let imageIndex = 0;
+
 export const markdownLib = markdownIt({
   html: true,
   breaks: true,
@@ -58,6 +60,8 @@ export const markdownLib = markdownIt({
       const alt = token.content || '';
       const caption = token.attrGet('title');
 
+      imageIndex++;
+
       // CMS image paths
       if (src.startsWith('/src/')) {
         src = src.replace(/^\/src\//, '/');
@@ -83,12 +87,24 @@ export const markdownLib = markdownIt({
       const attributes = token.attrs || [];
       const hasEleventyWidths = attributes.some(([key]) => key === 'eleventy:widths');
       if (!hasEleventyWidths) {
-        attributes.push(['eleventy:widths', '650,960,1200']);
+        attributes.push(['eleventy:widths', '960,1600']);
       }
 
       const attributesString = attributes.map(([key, value]) => `${key}="${value}"`).join(' ');
+
       const imgTag = `<img src="${src}" alt="${alt}" ${attributesString}>`;
-      return caption ? `<figure>${imgTag}<figcaption>${caption}</figcaption></figure>` : imgTag;
+
+      return `
+          <is-land on:idle>
+            <dialog class="flow modal${imageIndex}">
+              <button class="button" autofocus>Close</button>
+              ${caption ? `<figure>${imgTag}<figcaption>${caption}</figcaption></figure>` : imgTag}
+            </dialog>
+            <button data-index="${imageIndex}">
+              ${caption ? `<figure>${imgTag}<figcaption>${caption}</figcaption></figure>` : imgTag}
+            </button>
+          </is-land>
+        `;
     };
   })
   .use(markdownItTocDoneRight, {

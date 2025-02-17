@@ -77,7 +77,7 @@ time {
 
 .post dialog + button {
   /* all: unset; */
-  cursor: pointer;
+  cursor: zoom-in;
 }
 
 /* Don't indicate interactivity without JS */
@@ -89,6 +89,11 @@ is-land:not(:defined) .post dialog + button {
   background: var(--color-dark);
   opacity: 0.9;
   filter: brightness(50%);
+}
+
+.post dialog .button {
+  --button-bg: var(--color-light);
+  --button-color: var(--color-dark);
 }
 
 .post dialog img {

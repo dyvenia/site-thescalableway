@@ -81,6 +81,10 @@ canvas {
   shape-margin: 0.75rem;
 }
 
+picture {
+  display: block;
+}
+
 /* Button styles */
 button {
   all: unset;
