@@ -27,6 +27,10 @@ time {
   font-size: var(--size-step-min-1);
 }
 
+.post img {
+  background: var(--color-light);
+}
+
 .post .table-of-contents {
   padding: var(--space-2xs) var(--space-s);
   background: var(--color-bg-accent);
