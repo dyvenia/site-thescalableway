@@ -13,7 +13,7 @@
 
 .mainnav ul {
   /* configuration */
-  --gutter: var(--space-3xs);
+  --gutter: var(--space-xs) var(--space-3xs);
   --cluster-vertical-alignment: center;
   --nav-list-background: var(--color-bg-accent);
   --nav-list-shadow: -5px 0 11px 0 hsl(0 0% 0% / 0.2);
@@ -101,7 +101,7 @@
   /* configuration */
   --nav-item-background: transparent;
   --nav-item-text-color: var(--color-text);
-  --nav-item-padding: var(--space-4xs) var(--space-2xs) var(--space-3xs) var(--space-2xs);
+  --nav-item-padding: var(--space-3xs) var(--space-4xs);
   --nav-item-decoration-color: transparent;
 
   background: var(--nav-item-background);
@@ -113,7 +113,10 @@
   text-decoration-color: var(--nav-item-decoration-color);
   text-decoration-thickness: 3px;
   text-underline-offset: 0.2em;
+  line-height: var(--leading-flat);
   font-weight: var(--font-medium);
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
 }
 
 .mainnav a:is(:hover, :focus) {
@@ -132,6 +135,7 @@
 .mainnav > ul:first-of-type > li:last-child a {
   --nav-item-background: var(--color-blue);
   --nav-item-text-color: var(--color-light);
+  --nav-item-padding: var(--space-2xs);
 }
 
 .mainnav > ul:first-of-type > li:last-child a:is(:hover, :focus),
@@ -152,6 +156,7 @@
   }
 
   .mainnav ul {
+    --gutter: var(--space-2xs);
     --nav-list-layout: row;
     --nav-list-position: static;
     --nav-list-padding: 0;
@@ -160,7 +165,6 @@
     --nav-list-shadow: none;
     --nav-list-visibility: visible;
     --nav-list-transform: translateX(0);
-    --nav-list-margin: 0;
   }
 
   .mainnav [aria-current='page'],
@@ -183,6 +187,7 @@ assumes that the button doesn’t exist without JS, making the list the first ch
   --nav-list-shadow: none;
   --nav-list-visibility: visible;
   --nav-list-transform: translateX(0);
+  margin-inline: calc(var(--space-4xs) / -1);
 }
 
 .mainnav ul:first-child [aria-current='page'],
