@@ -69,3 +69,34 @@ time {
 .post ol > li > ol > li + li {
   padding-block-start: var(--space-3xs);
 }
+
+.post dialog {
+  border-radius: var(--border-radius-small);
+  inset: revert;
+}
+
+.post dialog + button {
+  /* all: unset; */
+  cursor: pointer;
+}
+
+/* Don't indicate interactivity without JS */
+is-land:not(:defined) .post dialog + button {
+  cursor: default;
+}
+
+.post dialog::backdrop {
+  background: var(--color-dark);
+  opacity: 0.9;
+  filter: brightness(50%);
+}
+
+.post dialog img {
+  aspect-ratio: auto;
+  max-block-size: 70vh;
+  inline-size: auto;
+}
+
+.post dialog figcaption {
+  color: var(--color-light);
+}
