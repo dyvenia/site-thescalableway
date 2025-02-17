@@ -55,6 +55,19 @@ export default async function (eleventyConfig) {
     useTransform: true
   });
 
+  eleventyConfig.addPlugin(plugins.eleventyImageTransformPlugin, {
+    formats: ['webp', 'jpeg'],
+    widths: ['auto'],
+    htmlOptions: {
+      imgAttributes: {
+        loading: 'lazy',
+        decoding: 'async',
+        sizes: 'auto'
+      },
+      pictureAttributes: {}
+    }
+  });
+
   // ---------------------  bundle
   eleventyConfig.addBundle('css', {hoist: true});
 
@@ -84,7 +97,7 @@ export default async function (eleventyConfig) {
 
   // --------------------- Passthrough File Copy
 
-  eleventyConfig.addPassthroughCopy({ 'src/admin': 'admin' }); // don't process the CMS folder
+  eleventyConfig.addPassthroughCopy({'src/admin': 'admin'}); // don't process the CMS folder
   // Disable 11ty dev server live reload when using CMS locally
   eleventyConfig.setServerOptions({
     liveReload: false
@@ -127,4 +140,3 @@ export default async function (eleventyConfig) {
     }
   };
 }
-

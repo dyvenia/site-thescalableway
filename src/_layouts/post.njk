@@ -8,7 +8,7 @@ schema: blog
     <h1>{{ title }}</h1>
 
     {% if image %}
-      {% image image, alt or title, credit, "eager", "feature" %}
+      {% image image, alt or "", credit, "eager", "feature" %}
     {% endif %}
 
     <p class="meta | cluster gutter-xs">
@@ -41,6 +41,7 @@ schema: blog
     <a class="u-url" href="{{ page.url | url | absoluteUrl(meta.url) }}">{{ title }}</a>
     <a class="p-name u-url" rel="author" href="{{ meta.url }}">{{ meta.author.name }}</a>
     <img
+      eleventy:ignore
       class="u-author h-card"
       src="{{ meta.author.avatar | url | absoluteUrl(meta.url) }}"
       alt="{{ meta.author.name }}"
