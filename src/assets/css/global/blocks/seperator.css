@@ -8,3 +8,7 @@
 .section > .seperator {
   transform: translateY(-1px);
 }
+
+.seperator.small {
+  block-size: 1.5em;
+}
