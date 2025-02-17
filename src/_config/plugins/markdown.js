@@ -107,10 +107,12 @@ export const markdownLib = markdownIt({
         `;
     };
   })
+
   .use(markdownItTocDoneRight, {
     placeholder: `{:toc}`,
     slugify: slugifyString,
     containerId: 'toc',
+    containerClass: 'table-of-contents prose',
     itemClass: 'flow',
     listType: 'ol'
   });
@@ -119,8 +121,9 @@ const originalRender = markdownLib.render.bind(markdownLib);
 
 markdownLib.render = (content, env = {}) => {
   const shouldAddToc = env.toc !== false;
+
   const tocBeforeContent = shouldAddToc
-    ? `{:toc}\n<span class="visually-hidden" id="toc-skipped"></span>\n${content}`
+    ? `{:toc}\n<span class="visually-hidden" id="toc-skipped"></span><div class="flow prose">\n${content}</div>`
     : content;
 
   return originalRender(tocBeforeContent, env);

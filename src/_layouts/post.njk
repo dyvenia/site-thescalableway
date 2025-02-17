@@ -3,8 +3,8 @@ layout: base
 schema: blog
 ---
 
-<article class="region blog">
-  <div class="wrapper flow prose">
+<div class="region blog">
+  <div class="wrapper flow">
     <h1>{{ title }}</h1>
 
     {% if image %}
@@ -27,12 +27,12 @@ schema: blog
 
     {% if toc %}
       <div class="toc-container | relative">
-        <a href="#toc-skipped" id="skip-toc" class="visually-hidden skip-link">{{ meta.toc.skipLink }}</a>
+        <a href="#toc-skipped" id="skip-toc" class="skip-link">{{ meta.toc.skipLink }}</a>
         <h2 id="table-of-contents">{{ meta.toc.title }}</h2>
       </div>
     {% endif %}
 
-    {{ content | safe }}
+    <div class="sidebar gutter-s relative">{{ content | safe }}</div>
     {% include 'partials/edit-on.njk' %}
   </div>
 
@@ -47,7 +47,7 @@ schema: blog
       alt="{{ meta.author.name }}"
     />
   </div>
-</article>
+</div>
 
 {%- css "inline" -%}
   {%- include 'css/post.css' -%}
