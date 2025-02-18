@@ -142,6 +142,7 @@ With the right tools, this approach is not as complex as it sounds. Prefect allo
 
 ![predefined values for granulated, focused flows](/src/assets/images/predefined_values.png)
 
+
 This way, you can stick with the pre-defined daily schedule as it is, which makes the deployment creation way easier than it initially seemed. 
 
 Here’s why granular flow deployments are worth the effort: 
