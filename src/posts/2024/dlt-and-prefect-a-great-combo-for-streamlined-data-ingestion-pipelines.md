@@ -224,7 +224,7 @@ While any code-based orchestration tool allows for distributed processing, this 
 
 Now that we’ve outlined the essential features of a production-grade dlt pipeline and Prefect flow, let’s break down the steps of creating and orchestrating data ingestion pipelines in production.
 
-### 1. Overview
+### Overview
 
 The diagram below illustrates the key steps in this production workflow.
 
@@ -238,7 +238,7 @@ The diagram below illustrates the key steps in this production workflow.
 
 If the pipeline already exists and only a new table is being ingested, the user needs only add a few lines of `YAML toprefect.yaml` and create a PR.
 
-### 2. Configuring dlt
+### Configuring dlt
 
 While dlt is highly configurable and allows for a lot of customization and optimization, we recommend starting with three highly useful configurations:
 
@@ -248,7 +248,7 @@ While dlt is highly configurable and allows for a lot of customization and optim
 
 The ID settings will make our data easier to work with for downstream users, as well as make our loads (especially incremental ones) easier to debug.
 
-### 3. Creating a dlt pipeline
+### Creating a dlt pipeline
 
 #### Pipeline design
 
@@ -264,7 +264,7 @@ At any stage of pipeline development, you can manually inspect the loaded data, 
 
 For integration testing, you can use DuckDB as a destination system. It’s lightweight and allows you to quickly check ingested data, so you can iterate faster.
 
-### 4. Creating a Prefect flow and deployment
+### Creating a Prefect flow and deployment
 
 #### Flow design
 
@@ -274,7 +274,7 @@ After the dlt pipeline is working, it’s time to wrap it in a Prefect task and 
 
 Secrets should be passed through a special dictionary parameter, such as secrets. These secrets should then extracted from Prefect blocks and forwarded to the dlt pipeline, ensuring they are securely handled.
 
-### 5. Deploying to production
+### Deploying to production
 
 A pull request with the new deployment should automatically trigger the CI/CD process in our project repository’s CI/CD pipelines. We will soon dive deeper into how to implement this process using GitHub Actions in a separate article, so stay tuned!
 
