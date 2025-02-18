@@ -79,6 +79,7 @@ time {
 }
 
 .post .table-of-contents ol {
+  margin-block-start: var(--space-3xs);
   line-height: 1.5em;
   font-size: var(--size-step-min-1);
   font-weight: bold;
@@ -90,8 +91,8 @@ time {
   font-weight: normal;
 }
 
-.post .table-of-contents ol > li > ol {
-  --flow-space: var(--space-3xs);
+.table-of-contents :is(ol ol ol, ol ol ol ol) {
+  display: none;
 }
 
 .post .table-of-contents ol > li > ol > li + li {
