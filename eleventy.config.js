@@ -84,7 +84,7 @@ export default async function (eleventyConfig) {
 
   // --------------------- Passthrough File Copy
 
-  eleventyConfig.addPassthroughCopy({ 'src/admin': 'admin' });
+  eleventyConfig.addPassthroughCopy({ 'src/admin_dev': 'admin_dev' });
   eleventyConfig.addPassthroughCopy({ 'src/admin_content': 'admin_content' }); // don't process the CMS folder
   // Disable 11ty dev server live reload when using CMS locally
   eleventyConfig.setServerOptions({
