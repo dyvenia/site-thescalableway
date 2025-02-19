@@ -29,44 +29,42 @@ steps:
 steps_elements:
   stage_1:
     label: Stage 1
-    name: Plan
+    name: Planning
     steps:
       - label: Step 1
-        title: Perform a Metrics Audit
-        content: We evaluate your existing metrics, identify gaps, and define the desired outcome of our collaboration. To validate our key learnings, we run a Minimum Viable Product (MVP).
+        title: Assess vs reference architecture
+        content: _This is where we assess your current architecture and workflow, comparing them to best practices to identify any gaps_.
         outcomes: |-
-          - Identification of metrics gaps
-          - A catalog of required data metrics
-          - A maturity score of your data landscape
-          - A functional MVP to demonstrate value
+          - Architecture gaps
+          - Infra & Pipelines list
+          - Maturity score
+          - 1 Mart MVP
       - label: Step 2
         title: Create a Roadmap
-        content: We translate the benchmark into a detailed roadmap, outlining the resources, IT infrastructure, and steps required to achieve your data goals.
+        content: description
         outcomes: |-
-          - A comprehensive data marts roadmap
-          - Identification of domain owners
-          - A resource plan for successful execution
-          - Infrastructure review and recommendations
+          - Platform roadmap
+          - Domain owners list
+          - Roadmap resources
+          - Infra review
   stage_2:
     label: Stage 2
-    name: Execution
+    name: Releasing
     steps:
       - label: Step 3
-        title: Release Metrics & Reports
-        content: Through iterative sprints, our analysts develop the agreed-upon data metrics and reports. We validate the outputs, align them with stakeholders, and onboard your teams.
+        title: Sprint Platform and Pipelines
+        content: description
         outcomes: |-
-          - Unified metrics
-          - Standardized reports ready for use
-          - Aligned outputs with organizational needs
-          - Onboarded users, prepared to leverage the new insights
+          - Developed marts
+          - Standard reports
+          - Validated / Aligned
+          - User onboardings
       - label: Step 4
         title: Operationalize and Support
-        content: We transition the developed marts and reports to operations, ensuring they are run, monitored, and supported seamlessly.
+        content: description
         outcomes: |-
-          - Handover to operational teams
-          - Continued technical and strategic support
-          - Reliable, scalable systems to power ongoing insights
-          - Comprehensive training and documentation
+          - Handover to ops
+          - Continued support
 why:
   title: Why Our Process Work
   intro: 'Our methodology has been tested over many years and use cases, and it works thanks to these key pillars:'
@@ -125,10 +123,10 @@ faq:
         - Phase 1: €45,000. If you’re not satisfied, we offer a full refund of all invoices.
         - Phase 2: Scoping during planning determines the budget.
         - For a mid-sized team, costs typically average ~€50,000 per month.
-blog:
-  title: Our Insights
-  intro: Selected Articles. Check our blog for more.
 bodyClass: process
+blog:
+  intro: Selected Articles. Check our blog for more.
+  title: Our Insights
 permalink: /our-process/index.html
 layout: base
 ---
