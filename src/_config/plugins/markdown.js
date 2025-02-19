@@ -120,10 +120,10 @@ export const markdownLib = markdownIt({
 const originalRender = markdownLib.render.bind(markdownLib);
 
 markdownLib.render = (content, env = {}) => {
-  const shouldAddToc = env.toc !== false;
+  const addToc = env.toc !== false;
 
-  const tocBeforeContent = shouldAddToc
-    ? `{:toc}\n<span class="visually-hidden" id="toc-skipped"></span><div class="flow prose">\n${content}</div>`
+  const tocBeforeContent = addToc
+    ? `{:toc}\n<span class="visually-hidden" id="toc-skipped"></span><div class="flow prose"> ${content}</div>`
     : content;
 
   return originalRender(tocBeforeContent, env);

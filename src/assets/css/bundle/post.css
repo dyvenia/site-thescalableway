@@ -78,11 +78,19 @@ time {
   text-decoration-thickness: 0.08em;
 }
 
+.post .table-of-contents > ol {
+  position: sticky;
+  top: var(--space-m);
+  block-size: 100svh;
+  overflow-y: auto;
+  padding-inline-end: var(--space-m);
+  padding-block-end: var(--space-xs);
+}
+
 .post .table-of-contents ol {
   margin-block-start: var(--space-3xs);
   line-height: 1.5em;
   font-size: var(--size-step-min-1);
-  font-weight: bold;
 }
 
 .post .table-of-contents ol ol {
