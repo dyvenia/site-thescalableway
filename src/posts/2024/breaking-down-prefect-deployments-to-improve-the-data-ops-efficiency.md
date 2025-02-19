@@ -1,6 +1,6 @@
 ---
 title: Breaking Down Prefect Deployments To Improve The Data Ops Efficiency
-date: 2025-01-27T09:45:00
+date: 2025-01-28T09:45:00
 author: Mateusz Paździor
 description: Discover how breaking down monolithic ETL flows into modular deployments enhances observability, streamlines troubleshooting, and boosts scalability. Learn to design data pipelines that evolve with your needs while maintaining performance and reliability.
 tags:
