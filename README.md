@@ -58,5 +58,5 @@ Usually the local website will run on `http://127.0.0.1:8080/`.
 
 
 <p align="center">
-  <img src="docs/diagram.drawio.png" alt="Diagram" width="600">
+  <img src="docs/diagram.drawio.png" alt="Diagram" width="1000">
 </p>
