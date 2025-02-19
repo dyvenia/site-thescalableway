@@ -32,7 +32,7 @@ For support check: [eleventy-excellent](https://github.com/madrilene/eleventy-ex
 
 This site uses a static page generator called `eleventy`, you can read its documentation [here](https://www.11ty.dev/).
 
-If you have `npm` installed, you should be able to run the local version with the following command (in the root directory of the repository):
+If you have `npm` installed (if not, follow this [guide](https://www.sitepoint.com/npm-guide/)), you should be able to run the local version with the following command (in the root directory of the repository):
 ```bash
 npm run start
 ```
@@ -43,11 +43,15 @@ Usually the local website will run on `http://127.0.0.1:8080/`.
 ### Development Workflow
 
 * Implement changes by:
-    * `admin` panel in Sveltia CMS UI (changes in Sveltia are pefromed directly to `dev` branch, you can enter admin panel using path: https://thescalableway.com/admin/).
+    * *FOR WEBSITE CHANGES*: 
+    
+      `admin` panel in Sveltia CMS UI (changes in Sveltia are pefromed directly to `dev` branch, you can enter admin panel using path: https://thescalableway.com/admin/).
 
-        *Admin panel is deployed using Sveltia CMS. All admin configurations are in [`src/admin/config.yml`](https://github.com/dyvenia/site-thescalableway/blob/main/src/admin/config.yml).*
+      *Admin panel is deployed using Sveltia CMS. All admin configurations are in [`src/admin/config.yml`](https://github.com/dyvenia/site-thescalableway/blob/main/src/admin/config.yml).*
 
-    * perfom changes directly in repo (PR/Merge to `dev` branch).
+    * *FOR INFRASTRUCTURE CHANGES*:
+    
+       perfom changes directly in repo (PR/Merge to `dev` branch).
 
 * Once the changes have been made and tested, create a PR to the main branch and assign one of the repository owners for review and approval.
 * After merging the changes to the main branch, Netlify will automatically build and deploy the changes to the production website.
