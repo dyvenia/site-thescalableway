@@ -1,6 +1,6 @@
 ---
 title: How to Setup Data Platform Infrastructure on GCP with Terraform [DRAFT2]
-date: 2025-02-28T15:22:00
+date: 2025-02-27T15:22:00
 author: Karol Wolski
 description: description
 tags:
