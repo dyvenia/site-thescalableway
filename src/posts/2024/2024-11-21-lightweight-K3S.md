@@ -122,11 +122,13 @@ Another consideration is choosing the right setup for running Prefect flows. The
 - **Server-based**: This requires setting up infrastructure such as virtual machines, lightweight Kubernetes (e.g., K3S), or managed Kubernetes clusters. While these setups provide maximum control, scalability, and adaptability, they demand a higher level of expertise and upfront effort.
 - **Serverless**: Managed solutions like Prefect Cloud’s service or serverless compute options from cloud providers (AWS Fargate, Google Cloud Run, Azure Container Instances) eliminate the need for infrastructure management, making them appealing for simpler workflows.
 
-Serverless solutions, though convenient, are best suited for simpler workflows, as they come with three notable challenges:
+Serverless solutions, though convenient, are best suited for simpler workflows, as they come with five notable challenges:
 
 1. **Startup Overhead**: Prefect Worker images often have heavy dependencies, increasing flow initialization time. This leads to latency, as serverless platforms can introduce delays between task executions due to event-driven triggers. A long-running server with a persistent Prefect Worker is usually much quicker.
 2. **Vendor Lock-In**: Serverless solutions are often tightly integrated with specific cloud providers, making it difficult to migrate workflows across platforms. Even Prefect Work Pools, though useful, have limited functionality at the Pro tier.
 3. **Cost Management**: Serverless can be cost-effective for intermittent workloads but can become expensive with unpredictable usage patterns. Managing costs is trickier compared to traditional server-based setups.
+4. **Limited Control and Security Concerns**: Serverless architectures limit control over the execution environment, as all logic runs on cloud provider-managed machines. This raises security risks, especially for companies dealing with sensitive data or operating in highly regulated industries, due to reduced visibility and potential vulnerabilities in shared infrastructure.
+5. **Token Management and Data Access Risks**: Serverless setups require Prefect to hold a token for accessing cloud resources, creating security risks if mismanaged. Server-based setups mitigate this by reversing the data flow, allowing the server to pull from Prefect, and reducing the risk of data breaches or unintended data exposure.
 
 Ultimately, the choice between server-based and serverless depends on the teams’ needs and stage of data maturity. However, for most organizations aiming to scale, a Prefect Work Pool running on a long-running server is a more optimal and reliable solution. 
 
