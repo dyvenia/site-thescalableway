@@ -12,15 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Configure GH access
+      # Check repository history
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Configure Git
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       # Check if changes have been detected
       - name: Check diff for dev branch
@@ -51,7 +47,6 @@ jobs:
           gh pr create --base dev --head main --title "Sync main -> dev" --body "Auto Sync main -> dev."
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Create PR for content branch if needed
         if: env.content_changes == 'true'
         run: |
