@@ -83,7 +83,7 @@ collections:
       - { label: "Description", name: "description", widget: "text" }
       - { label: "Tags", name: "tags", widget: "list", default: ["post"], hint: "Enter tags separated by a comma" }
       - { label: "Internal Notes", name: "internal_notes", widget: "markdown" }
-      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Body", name: "body", widget: "markdown", modes: [raw, rich_text] }
 
   - name: "imprint"
     label: "Imprint"
