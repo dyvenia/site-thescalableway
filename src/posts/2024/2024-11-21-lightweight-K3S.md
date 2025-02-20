@@ -122,7 +122,7 @@ Another consideration is choosing the right setup for running Prefect flows. The
 - **Server-based**: This requires setting up infrastructure such as virtual machines, lightweight Kubernetes (e.g., K3S), or managed Kubernetes clusters. While these setups provide maximum control, scalability, and adaptability, they demand a higher level of expertise and upfront effort.
 - **Serverless**: Managed solutions like Prefect Cloud’s service or serverless compute options from cloud providers (AWS Fargate, Google Cloud Run, Azure Container Instances) eliminate the need for infrastructure management, making them appealing for simpler workflows.
 
-Serverless solutions, though convenient, are best suited for simpler workflows, as they come with three notable challenges:
+Serverless solutions, though convenient, are best suited for simpler workflows, as they come with five notable challenges:
 
 1. **Startup Overhead**: Prefect Worker images often have heavy dependencies, increasing flow initialization time. This leads to latency, as serverless platforms can introduce delays between task executions due to event-driven triggers. A long-running server with a persistent Prefect Worker is usually much quicker.
 2. **Vendor Lock-In**: Serverless solutions are often tightly integrated with specific cloud providers, making it difficult to migrate workflows across platforms. Even Prefect Work Pools, though useful, have limited functionality at the Pro tier.
