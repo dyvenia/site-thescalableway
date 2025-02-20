@@ -1,0 +1,55 @@
+name: Synchronize dev/content branch with main.
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  sync-branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Check repository history
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Check if changes have been detected
+      - name: Check diff for dev branch
+        id: check_dev
+        run: |
+          if git diff --quiet main origin/dev; then
+            echo "dev_changes=false" >> $GITHUB_ENV
+          else
+            echo "dev_changes=true" >> $GITHUB_ENV
+            echo "=== Changes between main and dev ==="
+            git diff --name-status main origin/dev
+          fi
+      - name: Check diff for content branch
+        id: check_content
+        run: |
+          if git diff --quiet main origin/content; then
+            echo "content_changes=false" >> $GITHUB_ENV
+          else
+            echo "content_changes=true" >> $GITHUB_ENV
+            echo "=== Changes between main and content ==="
+            git diff --name-status main origin/content
+          fi
+
+      # Create PRs when changes are detected
+      - name: Create PR for dev branch if needed
+        if: env.dev_changes == 'true'
+        run: |
+          gh pr create --base dev --head main --title "Sync main -> dev" --body "Auto Sync main -> dev."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create PR for content branch if needed
+        if: env.content_changes == 'true'
+        run: |
+          gh pr create --base content --head main --title "Sync main -> content" --body "Auto Sync main -> content."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
