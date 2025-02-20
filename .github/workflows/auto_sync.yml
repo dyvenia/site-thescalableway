@@ -44,7 +44,7 @@ jobs:
             git diff --name-status main origin/content
           fi
 
-      # Create PRs if changes detected
+      # Create PRs when changes are detected
       - name: Create PR for dev branch if needed
         if: env.dev_changes == 'true'
         run: |
