@@ -40,7 +40,7 @@ time {
   display: none;
 }
 
-.post p:empty + * {
+.post p:empty:first-of-type + * {
   --flow-space: 0;
 }
 
@@ -114,6 +114,7 @@ time {
 
 .post dialog + button {
   /* all: unset; */
+  --flow-space: 0;
   cursor: zoom-in;
 }
 
