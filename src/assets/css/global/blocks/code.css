@@ -8,8 +8,10 @@ code,
 pre {
   font-family: var(--font-mono);
   font-size: var(--size-step-min-1);
-  background-color: color-mix(in oklab, var(--color-bg) 92%, black);
+  background-color: var(--color-dark);
+  background-color: color-mix(in oklab, var(--color-dark) 92%, var(--color-light));
   border-radius: var(--border-radius-medium);
+  color: var(--color-light);
 }
 
 code[class*='language-'],
