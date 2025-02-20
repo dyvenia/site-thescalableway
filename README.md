@@ -50,7 +50,7 @@ Usually the local website will run on `http://127.0.0.1:8080/`.
 
       *Admin panel is deployed using Sveltia CMS. All admin configurations are in [`src/admin_content/config.yml`](https://github.com/dyvenia/site-thescalableway/blob/main/src/admin_content/config.yml).*
 
-    * *FOR INFRASTRUCTURE CHANGES*:
+    * *FOR WEBSITE CONFIGURATION CHANGES*:
     
        perfom changes directly in repo (PR/Merge to `dev` branch) or by admin panel in Sveltia CMS UI (changes in Sveltia are pefromed directly to `dev` branch, you can enter admin panel using path: https://thescalableway.com/admin_dev/).
 
@@ -62,5 +62,5 @@ Usually the local website will run on `http://127.0.0.1:8080/`.
 
 
 <p align="center">
-  <img src="docs/diagram.drawio.png" alt="Diagram" width="1000">
+  <img src="docs/diagram.drawio.png" alt="Diagram" width="1200">
 </p>
