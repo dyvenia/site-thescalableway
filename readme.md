@@ -45,4 +45,4 @@ Admin panel is deployed using Sveltia CMS. All admin configurations are in `src/
 
 ### Theme Support
 
-For support see: [eleventy-excellent](https://github.com/madrilene/eleventy-excellent)
+For support see: [eleventy-excellent](https://github.com/madrilene/eleventy-excellent).
