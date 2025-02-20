@@ -14,8 +14,10 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-// add yaml support
+// add yaml fs and path support
 import yaml from 'js-yaml';
+import fs from 'fs';
+import path from 'path';
 
 //  config import
 import {getAllPosts, onlyMarkdown, tagList} from './src/_config/collections.js';
@@ -24,7 +26,39 @@ import filters from './src/_config/filters.js';
 import plugins from './src/_config/plugins.js';
 import shortcodes from './src/_config/shortcodes.js';
 
+// function to load YAML files
+function loadYaml(filePath) {
+  try {
+    return yaml.load(fs.readFileSync(filePath, 'utf8')) || {};
+  } catch (e) {
+    console.error(`Error loading YAML file: ${filePath}`, e);
+    return {};
+  }
+}
+
+// function to merge YAML files
+function mergeYamlConfigs() {
+  const templatePath = 'src/config_template.yaml';
+  const templateConfig = loadYaml(templatePath);
+
+  const configDirs = ['src/admin_dev', 'src/admin_content'];
+
+  configDirs.forEach((dir) => {
+    const configPath = path.join(dir, 'config.yaml');
+    const userConfig = loadYaml(configPath);
+
+    // merge: userConfig overrides templateConfig where necessary
+    const mergedConfig = { ...templateConfig, ...userConfig };
+
+    // write merged content back to the file
+    fs.writeFileSync(configPath, yaml.dump(mergedConfig), 'utf8');
+    console.log(`Merged YAML written to: ${configPath}`);
+  });
+}
 export default async function (eleventyConfig) {
+  // --------------------- merge YAML before eleventy processes files
+  mergeYamlConfigs();
+
   eleventyConfig.addWatchTarget('./src/assets/**/*.{css,js,svg,png,jpeg}');
   eleventyConfig.addWatchTarget('./src/_includes/**/*.{webc}');
 
@@ -84,8 +118,9 @@ export default async function (eleventyConfig) {
 
   // --------------------- Passthrough File Copy
 
-  eleventyConfig.addPassthroughCopy({ 'src/admin_dev': 'admin_dev' });
+  eleventyConfig.addPassthroughCopy({ 'src/admin_dev': 'admin_dev' }); // don't process the CMS folder
   eleventyConfig.addPassthroughCopy({ 'src/admin_content': 'admin_content' }); // don't process the CMS folder
+
   // Disable 11ty dev server live reload when using CMS locally
   eleventyConfig.setServerOptions({
     liveReload: false
