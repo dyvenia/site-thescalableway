@@ -55,18 +55,18 @@ Headline
 
 absfjkh
 
+![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcRDn-MCnW1OyPKFuOPn7xk1Jw3J_E8wPvoPKwHHEWrkuKT1GnfVP5IMZWt8oyo50NKr8rm_dyYIEKwKKz_XDl1mvjgAHzvhkCN_w812c17b74mrKG5K0s29MkbEpLohhbEL58vGg?key=ayESoQytAoVyFyBIrtLBvJIi)
+
 ## Installing Terraform
 
 Terraform can be installed in various ways, which are outlined [by Hashicorp here](https://developer.hashicorp.com/terraform/install). For Ubuntu, installation can be done with the following commands:
 
 ```bash
-
 wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
 
 sudo apt update && sudo apt install terraform
-
 ```
 
 ## gcloud CLI installation
@@ -74,7 +74,6 @@ sudo apt update && sudo apt install terraform
 Similarly to Terraform, the gcloud CLI can be installed as per the [official instructions](https://cloud.google.com/sdk/docs/install). For Ubuntu, run:
 
 ```bash
-
 sudo apt-get update
 
 sudo apt-get install apt-transport-https ca-certificates gnupg curl
@@ -84,5 +83,4 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor 
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
 
 sudo apt-get update && sudo apt-get install google-cloud-cli
-
 ```
