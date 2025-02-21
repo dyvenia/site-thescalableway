@@ -36,6 +36,29 @@ The code usually looks then more or less like this: 
 
 #### 1. Task to fetch a list of tables from MS SQL
 
+```sql
+
+@task
+def get_table_names(conn_str: str) -> List[str]:
+    """
+    Connect to an MS SQL database and return a list of tables.
+    """
+    query = """
+    SELECT TABLE_NAME
+    FROM INFORMATION_SCHEMA.TABLES
+    WHERE TABLE_TYPE = 'BASE TABLE'
+      AND TABLE_CATALOG = DB_NAME()
+    """
+    with pyodbc.connect(conn_str) as conn:
+        cursor = conn.cursor()
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+    table_names = [row[0] for row in results]
+    return table_names
+
+```
+
 ```
 @task
 def get_table_names(conn_str: str) -> List[str]:
@@ -142,7 +165,6 @@ With the right tools, this approach is not as complex as it sounds. Prefect allo
 
 ![predefined values for granulated, focused flows](/src/assets/images/predefined_values.png)
 
-
 This way, you can stick with the pre-defined daily schedule as it is, which makes the deployment creation way easier than it initially seemed. 
 
 Here’s why granular flow deployments are worth the effort: 
@@ -157,7 +179,6 @@ Here’s why granular flow deployments are worth the effort: 
 8. **SLA Reporting:** It’s simpler, as the real situation is shown on the run level, and failure means real failure. 
 
 ![granular flow deployments_SLA reporting](/src/assets/images/sla_reporting.png)
-
 
 ## Conclusion
 
