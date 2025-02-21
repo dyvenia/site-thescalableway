@@ -71,7 +71,7 @@ def extract_table_to_df(conn_str: str, table_name: str) -> pd.DataFrame:
     return df
 ```
 
-#### 3.  Task to write a DataFrame to S3 as a Parquet file
+##### 3.  Task to write a DataFrame to S3 as a Parquet file
 
 ```sql
 @task
@@ -94,7 +94,7 @@ def write_parquet_to_s3(df: pd.DataFrame, bucket: str, table_name: str):
     return s3_path
 ```
 
-#### 4. Main Flow orchestrating the above tasks
+##### 4. Main Flow orchestrating the above tasks
 
 ```sql
 @flow
