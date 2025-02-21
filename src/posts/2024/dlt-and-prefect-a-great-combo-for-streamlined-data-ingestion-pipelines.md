@@ -44,7 +44,7 @@ internal_notes: |-
           - Features
           - Readiness for AI era
 ---
-#### Doing data ingestion right is hard…
+Doing data ingestion right is hard…
 
 Despite advances in data engineering, data ingestion—the Extract and Load (EL) steps of the [ELT](https://dyvenia.com/resources/data-glossary/) process—remains a persistent challenge for many data teams.
 
@@ -117,12 +117,10 @@ Data pipelines aren’t one-size-fits-all, and achieving a production-grade pipe
 To achieve modularity, it’s best to split the dlt pipeline code into the following structure:
 
 ```bash
-
 ├── pipelines
 │   ├── a_to_c.py
 │   ├── b_to_c.py
 │   └── utils.py
-
 ```
 
 In this structure, `a_to_c.py` and `b_to_c.py` represent two example pipelines, each handling data from a source system (a and b) to a destination system ©.
