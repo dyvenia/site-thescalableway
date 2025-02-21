@@ -34,7 +34,7 @@ When starting an ELT project, it’s common to build one or two monolithic flows
 
 The code usually looks then more or less like this: 
 
-##### 1. Task to fetch a list of tables from MS SQL
+**1. Task to fetch a list of tables from MS SQL**
 
 ```sql
 @task
@@ -57,7 +57,7 @@ def get_table_names(conn_str: str) -> List[str]:
     return table_names
 ```
 
-##### 2. Task to extract data from a specific table into a DataFrame
+**2. Task to extract data from a specific table into a DataFrame**
 
 ```sql
 @task
@@ -71,7 +71,7 @@ def extract_table_to_df(conn_str: str, table_name: str) -> pd.DataFrame:
     return df
 ```
 
-##### 3.  Task to write a DataFrame to S3 as a Parquet file
+**3.  Task to write a DataFrame to S3 as a Parquet file**
 
 ```sql
 @task
@@ -94,7 +94,7 @@ def write_parquet_to_s3(df: pd.DataFrame, bucket: str, table_name: str):
     return s3_path
 ```
 
-##### 4. Main Flow orchestrating the above tasks
+**4. Main Flow orchestrating the above tasks**
 
 ```sql
 @flow
