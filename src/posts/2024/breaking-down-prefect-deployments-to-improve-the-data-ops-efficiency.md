@@ -37,29 +37,6 @@ The code usually looks then more or less like this: 
 #### 1. Task to fetch a list of tables from MS SQL
 
 ```sql
-
-@task
-def get_table_names(conn_str: str) -> List[str]:
-    """
-    Connect to an MS SQL database and return a list of tables.
-    """
-    query = """
-    SELECT TABLE_NAME
-    FROM INFORMATION_SCHEMA.TABLES
-    WHERE TABLE_TYPE = 'BASE TABLE'
-      AND TABLE_CATALOG = DB_NAME()
-    """
-    with pyodbc.connect(conn_str) as conn:
-        cursor = conn.cursor()
-        cursor.execute(query)
-        results = cursor.fetchall()
-
-    table_names = [row[0] for row in results]
-    return table_names
-
-```
-
-```
 @task
 def get_table_names(conn_str: str) -> List[str]:
     """
