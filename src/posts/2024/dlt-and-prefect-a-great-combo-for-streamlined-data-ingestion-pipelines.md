@@ -116,11 +116,13 @@ Data pipelines aren’t one-size-fits-all, and achieving a production-grade pipe
 
 To achieve modularity, it’s best to split the dlt pipeline code into the following structure:
 
-```
+```bash
+
 ├── pipelines
 │   ├── a_to_c.py
 │   ├── b_to_c.py
 │   └── utils.py
+
 ```
 
 In this structure, `a_to_c.py` and `b_to_c.py` represent two example pipelines, each handling data from a source system (a and b) to a destination system ©.
