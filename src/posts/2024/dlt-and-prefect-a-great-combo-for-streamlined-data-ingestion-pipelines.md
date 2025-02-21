@@ -44,7 +44,7 @@ internal_notes: |-
           - Features
           - Readiness for AI era
 ---
-Doing data ingestion right is hard…
+### Doing data ingestion right is hard…
 
 Despite advances in data engineering, data ingestion—the Extract and Load (EL) steps of the [ELT](https://dyvenia.com/resources/data-glossary/) process—remains a persistent challenge for many data teams.
 
