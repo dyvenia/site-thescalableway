@@ -6,6 +6,8 @@ description: Discover how breaking down monolithic ETL flows into modular deploy
 tags:
   - prefect
   - dataops
+  - elt
+  - pipelines
 internal_notes: |-
   **Audience:** Prefect users looking to optimize their orchestration flow.
 
