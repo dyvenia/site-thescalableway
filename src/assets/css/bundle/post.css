@@ -25,22 +25,23 @@ time {
 
 .post .meta {
   font-size: var(--size-step-min-1);
+  max-inline-size: 100%;
 }
 
-.post .table-of-contents {
-  padding: var(--space-2xs) var(--space-s);
-  background: var(--color-bg-accent);
-  background: color-mix(in oklab, var(--color-bg) 97%, var(--color-text));
-  border-radius: var(--border-radius-small);
+.post img {
+  background: var(--color-light);
 }
 
-.post .table-of-contents a {
-  text-decoration: none;
+.post .blog .wrapper > * {
+  grid-column: feature;
 }
 
-.post .table-of-contents a:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 0.08em;
+.post p:empty {
+  display: none;
+}
+
+.post p:empty:first-of-type + * {
+  --flow-space: 0;
 }
 
 .post .toc-container {
@@ -52,20 +53,93 @@ time {
   text-transform: uppercase;
 }
 
-.post ol {
-  line-height: 1.5em;
+.post .table-of-contents {
+  padding: var(--space-2xs) var(--space-s);
+  background: var(--color-bg-accent);
+  background: color-mix(in oklab, var(--color-bg) 97%, var(--color-text));
+  border-radius: var(--border-radius-small);
 }
 
-.post ol ol {
-  list-style: lower-latin;
-  padding-inline-start: 1.8ch;
+@media (min-width: 51rem) {
+  .post .table-of-contents {
+    background: transparent;
+    padding: 0;
+    padding-inline-end: var(--space-s);
+    border-inline-end: 1px solid var(--color-bg-accent-2);
+  }
+}
+
+.post .table-of-contents a {
+  text-decoration: none;
+}
+
+.post .table-of-contents a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+}
+
+.post .table-of-contents > ol {
+  position: sticky;
+  top: var(--space-m);
+  block-size: 100svh;
+  overflow-y: auto;
+  padding-inline-end: var(--space-m);
+  padding-block-end: var(--space-xs);
+}
+
+.post .table-of-contents ol {
+  margin-block-start: var(--space-3xs);
+  line-height: 1.5em;
   font-size: var(--size-step-min-1);
 }
 
-.post ol > li > ol {
-  --flow-space: var(--space-3xs);
+.post .table-of-contents ol ol {
+  list-style: lower-latin;
+  padding-inline-start: 1.8ch;
+  font-weight: normal;
 }
 
-.post ol > li > ol > li + li {
+.table-of-contents :is(ol ol ol, ol ol ol ol) {
+  display: none;
+}
+
+.post .table-of-contents ol > li > ol > li + li {
   padding-block-start: var(--space-3xs);
+}
+
+.post dialog {
+  border-radius: var(--border-radius-small);
+  inset: revert;
+}
+
+.post dialog + button {
+  /* all: unset; */
+  --flow-space: 0;
+  cursor: zoom-in;
+}
+
+/* Don't indicate interactivity without JS */
+is-land:not(:defined) .post dialog + button {
+  cursor: default;
+}
+
+.post dialog::backdrop {
+  background: var(--color-dark);
+  opacity: 0.9;
+  filter: brightness(50%);
+}
+
+.post dialog .button {
+  --button-bg: var(--color-light);
+  --button-color: var(--color-dark);
+}
+
+.post dialog img {
+  aspect-ratio: auto;
+  max-block-size: 70vh;
+  inline-size: auto;
+}
+
+.post dialog figcaption {
+  color: var(--color-light);
 }

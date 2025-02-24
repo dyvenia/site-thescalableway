@@ -27,10 +27,16 @@
   mix-blend-mode: plus-lighter;
 }
 
+[data-theme="dark"] .home .hero > svg {
+  mix-blend-mode: plus-lighter;
+  opacity: 0.1;
+}
+
 @media screen(max) {
   .home .hero > svg {
     color: var(--color-text);
     mix-blend-mode: normal;
+    opacity: 1;
   }
 }
 

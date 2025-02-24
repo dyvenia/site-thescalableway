@@ -4,6 +4,10 @@
   display: flex;
   justify-content: flex-start;
   order: 0;
+  background: none;
+  border: none;
+  padding-block: var(--space-s) var(--space-2xs);
+  cursor: pointer;
 }
 
 @media screen(navigation) {
@@ -12,13 +16,6 @@
     inset-inline-end: 0;
     inset-block-start: 0;
   }
-}
-
-.search-toggle {
-  background: none;
-  border: none;
-  padding: var(--space-xs);
-  cursor: pointer;
 }
 
 .search-toggle svg {

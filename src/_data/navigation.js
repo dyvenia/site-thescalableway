@@ -5,6 +5,10 @@ export default {
       url: '/about/'
     },
     {
+      text: 'Our process',
+      url: '/our-process/'
+    },
+    {
       text: 'Insights',
       url: '/insights/'
     }

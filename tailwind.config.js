@@ -33,6 +33,7 @@ export default {
     screens: {
       ltnav: {max: `${viewportTokens.navigation}px`},
       navigation: `${viewportTokens.navigation}px`,
+      xs: `${viewportTokens.xs}px`,
       sm: `${viewportTokens.sm}px`,
       md: `${viewportTokens.md}px`,
       max: `${viewportTokens.max}px`

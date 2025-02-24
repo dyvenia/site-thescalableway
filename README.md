@@ -46,15 +46,15 @@ Usually the local website will run on `http://127.0.0.1:8080/`.
 * Implement changes by:
     * *FOR WEBSITE CONTENT CHANGES*: 
     
-      admin panel in Sveltia CMS UI (changes in Sveltia are pefromed directly to `content` branch, you can enter admin panel using path: https://thescalableway.com/admin_content/).
+      admin panel in Sveltia CMS UI (changes in Sveltia are pefromed directly to `content` branch, you can enter admin panel using path: https://content--thescalableway.netlify.app/admin_content/).
 
-      *Admin panel is deployed using Sveltia CMS. All admin configurations are in [`src/admin_content/config.yml`](https://github.com/dyvenia/site-thescalableway/blob/main/src/admin_content/config.yml).*
+      *Admin panel is deployed using Sveltia CMS. All admin configurations are in [`src/admin_content/config.yml`](https://github.com/dyvenia/site-thescalableway/blob/content/src/admin_content/config.yml).*
 
     * *FOR WEBSITE CONFIGURATION CHANGES*:
     
-       perfom changes directly in repo (PR/Merge to `dev` branch) or by admin panel in Sveltia CMS UI (changes in Sveltia are pefromed directly to `dev` branch, you can enter admin panel using path: https://thescalableway.com/admin_dev/).
+       perfom changes directly in repo (PR/Merge to `dev` branch) or by admin panel in Sveltia CMS UI (changes in Sveltia are pefromed directly to `dev` branch, you can enter admin panel using path: https://dev--thescalableway.netlify.app/admin_dev/).
 
-       *Admin panel is deployed using Sveltia CMS. All admin configurations are in [`src/admin_dev/config.yml`](https://github.com/dyvenia/site-thescalableway/blob/main/src/admin_dev/config.yml).*
+       *Admin panel is deployed using Sveltia CMS. All admin configurations are in [`src/admin_dev/config.yml`](https://github.com/dyvenia/site-thescalableway/blob/dev/src/admin_dev/config.yml).*
 
 * Once the changes have been made and tested, create a PR to the main branch and assign one of the repository owners for review and approval.
 * After merging the changes to the main branch, Netlify will automatically build and deploy the changes to the production website.

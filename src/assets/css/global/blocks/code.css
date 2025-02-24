@@ -8,24 +8,18 @@ code,
 pre {
   font-family: var(--font-mono);
   font-size: var(--size-step-min-1);
-  background-color: color-mix(in oklab, var(--color-bg) 92%, black);
+  background-color: var(--color-dark);
+  background-color: color-mix(in oklab, var(--color-dark) 92%, var(--color-light));
   border-radius: var(--border-radius-medium);
+  color: var(--color-light);
 }
 
 code[class*='language-'],
 pre[class*='language-'] {
-  color: #f8f8f2;
-  background: none;
-  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  font-size: 1em;
-  text-align: left;
   white-space: pre;
   word-spacing: normal;
   word-break: normal;
   word-wrap: normal;
-  line-height: 1.5;
-  tab-size: 4;
   hyphens: none;
 }
 
@@ -45,22 +39,12 @@ pre {
 
 /* Code blocks */
 pre[class*='language-'] {
-  padding: 1em;
-  margin: 0.5em 0;
   overflow: auto;
-  border-radius: 0.3em;
+  position: relative;
 }
 
-:not(pre) > code[class*='language-'],
-pre[class*='language-'] {
-  background: #272822;
-}
-
-/* Inline code */
-:not(pre) > code[class*='language-'] {
-  padding: 0.1em;
-  border-radius: 0.3em;
-  white-space: normal;
+[class*='language-'] .namespace {
+  opacity: 0.7;
 }
 
 .token.comment,

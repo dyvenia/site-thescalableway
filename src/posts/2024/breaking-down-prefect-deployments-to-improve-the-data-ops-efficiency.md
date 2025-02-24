@@ -6,6 +6,8 @@ description: Discover how breaking down monolithic ETL flows into modular deploy
 tags:
   - prefect
   - dataops
+  - elt
+  - pipelines
 internal_notes: |-
   **Audience:** Prefect users looking to optimize their orchestration flow.
 
@@ -34,163 +36,83 @@ When starting an ELT project, it’s common to build one or two monolithic flows
 
 The code usually looks then more or less like this: 
 
-```
-# ------------------------------------------------------------------------------
+**1. Task to fetch a list of tables from MS SQL**
 
-# 1. Task to fetch list of tables from MS SQL
-
-# ------------------------------------------------------------------------------
-
+```sql
 @task
-
 def get_table_names(conn_str: str) -> List[str]:
-
     """
-
     Connect to an MS SQL database and return a list of tables.
-
     """
-
     query = """
-
     SELECT TABLE_NAME
-
     FROM INFORMATION_SCHEMA.TABLES
-
     WHERE TABLE_TYPE = 'BASE TABLE'
-
       AND TABLE_CATALOG = DB_NAME()
-
     """
-
     with pyodbc.connect(conn_str) as conn:
-
         cursor = conn.cursor()
-
         cursor.execute(query)
-
         results = cursor.fetchall()
 
-
-
     table_names = [row[0] for row in results]
-
     return table_names
+```
 
+**2. Task to extract data from a specific table into a DataFrame**
 
-
-
-
-# ------------------------------------------------------------------------------
-
-# 2. Task to extract data from a specific table into a DataFrame
-
-# ------------------------------------------------------------------------------
-
+```sql
 @task
-
 def extract_table_to_df(conn_str: str, table_name: str) -> pd.DataFrame:
-
     """
-
     Run SELECT * on the given table and return a Pandas DataFrame.
-
     """
-
     query = f"SELECT * FROM {table_name}"
-
     with pyodbc.connect(conn_str) as conn:
-
         df = pd.read_sql(query, conn)
-
     return df
+```
 
+**3.  Task to write a DataFrame to S3 as a Parquet file**
 
-
-
-
-# ------------------------------------------------------------------------------
-
-# 3. Task to write a DataFrame to S3 as a Parquet file
-
-# ------------------------------------------------------------------------------
-
+```sql
 @task
-
 def write_parquet_to_s3(df: pd.DataFrame, bucket: str, table_name: str):
-
     """
-
     Write the given DataFrame as a Parquet file to the specified S3 bucket.
-
     """
-
-
 
     s3_path = f"s3://{bucket}/{table_name}.parquet"
 
-
-
     df.to_parquet(
-
         path=s3_path,
-
         engine="pyarrow",
-
         index=False,
-
         storage_options={
-
             "key": get_secret_from_gcsm("AWS_ACCESS_KEY_ID"),     
-
             "secret": get_secret_from_gcsm("AWS_SECRET_ACCESS_KEY")},
-
     )
 
-
-
- 
-
     return s3_path
+```
 
+**4. Main Flow orchestrating the above tasks**
 
-
-
-
-# ------------------------------------------------------------------------------
-
-# 4. Main Flow orchestrating the above tasks
-
-# ------------------------------------------------------------------------------
-
+```sql
 @flow
-
 def ms_sql_to_s3_flow(
-
     conn_str: str,
-
     bucket: str,
-
 ):
-
     """
-
     A Prefect flow that loads all tables from MS SQL into S3 as Parquet files.
-
     """
-
     # Fetch all table names
-
     tables = get_table_names(conn_str)
 
-
-
     # For each table, extract and load
-
     for table_name in tables:
-
         df = extract_table_to_df(conn_str, table_name)
-
         write_parquet_to_s3(df, bucket, table_name)
 ```
 
