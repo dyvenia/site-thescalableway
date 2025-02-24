@@ -1,0 +1,375 @@
+/* ------------------- hero / page-header */
+
+.process .page-header .wrapper > * {
+  justify-self: start;
+}
+
+.process .page-header h1 {
+  font-weight: var(--font-light);
+  text-wrap: pretty;
+}
+
+.process .page-header .wrapper > p {
+  max-inline-size: 50ch;
+}
+
+.process .page-header picture {
+  max-block-size: 45rem;
+  background: var(--color-blue-accent-5);
+}
+
+@media screen(md) {
+  .process .page-header picture {
+    max-block-size: 40rem;
+  }
+}
+
+.process .header > * {
+  margin-inline: auto;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.process .header > h2 {
+  max-inline-size: 20ch;
+}
+
+.process .header > p {
+  max-inline-size: 50ch;
+}
+
+/* intro */
+
+.process .intro span {
+  color: var(--color-pink);
+}
+
+.process .intro p {
+  font-size: var(--size-step-1);
+}
+
+/* what */
+
+.process .what {
+  background: var(--color-bg-accent);
+}
+
+.process .what img {
+  background: var(--color-light);
+}
+
+/* steps */
+
+.process .steps,
+:root[data-theme='light'] .process .steps {
+  --color-scale-1: var(--color-royal-blue-500);
+  --color-scale-2: var(--color-royal-blue-600);
+  --color-scale-3: var(--color-royal-blue-700);
+  --color-scale-4: var(--color-royal-blue-800);
+  --color-scale-contrast: var(--color-royal-blue-100);
+}
+
+@media (prefers-color-scheme: dark) {
+  .process .steps {
+    --color-scale-1: var(--color-royal-blue-200);
+    --color-scale-2: var(--color-royal-blue-300);
+    --color-scale-3: var(--color-royal-blue-400);
+    --color-scale-4: var(--color-royal-blue-500);
+    --color-scale-contrast: var(--color-royal-blue-900);
+  }
+}
+
+:root[data-theme='dark'] .process .steps {
+  --color-scale-1: var(--color-royal-blue-200);
+  --color-scale-2: var(--color-royal-blue-300);
+  --color-scale-3: var(--color-royal-blue-400);
+  --color-scale-4: var(--color-royal-blue-500);
+  --color-scale-contrast: var(--color-royal-blue-900);
+}
+
+.process .steps .tabs nav {
+  overflow: hidden;
+  margin-inline-start: calc(var(--gap) * -1);
+  margin-inline-end: calc(var(--gap) * -1);
+}
+
+.process .steps nav h3 {
+  font-size: var(--size-step-min-1);
+  text-align: center;
+  text-transform: uppercase;
+  background: var(--color-bg-accent-2);
+  border-inline-start: 1px solid var(--color-bg);
+}
+
+.process .steps nav h3 span {
+  font-size: var(--size-step-min-2);
+  font-weight: var(--font-bold);
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-accent);
+}
+
+@media screen(xs) {
+  .process .steps .tabs nav {
+    overflow: visible;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+  }
+
+  .process .steps nav h3 {
+    font-size: var(--size-step-min-0);
+  }
+  .process .steps nav h3 span {
+    font-size: var(--size-step-min-1);
+  }
+}
+
+.process .steps .tabs nav ul {
+  --cluster-horizontal-alignment: center;
+  --gutter: 0;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+}
+
+.process .steps .tabs nav > ul > li {
+  max-inline-size: 100%;
+  flex-basis: 50%;
+}
+
+.process .steps .tabs nav ul > li ul > li {
+  flex-basis: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.process .step-number {
+  --step-number-color: --color-scale-contrast;
+  color: var(--step-number-color);
+  font-size: var(--size-step-4);
+  font-weight: var(--font-bold);
+  margin-block-end: -0.2ch;
+}
+
+.process .steps button[data-tab-target] {
+  --button-color: var(--color-scale-contrast);
+  --button-font-weight: var(--font-medium);
+  position: relative;
+  padding-block: var(--space-s);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  border: none;
+  cursor: pointer;
+  clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%, 10% 50%);
+  font-size: var(--size-step-min-2);
+  line-height: var(--leading-fine);
+  text-align: center;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  transition:
+    background-color var(--transition-duration) var(--transition-timing),
+    transform var(--transition-duration) var(--transition-timing);
+}
+
+.process .steps button[data-tab-target]:focus-visible {
+  clip-path: none;
+}
+
+.process .arrows li:first-of-type li:first-of-type :where(button[data-tab-target], .step-number) {
+  --button-bg: var(--color-scale-1);
+  --step-number-color: var(--color-scale-1);
+}
+
+.process .arrows li:first-of-type li:last-of-type :where(button[data-tab-target], .step-number) {
+  --button-bg: var(--color-scale-2);
+  --step-number-color: var(--color-scale-2);
+}
+
+.process .arrows li:last-of-type li:first-of-type :where(button[data-tab-target], .step-number) {
+  --button-bg: var(--color-scale-3);
+  --step-number-color: var(--color-scale-3);
+}
+
+.process .arrows li:last-of-type li:last-of-type :where(button[data-tab-target], .step-number) {
+  --button-bg: var(--color-scale-4);
+  --step-number-color: var(--color-scale-4);
+}
+
+.process .steps button[data-tab-target]:hover {
+  --button-hover-bg: color-mix(in oklab, var(--button-bg) 95%, var(--color-text));
+  transform: translateX(3px);
+}
+
+@media screen(sm) {
+  .process .steps button[data-tab-target] {
+    font-size: var(--size-step-min-1);
+  }
+}
+
+@media screen(md) {
+  .process .steps button[data-tab-target] {
+    font-size: var(--size-step-0);
+  }
+}
+
+.process .arrows button[aria-selected='true'],
+.process li:has(button[aria-selected='true']) > .step-number {
+  --button-bg: var(--color-text) !important;
+  --button-color: var(--color-bg) !important;
+  --step-number-color: var(--color-text) !important;
+}
+
+.process .steps button[data-tab-target] span {
+  max-inline-size: 12ch;
+  padding-inline-end: 0.5em;
+}
+
+.process .steps button[data-tab-target] {
+  block-size: 3rem;
+}
+
+@media screen(xs) {
+  .process .steps button[data-tab-target] {
+    block-size: auto;
+  }
+
+  .process .steps button[data-tab-target] span {
+    max-inline-size: 14ch;
+  }
+}
+
+.process .steps article h4 + * {
+  --flow-space: var(--space-xs);
+}
+
+/* why */
+
+.process .why {
+  overflow: hidden;
+  padding-inline: var(--gap);
+  background: var(--color-bg-accent);
+  position: relative;
+}
+
+.process .why .split {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.process .why svg {
+  grid-row: 1;
+  grid-column: 1/ -1;
+  color: var(--color-bg-accent-2);
+  opacity: 0.5;
+}
+
+.process .why .timeline {
+  grid-row: 1;
+  grid-column: 1 / -1;
+}
+
+@media screen(sm) {
+  .process .why svg {
+    grid-column: 1/ 5;
+  }
+
+  .process .why .timeline {
+    grid-column: 2 / -1;
+  }
+}
+
+@media screen(md) {
+  .process .why svg {
+    grid-column: 1/ 4;
+    color: var(--color-bg-accent-3);
+    opacity: 1;
+  }
+
+  .process .why .timeline {
+    grid-column: 4 / -1;
+  }
+}
+
+.process .why svg {
+  inline-size: clamp(40ch, 50vw, 40rem);
+  block-size: auto;
+
+  margin-block-start: calc(var(--space-l) * -1);
+  margin-inline-end: calc(var(--space-3xl) - 1.5ch);
+  justify-self: end;
+}
+
+.process .why .timeline {
+  margin-inline-start: calc(var(--space-s) * -1);
+  list-style: none;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+}
+
+.process .why .timeline li::after {
+  content: '';
+  position: absolute;
+  width: 0.25ch;
+  background: var(--color-pink);
+  inset-inline-start: var(--space-s);
+  inset-block-start: calc(var(--space-s) * 2);
+  inset-block-end: calc(-1 * var(--space-l));
+  z-index: 0;
+}
+
+.process .why .timeline li:last-child::after {
+  display: none;
+}
+
+.process .why .timeline li {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding-inline-start: var(--space-xl);
+  z-index: 1;
+}
+
+.process .why .timeline span {
+  block-size: calc(var(--space-s) * 2);
+  inline-size: calc(var(--space-s) * 2);
+  background: var(--color-pink);
+  color: var(--color-light);
+  font-size: var(--size-step-2);
+  font-weight: var(--font-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: absolute;
+  inset-inline-start: 0;
+}
+
+.process .why .timeline div {
+  margin-inline-start: var(--space-s);
+  margin-block-start: var(--space-3xs);
+}
+
+/* faq */
+
+.faq .prose ul {
+  padding-inline-start: 0.2ch;
+}
+
+.faq .prose li::marker {
+  color: var(--color-pink);
+  content: '';
+}
+
+.faq .prose ul ul {
+  margin-top: var(--space-s);
+  padding-inline-start: 1ch;
+}
+
+.faq .prose li li::marker {
+  color: var(--color-pink);
+  content: '- ';
+}

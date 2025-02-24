@@ -3,12 +3,12 @@ layout: base
 schema: blog
 ---
 
-<article class="region blog">
-  <div class="wrapper flow prose">
+<div class="region blog">
+  <div class="wrapper flow">
     <h1>{{ title }}</h1>
 
     {% if image %}
-      {% image image, alt or title, credit, "eager", "feature" %}
+      {% image image, alt or "", credit, "eager", "feature" %}
     {% endif %}
 
     <p class="meta | cluster gutter-xs">
@@ -27,12 +27,12 @@ schema: blog
 
     {% if toc %}
       <div class="toc-container | relative">
-        <a href="#toc-skipped" id="skip-toc" class="visually-hidden skip-link">{{ meta.toc.skipLink }}</a>
-        <h2 id="table-of-contents">{{ meta.toc.title }}</h2>
+        <a href="#toc-skipped" id="skip-toc" class="skip-link">{{ meta.toc.skipLink }}</a>
+        <!-- <h2 id="table-of-contents">{{ meta.toc.title }}</h2> !-->
       </div>
     {% endif %}
 
-    {{ content | safe }}
+    <div class="sidebar gutter-s relative">{{ content | safe }}</div>
     {% include 'partials/edit-on.njk' %}
   </div>
 
@@ -41,14 +41,19 @@ schema: blog
     <a class="u-url" href="{{ page.url | url | absoluteUrl(meta.url) }}">{{ title }}</a>
     <a class="p-name u-url" rel="author" href="{{ meta.url }}">{{ meta.author.name }}</a>
     <img
+      eleventy:ignore
       class="u-author h-card"
       src="{{ meta.author.avatar | url | absoluteUrl(meta.url) }}"
       alt="{{ meta.author.name }}"
     />
   </div>
-</article>
+</div>
 
 {%- css "inline" -%}
   {%- include 'css/post.css' -%}
   {%- include 'css/footnotes.css' -%}
 {%- endcss -%}
+
+{% js "defer" %}
+  {% include "scripts/dialog.js" %}
+{% endjs %}

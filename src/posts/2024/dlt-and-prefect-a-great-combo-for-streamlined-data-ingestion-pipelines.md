@@ -44,7 +44,7 @@ internal_notes: |-
           - Features
           - Readiness for AI era
 ---
-#### Doing data ingestion right is hard…
+**Doing data ingestion right is hard…**
 
 Despite advances in data engineering, data ingestion—the Extract and Load (EL) steps of the [ELT](https://dyvenia.com/resources/data-glossary/) process—remains a persistent challenge for many data teams.
 
@@ -53,7 +53,7 @@ In the era of AI, UI-based tools face one more limitation: they miss out on most
 
 Even if teams do decide to use open-source solutions, they often end up creating volumes of low-quality glue code. This in-house software, typically written in a rush by non-professional engineers, often fails to meet essential requirements for modern data platforms, such as EaC (Everything as Code), security, monitoring & alerting, reliability, or extensibility. Moreover, since it’s written by non-professional engineers, such code is far more brittle and much harder to maintain and modify. Consequently, all modifications to the code (such as adding new features or fixing bugs) take much more time and are far riskier than they should be.
 
-#### …but there is light at the end of the tunnel
+**…but there is light at the end of the tunnel**
 
 Luckily, in recent years, with the growing adoption of software engineering practices, we’ve seen a professionalization of the data engineering field. This has resulted in the creation of a number of high-quality, open-source tools that simplify and improve the quality of data engineering work, such as [dlt](https://dlthub.com/) and [Prefect](https://www.prefect.io/).
 
@@ -116,7 +116,7 @@ Data pipelines aren’t one-size-fits-all, and achieving a production-grade pipe
 
 To achieve modularity, it’s best to split the dlt pipeline code into the following structure:
 
-```
+```bash
 ├── pipelines
 │   ├── a_to_c.py
 │   ├── b_to_c.py
@@ -224,7 +224,7 @@ While any code-based orchestration tool allows for distributed processing, this 
 
 Now that we’ve outlined the essential features of a production-grade dlt pipeline and Prefect flow, let’s break down the steps of creating and orchestrating data ingestion pipelines in production.
 
-### 1. Overview
+### Overview
 
 The diagram below illustrates the key steps in this production workflow.
 
@@ -238,7 +238,7 @@ The diagram below illustrates the key steps in this production workflow.
 
 If the pipeline already exists and only a new table is being ingested, the user needs only add a few lines of `YAML toprefect.yaml` and create a PR.
 
-### 2. Configuring dlt
+### Configuring dlt
 
 While dlt is highly configurable and allows for a lot of customization and optimization, we recommend starting with three highly useful configurations:
 
@@ -248,7 +248,7 @@ While dlt is highly configurable and allows for a lot of customization and optim
 
 The ID settings will make our data easier to work with for downstream users, as well as make our loads (especially incremental ones) easier to debug.
 
-### 3. Creating a dlt pipeline
+### Creating a dlt pipeline
 
 #### Pipeline design
 
@@ -264,7 +264,7 @@ At any stage of pipeline development, you can manually inspect the loaded data, 
 
 For integration testing, you can use DuckDB as a destination system. It’s lightweight and allows you to quickly check ingested data, so you can iterate faster.
 
-### 4. Creating a Prefect flow and deployment
+### Creating a Prefect flow and deployment
 
 #### Flow design
 
@@ -274,7 +274,7 @@ After the dlt pipeline is working, it’s time to wrap it in a Prefect task and 
 
 Secrets should be passed through a special dictionary parameter, such as secrets. These secrets should then extracted from Prefect blocks and forwarded to the dlt pipeline, ensuring they are securely handled.
 
-### 5. Deploying to production
+### Deploying to production
 
 A pull request with the new deployment should automatically trigger the CI/CD process in our project repository’s CI/CD pipelines. We will soon dive deeper into how to implement this process using GitHub Actions in a separate article, so stay tuned!
 

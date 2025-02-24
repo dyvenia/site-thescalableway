@@ -2,11 +2,6 @@ import Image from '@11ty/eleventy-img';
 import path from 'node:path';
 import htmlmin from 'html-minifier-terser';
 
-/**
- * Converts an attribute map object to a string of HTML attributes.
- * @param {Object} attributeMap - The attribute map object.
- * @returns {string} - The string of HTML attributes.
- */
 const stringifyAttributes = attributeMap => {
   return Object.entries(attributeMap)
     .map(([attribute, value]) => {
@@ -21,11 +16,16 @@ export const imageShortcode = async (
   alt = '',
   caption = '',
   loading = 'lazy',
-  className,
-  sizes = '100vw',
+  containerClass,
+  imageClass,
   widths = [650, 960, 1200],
+  sizes = 'auto',
   formats = ['webp', 'jpeg']
 ) => {
+  // Prepend "./src" if not present
+  if (!src.startsWith('./src')) {
+    src = `./src${src}`;
+  }
   // check if source is SVG
   if (path.extname(src).toLowerCase() === '.svg') {
     const svgData = readFileSync(src, 'utf8');
@@ -69,16 +69,9 @@ export const imageShortcode = async (
     }
   });
 
-  const lowsrc = metadata.jpeg[metadata.jpeg.length - 1];
-
-  // Getting the URL to use
-  let imgSrc = src;
-  if (!imgSrc.startsWith('.')) {
-    const inputPath = this.page.inputPath;
-    const pathParts = inputPath.split('/');
-    pathParts.pop();
-    imgSrc = `${pathParts.join('/')}/${src}`;
-  }
+  const lowsrc = metadata.jpeg?.slice(-1)[0] ||
+    metadata.webp?.slice(-1)[0] ||
+    metadata.png?.slice(-1)[0] || {url: src, width: null, height: null};
 
   const imageSources = Object.values(metadata)
     .map(imageFormat => {
@@ -88,29 +81,20 @@ export const imageShortcode = async (
     })
     .join('\n');
 
-  const imgageAttributes = stringifyAttributes({
-    src: lowsrc.url,
-    width: lowsrc.width,
-    height: lowsrc.height,
+  const imageAttributes = stringifyAttributes({
+    'src': lowsrc.url,
+    'width': lowsrc.width,
+    'height': lowsrc.height,
     alt,
     loading,
-    decoding: loading === 'eager' ? 'sync' : 'async'
+    'decoding': loading === 'eager' ? 'sync' : 'async',
+    ...(imageClass && {class: imageClass}),
+    'eleventy:ignore': ''
   });
 
-  const imageElement = caption
-    ? `<figure slot="image" class="flow ${className ? `${className}` : ''}">
-				<picture>
-					${imageSources}
-					<img
-					${imgageAttributes}>
-				</picture>
-				<figcaption>${caption}</figcaption>
-			</figure>`
-    : `<picture slot="image" class="flow ${className ? `${className}` : ''}">
-				${imageSources}
-				<img
-				${imgageAttributes}>
-			</picture>`;
+  const pictureElement = `<picture> ${imageSources}<img ${imageAttributes}></picture>`;
 
-  return htmlmin.minify(imageElement, {collapseWhitespace: true});
+  return caption
+    ? `<figure slot="image"${containerClass ? ` class="${containerClass}"` : ''}>${pictureElement}<figcaption>${caption}</figcaption></figure>`
+    : `<picture slot="image"${containerClass ? ` class="${containerClass}"` : ''}>${imageSources}<img ${imageAttributes}></picture>`;
 };
