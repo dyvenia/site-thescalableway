@@ -68,7 +68,7 @@ The goal? A platform that’s lightweight, scalable, and future-ready without ov
 
 Even the best-designed data platform is useless if it’s not integrated. No matter how carefully you choose your architecture, your platform’s success hinges on how well its core components—ingestion, transformation, and serving—work together. These phases can only operate efficiently when they are tightly aligned.
 
-![](/src/assets/images/data_engineering_lifecycle-1.png "Adapted from \"Fundamentals of Data Engineering: Plan and Build Robust Data Systems\" by Joe Reis & Matt Housley")
+![](/src/assets/images/data_engineering_lifecycle-1.png)
 
 Early-stage platforms often rely on manual orchestration, which works at first but quickly becomes a bottleneck as data grows and workflows become more complex. Managing, ensuring accuracy, and reducing downtime requires a more structured approach. 
 
