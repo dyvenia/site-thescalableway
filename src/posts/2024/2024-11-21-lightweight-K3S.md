@@ -70,8 +70,6 @@ Even the best-designed data platform is useless if it’s not integrated. No mat
 
 ![](/src/assets/images/data_engineering_lifecycle-1.png "Adapted from \"Fundamentals of Data Engineering: Plan and Build Robust Data Systems\" by Joe Reis & Matt Housley")
 
-_Adapted from "Fundamentals of Data Engineering: Plan and Build Robust Data Systems" by Joe Reis & Matt Housley; O'Reilly Media_
-
 Early-stage platforms often rely on manual orchestration, which works at first but quickly becomes a bottleneck as data grows and workflows become more complex. Managing, ensuring accuracy, and reducing downtime requires a more structured approach. 
 
 A few basic improvements can help push the boundaries further. For instance:
