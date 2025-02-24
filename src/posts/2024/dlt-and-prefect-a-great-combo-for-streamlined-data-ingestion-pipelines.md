@@ -187,9 +187,7 @@ The choice of a specific implementation depends on what is supported by the sour
 
 The following diagram from [dlt’s official documentation](https://dlthub.com/docs/general-usage/incremental-loading#two-simple-questions-determine-the-write-disposition-you-use) also provides a good overview of when to choose which write disposition:
 
-![](/src/assets/images/dlt_choosing_write_disposition-1.png "Adaptedfrom")
-
-_Adapted from_ 
+![](/src/assets/images/dlt_choosing_write_disposition-1.png)
 
 ## Orchestrating data pipelines with Prefect
 
