@@ -221,7 +221,7 @@ To enable file uploads to Cloud Storage, some libraries require an HMAC token in
 
 - Go to `Cloud Storage > Settings > Interoperability`.
 - Under `Service account HMAC`, click `Create a key for service account`.
-- Once created, the token will be marked as Active.
+- Once created, the token will be marked as 'Active'.
 
 ![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOs9OkC4jMW4sVqX7HcAshQCW5uQxDGhRpK9BnKLJCrnrikDYs6pZJShJf7KypE73asBaVn5R0cnb9nug_z-ztVB2KjNE1h_k-3Mz1fjKQLLzCfTqZF9fF7B2UFEHTkj-y7aUcUA?key=ayESoQytAoVyFyBIrtLBvJIi)
 
