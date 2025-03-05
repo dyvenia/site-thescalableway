@@ -416,7 +416,7 @@ variable "zone" {
 }
 ```
 
-`main.tf` defines and initializes all infrastructure components outlined in the [Infrastructure overview section](#Infrastructure overview):
+`main.tf` defines and initializes all infrastructure components outlined in the [Infrastructure overview section](#Infrastructure overview).
 
 ```bash
 resource "google_compute_network" "vpc_edp" {
@@ -722,7 +722,9 @@ You can access a Virtual Vachine securely using only a service account token and
 - Log in to your Google Cloud account using the following command:
 
 ```bash
-gcloud auth activate-service-account test-service-account@test-project.iam.gserviceaccount.com --key-file
+gcloud auth activate-service-account 
+
+test-service-account@test-project.iam.gserviceaccount.com --key-file
 
  ~/.config/gcloud.json
 
