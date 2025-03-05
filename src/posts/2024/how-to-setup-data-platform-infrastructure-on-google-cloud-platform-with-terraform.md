@@ -209,7 +209,8 @@ Select `Add Key > Create new key > JSON` to download the JSON key file. Keep thi
 After downloading the JSON key, activate the service account locally with the following command:
 
 ```bash
-gcloud auth activate-service-account {service_account_name}@{project}.iam.gserviceaccount.com
+gcloud auth activate-service-account 
+{service_account_name}@{project}.iam.gserviceaccount.com
 --key-file={json_file}.json
 ```
 
