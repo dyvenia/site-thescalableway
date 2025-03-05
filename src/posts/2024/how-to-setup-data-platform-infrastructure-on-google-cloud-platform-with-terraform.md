@@ -416,7 +416,7 @@ variable "zone" {
 }
 ```
 
-`main.tf` defines and initializes all infrastructure components outlined in the [Infrastructure overview section](#Infrastructure%20overview).
+`main.tf` defines and initializes all infrastructure components outlined in the [Infrastructure overview section](#Infrastructure-overview).
 
 ```bash
 resource "google_compute_network" "vpc_edp" {
