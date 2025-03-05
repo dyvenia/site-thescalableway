@@ -336,7 +336,7 @@ provider "google" {
 }
 ```
 
-`backend.tf` should point to a bucket with a shared `tfstate` file created in [Step 9](#Step 9) of the first phase. It needs to be manually configured because it is the first block loaded when running terraform init, and variables from variables.tf cannot be referenced here:
+`backend.tf` should point to a bucket with a shared `tfstate` file created in [Step 9](#Step 9: Exporting Credentials and Setting up New Bucket) of the first phase. It needs to be manually configured because it is the first block loaded when running terraform init, and variables from variables.tf cannot be referenced here:
 
 ```bash
 terraform {
