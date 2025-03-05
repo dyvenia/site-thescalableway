@@ -122,11 +122,9 @@ Let's take a detailed look at these prerequisites:
 
 Terraform can be installed in various ways, which are outlined [by Hashicorp here](https://developer.hashicorp.com/terraform/install). For Ubuntu, installation can be done with the following commands:
 
-```bash
+```
 wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-
 sudo apt update && sudo apt install terraform
 ```
 
@@ -134,46 +132,38 @@ sudo apt update && sudo apt install terraform
 
 Similarly to Terraform, the gcloud CLI can be installed as per the [official instructions](https://cloud.google.com/sdk/docs/install). For Ubuntu, run:
 
-```bash
+```
 sudo apt-get update
-
 sudo apt-get install apt-transport-https ca-certificates gnupg curl
-
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
-
 echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-
 sudo apt-get update && sudo apt-get install google-cloud-cli
 ```
 
 After installation, initialize the gcloud CLI by providing the “gcloud init” command and setting up a new account by opening the provided URL.
 
-```bash
+```
 gcloud init
 
-# gcloud init
 
+# gcloud init
 Welcome! This command will take you through the configuration of gcloud.
 
 Your current configuration has been set to: [default]
 
 You can skip diagnostics next time by using the following flag:
-
-  gcloud init --skip-diagnostics
+  gcloud init --skip-diagnostics
 
 Network diagnostic detects and fixes local network connection issues.
-
-Checking network connection...done.                                                                                                                                                      
-
+Checking network connection...done.                                                                                                                                                                                                                                                                 
 Reachability Check passed.
-
 Network diagnostic passed (1/1 checks passed).
 
-You must sign in to continue. Would you like to sign in (Y/n)?  Y
+You must sign in to continue. Would you like to sign in (Y/n)?  Y
 
-Go to the following link in your browser and complete the sign-in prompts:
+Go to the following link in your browser, and complete the sign-in prompts:
 
-    https://accounts.google.com/o/oauth2/auth<URL_TO_OPEN_IN_BROWSER>
+    https://accounts.google.com/o/oauth2/auth<URL_TO_OPEN_IN_BROWSER>
 
 Once finished, enter the verification code provided in your browser: <PROVIDE_VERIFICATION_CODE>
 ```
@@ -204,15 +194,11 @@ In the service account interface, go to `Actions (3 dots) > Manage keys`.
 
 Select `Add Key > Create new key > JSON` to download the JSON key file. Keep this file secure, as it will be required for Terraform configuration.
 
-### Step 5: Activating the service account
+### Step 5: Activating service account
 
 After downloading the JSON key, activate the service account locally with the following command:
 
-```bash
-gcloud auth activate-service-account 
-{service_account_name}@{project}.iam.gserviceaccount.com
---key-file={json_file}.json
-```
+`gcloud auth activate-service-account {service_account_name}@{project}.iam.gserviceaccount.com --key-file={json_file}.json`
 
 This step enables the service account for use in the local environment, ensuring access to necessary GCP resources with IAP tunnel functionality.
 
@@ -254,14 +240,12 @@ Once we have our service account JSON prepared, export of credentials is necessa
 
 Then, with the usage of gcloud CLI, a new bucket with the applied policy should be created:
 
-```bash
+```
 gcloud storage buckets create gs://test-project-tfstate --location=us-central1 --uniform-bucket-level-access
 
 gcloud storage buckets add-iam-policy-binding gs://test-project-tfstate \
-
 --member="serviceAccount:test-service-account@test-project.iam.gserviceaccount.com" \
-
-  --role="roles/storage.objectAdmin"
+  --role="roles/storage.objectAdmin"
 ```
 
 Once completed, it should be available in the GCP Console. To check it, go to `Navigation Menu > Cloud Storage > Buckets`:
@@ -272,48 +256,32 @@ Once completed, it should be available in the GCP Console. To check it, go to `N
 
 To set up the environment, Terraform will handle provisioning all the required GCP resources. By the end of this process, your directory structure will look like this: 
 
-```bash
+```
 $ tree
 
 |-- backend.tf
-
 |-- main.tf
-
 |-- provider.tf
-
 |-- test-project-32206692d146.json
-
 |-- variable.tf
 ```
 
 For managing both DEV and PROD environments, you can duplicate the files as shown:
 
-```bash
+```
 $ tree
-
 ├── dev
-
-    ├── backend.tf
-
-│   ├── main.tf
-
-│   ├── test-project-32206692d146.json
-
-│   ├── provider.tf
-
-│   └── variable.tf
-
+    ├── backend.tf
+│   ├── main.tf
+│   ├── test-project-32206692d146.json
+│   ├── provider.tf
+│   └── variable.tf
 └── prod
-
-    ├── backend.tf
-
-    ├── main.tf
-
-    ├── test-project-32206692d146.json
-
-    ├── provider.tf
-
-    └── variable.tf
+    ├── backend.tf
+    ├── main.tf
+    ├── test-project-32206692d146.json
+    ├── provider.tf
+    └── variable.tf
 ```
 
 #### Terraform Files
@@ -322,295 +290,185 @@ The main difference between environments lies in the `backend.tf` and `variables
 
 The content of `provider.tf` should look like this:
 
-```bash
+```
 provider "google" {
-
-  region      = var.region
-
-  project     = var.project_name
-
-  credentials = file(var.credentials_file)
-
-  zone        = var.zone
-
+  region      = var.region
+  project     = var.project_name
+  credentials = file(var.credentials_file)
+  zone        = var.zone
 }
 ```
 
-`backend.tf` should point to a bucket with a shared `tfstate` file created in [Step 9](#step-9-exporting-credentials-and-setting-up-new-bucket) of the first phase. It needs to be manually configured because it is the first block loaded when running terraform init, and variables from variables.tf cannot be referenced here:
+`backend.tf` should point to a bucket with a shared tfstate file created in step 9 of the first phase. It needs to be manually configured because it is the first block loaded when running `terraform init`, and variables from `variables.tf` cannot be referenced here:
 
-```bash
+```
 terraform {
-
-  backend "gcs" {
-
-    bucket  = "test-project-tfstate"
-
-    prefix  = "terraform/state/prod"
-
-  }
-
+  backend "gcs" {
+    bucket  = "test-project-tfstate"
+    prefix  = "terraform/state/prod"
+  }
 }
 ```
 
 All variables used in `provider.tf` and `main.tf` are defined in `variable.tf`, as shown below:
 
-```bash
+```
 variable "credentials_file" {
-
-  default = "test-project-32206692d146.json"
-
+  default = "test-project-32206692d146.json"
 }
 
 variable "environment" {
-
-  default = "prod"
-
+  default = "prod"
 }
 
 variable "filesystem" {
-
-  default = "ext4"
-
+  default = "ext4"
 }
 
 variable "image" {
-
-  default = "projects/ubuntu-os-cloud/global/images/ubuntu-2404-noble-amd64-v20241115"
-
+  default = "projects/ubuntu-os-cloud/global/images/ubuntu-2404-noble-amd64-v20241115"
 }
 
 variable "ip_cidr_range" {
-
-  default = "10.202.0.0/24"
-
+  default = "10.202.0.0/24"
 }
 
 variable "machine_type" {
-
-  default = "c3d-standard-8-lssd"
-
+  default = "c3d-standard-8-lssd"
 }
 
 variable "project_name" {
-
-  default = "test-project"
-
+  default = "test-project"
 }
 
 variable "region" {
-
-  default = "us-central1"
-
+  default = "us-central1"
 }
 
 variable "service_account" {
-
-  default = "serviceAccount:test-service-account@test-project.iam.gserviceaccount.com"
-
+  default = "serviceAccount:test-service-account@test-project.iam.gserviceaccount.com"
 }
 
 variable "zone" {
-
-  default = "us-central1-c"
-
+  default = "us-central1-c"
 }
 ```
 
 `main.tf` defines and initializes all infrastructure components outlined in the [Infrastructure overview section](#infrastructure-overview).
 
-```bash
+```
 resource "google_compute_network" "vpc_edp" {
-
- name                    = "vpc-${var.project_name}-${var.environment}"
-
- auto_create_subnetworks = "false"
+ name                    = "vpc-${var.project_name}-${var.environment}"
+ auto_create_subnetworks = "false"
 
 }
 
 resource "google_compute_subnetwork" "subnet_edp" {
-
- name          = "subnet-${var.project_name}-${var.environment}"
-
- ip_cidr_range = var.ip_cidr_range
-
- network       = google_compute_network.vpc_edp.name
-
- region        = var.region
-
- depends_on    = [google_compute_network.vpc_edp]
-
+ name          = "subnet-${var.project_name}-${var.environment}"
+ ip_cidr_range = var.ip_cidr_range
+ network       = google_compute_network.vpc_edp.name
+ region        = var.region
+ depends_on    = [google_compute_network.vpc_edp]
 }
 
 resource "google_compute_instance" "vm_edp" {
+ project      = var.project_name
+ zone         = var.zone
+ name         = "${var.project_name}-${var.environment}-01"
+ machine_type = var.machine_type
+ boot_disk {
+   auto_delete = true
+   initialize_params {
+     image = var.image
+     size  = 50
+     type  = "pd-ssd"
+   }
+   mode = "READ_WRITE"
+ }
+ scratch_disk {
+   interface = "NVME"
+ }
+ network_interface {
+   network    = "vpc-${var.project_name}-${var.environment}"
+   subnetwork = google_compute_subnetwork.subnet_edp.name
+ }
+ metadata_startup_script = <<-EOT
+   #!/bin/bash
+   set -e
+   sudo mkfs.ext4 -F /dev/disk/by-id/google-local-nvme-ssd-0
+   sudo mkdir -p /mnt/disks/local-nvme-ssd
+   sudo mount /dev/disk/by-id/google-local-nvme-ssd-0 /mnt/disks/local-nvme-ssd
+   sudo chmod a+w /mnt/disks/local-nvme-ssd
 
- project      = var.project_name
-
- zone         = var.zone
-
- name         = "${var.project_name}-${var.environment}-01"
-
- machine_type = var.machine_type
-
- boot_disk {
-
-   auto_delete = true
-
-   initialize_params {
-
-     image = var.image
-
-     size  = 50
-
-     type  = "pd-ssd"
-
-   }
-
-   mode = "READ_WRITE"
-
- }
-
- scratch_disk {
-
-   interface = "NVME"
-
- }
-
- network_interface {
-
-   network    = "vpc-${var.project_name}-${var.environment}"
-
-   subnetwork = google_compute_subnetwork.subnet_edp.name
-
- }
-
- metadata_startup_script = <<-EOT
-
-   #!/bin/bash
-
-   set -e
-
-   sudo mkfs.ext4 -F /dev/disk/by-id/google-local-nvme-ssd-0
-
-   sudo mkdir -p /mnt/disks/local-nvme-ssd
-
-   sudo mount /dev/disk/by-id/google-local-nvme-ssd-0 /mnt/disks/local-nvme-ssd
-
-   sudo chmod a+w /mnt/disks/local-nvme-ssd
-
-   echo UUID=sudo blkid -s UUID -o value /dev/disk/by-id/google-local-nvme-ssd-0 /mnt/disks/local-nvme-ssd ext4 discard,defaults,nofail 0 2 | sudo tee -a /etc/fstab
-
- EOT
-
- depends_on              = [google_compute_network.vpc_edp]
-
+   echo UUID=`sudo blkid -s UUID -o value /dev/disk/by-id/google-local-nvme-ssd-0` /mnt/disks/local-nvme-ssd ext4 discard,defaults,nofail 0 2 | sudo tee -a /etc/fstab
+ EOT
+ depends_on              = [google_compute_network.vpc_edp]
 }
 
 resource "google_compute_firewall" "rules" {
+ project = var.project_name
+ name    = "allow-ssh-${var.environment}"
+ network = "vpc-${var.project_name}-${var.environment}"
 
- project = var.project_name
-
- name    = "allow-ssh-${var.environment}"
-
- network = "vpc-${var.project_name}-${var.environment}"
-
- allow {
-
-   protocol = "tcp"
-
-   ports    = ["22", "6443"]
-
- }
-
- source_ranges = ["35.235.240.0/20"]
-
- depends_on    = [google_compute_network.vpc_edp]
-
+ allow {
+   protocol = "tcp"
+   ports    = ["22", "6443"]
+ }
+ source_ranges = ["35.235.240.0/20"]
+ depends_on    = [google_compute_network.vpc_edp]
 }
 
 resource "google_project_iam_member" "project" {
-
- project = var.project_name
-
- role    = "roles/iap.tunnelResourceAccessor"
-
- member  = var.service_account
-
+ project = var.project_name
+ role    = "roles/iap.tunnelResourceAccessor"
+ member  = var.service_account
 }
 
 resource "google_compute_router" "router" {
-
- project    = var.project_name
-
- name       = "nat-router-${var.environment}"
-
- network    = "vpc-${var.project_name}-${var.environment}"
-
- region     = var.region
-
- depends_on = [google_compute_network.vpc_edp]
-
+ project    = var.project_name
+ name       = "nat-router-${var.environment}"
+ network    = "vpc-${var.project_name}-${var.environment}"
+ region     = var.region
+ depends_on = [google_compute_network.vpc_edp]
 }
 
 resource "google_compute_router_nat" "nat" {
+ name                               = "router-nat-${var.project_name}-${var.environment}"
+ router                             = google_compute_router.router.name
+ region                             = var.region
+ nat_ip_allocate_option             = "AUTO_ONLY"
+ source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
 
- name                               = "router-nat-${var.project_name}-${var.environment}"
-
- router                             = google_compute_router.router.name
-
- region                             = var.region
-
- nat_ip_allocate_option             = "AUTO_ONLY"
-
- source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"
-
- log_config {
-
-   enable = true
-
-   filter = "ERRORS_ONLY"
-
- }
-
+ log_config {
+   enable = true
+   filter = "ERRORS_ONLY"
+ }
 }
 
 resource "google_storage_bucket" "private_bucket" {
+ name          = "${var.project_name}-${var.environment}"
+ location      = var.region
+ storage_class = "STANDARD"
 
- name          = "${var.project_name}-${var.environment}"
-
- location      = var.region
-
- storage_class = "STANDARD"
-
- uniform_bucket_level_access = true
-
+ uniform_bucket_level_access = true
 }
 
 resource "google_storage_bucket_iam_binding" "bucket_writer" {
+ bucket = google_storage_bucket.private_bucket.name
 
- bucket = google_storage_bucket.private_bucket.name
-
- role = "roles/storage.objectCreator"
-
- members = [
-
-   "${var.service_account}"
-
- ]
-
+ role = "roles/storage.objectCreator"
+ members = [
+   "${var.service_account}"
+ ]
 }
 
 resource "google_storage_bucket_iam_binding" "bucket_admin" {
+ bucket = google_storage_bucket.private_bucket.name
 
- bucket = google_storage_bucket.private_bucket.name
-
- role = "roles/storage.admin"
-
- members = [
-
-   "${var.service_account}"
-
- ]
-
+ role = "roles/storage.admin"
+ members = [
+   "${var.service_account}"
+ ]
 }
 ```
 
@@ -620,47 +478,33 @@ With the environment outlined, let’s provision the infrastructure by validatin
 
 Once the necessary files are prepared, validate and format the configuration:
 
-```bash
+```
 $ terraform validate
-
 Success! The configuration is valid.
-
 $ terraform fmt
-
 main.tf
-
 provider.tf
 ```
 
-Before applying changes, inspect them with the plan command:
+Before applying changes, inspect them with the `plan` command:
 
-```bash
+```
 terraform plan
-
-Check if it's all good
-
+# Check if it's all good
 terraform apply
-
-Enter a value: yes
+# Enter a value: yes
 ```
 
 After a few minutes, the environment will be ready. To list the created resources, run:
 
-```bash
+```
 $ terraform state list
-
 google_compute_firewall.rules
-
 google_compute_instance.vm_edp
-
 google_compute_network.vpc_edp
-
 google_compute_router.router
-
 google_compute_router_nat.nat
-
 google_compute_subnetwork.subnet_edp
-
 google_project_iam_member.project
 ```
 
