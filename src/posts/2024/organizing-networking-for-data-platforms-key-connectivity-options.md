@@ -55,7 +55,7 @@ The below diagram presents the reference architecture for the ELT process as a w
 
 To better understand how networking ties into a data platform, let's examine a second diagram, which shifts focus to the networking aspects of the data platform architecture.
 
-![data platform networking](https://lh7-rt.googleusercontent.com/docsz/AD_4nXd_ihr0g7Wd6HW8llLbPjIceEUNYZCaRXnfYho1XU1O3_C2XBy6qNjrU4dV-8Bt3DdpffwXOt2fIwdgs2H8266PbKQN-4tiYBlXhmE6nfOq37o5yhQVs08YDTO7lYQqQTkkUddA?key=ayESoQytAoVyFyBIrtLBvJIi)
+![data platform networking](/src/assets/images/blog/data_platform_networking.png)
 
 The diagram illustrates various components of a data platform, each requiring network configuration to ensure smooth and secure data movement. At the core of our setup is **workflow orchestration**, which manages the data integration process. Tools like **Prefect**, **Airflow,** or **Azure Data Factory** can handle this, running data flows across various stages.
 
@@ -75,7 +75,6 @@ Once extracted, data needs to be loaded into a central repository—typically a 
 - **External Resource**: Requires additional networking considerations, but the same principles apply—ensuring secure, reliable connectivity.
 
 #### **3. Transform**
-
 
 The **Transform phase** follows a similar working pattern, as the workflow orchestration tool needs access to the Data Warehouse. The same resources need to communicate with each other, regardless of whether it's the Load or Transform phase.
 
@@ -116,7 +115,7 @@ We'll explore each in detail, followed by a brief discussion of additional netwo
 
 Public Access is the **least secure** networking option, as it does not restrict access at the network level. Resources residing in a private network are configured to access the internet, while the target resource has no network security applied. This doesn't necessarily mean the resource is available to anyone, as Application Layer security may still be in place. However, from a networking perspective, access is unrestricted.
 
-This configuration exposes resources to potential attacks, as malicious actors can easily reach them and attempt to bypass application security. Whenever possible, such unrestricted access should be avoided.![public access network](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfqcKKZ82IvEfjnL6XnvzdZcHUCocxcKgXpCPEWy94iAheh-NQodkonjpA4ZJIChOeITpkQgOFbHMczq_yoSIKTk0o_wVOSu-7YPYf-5RBKpuPfvdWWUeuTWw2zcBiCETpV2WVjsg?key=ayESoQytAoVyFyBIrtLBvJIi)
+This configuration exposes resources to potential attacks, as malicious actors can easily reach them and attempt to bypass application security. Whenever possible, such unrestricted access should be avoided.![public access network](/src/assets/images/blog/public_access.png)
 
 That said, Public Access remains the best option for **specific, low-risk data sources**, such as:
 
@@ -137,7 +136,7 @@ When a system is publicly available, in addition to securing access through Appl
 - Network protocols (e.g., TCP, UDP, ICMP)
 - Time ranges for when the ACL is active
 
-![Public Access with Access Control List network](https://lh7-rt.googleusercontent.com/docsz/AD_4nXebSzpQ2eK1mrErE_ZsbTYB9KPRQF30bvWu3SZP3X15-UBYxtff_7Oz3ph0YN6QpHzqzc7L-AS4BoHeR-RZPi94fXAxHjMBpodkYr4lxRwjJzgiS-9UEpJ9q4I4uzrWEu1AonVa?key=ayESoQytAoVyFyBIrtLBvJIi)
+![Public Access with Access Control List network](/src/assets/images/blog/public_access_with_acl.png)
 
 For ACLs to be effective, the system must have **a fixed IP address**. If this cannot be guaranteed, **more secure alternatives like Site-to-Site VPN** should be considered.
 
@@ -161,7 +160,7 @@ Connecting two networks within the same project is a streamlined process. It req
 
 As with other networking options, additional firewall rules or ACLs can be implemented to restrict access directionality or limit connectivity to specific services.
 
-![VPC Peering within a single project](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfTjPGLcH7lQXgFi_dbI4NeNMuZrp003NwE4a_wGc_AWG3orei1VA8aXDxvjHOAQ3jI0c7_ZBS2SwoYMxwCDmHN9xXQzSUd2wko65JJ6gtdhW8BND9k0NzGY2QWBEC2YL2e5kCx?key=ayESoQytAoVyFyBIrtLBvJIi)
+![VPC Peering within a single project](/src/assets/images/blog/vpc_peering_single.png)
 
 #### VPC Peering across separate projects
 
@@ -173,13 +172,13 @@ When peering VPCs between different projects, additional security and administra
 
 Despite these additional requirements, VPC Peering remains the most secure and efficient method for connecting resources within the same cloud provider, offering greater control and reduced exposure compared to internet-based connections. 
 
-![VPC Peering across separate projects](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeBQHwcsCudYq7UnhoxPYIQKKc-kyYGoVHW4_YeuQ-SFtFzvmB_yrIYJeMt45Lc2tCpD5sdwfL5MCAyIv2QlAbxL3cP5qAbeaX5t9uQsWfW21NRILymfoaqJlWopyHsQ_Qs-ac56w?key=ayESoQytAoVyFyBIrtLBvJIi)
+![VPC Peering across separate projects](/src/assets/images/blog/vpc_peering_seperate.png)
 
 ### Site-to-site (S2S) VPN
 
 Site-to-Site VPN is a secure networking solution that connects two or more separate networks, typically in different physical locations, enabling them to communicate as if they were directly connected. This technology creates an encrypted tunnel over the public internet, allowing organizations to securely link their geographically dispersed offices, data centers, or cloud resources.
 
-![site to site vpn](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfhHHhcm0KkrMtBeOuEG_dh3c5qvMtIuYMjyDDAq99vC22E0YJ9xIZI8aMR3HAcCUwxcYxHV3mUzJQSQtBa9ZKx82j3dAbtKNp5uaOH4ajYUzupFFiTyakfWAqkijcJLqFgJrHP-g?key=ayESoQytAoVyFyBIrtLBvJIi)
+![site to site vpn](/src/assets/images/blog/site_to_site_vpn.png)
 
 Key aspects of Site-to-Site VPN:
 
@@ -196,11 +195,9 @@ There are more advanced options available for securing network traffic and isola
 
 #### MPLS (Multiprotocol Label Switching)
 
-
 MPLS is a packet forwarding technology that operates between Layer 2 and Layer 3 of the OSI model. It typically utilizes a dedicated network infrastructure, ensuring no public connection is involved. Implementing MPLS requires finding a vendor capable of leasing physical cables for exclusive use. While more expensive and complex to implement than previously mentioned options, MPLS offers enhanced security and guaranteed connection speeds.
 
 #### Dedicated Link
-
 
 Cloud providers offer solutions like Google Cloud's Dedicated Interconnect or AWS Direct Connect, which are faster to implement than MPLS, as the cloud provider handles much of the infrastructure. These options are ideal for establishing physical, private connections between on-premises networks and cloud provider networks. However, they may be excessive for connecting to a single data source on a data platform.
 
