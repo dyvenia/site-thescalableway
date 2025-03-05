@@ -59,7 +59,7 @@ To better understand how networking ties into a data platform, let's examine a s
 
 The diagram illustrates various components of a data platform, each requiring network configuration to ensure smooth and secure data movement. At the core of our setup is **workflow orchestration**, which manages the data integration process. Tools like **Prefect**, **Airflow,** or **Azure Data Factory** can handle this, running data flows across various stages.
 
-#### **1. Extract**
+#### **Extract**
 
 The initial phase of the **ELT (Extract, Load, Transform)** process is data extraction. Every data platform needs to gather data from external systems, represented as “data sources" in the diagram. To access resources from a private environment, we need to use a gateway that allows us to reach external resources. This could be:
 
@@ -67,18 +67,18 @@ The initial phase of the **ELT (Extract, Load, Transform)** process is data extr
 - **NAT Gateway** - Allow resources in private subnets to connect to services outside the private network.
 - **VPN Gateway** - Establishes a secure tunnel with private resources within a different network of our organization or a partner.
 
-#### **2. Load**
+#### **Load**
 
 Once extracted, data needs to be loaded into a central repository—typically a **Data Warehouse**. This can be hosted within the same network as the workflow orchestration tool or exist as an external resource. 
 
 - **Same Network:** Configuration is simpler as the same team is likely responsible for setting up both components along with networking.
 - **External Resource**: Requires additional networking considerations, but the same principles apply—ensuring secure, reliable connectivity.
 
-#### **3. Transform**
+#### **Transform**
 
 The **Transform phase** follows a similar working pattern, as the workflow orchestration tool needs access to the Data Warehouse. The same resources need to communicate with each other, regardless of whether it's the Load or Transform phase.
 
-#### **4. Data Consumption**
+#### **Data Consumption**
 
 The final stage is **data consumption**, where users and tools query the Data Warehouse. Given that sensitive information such as Client Identifying Data (CID) may be stored, secure connections are essential. BI tools, accessible by data platform consumers, need controlled access to the Data Warehouse. Such tools are often managed by a different team from those responsible for data gathering, loading, and transformation.
 
