@@ -209,9 +209,8 @@ Select `Add Key > Create new key > JSON` to download the JSON key file. Keep thi
 After downloading the JSON key, activate the service account locally with the following command:
 
 ```bash
-
-gcloud auth activate-service-account {service_account_name}@{project}.iam.gserviceaccount.com --key-file={json_file}.json
-
+gcloud auth activate-service-account {service_account_name}@{project}.iam.gserviceaccount.com
+--key-file={json_file}.json
 ```
 
 This step enables the service account for use in the local environment, ensuring access to necessary GCP resources with IAP tunnel functionality.
@@ -255,7 +254,6 @@ Once we have our service account JSON prepared, export of credentials is necessa
 Then, with the usage of gcloud CLI, a new bucket with the applied policy should be created:
 
 ```bash
-
 gcloud storage buckets create gs://test-project-tfstate --location=us-central1 --uniform-bucket-level-access
 
 gcloud storage buckets add-iam-policy-binding gs://test-project-tfstate \
@@ -263,7 +261,6 @@ gcloud storage buckets add-iam-policy-binding gs://test-project-tfstate \
 --member="serviceAccount:test-service-account@test-project.iam.gserviceaccount.com" \
 
   --role="roles/storage.objectAdmin"
-
 ```
 
 Once completed, it should be available in the GCP Console. To check it, go to `Navigation Menu > Cloud Storage > Buckets`:
@@ -275,7 +272,6 @@ Once completed, it should be available in the GCP Console. To check it, go to `N
 To set up the environment, Terraform will handle provisioning all the required GCP resources. By the end of this process, your directory structure will look like this: 
 
 ```bash
-
 $ tree
 
 |-- backend.tf
@@ -287,13 +283,11 @@ $ tree
 |-- test-project-32206692d146.json
 
 |-- variable.tf
-
 ```
 
 For managing both DEV and PROD environments, you can duplicate the files as shown:
 
 ```bash
-
 $ tree
 
 ├── dev
@@ -319,7 +313,6 @@ $ tree
     ├── provider.tf
 
     └── variable.tf
-
 ```
 
 #### Terraform Files
@@ -329,7 +322,6 @@ The main difference between environments lies in the `backend.tf` and `variables
 The content of `provider.tf` should look like this:
 
 ```bash
-
 provider "google" {
 
   region      = var.region
@@ -341,13 +333,11 @@ provider "google" {
   zone        = var.zone
 
 }
-
 ```
 
 `backend.tf` should point to a bucket with a shared `tfstate` file created in [step 9 ](#Step 9: Exporting Credentials and Setting up New Bucket)of the first phase. It needs to be manually configured because it is the first block loaded when running terraform init, and variables from variables.tf cannot be referenced here:
 
 ```bash
-
 terraform {
 
   backend "gcs" {
@@ -359,13 +349,11 @@ terraform {
   }
 
 }
-
 ```
 
 All variables used in `provider.tf` and `main.tf` are defined in `variable.tf`, as shown below:
 
 ```bash
-
 variable "credentials_file" {
 
   default = "test-project-32206692d146.json"
@@ -425,13 +413,11 @@ variable "zone" {
   default = "us-central1-c"
 
 }
-
 ```
 
 `main.tf` defines and initializes all infrastructure components outlined in the [Infrastructure overview section](#Infrastructure overview):
 
 ```bash
-
 resource "google_compute_network" "vpc_edp" {
 
  name                    = "vpc-${var.project_name}-${var.environment}"
@@ -625,7 +611,6 @@ resource "google_storage_bucket_iam_binding" "bucket_admin" {
  ]
 
 }
-
 ```
 
 With the environment outlined, let’s provision the infrastructure by validating, formatting, and applying the configuration.
@@ -635,7 +620,6 @@ With the environment outlined, let’s provision the infrastructure by validatin
 Once the necessary files are prepared, validate and format the configuration:
 
 ```bash
-
 $ terraform validate
 
 Success! The configuration is valid.
@@ -645,13 +629,11 @@ $ terraform fmt
 main.tf
 
 provider.tf
-
 ```
 
 Before applying changes, inspect them with the plan command:
 
 ```bash
-
 terraform plan
 
 Check if it's all good
@@ -659,13 +641,11 @@ Check if it's all good
 terraform apply
 
 Enter a value: yes
-
 ```
 
 After a few minutes, the environment will be ready. To list the created resources, run:
 
 ```bash
-
 $ terraform state list
 
 google_compute_firewall.rules
@@ -681,7 +661,6 @@ google_compute_router_nat.nat
 google_compute_subnetwork.subnet_edp
 
 google_project_iam_member.project
-
 ```
 
 ### Step 2: Setup Verification
@@ -742,21 +721,17 @@ You can access a Virtual Vachine securely using only a service account token and
 - Log in to your Google Cloud account using the following command:
 
 ```bash
-
 gcloud auth activate-service-account test-service-account@test-project.iam.gserviceaccount.com --key-file
 
  ~/.config/gcloud.json
 
 gcloud config set project test-project
-
 ```
 
 Once authenticated, execute the following command to initiate the SSH connection:
 
 ```bash
-
 gcloud compute ssh ${project_name}-${environment}-01
-
 ```
 
 On the first execution, the gcloud CLI will prompt you to generate a private and public SSH key pair. Follow the instructions to create the key pair.
