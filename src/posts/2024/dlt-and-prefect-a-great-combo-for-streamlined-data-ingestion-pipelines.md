@@ -252,7 +252,7 @@ The ID settings will make our data easier to work with for downstream users, as 
 
 #### Pipeline design
 
-We start by creating a dlt pipeline, following the best practices detailed in the [Creating data connectors and pipelines with dlt](##Creating-data-connectors-and-pipelines-with-dlt) section above.
+We start by creating a dlt pipeline, following the best practices detailed in the [Creating data connectors and pipelines with dlt](#creating-data-connectors-and-pipelines-with-dlt) section above.
 
 For testability and modularity, we recommend splitting the pipeline into a resource (source data) and pipeline (journey and destination) parts. This way, you can easily test each part separately.
 
