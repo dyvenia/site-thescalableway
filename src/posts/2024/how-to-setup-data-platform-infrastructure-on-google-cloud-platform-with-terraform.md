@@ -336,7 +336,7 @@ provider "google" {
 }
 ```
 
-`backend.tf` should point to a bucket with a shared `tfstate` file created in [Step 9](#Step 9: Exporting Credentials and Setting up New Bucket) of the first phase. It needs to be manually configured because it is the first block loaded when running terraform init, and variables from variables.tf cannot be referenced here:
+`backend.tf` should point to a bucket with a shared `tfstate` file created in [Step 9](#Step%20 9:%20 Exporting%20Credentials%20and%20Setting%20up%20New%20Bucket) of the first phase. It needs to be manually configured because it is the first block loaded when running terraform init, and variables from variables.tf cannot be referenced here:
 
 ```bash
 terraform {
@@ -416,7 +416,7 @@ variable "zone" {
 }
 ```
 
-`main.tf` defines and initializes all infrastructure components outlined in the [Infrastructure overview section](#Infrastructure overview).
+`main.tf` defines and initializes all infrastructure components outlined in the [Infrastructure overview section](#Infrastructure%20 overview).
 
 ```bash
 resource "google_compute_network" "vpc_edp" {
