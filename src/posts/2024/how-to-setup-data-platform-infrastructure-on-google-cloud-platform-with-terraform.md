@@ -303,7 +303,7 @@ The main difference between environments lies in the `backend.tf` and `variables
 
 The content of `provider.tf` should look like this:
 
-```bash
+```terraform
 provider "google" {
   region      = var.region
   project     = var.project_name
@@ -314,7 +314,7 @@ provider "google" {
 
 `backend.tf` should point to a bucket with a shared tfstate file created in step 9 of the first phase. It needs to be manually configured because it is the first block loaded when running `terraform init`, and variables from `variables.tf` cannot be referenced here:
 
-```bash
+```terraform
 terraform {
   backend "gcs" {
     bucket  = "test-project-tfstate"
@@ -325,7 +325,7 @@ terraform {
 
 All variables used in `provider.tf` and `main.tf` are defined in `variable.tf`, as shown below:
 
-```bash
+```terraform
 variable "credentials_file" {
   default = "test-project-32206692d146.json"
 }
@@ -371,7 +371,7 @@ variable "zone" {
 
 `main.tf` defines and initializes all infrastructure components outlined in the [Infrastructure overview section](#infrastructure-overview).
 
-```bash
+```terraform
 resource "google_compute_network" "vpc_edp" {
  name                    = "vpc-${var.project_name}-${var.environment}"
  auto_create_subnetworks = "false"
