@@ -122,9 +122,12 @@ Let's take a detailed look at these prerequisites:
 
 Terraform can be installed in various ways, which are outlined [by Hashicorp here](https://developer.hashicorp.com/terraform/install). For Ubuntu, installation can be done with the following commands:
 
-```
-wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+```bash
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o
+/usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg]
+https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee
+/etc/apt/sources.list.d/hashicorp.list
 sudo apt update && sudo apt install terraform
 ```
 
@@ -132,17 +135,20 @@ sudo apt update && sudo apt install terraform
 
 Similarly to Terraform, the gcloud CLI can be installed as per the [official instructions](https://cloud.google.com/sdk/docs/install). For Ubuntu, run:
 
-```
+```bash 
 sudo apt-get update
 sudo apt-get install apt-transport-https ca-certificates gnupg curl
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor -o /usr/share/keyrings/cloud.google.gpg
-echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor
+-o /usr/share/keyrings/cloud.google.gpg
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg]
+https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a
+/etc/apt/sources.list.d/google-cloud-sdk.list
 sudo apt-get update && sudo apt-get install google-cloud-cli
 ```
 
 After installation, initialize the gcloud CLI by providing the “gcloud init” command and setting up a new account by opening the provided URL.
 
-```
+```bash
 gcloud init
 
 
@@ -165,7 +171,8 @@ Go to the following link in your browser, and complete the sign-in prompts:
 
     https://accounts.google.com/o/oauth2/auth<URL_TO_OPEN_IN_BROWSER>
 
-Once finished, enter the verification code provided in your browser: <PROVIDE_VERIFICATION_CODE>
+Once finished, enter the verification code provided in your browser:
+<PROVIDE_VERIFICATION_CODE>
 ```
 
 Subsequently, configure the desired Cloud project, default Compute Region, and Zone for your environment.
@@ -198,7 +205,11 @@ Select `Add Key > Create new key > JSON` to download the JSON key file. Keep thi
 
 After downloading the JSON key, activate the service account locally with the following command:
 
-`gcloud auth activate-service-account {service_account_name}@{project}.iam.gserviceaccount.com --key-file={json_file}.json`
+```bash
+gcloud auth activate-service-account
+{service_account_name}@{project}.iam.gserviceaccount.com
+--key-file={json_file}.json
+```
 
 This step enables the service account for use in the local environment, ensuring access to necessary GCP resources with IAP tunnel functionality.
 
@@ -240,8 +251,9 @@ Once we have our service account JSON prepared, export of credentials is necessa
 
 Then, with the usage of gcloud CLI, a new bucket with the applied policy should be created:
 
-```
-gcloud storage buckets create gs://test-project-tfstate --location=us-central1 --uniform-bucket-level-access
+```bash
+gcloud storage buckets create gs://test-project-tfstate --location=us-central1 
+--uniform-bucket-level-access
 
 gcloud storage buckets add-iam-policy-binding gs://test-project-tfstate \
 --member="serviceAccount:test-service-account@test-project.iam.gserviceaccount.com" \
@@ -256,7 +268,7 @@ Once completed, it should be available in the GCP Console. To check it, go to `N
 
 To set up the environment, Terraform will handle provisioning all the required GCP resources. By the end of this process, your directory structure will look like this: 
 
-```
+```bash
 $ tree
 
 |-- backend.tf
@@ -268,7 +280,7 @@ $ tree
 
 For managing both DEV and PROD environments, you can duplicate the files as shown:
 
-```
+```bash
 $ tree
 ├── dev
     ├── backend.tf
@@ -290,7 +302,7 @@ The main difference between environments lies in the `backend.tf` and `variables
 
 The content of `provider.tf` should look like this:
 
-```
+```bash
 provider "google" {
   region      = var.region
   project     = var.project_name
@@ -301,7 +313,7 @@ provider "google" {
 
 `backend.tf` should point to a bucket with a shared tfstate file created in step 9 of the first phase. It needs to be manually configured because it is the first block loaded when running `terraform init`, and variables from `variables.tf` cannot be referenced here:
 
-```
+```bash
 terraform {
   backend "gcs" {
     bucket  = "test-project-tfstate"
@@ -312,7 +324,7 @@ terraform {
 
 All variables used in `provider.tf` and `main.tf` are defined in `variable.tf`, as shown below:
 
-```
+```bash
 variable "credentials_file" {
   default = "test-project-32206692d146.json"
 }
@@ -326,7 +338,8 @@ variable "filesystem" {
 }
 
 variable "image" {
-  default = "projects/ubuntu-os-cloud/global/images/ubuntu-2404-noble-amd64-v20241115"
+  default = 
+"projects/ubuntu-os-cloud/global/images/ubuntu-2404-noble-amd64-v20241115"
 }
 
 variable "ip_cidr_range" {
@@ -346,7 +359,8 @@ variable "region" {
 }
 
 variable "service_account" {
-  default = "serviceAccount:test-service-account@test-project.iam.gserviceaccount.com"
+  default = 
+"serviceAccount:test-service-account@test-project.iam.gserviceaccount.com"
 }
 
 variable "zone" {
@@ -356,7 +370,7 @@ variable "zone" {
 
 `main.tf` defines and initializes all infrastructure components outlined in the [Infrastructure overview section](#infrastructure-overview).
 
-```
+```bash
 resource "google_compute_network" "vpc_edp" {
  name                    = "vpc-${var.project_name}-${var.environment}"
  auto_create_subnetworks = "false"
@@ -478,7 +492,7 @@ With the environment outlined, let’s provision the infrastructure by validatin
 
 Once the necessary files are prepared, validate and format the configuration:
 
-```
+```bash
 $ terraform validate
 Success! The configuration is valid.
 $ terraform fmt
@@ -488,7 +502,7 @@ provider.tf
 
 Before applying changes, inspect them with the `plan` command:
 
-```
+```bash
 terraform plan
 # Check if it's all good
 terraform apply
@@ -497,7 +511,7 @@ terraform apply
 
 After a few minutes, the environment will be ready. To list the created resources, run:
 
-```
+```bash
 $ terraform state list
 google_compute_firewall.rules
 google_compute_instance.vm_edp
