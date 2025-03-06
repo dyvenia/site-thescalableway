@@ -582,11 +582,8 @@ You can access a Virtual Vachine securely using only a service account token and
 
 ```bash
 gcloud auth activate-service-account 
-
 test-service-account@test-project.iam.gserviceaccount.com --key-file
-
  ~/.config/gcloud.json
-
 gcloud config set project test-project
 ```
 
