@@ -66,10 +66,10 @@ As this article will use a substantial amount of code, you can find all the rele
 
 Choosing a server-based approach with a single VM comes with several advantages:
 
-1. Cost-effectiveness: A single VM setup is often a more budget-friendly option for initial deployments or smaller-scale projects.
-2. Simplified management: Fewer components mean easier maintenance and troubleshooting.
-3. Flexibility: This approach offers the ability to easily expand or modify your infrastructure as requirements change.
-4. Learning curve: For teams new to cloud infrastructure, starting with a single VM can be less overwhelming and serve as a stepping stone to more complex architectures.
+1. **Cost-effectiveness:** A single VM setup is often a more budget-friendly option for initial deployments or smaller-scale projects.
+2. **Simplified management:** Fewer components mean easier maintenance and troubleshooting.
+3. **Flexibility:** This approach offers the ability to easily expand or modify your infrastructure as requirements change.
+4. **Learning curve:** For teams new to cloud infrastructure, starting with a single VM can be less overwhelming and serve as a stepping stone to more complex architectures.
 
 This guide will walk you through the process of setting up key components of our data platform infrastructure on GCP. You’ll learn how to configure the VPC and subnets, set up Compute Engine instances, configure firewall rules, secure SSH access with Identity-Aware Proxy (IAP), establish internet connectivity with Cloud Router and NAT, and store the state files in Cloud Storage. We'll also dive into the specifics of GCP's Identity-Aware Proxy, exploring its crucial role in enhancing the security of our data platform.
 
@@ -99,7 +99,7 @@ To ensure a secure environment, all public access should be completely blocked. 
 - **VPN Connection**: In this setup, at least one resource within the VPC must be exposed to the internet to host a VPN endpoint. Alternatively, a separate VPC can be configured solely for VPN purposes, with VPC Network Peering into the main environment. This way, only the VPN-hosting VPC is exposed to the internet, while the main environment remains accessible only internally. Although effective, this configuration is more complex and falls outside the scope of this documentation.
 - **Google Cloud Identity-Aware Proxy (IAP)**: This option offers a similar secure access model to a VPN but with simplified management through Google Cloud. As outlined in the [official documentation](https://cloud.google.com/iap/docs/concepts-overview#how_iap_works):
 
-_“When an application or resource is protected by IAP, it can only be accessed through the proxy by principals, also known as users, who have the correct Identity and Access Management (IAM) role. When you grant a user access to an application or resource by IAP, they're subject to the fine-grained access controls implemented by the product in use without requiring a VPN. When a user tries to access an IAP-secured resource, IAP performs authentication and authorization checks.”_
+> _“When an application or resource is protected by IAP, it can only be accessed through the proxy by principals, also known as users, who have the correct Identity and Access Management (IAM) role. When you grant a user access to an application or resource by IAP, they're subject to the fine-grained access controls implemented by the product in use without requiring a VPN. When a user tries to access an IAP-secured resource, IAP performs authentication and authorization checks.”_
 
 This [diagram from Google](https://cloud.google.com/iap/images/iap-load-balancer.png) further illustrates the components required to implement this configuration:
 
