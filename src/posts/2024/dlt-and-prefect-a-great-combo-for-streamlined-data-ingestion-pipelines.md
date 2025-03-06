@@ -46,7 +46,7 @@ internal_notes: |-
 ---
 **Doing data ingestion right is hard…**
 
-Despite advances in data engineering, data ingestion—the Extract and Load (EL) steps of the [ELT](https://dyvenia.com/resources/data-glossary/) process—remains a persistent challenge for many data teams.
+Despite advances in data engineering, data ingestion—the Extract and Load (EL) steps of the [ELT](https://dyvenia.com/resources/data-glossary/#E-glossary) process—remains a persistent challenge for many data teams.
 
 This complexity is often due to the real-world limitations of open-source tools, leading teams to opt for UI-based solutions. While these tools are great for getting started quickly, they often lack the flexibility and scalability required for production-grade data platforms.
 In the era of AI, UI-based tools face one more limitation: they miss out on most of the benefits of the advanced code generation capacity of modern LLMs (Large Language Models)[[1]](#footnotes).
@@ -145,7 +145,7 @@ Luckily, dlt provides rich built-in logging and error-handling mechanisms. It’
 
 dlt supports various ways of storing credentials. For local use, secrets can be stored in a .`dlt/secrets.toml` file, while production environments may benefit from an external credential store, such as [Google Cloud Secret Manager](https://cloud.google.com/security/products/secret-manager?hl=en). To accomplish this, you can store the [secret retrieval utility function](https://dlthub.com/docs/walkthroughs/add_credentials#retrieving-credentials-from-google-cloud-secret-manager) in `utils.py` and reuse it within your pipelines.
 
-However, since we’re using Prefect for orchestration, it’s also possible to follow a different path and [use Prefect Secrets to store the credentials](https://thescalableway-admin.netlify.app/blog/dlt-and-prefect-a-great-combo-for-streamlined-data-ingestion-pipelines/#secret-management).
+However, since we’re using Prefect for orchestration, it’s also possible to follow a different path and [use Prefect Secrets to store the credentials](#secret-management).
 
 #### Privacy
 
@@ -210,7 +210,7 @@ With Prefect, you can set up [alerts](https://docs.prefect.io/v3/automate/events
 
 #### Reliability
 
-While we can (and, where possible, should) implement [retries](https://dlthub.com/docs/api_reference/pipeline/helpers#retry_load) and [timeouts](https://dlthub.com/docs/general-usage/http/requests#customizing-retry-settings) at the pipeline level, Prefect provides these features at the task and flow level. Think of this as a last-resort, catch-all mechanism that allows data engineers to ensure timeouts and retries are enforced regardless of how well the dlt pipeline or helper code is written, again lowering the bar for self-service data ingestion.
+While we can (and, where possible, should) implement retries and [timeouts](https://dlthub.com/docs/general-usage/http/requests#customizing-retry-settings) at the pipeline level, Prefect provides these features at the task and flow level. Think of this as a last-resort, catch-all mechanism that allows data engineers to ensure timeouts and retries are enforced regardless of how well the dlt pipeline or helper code is written, again lowering the bar for self-service data ingestion.
 
 #### Secret management
 
