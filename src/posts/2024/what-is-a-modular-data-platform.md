@@ -40,6 +40,7 @@ internal_notes: |-
 ---
 Modern data analytics can get complicated. With an abundance of tools, conflicting methodologies, and ever-evolving technologies, mistakes can be costly. However, at its core, data analytics remains grounded in a few fundamental principles. Understanding these fundamentals while leveraging modular and well-designed data platforms can significantly improve operational efficiency and decision-making.
 
+
 ## **History of Data Platforms: From OLAP Cubes to Hadoop to Lakehouses**
 
 The evolution of data platforms has been driven by two primary goals:
