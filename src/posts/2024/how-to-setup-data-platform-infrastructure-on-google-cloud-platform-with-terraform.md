@@ -56,7 +56,7 @@ internal_notes: |-
 
   **5. Conclusion**
 ---
-Setting up a solid, scalable data platform is crucial for organizations looking to get the most out of their data. Building upon our previous discussion on architectural considerations for [deploying Prefect on various cloud platforms](https://thescalableway.com/insights/deploying-prefect-on-any-cloud-using-a-single-virtual-machine/), this article will walk you through building your data platform infrastructure on Google Cloud Platform (GCP) using Terraform.
+Setting up a solid, scalable data platform is crucial for organizations looking to get the most out of their data. Building upon our previous discussion on architectural considerations for [deploying Prefect on various cloud platforms](https://thescalableway.com/blog/deploying-prefect-on-any-cloud-using-a-single-virtual-machine/), this article will walk you through building your data platform infrastructure on Google Cloud Platform (GCP) using Terraform.
 
 Our focus is on creating a server-based approach utilizing a single Virtual Machine (VM)—a simple yet powerful starting point for organizations that don’t need to dive into complex source systems or full-blown data warehouses just yet. This approach offers an easy entry point with plenty of room to grow as your data needs evolve.
 
