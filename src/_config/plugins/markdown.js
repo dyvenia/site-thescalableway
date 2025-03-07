@@ -123,7 +123,7 @@ markdownLib.render = (content, env = {}) => {
   const addToc = env.toc !== false;
 
   const tocBeforeContent = addToc
-    ? `{:toc}\n<span class="visually-hidden" id="toc-skipped"></span><div class="flow prose"> ${content}</div>`
+    ? `{:toc}\n<span class="visually-hidden" id="toc-skipped"></span><div class="flow prose">\n\n${content} </div>`
     : content;
 
   return originalRender(tocBeforeContent, env);
