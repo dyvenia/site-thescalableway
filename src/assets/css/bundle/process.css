@@ -154,7 +154,7 @@
   --button-color: var(--color-scale-contrast);
   --button-font-weight: var(--font-medium);
   position: relative;
-  padding-block: var(--space-s);
+  padding-block: var(--space-2xs);
   display: flex;
   align-items: center;
   justify-content: center;
