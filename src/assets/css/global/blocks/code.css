@@ -9,7 +9,6 @@ pre {
   font-family: var(--font-mono);
   font-size: var(--size-step-min-1);
   background-color: var(--color-dark);
-  background-color: color-mix(in oklab, var(--color-dark) 92%, var(--color-light));
   border-radius: var(--border-radius-medium);
   color: var(--color-light);
 }
