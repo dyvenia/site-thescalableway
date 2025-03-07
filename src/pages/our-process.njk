@@ -18,7 +18,7 @@ what_are:
   title: What Is a Modular Data Platform?
   content: A modular data platform organizes data processing into distinct, interconnected components designed for a specific function. Each tool is optimized for a specific function and integrated through clear interfaces. Such architecture enhances scalability, simplifies maintenance, and improves reliability. It also enables automation through CI/CD pipelines while isolating failures to specific modules.
   button_text: Learn More About Modular Data Platforms
-  button_target: https://thescalableway.com/insights/what-is-a-modular-data-platform/
+  button_target: /blog/what-is-a-modular-data-platform/
   image: /assets/images/Modular_Data_Platform_Transparent.png
   image_alt: Data platform architecture schema with tools and technologies
 steps:
@@ -124,7 +124,7 @@ layout: base
     <div class="wrapper flow">
       <h1>{{ hero.title }}</h1>
       {{ hero.subtitle | markdownFormat | safe }}
-      <a href="{{ hero.button_target }}" class="button flow-space-l">
+      <a href="{{ hero.button_target }}" class="button flow-space-l no-indicator">
         {{ hero.button_text }} {% svg "misc/arrow" %}</a
       >
     </div>
@@ -143,7 +143,7 @@ layout: base
     <div class="flow">
       <h2 class="text-step-2">{{ what_are.title }}</h2>
       {{ what_are.content | markdownFormat | safe }}
-      <a href="{{ what_are.button_target }}" class="button flow-space-l" data-ghost-button>
+      <a href="{{ what_are.button_target }}" class="button flow-space-l no-indicator" data-ghost-button>
         {{ what_are.button_text }} {% svg "misc/arrow" %}</a
       >
     </div>
@@ -244,7 +244,7 @@ layout: base
     <div class="flow">
       <h2>{{ faq.title }}</h2>
       <p>{{ faq.intro }}</p>
-      <a href="{{ faq.cta.target }}" class="button flow-space-l" data-button-variant="blue">
+      <a href="{{ faq.cta.target }}" class="button flow-space-l no-indicator" data-button-variant="blue">
         {{ faq.cta.label }} {% svg "misc/arrow" %}</a
       >
     </div>

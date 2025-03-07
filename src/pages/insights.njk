@@ -7,7 +7,7 @@ footerSpace: mt-2xl
 pagination:
   data: collections.allPosts
   size: 6
-permalink: 'insights/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html'
+permalink: 'blog/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html'
 intro: >
   Welcome to The Scalable Way Blog — your source for insights, strategies, and best practices in data platform engineering, analytics, and data science.
 ---

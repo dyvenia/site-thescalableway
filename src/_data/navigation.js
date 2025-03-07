@@ -9,8 +9,8 @@ export default {
       url: '/our-process/'
     },
     {
-      text: 'Insights',
-      url: '/insights/'
+      text: 'Blog',
+      url: '/blog/'
     }
   ],
   bottom: [
