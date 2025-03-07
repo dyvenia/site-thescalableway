@@ -161,7 +161,7 @@ Your current configuration has been set to: [default]
 You can skip diagnostics next time by using the following flag:
   gcloud init --skip-diagnostics
 
-Network diagnostic detects and fixes local network connection issues.
+Network diagnostic detects and fixes local network connection issues.   
 Checking network connection...done.                                                                                                                                                                                                                                                                 
 Reachability Check passed.
 Network diagnostic passed (1/1 checks passed).
