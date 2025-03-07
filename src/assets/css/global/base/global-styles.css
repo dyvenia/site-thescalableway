@@ -59,7 +59,7 @@ blockquote:not([class]) {
 blockquote {
   padding-block: var(--space-s);
   padding-inline: var(--space-xl) var(--space-m-l);
-  font-size: var(--size-step-0);
+  font-size: var(--size-step-min-1);
   background: var(--color-bg-accent);
   line-height: var(--leading-normal);
   border-radius: var(--border-radius-small);
