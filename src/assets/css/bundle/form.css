@@ -1,0 +1,42 @@
+form.sidebar {
+  --gutter: 0;
+  --sidebar-target-width: min(25rem, 25%);
+  --sidebar-content-min-width: 20%;
+}
+
+form.sidebar > * {
+  --flow-space: var(--space-3xs);
+}
+
+:is(input:not([type='checkbox'], [type='radio'], [type='color']), select, textarea) {
+  padding: var(--space-3xs) var(--space-xs);
+  border-radius: var(--border-radius-small);
+  border: 2px solid var(--color-mid);
+  border-inline-end: none;
+  background: var(--color-light);
+  color: var(--color-dark);
+  inline-size: 100%;
+  block-size: max-content;
+
+  &::placeholder {
+    color: var(--color-mid);
+    opacity: 1;
+  }
+}
+
+label {
+  line-height: var(--leading-fine);
+  font-weight: var(--font-medium);
+}
+
+label::after {
+  content: '\A';
+  white-space: pre;
+}
+
+form button {
+  padding: var(--space-2xs) var(--space-xs);
+  block-size: max-content;
+  place-self: end;
+  justify-content: center;
+}

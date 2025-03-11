@@ -1,0 +1,17 @@
+<form data-hubspot class="sidebar " data-direction="rtl">
+  <div class="flow">
+    <label> Subscribe: </label>
+    <input type="email" name="email" autocomplete="email" placeholder="Type your email..." required />
+  </div>
+  <button class="button" type="submit" data-button-variant="gold">Submit</button>
+</form>
+
+<div data-hubspot-message></div>
+
+{% css "inline" %}
+  {% include "css/form.css" %}
+{% endcss %}
+
+{% js "defer" %}
+  {% include "scripts/hubspot-submission.js" %}
+{% endjs %}
