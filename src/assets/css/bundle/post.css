@@ -24,17 +24,15 @@
 }
 
 .post .meta img {
-  inline-size: var(--space-l);
+  inline-size: var(--space-xl);
   block-size: auto;
 }
 
 .post .meta span {
-  font-size: var(--size-step-min-1);
   font-weight: var(--font-medium);
 }
 
 .post .meta time {
-  font-size: var(--size-step-min-1);
   color: var(--color-pink);
   text-transform: uppercase;
   font-weight: var(--font-medium);
