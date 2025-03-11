@@ -1,6 +1,6 @@
 ---
 name: Karolina Soppa
-image: /assets/images/dlt_choosing_write_disposition-1.png
+image: /src/assets/images/team/Karolina%20Soppa.png
 linkedin: ''
 show_on_about: false
 description_short: tgdjhkfsd
