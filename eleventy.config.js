@@ -33,6 +33,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addLayoutAlias('page', 'page.njk');
   eleventyConfig.addLayoutAlias('post', 'post.njk');
   eleventyConfig.addLayoutAlias('tags', 'tags.njk');
+  eleventyConfig.addLayoutAlias('single_author', 'single_author.njk');
 
   //	---------------------  Collections
   eleventyConfig.addCollection('allPosts', getAllPosts);
@@ -97,9 +98,8 @@ export default async function (eleventyConfig) {
 
   // --------------------- Passthrough File Copy
 
-
   eleventyConfig.addPassthroughCopy({'src/admin_dev': 'admin_dev'}); // don't process the CMS folder
-  eleventyConfig.addPassthroughCopy({ 'src/admin_content': 'admin_content' }); // don't process the CMS folder
+  eleventyConfig.addPassthroughCopy({'src/admin_content': 'admin_content'}); // don't process the CMS folder
 
   // Disable 11ty dev server live reload when using CMS locally
   eleventyConfig.setServerOptions({
