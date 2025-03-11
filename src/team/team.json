@@ -1,0 +1,6 @@
+{
+  "layout": "author",
+  "tags": "team_members",
+  "permalink": "/author/{{ page.fileSlug }}/index.html",
+  "toc": false
+}

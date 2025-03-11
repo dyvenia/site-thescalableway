@@ -154,13 +154,15 @@ title: The Scalable Way
       <div class="flow">{{ about.content | markdownFormat | safe }}</div>
     </header>
     <div class="grid region" data-layout="thirds">
-      {% for member in team.admin %}
+      {% for member in collections.team_members %}
+      {% if member.data.show_on_about %}
         <div class="about__content flow">
-          {% image "." + member.image, "" %}
+          {% image "." + member.data.image, "" %}
 
-          <h3>{{ member.name }}</h3>
-          {{ member.description_short | markdownFormat | safe }}
+          <h3>{{ member.data.name }}</h3>
+          {{ member.data.description_short | markdownFormat | safe }}
         </div>
+      {% endif %}
       {% endfor %}
     </div>
   </article>
