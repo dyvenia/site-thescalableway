@@ -6,13 +6,6 @@
   object-position: center;
 }
 
-time {
-  font-size: var(--size-step-min-1);
-  color: var(--color-pink);
-  text-transform: uppercase;
-  font-weight: var(--font-medium);
-}
-
 .post .credit {
   font-size: var(--size-step-min-1);
   color: var(--color-text-accent);
@@ -23,9 +16,28 @@ time {
   max-inline-size: fit-content;
 }
 
+/* meta */
+
 .post .meta {
   font-size: var(--size-step-min-1);
   max-inline-size: 100%;
+}
+
+.post .meta img {
+  inline-size: var(--space-l);
+  block-size: auto;
+}
+
+.post .meta span {
+  font-size: var(--size-step-min-1);
+  font-weight: var(--font-medium);
+}
+
+.post .meta time {
+  font-size: var(--size-step-min-1);
+  color: var(--color-pink);
+  text-transform: uppercase;
+  font-weight: var(--font-medium);
 }
 
 .post img {
@@ -45,7 +57,8 @@ time {
 }
 
 .post .toc-container {
-  --flow-space: var(--space-xl);
+  --flow-space: 0;
+  block-size: 0;
 }
 
 .post .toc-container h2 {
@@ -54,10 +67,8 @@ time {
 }
 
 .post .table-of-contents {
-  padding: var(--space-2xs) var(--space-s);
-  background: var(--color-bg-accent);
-  background: color-mix(in oklab, var(--color-bg) 97%, var(--color-text));
   border-radius: var(--border-radius-small);
+  border-block-end: 1px solid var(--color-bg-accent-2);
 }
 
 @media (min-width: 51rem) {
@@ -66,6 +77,7 @@ time {
     padding: 0;
     padding-inline-end: var(--space-s);
     border-inline-end: 1px solid var(--color-bg-accent-2);
+    border-block-end: none;
   }
 }
 
@@ -81,7 +93,6 @@ time {
 .post .table-of-contents > ol {
   position: sticky;
   top: var(--space-m);
-  block-size: 100svh;
   overflow-y: auto;
   padding-inline-end: var(--space-m);
   padding-block-end: var(--space-xs);
