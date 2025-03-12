@@ -1,5 +1,5 @@
 form .sidebar {
-  --flow-space: var(--space-xs);
+  --flow-space: var(--space-s);
   --gutter: 0;
   --sidebar-target-width: min(25rem, 25%);
   --sidebar-content-min-width: 20%;
@@ -17,9 +17,9 @@ form .sidebar > * {
 }
 
 :is(input:not([type='checkbox'], [type='radio'], [type='color']), select, textarea) {
-  padding: var(--space-3xs) var(--space-xs);
+  padding: calc(var(--space-3xs) + 0.05em) var(--space-xs);
   border-radius: var(--border-radius-small);
-  border: 2px solid var(--color-mid);
+  border: 1px solid var(--color-mid);
   border-inline-end: none;
   background: var(--color-bg);
   color: var(--color-text);
@@ -29,6 +29,7 @@ form .sidebar > * {
   &::placeholder {
     color: var(--color-mid);
     opacity: 1;
+    font-size: var(--size-step-min-1);
   }
 }
 
@@ -65,7 +66,7 @@ input[type='checkbox'] {
   color: currentColor;
   width: var(--space-s);
   height: var(--space-s);
-  border: 0.15em solid var(--color-mid);
+  border: 1px solid var(--color-mid);
   border-radius: var(--border-radius-small);
   transform: translateY(-0.075em);
 
@@ -109,6 +110,8 @@ button + .newsletter > * {
   --flow-space: var(--space-l);
 }
 
-.no-padding .newsletter {
+.full .newsletter {
+  background: var(--color-bg);
+  border-block-end: 1px solid var(--color-bg-accent-2);
   padding: 0;
 }

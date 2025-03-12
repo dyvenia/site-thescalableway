@@ -19,6 +19,12 @@ intro: >
     </div>
   </header>
 
+  <aside class="full | section" style="--spot-color: var(--color-bg); --flow-space: 0;">
+    <div class="section__inner flow wrapper pt-l-xl full">
+    {% include "partials/hubspot-form.njk" %}
+  </div>
+  </aside>
+
   <div class="region flow prose region-space-xl">
     {{ intro | markdownFormat | safe }}
   </div>
@@ -46,10 +52,6 @@ intro: >
     {% include 'partials/pagination.njk' %}
   {% endif %}
 
-  <aside class="full | section flow-space-2xl" style="--spot-color: var(--color-bg-accent)">
-    <div class="section__inner flow wrapper pt-m no-padding">
-    {% include "partials/hubspot-form.njk" %}
-  </div>
-  </aside>
+
 
 </div>
