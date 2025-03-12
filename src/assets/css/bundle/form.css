@@ -1,4 +1,5 @@
 form .sidebar {
+  --flow-space: var(--space-xs);
   --gutter: 0;
   --sidebar-target-width: min(25rem, 25%);
   --sidebar-content-min-width: 20%;
@@ -94,7 +95,18 @@ input[type='checkbox']:checked::before {
   --flow-space: var(--space-l);
   padding: var(--space-s);
   background: var(--color-bg-accent);
+  color: var(--color-text);
   border-radius: var(--border-radius-small);
+}
+
+/* in dialog */
+button + .newsletter {
+  --flow-space: var(--space-xs);
+  padding: var(--space-l) var(--space-s);
+}
+
+button + .newsletter > * {
+  --flow-space: var(--space-l);
 }
 
 .no-padding .newsletter {

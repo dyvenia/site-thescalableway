@@ -115,7 +115,8 @@ hr {
 }
 
 /* Links */
-a {
+a,
+button.underline {
   color: currentcolor;
   text-decoration-thickness: 0.08em;
 }
