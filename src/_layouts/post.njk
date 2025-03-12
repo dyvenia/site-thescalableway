@@ -47,6 +47,12 @@ schema: blog
     {% endif %}
 
     <div class="sidebar gutter-s relative">{{ content | safe }}</div>
+
+    <div class="sidebar gutter-lg relative mt-xl-2xl">
+      <div></div>
+      {% include "partials/hubspot-form.njk" %}
+    </div>
+
     {% include 'partials/edit-on.njk' %}
   </div>
 

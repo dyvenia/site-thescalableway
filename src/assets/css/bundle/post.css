@@ -24,7 +24,7 @@
 }
 
 .post .meta img {
-  inline-size: var(--space-xl);
+  inline-size: var(--space-l);
   block-size: auto;
 }
 

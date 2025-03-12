@@ -1,10 +1,10 @@
-form.sidebar {
+form .sidebar {
   --gutter: 0;
   --sidebar-target-width: min(25rem, 25%);
   --sidebar-content-min-width: 20%;
 }
 
-form.sidebar > * {
+form .sidebar > * {
   --flow-space: var(--space-3xs);
 }
 
@@ -13,8 +13,8 @@ form.sidebar > * {
   border-radius: var(--border-radius-small);
   border: 2px solid var(--color-mid);
   border-inline-end: none;
-  background: var(--color-light);
-  color: var(--color-dark);
+  background: var(--color-bg);
+  color: var(--color-text);
   inline-size: 100%;
   block-size: max-content;
 
@@ -24,14 +24,14 @@ form.sidebar > * {
   }
 }
 
-label {
-  line-height: var(--leading-fine);
-  font-weight: var(--font-medium);
+input[type='checkbox'] {
+  border: 2px solid var(--color-mid);
+  background: var(--color-light);
+  color: var(--color-dark);
 }
 
-label::after {
-  content: '\A';
-  white-space: pre;
+label {
+  line-height: var(--leading-fine);
 }
 
 form button {
@@ -39,4 +39,59 @@ form button {
   block-size: max-content;
   place-self: end;
   justify-content: center;
+}
+
+/* consent checkbox */
+
+.form-control {
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: var(--gutter);
+}
+
+.form-control + .form-control {
+  margin-top: 1em;
+}
+
+input[type='checkbox'] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--color-bg);
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: var(--space-s);
+  height: var(--space-s);
+  border: 0.15em solid var(--color-mid);
+  border-radius: var(--border-radius-small);
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+input[type='checkbox']::before {
+  content: '';
+  width: var(--space-2xs);
+  height: var(--space-2xs);
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--color-blue);
+  /* Windows High Contrast Mode */
+  background-color: CanvasText;
+}
+
+input[type='checkbox']:checked::before {
+  transform: scale(1);
+}
+
+.newsletter {
+  --flow-space: var(--space-l);
+  padding: var(--space-s);
+  background: var(--color-bg-accent);
+  border-radius: var(--border-radius-small);
 }
