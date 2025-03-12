@@ -38,6 +38,7 @@ intro: >
 	</custom-masonry>
 </section>
 
+
   <!-- set collection to paginate -->
   {% set collectionToPaginate = collections.posts %}
   <!-- set target pagination settings in meta.js -->
@@ -47,4 +48,11 @@ intro: >
     <!-- include pagination -->
     {% include 'partials/pagination.njk' %}
   {% endif %}
+
+  <aside class="full | section" style="--spot-color: var(--color-bg-accent)">
+    <div class="section__inner flow wrapper pt-m no-padding">
+    {% include "partials/hubspot-form.njk" %}
+  </div>
+  </aside>
+
 </article>

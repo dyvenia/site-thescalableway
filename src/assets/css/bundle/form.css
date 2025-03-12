@@ -2,6 +2,13 @@ form .sidebar {
   --gutter: 0;
   --sidebar-target-width: min(25rem, 25%);
   --sidebar-content-min-width: 20%;
+  max-inline-size: 40rem;
+}
+
+@media screen(sm) {
+  form .sidebar {
+    margin-inline-start: calc(var(--space-xs) * 2);
+  }
 }
 
 form .sidebar > * {
@@ -22,12 +29,6 @@ form .sidebar > * {
     color: var(--color-mid);
     opacity: 1;
   }
-}
-
-input[type='checkbox'] {
-  border: 2px solid var(--color-mid);
-  background: var(--color-light);
-  color: var(--color-dark);
 }
 
 label {
@@ -94,4 +95,8 @@ input[type='checkbox']:checked::before {
   padding: var(--space-s);
   background: var(--color-bg-accent);
   border-radius: var(--border-radius-small);
+}
+
+.no-padding .newsletter {
+  padding: 0;
 }
