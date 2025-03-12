@@ -276,3 +276,33 @@ collections:
               widget: 'string',
               hint: 'The link  of the book a call button'
             }
+          - {
+              label: 'Newsletter Title',
+              name: 'newsletter_title',
+              widget: 'string',
+              hint: 'The title of the newsletter subscription section'
+            }
+          - {
+              label: 'Newsletter Consent Message',
+              name: 'newsletter_consent_message',
+              widget: 'text',
+              hint: 'The message displayed next to the consent checkbox. Supports Markdown links.'
+            }
+          - {
+              label: 'Newsletter Success Message',
+              name: 'newsletter_success_message',
+              widget: 'string',
+              hint: 'Message shown when subscription is successful'
+            }
+          - {
+              label: 'Newsletter Error Message',
+              name: 'newsletter_error_message',
+              widget: 'string',
+              hint: 'Message shown when there is an error submitting the form'
+            }
+          - {
+              label: 'Newsletter Consent Required Message',
+              name: 'newsletter_consent_required',
+              widget: 'string',
+              hint: 'Message shown when the user tries to submit without giving consent'
+            }

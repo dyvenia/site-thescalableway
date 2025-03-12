@@ -1,9 +1,9 @@
 <aside class="newsletter | flow">
-  <h3>{{ meta.newsletter.title }}</h3>
+  <h3>{{ meta.newsletter_title }}</h3>
   <form data-hubspot class="flow">
     <label class="form-control gutter-xs text-step-min-1">
       <input type="checkbox" name="consent" required />
-      {{ meta.newsletter.consent_message | markdownFormat | safe }}
+      {{ meta.newsletter_consent_message | markdownFormat | safe }}
     </label>
 
     <div class="sidebar" data-direction="rtl">
@@ -17,9 +17,9 @@
   </form>
 
   <div data-hubspot-message>
-    <div data-hubspot-success class="hidden">{{ meta.newsletter.success_message }}</div>
-    <div data-hubspot-error class="hidden">{{ meta.newsletter.error_message }}</div>
-    <div data-hubspot-consent-error class="hidden">{{ meta.newsletter.consent_required }}</div>
+    <div data-hubspot-success class="hidden">{{ meta.newsletter_success_message }}</div>
+    <div data-hubspot-error class="hidden">{{ meta.newsletter_error_message }}</div>
+    <div data-hubspot-consent-error class="hidden">{{ meta.newsletter_consent_required }}</div>
   </div>
 </aside>
 
