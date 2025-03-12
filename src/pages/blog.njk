@@ -12,17 +12,14 @@ intro: >
   Welcome to The Scalable Way Blog — your source for insights, strategies, and best practices in data platform engineering, analytics, and data science.
 ---
 
-<article class="wrapper">
+<div class="wrapper flow">
   <header class="full | section">
-    <div class="section__inner flow region">
+    <div class="section__inner flow region region-space-xl">
       <h1 class="text-center text-base-light">{{ title }}</h1>
     </div>
   </header>
 
-  <div class="region flow prose">
-
-    <div id="search" class="search"></div>
-
+  <div class="region flow prose region-space-xl">
     {{ intro | markdownFormat | safe }}
   </div>
 
@@ -49,10 +46,10 @@ intro: >
     {% include 'partials/pagination.njk' %}
   {% endif %}
 
-  <aside class="full | section" style="--spot-color: var(--color-bg-accent)">
+  <aside class="full | section flow-space-2xl" style="--spot-color: var(--color-bg-accent)">
     <div class="section__inner flow wrapper pt-m no-padding">
     {% include "partials/hubspot-form.njk" %}
   </div>
   </aside>
 
-</article>
+</div>
