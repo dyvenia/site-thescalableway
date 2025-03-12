@@ -1,10 +1,13 @@
 <footer class="site-footer {{ footerSpace }}">
   <div class="wrapper">
     <div class="footer__meta | cluster">
-      <nav class="footer__meta | cluster text-step-0" aria-label="{{ meta.navigation.ariaBottom }}">
+      <nav
+        class="footer__meta | cluster gutter-4xs text-step-0"
+        aria-label="{{ meta.navigation.ariaBottom }}"
+      >
         &copy; {% year %}
         <a href="/" {% if page.url == "/" %}aria-current="page"{% endif %}
-          ><span class="font-display">{{ meta.siteName }}</span> <small>{{ pkg.version }}</small>
+          ><span class="font-display">{{ meta.siteName }}</span>
         </a>
 
         {% for item in navigation.bottom %}
