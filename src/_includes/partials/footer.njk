@@ -6,13 +6,6 @@
         aria-label="{{ meta.navigation.ariaBottom }}"
       >
         &copy; {% year %}
-        <is-land on:idle>
-          <dialog class="flow modal">
-            <button class="button" autofocus>Close</button>
-            {% include "partials/hubspot-form.njk" %}
-          </dialog>
-          <button class="underline" data-index="dialog-newsletter">Subscribe to Newsletter</button>
-        </is-land>
 
         {% for item in navigation.bottom %}
           <a
@@ -51,7 +44,3 @@
     {% include 'partials/theme-switch.njk' %}
   </div>
 </footer>
-
-{% js "defer" %}
-  {% include "scripts/dialog.js" %}
-{% endjs %}

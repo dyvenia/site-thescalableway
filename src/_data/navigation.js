@@ -15,6 +15,10 @@ export default {
   ],
   bottom: [
     {
+      text: 'Subscribe to Newsletter',
+      url: '/subscribe/'
+    },
+    {
       text: 'Imprint',
       url: '/imprint/'
     },
