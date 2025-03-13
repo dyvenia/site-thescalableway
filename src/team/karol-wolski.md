@@ -1,7 +1,7 @@
 ---
 name: Karol Wolski
 image: /src/assets/images/team/Karol.png
-linkedin: ""
+linkedin: https://www.linkedin.com/in/wolski-karol/
 show_on_about: true
 description_short: A dedicated data strategist focused on actionable insights and innovative data-driven solutions.
 description_long: |-
@@ -9,3 +9,4 @@ description_long: |-
 
   With a background in finance and tech, Karol bridges the gap between complex data sets and meaningful business decisions.
 ---
+
