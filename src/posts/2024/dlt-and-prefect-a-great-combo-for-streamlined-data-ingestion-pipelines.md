@@ -228,7 +228,7 @@ Now that we’ve outlined the essential features of a production-grade dlt pipel
 
 The diagram below illustrates the key steps in this production workflow.
 
-![](/src/assets/images/ingestion_pipeline_workflow_overview-1.png)
+![](/assets/images/ingestion_pipeline_workflow_overview.png)
 
 1. **Create a dlt pipeline:** We start by creating a dlt pipeline (if the one we need doesn’t exist yet). Once the pipeline is finished and tests pass, we can move on to the next step.
 2. **Create Prefect deployment**: We create a Prefect deployment for the pipeline. Notice we utilize Prefect’s `prefect.yaml` file together with a single `extract_and_load()` flow capable of executing any dlt pipeline to drastically simplify this process.
