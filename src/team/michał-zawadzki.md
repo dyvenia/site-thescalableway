@@ -1,6 +1,6 @@
 ---
 name: Michał Zawadzki
-image: /src/assets/images/team/Zawadzki-1.png
+image: /src/assets/images/team/Zawadzki.png
 linkedin: https://www.linkedin.com/in/trymzet/
 show_on_about: false
 description_short: Data Platform Architect
