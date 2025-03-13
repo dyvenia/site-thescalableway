@@ -1,7 +1,7 @@
 ---
 title: About
 permalink: /about/index.html
-description: 'Eleventy Excellent is inspired bythe companion website of Andy Bell’s talk "Be the browser’s mentor, not its micromanager".'
+description: 'At The Scalable Way, we believe that data-driven success comes from precise execution and scalable solutions.'
 layout: base
 bodyClass: about
 footerSpace: mt-2xl
@@ -19,14 +19,16 @@ intro: |
     <div class="flow">{{ intro | markdownFormat | safe }}</div>
   </header>
   <article class="feature flow flow-space-l">
-    {% for member in team.admin %}
-      <div class="about__content flow grid gutter-m" data-layout="50-50">
-        {% image "." + member.image, "" %}
-        <div class="flow prose">
-          <h3>{{ member.name }}</h3>
-          {{ member.description_long | markdownFormat | safe }}
+    {% for member in collections.team_members %}
+      {% if member.data.show_on_about %}
+        <div class="about__content flow grid gutter-m" data-layout="50-50">
+          {% image "." + member.data.image, "" %}
+          <div class="flow prose">
+            <h3>{{ member.data.name }}</h3>
+            {{ member.data.description_long | markdownFormat | safe }}
+          </div>
         </div>
-      </div>
+      {% endif %}
     {% endfor %}
   </article>
 </div>

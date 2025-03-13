@@ -9,11 +9,15 @@ export default {
       url: '/our-process/'
     },
     {
-      text: 'Insights',
-      url: '/insights/'
+      text: 'Blog',
+      url: '/blog/'
     }
   ],
   bottom: [
+    {
+      text: 'Subscribe to Newsletter',
+      url: '/subscribe/'
+    },
     {
       text: 'Imprint',
       url: '/imprint/'

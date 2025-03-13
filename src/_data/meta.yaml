@@ -1,2 +1,7 @@
 book_call: Book a Call
 book_call_link: https://meetings-eu1.hubspot.com/alessio-civitillo/the-scalable-way
+newsletter_title: Subscribe to our Newsletter
+newsletter_consent_message: I would like to receive the newsletter. I can revoke this consent at any time by using the unsubscribe link provided in all communications. For more information, please review our [Privacy Policy](/privacy).
+newsletter_success_message: ✅ Thank you for subscribing! Your email has been successfully submitted.
+newsletter_error_message: ❌ Something went wrong. Please try again later.
+newsletter_consent_required: You must agree to the Privacy Policy before subscribing.

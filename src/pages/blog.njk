@@ -7,22 +7,25 @@ footerSpace: mt-2xl
 pagination:
   data: collections.allPosts
   size: 6
-permalink: 'insights/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html'
+permalink: 'blog/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html'
 intro: >
   Welcome to The Scalable Way Blog — your source for insights, strategies, and best practices in data platform engineering, analytics, and data science.
 ---
 
-<article class="wrapper">
+<div class="wrapper flow">
   <header class="full | section">
-    <div class="section__inner flow region">
+    <div class="section__inner flow region region-space-xl">
       <h1 class="text-center text-base-light">{{ title }}</h1>
     </div>
   </header>
 
-  <div class="region flow prose">
+  <aside class="full | section" style="--spot-color: var(--color-bg); --flow-space: 0;">
+    <div class="section__inner flow wrapper pt-l-xl full">
+    {% include "partials/hubspot-form.njk" %}
+  </div>
+  </aside>
 
-    <div id="search" class="search"></div>
-
+  <div class="region flow prose region-space-xl">
     {{ intro | markdownFormat | safe }}
   </div>
 
@@ -38,6 +41,7 @@ intro: >
 	</custom-masonry>
 </section>
 
+
   <!-- set collection to paginate -->
   {% set collectionToPaginate = collections.posts %}
   <!-- set target pagination settings in meta.js -->
@@ -47,4 +51,7 @@ intro: >
     <!-- include pagination -->
     {% include 'partials/pagination.njk' %}
   {% endif %}
-</article>
+
+
+
+</div>

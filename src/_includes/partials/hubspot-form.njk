@@ -1,0 +1,32 @@
+<aside class="newsletter | flow">
+  <h3>{{ meta.newsletter_title }}</h3>
+  <form data-hubspot class="flow">
+    <label class="form-control gutter-xs text-step-min-1">
+      <input type="checkbox" name="consent" required />
+      {{ meta.newsletter_consent_message | markdownFormat | safe }}
+    </label>
+
+    <div class="sidebar" data-direction="rtl">
+      <div>
+        <label class="visually-hidden"> Subscribe to Newsletter</label>
+        <input type="email" name="email" autocomplete="email" placeholder="Type your email..." required />
+      </div>
+
+      <button class="button" type="submit" data-button-variant="blue">Submit</button>
+    </div>
+  </form>
+
+  <div data-hubspot-message>
+    <div data-hubspot-success class="hidden">{{ meta.newsletter_success_message }}</div>
+    <div data-hubspot-error class="hidden">{{ meta.newsletter_error_message }}</div>
+    <div data-hubspot-consent-error class="hidden">{{ meta.newsletter_consent_required }}</div>
+  </div>
+</aside>
+
+{% css "inline" %}
+  {% include "css/form.css" %}
+{% endcss %}
+
+{% js "defer" %}
+  {% include "scripts/hubspot-submission.js" %}
+{% endjs %}

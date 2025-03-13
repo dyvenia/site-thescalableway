@@ -14,15 +14,29 @@ schema: blog
     <p class="meta | cluster gutter-xs">
       <!-- date -->
       {% set definedDate = date %} {% include "partials/date.njk" %}
+
       {%
         if tags.length >
         1
       %}
         <!-- tags -->
         {% for tag in tags %}{% if tag != "posts" %}
-          <a class="button" data-small-button href="/tags/{{ tag }}"> {{ tag }} </a>
+          <a class="button" data-small-button data-ghost-button href="/tags/{{ tag }}"> {{ tag }} </a>
         {% endif %}{% endfor %}
       {% endif %}
+    </p>
+
+    <p class="meta | cluster gutter-s mt-xl">
+      {% set postAuthor = author %}
+
+      {% for author in collections.team_members %}
+        {% if author.data.name == postAuthor %}
+          <a href="{{ author.url }}" class="cluster gutter-xs">
+            {% image "." + author.data.image, author.data.name, null, null, null, "aspect-1 rounded-full object-cover", [100], "100px" %}
+            <span> by {{ author.data.name }}</span>
+          </a>
+        {% endif %}
+      {% endfor %}
     </p>
 
     {% if toc %}
@@ -33,6 +47,12 @@ schema: blog
     {% endif %}
 
     <div class="sidebar gutter-s relative">{{ content | safe }}</div>
+
+    <div class="sidebar gutter-lg relative mt-xl-2xl">
+      <div></div>
+      {% include "partials/hubspot-form.njk" %}
+    </div>
+
     {% include 'partials/edit-on.njk' %}
   </div>
 
