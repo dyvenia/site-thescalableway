@@ -179,7 +179,7 @@ In cases where further parallelization is needed (i.e., the workload exceeds the
 
 As the topic of incremental loading can be complex even for seasoned data engineers, we’ve prepared a diagram of all the viable ELT patterns:
 
-![](/src/assets/images/elt_patterns-1.png)
+![](/assets/images/elt_patterns.png)
 
 **NOTE:** dlt also provides sub-types of the “merge” disposition, including [SCD type 2](https://dlthub.com/blog/scd2-and-incremental-loading); however, for clarity, we did not include these in the diagram. For more information on these subtypes, see [relevant documentation](https://dlthub.com/docs/general-usage/incremental-loading#merge-incremental-loading).
 
