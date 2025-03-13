@@ -1,0 +1,47 @@
+---
+layout: base
+title: Authors
+description: 'Blog post authors'
+bodyClass: authors
+footerSpace: mt-2xl
+pagination:
+  data: collections.allPosts
+  size: 1000
+permalink: 'author/index.html'
+intro: >
+  Meet the authors behind the insights, strategies, and best practices in data platform engineering, analytics, and data science.
+---
+
+<div class="wrapper flow region">
+  <h1 class="text-center text-base-light">{{ title }}</h1>
+
+  <div class="flow prose">{{ intro | markdownFormat | safe }}</div>
+
+  <div class="feature">
+    <div class="grid gutter-xs" role="list">
+      {% for author in collections.team_members %}
+        {% set has_posts = false %}
+
+        {% for post in collections.posts %}
+          {% if post.data.author == author.data.name %}
+            {% set has_posts = true %}
+          {% endif %}
+        {% endfor %}
+
+        {% if has_posts %}
+          <custom-card clickable small-padding>
+            {% image "." + author.data.image, author.data.name %}
+            <h2 class="text-step-0" slot="headline">
+              <a href="{{ author.url | url }}">{{ author.data.name }}</a>
+            </h2>
+            <div slot="content" webc:nokeep>{{ author.data.description_short | markdownFormat | safe }}</div>
+          </custom-card>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% css "inline" %}
+  {% include "css/custom-card.css" %}
+{% endcss %}

@@ -28,6 +28,7 @@
 :root[data-theme='light'] {
   --color-dark: var(--color-dove-gray-900);
   --color-light: var(--color-dove-gray-50);
+  --color-mid: var(--color-dove-gray-400);
   --color-text: var(--color-dove-gray-900);
   --color-text-accent: var(--color-dove-gray-800);
   --color-bg: white;

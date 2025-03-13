@@ -40,7 +40,7 @@
 
   /* block space only for "regular lists" */
   .prose :not(.cluster):not(.grid) > li + li {
-    padding-block-start: var(--space-s);
+    padding-block-start: var(--space-2xs);
   }
 
   /* inline space only for "regular lists" */

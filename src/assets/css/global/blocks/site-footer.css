@@ -13,6 +13,10 @@
   padding: var(--space-3xs);
 }
 
+.site-footer .footer__meta dialog + button {
+  cursor: pointer !important;
+}
+
 .site-footer svg {
   stroke-width: 2;
   inline-size: 1.1em;

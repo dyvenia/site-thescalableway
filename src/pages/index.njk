@@ -74,7 +74,7 @@ our_services_items:
     description: Ensure continuous, reliable data platform performance through proactive monitoring, maintenance, and automated operational workflows.
 blog:
   intro: Selected Articles. Check our blog for more.
-  title: Our Insights
+  title: Our Blog
 bodyClass: home
 description: Eleventy starter using modern CSS, fluid type, fluid spacing, flexible layout and progressive enhancement.
 layout: base
@@ -154,13 +154,15 @@ title: The Scalable Way
       <div class="flow">{{ about.content | markdownFormat | safe }}</div>
     </header>
     <div class="grid region" data-layout="thirds">
-      {% for member in team.admin %}
+      {% for member in collections.team_members %}
+      {% if member.data.show_on_about %}
         <div class="about__content flow">
-          {% image "." + member.image, "" %}
+          {% image "." + member.data.image, "" %}
 
-          <h3>{{ member.name }}</h3>
-          {{ member.description_short | markdownFormat | safe }}
+          <h3>{{ member.data.name }}</h3>
+          {{ member.data.description_short | markdownFormat | safe }}
         </div>
+      {% endif %}
       {% endfor %}
     </div>
   </article>
@@ -207,7 +209,7 @@ title: The Scalable Way
 <div class="wrapper">
   <section class="full | region">
     <div class="wrapper flow prose">
-      <h2><a href="/insights/" class="no-underline hover:underline">{{ blog.title }}</a></h2>
+      <h2><a href="/blog/" class="no-underline hover:underline">{{ blog.title }}</a></h2>
 
       {% if blog.intro %}
         <p>{{ blog.intro }}</p>

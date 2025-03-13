@@ -1,0 +1,36 @@
+dialog {
+  border-radius: var(--border-radius-small);
+  inset: revert;
+}
+
+dialog + button {
+  /* all: unset; */
+  --flow-space: 0;
+  cursor: zoom-in;
+}
+
+/* Don't indicate interactivity without JS */
+is-land:not(:defined) dialog + button {
+  cursor: default;
+}
+
+dialog::backdrop {
+  background: var(--color-dark);
+  opacity: 0.9;
+  filter: brightness(50%);
+}
+
+dialog .button {
+  --button-bg: var(--color-light);
+  --button-color: var(--color-dark);
+}
+
+dialog img {
+  aspect-ratio: auto;
+  max-block-size: 70vh;
+  inline-size: auto;
+}
+
+dialog figcaption {
+  color: var(--color-light);
+}

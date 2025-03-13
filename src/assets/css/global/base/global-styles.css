@@ -57,19 +57,30 @@ blockquote:not([class]) {
 }
 
 blockquote {
-  padding: var(--space-m-l);
-  border-inline-start: 0.5rem solid var(--color-blue);
-  font-size: var(--size-step-2);
+  padding-block: var(--space-s);
+  padding-inline: var(--space-xl) var(--space-m-l);
+  font-size: var(--size-step-min-1);
+  background: var(--color-bg-accent);
+  line-height: var(--leading-normal);
+  border-radius: var(--border-radius-small);
+  font-weight: var(--font-regular);
+  position: relative;
+  font-style: italic;
+}
+
+blockquote::before {
+  font-size: var(--size-step-5);
+  color: var(--color-blue);
+  position: absolute;
+  content: '“';
+  inset-inline-start: -0.2em;
+  inset-block-start: var(--space-xs);
+  text-box-trim: trim-both;
+  text-box-edge: cap alphabetic;
 }
 
 blockquote > * + * {
   margin-block-start: var(--space-m-l);
-}
-
-blockquote :last-child {
-  font-family: var(--font-base);
-  font-style: normal;
-  font-size: var(--size-step-1);
 }
 
 /* Form elements */
@@ -104,7 +115,8 @@ hr {
 }
 
 /* Links */
-a {
+a,
+button.underline {
   color: currentcolor;
   text-decoration-thickness: 0.08em;
 }

@@ -14,110 +14,128 @@ backend:
   branch: dev
 
 # The folder used to store uploaded images
-media_folder: "/src/assets/images/"
-public_folder: "/assets/images/"
+media_folder: '/src/assets/images/'
+public_folder: '/assets/images/'
 
 # The CMS collections and their fields
 collections:
-
-  - name: "home"
-    label: "Home Page"
-    icon: "home"
+  - name: 'home'
+    label: 'Home Page'
+    icon: 'home'
     create: false
-    extension: "njk"
-    format: "frontmatter"
+    extension: 'njk'
+    format: 'frontmatter'
     files:
-      - file: "src/pages/index.njk"
-        label: "Home"
-        name: "home"
+      - file: 'src/pages/index.njk'
+        label: 'Home'
+        name: 'home'
         fields:
-          - { label: "Hero Title", name: "hero.title", widget: "string" }
-          - { label: "Hero Subtitle", name: "hero.subtitle", widget: "markdown" }
-          - { label: "Learn More Button Text", name: "hero.button_text", widget: "string" }
-          - { label: "Learn More Button Target", name: "hero.button_target", widget: "string" }
-          - { label: "Introduction Title", name: "intro.title", widget: "string" }
-          - { label: "Introduction Content", name: "intro.content", widget: "markdown" }
-          - { label: "Highlight One Title", name: "highlight_one.title", widget: "string" }
-          - { label: "Highlight One Subtitle", name: "highlight_one.subtitle", widget: "markdown" }
-          - { label: "Highlight Two Title One", name: "highlight_two.title1", widget: "string" }
-          - { label: "Highlight Two Title Two", name: "highlight_two.title2", widget: "string" }
-          - { label: "Highlight Two Content", name: "highlight_two.content", widget: "markdown" }
-          - { label: "5 Foundations Title One", name: "foundations_titles.title1", widget: "string" }
-          - { label: "5 Foundations Title Two", name: "foundations_titles.title2", widget: "string" }
-          - label: "Foundations Keys"
-            name: "foundations_elements" #<- this doesn't seem to work
-            widget: "list"
+          - {label: 'Hero Title', name: 'hero.title', widget: 'string'}
+          - {label: 'Hero Subtitle', name: 'hero.subtitle', widget: 'markdown'}
+          - {label: 'Learn More Button Text', name: 'hero.button_text', widget: 'string'}
+          - {label: 'Learn More Button Target', name: 'hero.button_target', widget: 'string'}
+          - {label: 'Introduction Title', name: 'intro.title', widget: 'string'}
+          - {label: 'Introduction Content', name: 'intro.content', widget: 'markdown'}
+          - {label: 'Highlight One Title', name: 'highlight_one.title', widget: 'string'}
+          - {label: 'Highlight One Subtitle', name: 'highlight_one.subtitle', widget: 'markdown'}
+          - {label: 'Highlight Two Title One', name: 'highlight_two.title1', widget: 'string'}
+          - {label: 'Highlight Two Title Two', name: 'highlight_two.title2', widget: 'string'}
+          - {label: 'Highlight Two Content', name: 'highlight_two.content', widget: 'markdown'}
+          - {label: '5 Foundations Title One', name: 'foundations_titles.title1', widget: 'string'}
+          - {label: '5 Foundations Title Two', name: 'foundations_titles.title2', widget: 'string'}
+          - label: 'Foundations Keys'
+            name: 'foundations_elements' #<- this doesn't seem to work
+            widget: 'list'
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Content", name: "content", widget: "string" }
-          - { label: "About Us", name: "about.title", widget: "string" }
-          - { label: "About Us", name: "about.content", widget: "markdown" }
-          - { label: "Why Us", name: "whyus_intro.title", widget: "string" }
-          - { label: "Why Us Intro", name: "whyus_intro.content", widget: "string" }
-          - label: "Why Us - Elements"
-            name: "whyus_elements"
-            widget: "list"
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'string'}
+          - {label: 'About Us', name: 'about.title', widget: 'string'}
+          - {label: 'About Us', name: 'about.content', widget: 'markdown'}
+          - {label: 'Why Us', name: 'whyus_intro.title', widget: 'string'}
+          - {label: 'Why Us Intro', name: 'whyus_intro.content', widget: 'string'}
+          - label: 'Why Us - Elements'
+            name: 'whyus_elements'
+            widget: 'list'
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Content", name: "content", widget: "string" }
-          - { label: "Our Services", name: "our_services.title", widget: "string" }
-          - label: "Our Services Items"
-            name: "our_services_items"
-            widget: "list"
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'string'}
+          - {label: 'Our Services', name: 'our_services.title', widget: 'string'}
+          - label: 'Our Services Items'
+            name: 'our_services_items'
+            widget: 'list'
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Prefix", name: "prefix", widget: "string" }
-              - { label: "Description", name: "description", widget: "markdown" }
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Prefix', name: 'prefix', widget: 'string'}
+              - {label: 'Description', name: 'description', widget: 'markdown'}
 
-  - name: "blog"
-    label: "Posts"
-    label_singular: "Post"
-    folder: "src/posts/2024"
+  - name: 'blog'
+    label: 'Posts'
+    label_singular: 'Post'
+    folder: 'src/posts/2024'
     create: true
-    slug: "{{slug}}"
-    media_folder: "/src/assets/images/blog/"
+    slug: '{{slug}}'
+    media_folder: '/src/assets/images/blog/'
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Author", name: "author", widget: "string"}
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["post"], hint: "Enter tags separated by a comma" }
-      - { label: "Internal Notes", name: "internal_notes", widget: "markdown" }
-      - { label: "Body", name: "body", widget: "markdown", modes: [raw, rich_text] }
+      - {label: 'Title', name: 'title', widget: 'string'}
+      - {label: 'Publish Date', name: 'date', widget: 'datetime'}
+      - label: 'Author'
+        name: 'author'
+        widget: 'relation'
+        collection: 'team'
+        search_fields: ['name']
+        value_field: 'name'
+        display_fields: ['name']
+      - {label: 'Description', name: 'description', widget: 'text'}
+      - {
+          label: 'Tags',
+          name: 'tags',
+          widget: 'list',
+          default: ['post'],
+          hint: 'Enter tags separated by a comma'
+        }
+      - {label: 'Internal Notes', name: 'internal_notes', widget: 'markdown'}
+      - {label: 'Body', name: 'body', widget: 'markdown', modes: [raw, rich_text]}
 
-  - name: "imprint"
-    label: "Imprint"
-    icon: "policy"
-    extension: "yaml"
-    format: "yaml"
+  - name: 'imprint'
+    label: 'Imprint'
+    icon: 'policy'
+    extension: 'yaml'
+    format: 'yaml'
     files:
-      - file: "src/_data/personal.yaml"
-        label: "Site Imprint"
-        name: "site"
+      - file: 'src/_data/personal.yaml'
+        label: 'Site Imprint'
+        name: 'site'
         fields:
-          - { label: "Email", name: "email", widget: "string", hint: "Public company email address i.e. hello@company.com" }
-          - { label: "Address", name: "address", widget: "text", hint: "Your company legal address" }
+          - {
+              label: 'Email',
+              name: 'email',
+              widget: 'string',
+              hint: 'Public company email address i.e. hello@company.com'
+            }
+          - {label: 'Address', name: 'address', widget: 'text', hint: 'Your company legal address'}
 
-  - name: "team"
-    label: "Team"
-    icon: "group"
+  - name: 'team'
+    label: 'Team Members'
+    icon: 'group'
+    folder: 'src/team'
     create: true
-    extension: "yaml"
-    format: "yaml"
-    media_folder: "src/assets/images/team"
-    files:
-      - file: "src/_data/team.yaml"
-        label: "Team"
-        name: "team"
-        fields:
-            - label: "Admins"
-              name: "admin"
-              widget: "list"
-              fields:
-                - { label: "Name", name: "name", widget: "string" }
-                - { label: "Profile Picture", name: "image", widget: "image" }
-                - { label: "Short Description", name: "description_short", widget: "text" }
-                - { label: "Long Description", name: "description_long", widget: "text" }
+    extension: 'md'
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    media_folder: '/src/assets/images/team/'
+    fields:
+      - {label: 'Name', name: 'name', widget: 'string'}
+      - {label: 'Profile Picture', name: 'image', widget: 'image'}
+      - {
+          label: 'LinkedIn',
+          name: 'linkedin',
+          widget: 'string',
+          required: false,
+          hint: 'Add full LinkedIn URL'
+        }
+      - {label: 'Show on About Page?', name: 'show_on_about', widget: 'boolean', default: false}
+      - {label: 'Short Description', name: 'description_short', widget: 'text'}
+      - {label: 'Long Description', name: 'description_long', widget: 'markdown'}
 
   - name: 'our_process'
     label: 'Our Process'
@@ -173,8 +191,8 @@ collections:
                 name: 'stage_1'
                 widget: 'object'
                 fields:
-                  - { label: 'Label', name: 'label', widget: 'string' }
-                  - { label: 'Name', name: 'name', widget: 'string' }
+                  - {label: 'Label', name: 'label', widget: 'string'}
+                  - {label: 'Name', name: 'name', widget: 'string'}
                   - label: 'Steps'
                     name: 'steps'
                     widget: 'list'
@@ -182,17 +200,17 @@ collections:
                     min: 2
                     max: 2
                     fields:
-                      - { label: 'Label', name: 'label', widget: 'string' }
-                      - { label: 'Title', name: 'title', widget: 'string' }
-                      - { label: 'Content', name: 'content', widget: 'markdown' }
-                      - { label: 'Outcomes', name: 'outcomes', widget: 'markdown' }
+                      - {label: 'Label', name: 'label', widget: 'string'}
+                      - {label: 'Title', name: 'title', widget: 'string'}
+                      - {label: 'Content', name: 'content', widget: 'markdown'}
+                      - {label: 'Outcomes', name: 'outcomes', widget: 'markdown'}
 
               - label: 'Stage 2'
                 name: 'stage_2'
                 widget: 'object'
                 fields:
-                  - { label: 'Label', name: 'label', widget: 'string' }
-                  - { label: 'Name', name: 'name', widget: 'string' }
+                  - {label: 'Label', name: 'label', widget: 'string'}
+                  - {label: 'Name', name: 'name', widget: 'string'}
                   - label: 'Steps'
                     name: 'steps'
                     widget: 'list'
@@ -200,10 +218,10 @@ collections:
                     min: 2
                     max: 2
                     fields:
-                      - { label: 'Label', name: 'label', widget: 'string' }
-                      - { label: 'Title', name: 'title', widget: 'string' }
-                      - { label: 'Content', name: 'content', widget: 'markdown' }
-                      - { label: 'Outcomes', name: 'outcomes', widget: 'markdown' }
+                      - {label: 'Label', name: 'label', widget: 'string'}
+                      - {label: 'Title', name: 'title', widget: 'string'}
+                      - {label: 'Content', name: 'content', widget: 'markdown'}
+                      - {label: 'Outcomes', name: 'outcomes', widget: 'markdown'}
 
           - label: 'Why Section'
             name: 'why'
@@ -236,16 +254,55 @@ collections:
                   - {label: 'Title', name: 'title', widget: 'string'}
                   - {label: 'Content', name: 'content', widget: 'markdown'}
 
-
-  - name: "meta"
-    label: "Meta Fields"
-    icon: "settings"
-    extension: "yaml"
-    format: "yaml"
+  - name: 'meta'
+    label: 'Meta Fields'
+    icon: 'settings'
+    extension: 'yaml'
+    format: 'yaml'
     files:
-      - file: "src/_data/meta.yaml"
-        label: "Meta Fields"
-        name: "meta"
+      - file: 'src/_data/meta.yaml'
+        label: 'Meta Fields'
+        name: 'meta'
         fields:
-          - { label: "Book Call Text", name: "book_call", widget: "string", hint: "The text of the book a call button" }
-          - { label: "Book Call Link", name: "book_call_link", widget: "string", hint: "The link  of the book a call button" }
+          - {
+              label: 'Book Call Text',
+              name: 'book_call',
+              widget: 'string',
+              hint: 'The text of the book a call button'
+            }
+          - {
+              label: 'Book Call Link',
+              name: 'book_call_link',
+              widget: 'string',
+              hint: 'The link  of the book a call button'
+            }
+          - {
+              label: 'Newsletter Title',
+              name: 'newsletter_title',
+              widget: 'string',
+              hint: 'The title of the newsletter subscription section'
+            }
+          - {
+              label: 'Newsletter Consent Message',
+              name: 'newsletter_consent_message',
+              widget: 'text',
+              hint: 'The message displayed next to the consent checkbox. Supports Markdown links.'
+            }
+          - {
+              label: 'Newsletter Success Message',
+              name: 'newsletter_success_message',
+              widget: 'string',
+              hint: 'Message shown when subscription is successful'
+            }
+          - {
+              label: 'Newsletter Error Message',
+              name: 'newsletter_error_message',
+              widget: 'string',
+              hint: 'Message shown when there is an error submitting the form'
+            }
+          - {
+              label: 'Newsletter Consent Required Message',
+              name: 'newsletter_consent_required',
+              widget: 'string',
+              hint: 'Message shown when the user tries to submit without giving consent'
+            }
