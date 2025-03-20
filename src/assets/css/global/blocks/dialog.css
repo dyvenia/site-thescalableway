@@ -3,6 +3,7 @@ dialog {
   inset: revert;
 }
 
+/* the image that serves as button */
 dialog + button {
   /* all: unset; */
   --flow-space: 0;
@@ -26,9 +27,9 @@ dialog .button {
 }
 
 dialog img {
-  aspect-ratio: auto;
-  max-block-size: 70vh;
-  inline-size: auto;
+  max-inline-size: min(95vw, 67rem);
+  max-block-size: 80vh;
+  object-fit: contain;
 }
 
 dialog figcaption {
