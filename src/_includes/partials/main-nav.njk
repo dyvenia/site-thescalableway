@@ -17,7 +17,7 @@
         >
       </li>
     {% endfor %}
-    <li><a href="{{ meta.book_call_link }}" target="blank"> {{ meta.book_call }}  </a></li>
+    <li><a href="{{ meta.book_call_link }}" target="blank"> {{ meta.book_call }} </a></li>
   </ul>
 </nav>
 
@@ -48,6 +48,10 @@
 {% endif %}
 
 {% if drawerNav %}
+  {% css "local" %}
+    {% include "css/nav-main-drawer-cls.css" %}
+  {% endcss %}
+
   {% js "defer" %}
     {% include "scripts/nav-drawer.js" %}
   {% endjs %}
