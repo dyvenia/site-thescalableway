@@ -63,7 +63,8 @@ export const navigation = {
   ariaTop: 'Main',
   ariaBottom: 'Complementary',
   ariaPlatforms: 'Platforms',
-  drawerNav: true
+  drawerNav: true,
+  subMenu: true
 };
 export const themeSwitch = {
   title: 'Theme',
