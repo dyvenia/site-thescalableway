@@ -1,6 +1,6 @@
 @media (scripting: enabled) {
   @media screen(ltnav) {
-    .mainnav ul {
+    .mainnav > ul {
       display: none;
     }
   }
