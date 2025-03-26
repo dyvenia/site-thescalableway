@@ -6,6 +6,9 @@ nav.addEventListener('click', e => {
   if (!button) return;
 
   const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+  closeAllSubmenus(button);
+
   button.setAttribute('aria-expanded', String(!isOpen));
   const submenu = document.getElementById(button.getAttribute('aria-controls'));
   submenu.hidden = isOpen;
@@ -26,6 +29,16 @@ document.addEventListener('keyup', e => {
     closeSubmenu(openButton);
   }
 });
+
+// Close all other submenus
+function closeAllSubmenus(excludeButton) {
+  const openButtons = nav.querySelectorAll('[aria-expanded="true"]');
+  openButtons.forEach(button => {
+    if (button !== excludeButton) {
+      closeSubmenu(button);
+    }
+  });
+}
 
 function closeSubmenu(button) {
   const submenu = document.getElementById(button.getAttribute('aria-controls'));
