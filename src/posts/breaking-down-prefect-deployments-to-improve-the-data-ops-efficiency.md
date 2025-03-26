@@ -1,6 +1,6 @@
 ---
 title: Breaking Down Prefect Deployments To Improve The Data Ops Efficiency
-date: 2025-01-28T09:45:00
+date: 2025-01-28 09:45:00
 author: Mateusz Paździor
 description: Discover how breaking down monolithic ETL flows into modular deployments enhances observability, streamlines troubleshooting, and boosts scalability. Learn to design data pipelines that evolve with your needs while maintaining performance and reliability.
 tags:
@@ -129,7 +129,7 @@ Initially, with just 10 objects in the database, it works well enough. But as th
 4. **SLA Reporting:** Measuring success rates becomes much harder. Reporting on flow run states is unreliable since the failure on one table out of 1,000 causes the whole flow to be marked as failed. Again, this requires digging into logs to measure performance accurately.
 5. **Execution Time**: Monolith flows are time-consuming and don’t allow parallel execution, hindering efficiency. 
 
-In essence, a monolithic approach limits observability, reduces performance, and complicates operations. 
+In essence, a monolithic approach limits observability, reduces performance, and complicates operations.
 
 ## The Case for Granulated, Focused Flows
 
@@ -144,7 +144,7 @@ With the right tools, this approach is not as complex as it sounds. Prefect allo
 
 ![predefined values for granulated, focused flows](/src/assets/images/predefined_values.png)
 
-This way, you can stick with the pre-defined daily schedule as it is, which makes the deployment creation way easier than it initially seemed. 
+This way, you can stick with the pre-defined daily schedule as it is, which makes the deployment creation way easier than it initially seemed.
 
 Here’s why granular flow deployments are worth the effort: 
 

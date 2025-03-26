@@ -1,6 +1,6 @@
 ---
 title: 'Organizing Networking for Data Platforms: Key Connectivity Options'
-date: 2025-03-05T09:50:00
+date: 2025-03-05 09:50:00
 author: Karol Wolski
 description: Optimize your data platform by making informed networking decisions. This article explores how networking impacts ELT workflows, covering key connectivity options, security considerations, and best practices. Learn how to design a secure, scalable, and high-performing data platform architecture with the right networking.
 tags:
