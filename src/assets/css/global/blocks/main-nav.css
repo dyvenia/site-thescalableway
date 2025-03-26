@@ -101,9 +101,13 @@ body:has(.nav-drawer-toggle[aria-expanded='true']) {
 
 .mainnav svg {
   block-size: 0.8em;
-  color: var(--color-light);
+  color: var(--color-text);
   stroke-width: 2.5;
   pointer-events: auto;
+}
+
+.mainnav .nav-drawer-toggle svg {
+  color: var(--color-light);
 }
 
 .mainnav .nav-drawer-toggle[aria-expanded='true'] svg {
