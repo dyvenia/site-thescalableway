@@ -20,7 +20,7 @@ schema: blog
         1
       %}
         <!-- tags -->
-        {% for tag in tags %}{% if tag != "posts" %}
+        {% for tag in tags %}{% if tag != "posts" and tag != "case-studies" %}
           <a class="button" data-small-button data-ghost-button href="/tags/{{ tag }}"> {{ tag }} </a>
         {% endif %}{% endfor %}
       {% endif %}
@@ -48,7 +48,7 @@ schema: blog
 
     <div class="sidebar gutter-s relative">{{ content | safe }}</div>
 
-    <div class="sidebar gutter-lg relative mt-xl-2xl">
+    <div class="sidebar sidebar-newsletter gutter-lg relative mt-xl-2xl">
       <div></div>
       {% include "partials/hubspot-form.njk" %}
     </div>

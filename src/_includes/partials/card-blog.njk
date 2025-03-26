@@ -9,7 +9,7 @@
   %}
     <div slot="tag" class="cluster gutter-2xs">
       {% for tag in item.data.tags %}
-        {% if tag != "posts" %}
+        {% if tag != "posts" and tag != "case-studies" %}
           <span class="button" data-small-button>{{ tag }}</span>
         {% endif %}
       {% endfor %}
