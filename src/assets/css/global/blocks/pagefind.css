@@ -8,7 +8,7 @@
   border: none;
   padding: var(--space-2xs);
   cursor: pointer;
-  margin-inline-end: 4.5em;
+  margin-inline-end: 4em;
 }
 
 .search-toggle svg {

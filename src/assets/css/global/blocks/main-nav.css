@@ -80,28 +80,29 @@ body:has(.nav-drawer-toggle[aria-expanded='true']) {
 }
 
 .mainnav .nav-drawer-toggle {
-  --gutter: var(--space-3xs);
+  --gutter: 0.2em;
   --cluster-vertical-alignment: center;
   display: var(--nav-button-display, flex);
   position: relative;
   z-index: 2;
-  padding: var(--space-3xs) var(--space-2xs);
+  padding: var(--space-3xs);
   line-height: var(--leading-flat);
   border-radius: var(--border-radius-medium);
   background: var(--color-blue);
+  color: var(--color-light);
 }
 
 .mainnav span {
-  font-weight: var(--font-bold);
+  font-weight: var(--font-medium);
   text-transform: uppercase;
   font-family: var(--font-display);
   font-size: var(--size-step-min-1);
 }
 
 .mainnav svg {
-  block-size: 0.9em;
-  color: var(--color-text);
-  stroke-width: 3;
+  block-size: 0.8em;
+  color: var(--color-light);
+  stroke-width: 2.5;
   pointer-events: auto;
 }
 
