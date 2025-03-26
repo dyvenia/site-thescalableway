@@ -75,7 +75,7 @@
 }
 
 /* avoid scrolling when drawer is open */
-body:has(.mainnav [aria-expanded='true']) {
+body:has(.nav-drawer-toggle[aria-expanded='true']) {
   overflow: hidden;
 }
 
