@@ -7,9 +7,9 @@ tags:
   - post
 internal_notes: No notes
 ---
-Intro
+An analytics workflow documents the journey from raw data to production-ready data models, encompassing development and testing phases. A critical component is governance, implemented through a Pull Request approval process that facilitates regular code reviews and prevents technical debt accumulation. This structured approach ensures quality and maintainability while supporting collaborative development.
 
-![](/src/assets/images/blog/mermaid-diagram-2025-03-27-102930.png)
+![typical code-based analytics workflow](/src/assets/images/blog/mermaid-diagram-2025-03-27-102930.png)
 
 ## Roles
 
@@ -22,3 +22,25 @@ In contrast, data engineers and data platform engineers typically focus on techn
 | Data Analyst | - Understand business requirements<br>- Analyze data in intermediate and mart layers<br>- Develop SQL queries and transformations<br>- Create and maintain metadata documentation |
 | Data Platform Engineer | - Monitor and support infrastructure resources<br>- Maintain CI/CD pipelines<br>- Manage network infrastructure<br>- Implement cybersecurity measures |
 | Data Engineer | - Design and develop data pipelines<br>- Maintain and optimize data flows<br>- Schedule and orchestrate data processing<br>- Implement data ingestion processes |
+
+### Measuring Impact of each Role
+
+Because roles are usually tackling different problems, it is a good idea to measure performance and impact differently. Measuring how a role is doing is important also to create rules such as notification rules, issue and incident prioritization rules, and other operational matters to increase the reliability of production.
+
+| Role | Measure|
+| --- | --- |
+| Data Analyst | - Understanding of business domain<br>- Business Satisfaction<br>- ROI from data initiatives |
+| Data Platform Engineer | - Speed of new data platform features<br>- Reliability of the data platform<br>- Data analysts support and satisfaction |
+| Data Engineer | - Speed of new data ingestions<br>- Reliability of data pipelines<br>- Data analysts support and satisfaction |
+
+
+## Understanding the need of roles
+
+Analytics teams often tend to combine roles or leave them loosely defined. This approach is understandable, and sometimes even beneficial, in the early stages of an analytics initiative. After all, when starting out, the priority is delivering business value quickly, and formal roles and approval processes can slow things down.
+
+However, this lack of clearly defined roles and boundaries typically creates challenges as the analytics function matures. Common issues include:
+
+- Blurred lines between exploratory analytics work and production pipeline operations, making it difficult to maintain service levels
+- Insufficient knowledge transfer mechanisms, including limited documentation, unclear onboarding processes, and lack of backup coverage for key roles
+- Team friction arising from ambiguous responsibilities and overlapping ownership
+- An overemphasis on technical tools and implementation details, rather than addressing the more fundamental needs of role clarity and process alignment
