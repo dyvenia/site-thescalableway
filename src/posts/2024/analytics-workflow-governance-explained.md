@@ -53,3 +53,13 @@ In this workflow, there are already quite a few roles and tasks — and in reali
 One practical way to navigate the tension between collaboration and rigid boundaries is to establish a clear RACI matrix from the very beginning. This matrix serves as a shared reference to define roles and responsibilities, helping both internal and extended teams understand who is Responsible, Accountable, Consulted, and Informed for each task. It provides structure without creating silos, enabling smoother handovers and aligned expectations.
 
 ![RACI Matrix](/src/assets/images/blog/raci_matrix.png "Example of RACI Matrix in the Analytics Workflow")
+
+## Conclusions
+
+A well-structured analytics workflow is essential for turning raw data into reliable insights. As analytics initiatives mature, the need for governance, role clarity, and collaboration becomes increasingly important. Specialized roles such as data analysts, data engineers, and platform engineers each contribute unique expertise, and their impact should be measured differently to reflect their responsibilities.
+
+Clearly defined roles and processes—such as code reviews, CI/CD practices, and RACI matrices—not only support governance and maintainability but also foster collaboration across internal and external teams. While early-stage flexibility is useful, long-term success in data and analytics depends on thoughtful structure, cross-functional alignment, and a shared understanding of who does what, and why.
+
+## Resources
+
+- [Example of RACI Matrix](https://docs.google.com/spreadsheets/d/1UFddBx-2mKSE8h-TypmYH4sdM7HN2B6TWr0AgWqzLcU/edit?usp=sharing)
