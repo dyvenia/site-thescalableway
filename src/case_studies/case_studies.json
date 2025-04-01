@@ -1,5 +1,5 @@
 {
-  "layout": "post",
+  "layout": "case_study",
   "bodyClass": "case-study",
   "tags": "case-studies",
   "permalink": "/case-studies/{{ title | slugify }}/index.html",

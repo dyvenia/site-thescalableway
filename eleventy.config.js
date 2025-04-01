@@ -32,6 +32,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addLayoutAlias('base', 'base.njk');
   eleventyConfig.addLayoutAlias('page', 'page.njk');
   eleventyConfig.addLayoutAlias('post', 'post.njk');
+  eleventyConfig.addLayoutAlias('case_study', 'case_study.njk');
   eleventyConfig.addLayoutAlias('tags', 'tags.njk');
   eleventyConfig.addLayoutAlias('single_author', 'single_author.njk');
 

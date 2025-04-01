@@ -107,21 +107,7 @@ collections:
     fields:
       - {label: 'Title', name: 'title', widget: 'string'}
       - {label: 'Publish Date', name: 'date', widget: 'datetime', format: 'YYYY-MM-DD HH:mm:ss'}
-      - label: 'Author'
-        name: 'author'
-        widget: 'relation'
-        collection: 'team'
-        search_fields: ['name']
-        value_field: 'name'
-        display_fields: ['name']
       - {label: 'Description', name: 'description', widget: 'text'}
-      - {
-          label: 'Tags',
-          name: 'tags',
-          widget: 'list',
-          default: ['post'],
-          hint: 'Enter tags separated by a comma'
-        }
       - {label: 'Internal Notes', name: 'internal_notes', widget: 'markdown'}
       - {label: 'Body', name: 'body', widget: 'markdown', modes: [raw, rich_text]}
 

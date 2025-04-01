@@ -1,10 +1,7 @@
 ---
 title: A case study
 date: 2025-02-24 10:58:00
-author: Alessio Civitillo
 description: Learn why modularity is crucial for building scalable, efficient data architectures. This article covers the core components of modern data platforms, from ingestion to governance, and shares best practices for flexibility, interoperability, and security.
-tags:
-  - case-study
 internal_notes: |-
   **Audience:**
 ---

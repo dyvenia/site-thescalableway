@@ -26,18 +26,20 @@ schema: blog
       {% endif %}
     </p>
 
-    <p class="meta | cluster gutter-s mt-xl">
-      {% set postAuthor = author %}
+    {% if author %}
+      <p class="meta | cluster gutter-s mt-xl">
+        {% set postAuthor = author %}
 
-      {% for author in collections.team_members %}
-        {% if author.data.name == postAuthor %}
-          <a href="{{ author.url }}" class="cluster gutter-xs">
-            {% image "." + author.data.image, author.data.name, null, null, null, "aspect-1 rounded-full object-cover", [100], "100px" %}
-            <span> by {{ author.data.name }}</span>
-          </a>
-        {% endif %}
-      {% endfor %}
-    </p>
+        {% for author in collections.team_members %}
+          {% if author.data.name == postAuthor %}
+            <a href="{{ author.url }}" class="cluster gutter-xs">
+              {% image "." + author.data.image, author.data.name, null, null, null, "aspect-1 rounded-full object-cover", [100], "100px" %}
+              <span> by {{ author.data.name }}</span>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </p>
+    {% endif %}
 
     {% if toc %}
       <div class="toc-container | relative">
@@ -46,7 +48,7 @@ schema: blog
       </div>
     {% endif %}
 
-    <div class="sidebar gutter-s relative">{{ content | safe }}</div>
+    <div class="sidebar gutter-s relative flow">{{ content | safe }}</div>
 
     <div class="sidebar sidebar-newsletter gutter-lg relative mt-xl-2xl">
       <div></div>
