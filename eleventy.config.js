@@ -97,6 +97,8 @@ export default async function (eleventyConfig) {
     eleventyConfig.on('eleventy.after', events.svgToJpeg);
   }
 
+  eleventyConfig.on('eleventy.after', events.tableSawWrapper);
+
   // --------------------- Passthrough File Copy
 
   eleventyConfig.addPassthroughCopy({'src/admin_dev': 'admin_dev'}); // don't process the CMS folder
@@ -117,7 +119,8 @@ export default async function (eleventyConfig) {
     'src/assets/images/favicon/*': '/',
 
     // -- node_modules
-    'node_modules/lite-youtube-embed/src/lite-yt-embed.{css,js}': `assets/components/`
+    'node_modules/lite-youtube-embed/src/lite-yt-embed.{css,js}': `assets/components/`,
+    'node_modules/@zachleat/table-saw/table-saw.js': `assets/components/table-saw.js`
   });
 
   // --------------------- Build Settings
