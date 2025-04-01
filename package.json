@@ -12,7 +12,7 @@
     "favicons": "node ./src/_config/setup/generate-favicons.js",
     "colors": "node ./src/_config/setup/create-colors.js",
     "dev:clean": "rimraf src/assets/og-images",
-    "dev:11ty": "cross-env ELEVENTY_ENV=development eleventy --serve --watch",
+    "dev:11ty": "cross-env ELEVENTY_ENV=development eleventy --serve --watch --quiet",
     "dev:search": "npx pagefind --site '_site' --serve",
     "build:11ty": "cross-env ELEVENTY_ENV=production eleventy",
     "build:search": "npx pagefind --site '_site'",
@@ -33,6 +33,7 @@
     "@11ty/eleventy-plugin-webc": "^0.11.2",
     "@11ty/is-land": "^4.0.1",
     "@sveltia/cms": "^0.57.0",
+    "@zachleat/table-saw": "^1.0.6",
     "lite-youtube-embed": "^0.3.3",
     "tailwindcss": "^3.4.17"
   },
