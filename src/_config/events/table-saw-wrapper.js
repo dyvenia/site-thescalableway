@@ -3,6 +3,7 @@ import {resolve, join} from 'node:path';
 
 export async function tableSawWrapper({dir}) {
   const outputDir = resolve(dir.output);
+  const breakpoint = '(max-width: 41.875em)';
 
   const files = await readDirRecursive(outputDir);
 
@@ -13,10 +14,10 @@ export async function tableSawWrapper({dir}) {
         let content = await fs.readFile(file, 'utf8');
 
         content = content
-          .replace(/(<table(?=[\s>]))/g, '<table-saw>$1')
+          .replace(/(<table(?=[\s>]))/g, `<table-saw breakpoint="${breakpoint}">$1`)
           .replace(
             /(<\/table>)/g,
-            '$1</table-saw>\n<is-land on:idle on:visible import="/assets/components/table-saw.js"></is-land>'
+            `$1</table-saw>\n<is-land on:idle on:media="${breakpoint}" import="/assets/components/table-saw.js"></is-land>`
           );
 
         await fs.writeFile(file, content, 'utf8');

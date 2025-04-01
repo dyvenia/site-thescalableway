@@ -12,15 +12,16 @@ th {
   text-align: left;
   font-weight: var(--font-bold);
   line-height: var(--leading-fine);
+  background: var(--color-bg-accent);
 }
 
 thead th {
-  padding-block: var(--space-s);
+  padding-block: var(--space-2xs);
 }
 
 td,
 th {
-  padding: var(--space-xs) var(--space-s);
+  padding: var(--space-2xs) var(--space-xs);
 }
 
 th:not(:only-of-type) {
@@ -31,10 +32,16 @@ th:only-of-type {
   border-inline-end: var(--stroke);
 }
 
-:is(th, td) ~ :is(th, td) {
-  border-inline-start: var(--stroke);
+tr:not(:first-of-type) {
+  border-block-start: var(--stroke);
 }
 
-tr + tr :is(th, td) {
-  border-block-start: var(--stroke);
+@media screen(sm) {
+  :is(th, td) ~ :is(th, td) {
+    border-inline-start: var(--stroke);
+  }
+
+  tr + tr :is(th, td) {
+    border-block-start: var(--stroke);
+  }
 }
