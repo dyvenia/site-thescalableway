@@ -9,14 +9,14 @@
   },
   "scripts": {
     "clean": "rimraf _site src/_includes/css src/_includes/scripts",
+    "clean:og": "rimraf src/assets/og-images",
     "favicons": "node ./src/_config/setup/generate-favicons.js",
     "colors": "node ./src/_config/setup/create-colors.js",
-    "dev:clean": "rimraf src/assets/og-images",
     "dev:11ty": "cross-env ELEVENTY_ENV=development eleventy --serve --watch --quiet",
     "dev:search": "npx pagefind --site '_site' --serve",
     "build:11ty": "cross-env ELEVENTY_ENV=production eleventy",
     "build:search": "npx pagefind --site '_site'",
-    "start": "npm run dev:clean & npm run dev:11ty",
+    "start": "npm run dev:11ty",
     "build": "npm run clean && npm run build:11ty && npm run build:search"
   },
   "keywords": [],
