@@ -153,7 +153,7 @@ title: The Scalable Way
       <h2>{{ about.title }}</h2>
       <div class="flow">{{ about.content | markdownFormat | safe }}</div>
     </header>
-    <div class="grid region" data-layout="thirds">
+    <div class="grid mt-xl-2xl" data-layout="thirds">
       {% for member in collections.team_members %}
       {% if member.data.show_on_about %}
         <div class="about__content flow">
@@ -215,7 +215,7 @@ title: The Scalable Way
         <p>{{ blog.intro }}</p>
       {% endif %}
 
-      <div class="feature |  region">
+      <div class="feature | mt-l-xl">
         <custom-masonry layout="50-50">
 
          {% set itemList = collections.allPosts %}
