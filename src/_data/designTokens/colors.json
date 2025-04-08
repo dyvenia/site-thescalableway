@@ -3,91 +3,75 @@
   "description": "Hex color codes that can be shared, cross-platform. They can be converted at point of usage, such as HSL for web or CMYK for print. neutral and colors are converted to color scales, fixedColors are kept as they are",
   "items": [
     {
-      "name": "Dove Gray 50",
+      "name": "Gray 100",
       "value": "#f5f5f6"
     },
     {
-      "name": "Dove Gray 100",
-      "value": "#ddddde"
+      "name": "Gray 200",
+      "value": "#dedede"
     },
     {
-      "name": "Dove Gray 200",
-      "value": "#bdbdbe"
+      "name": "Gray 300",
+      "value": "#aeaeae"
     },
     {
-      "name": "Dove Gray 300",
-      "value": "#9e9e9f"
+      "name": "Gray 400",
+      "value": "#808081"
     },
     {
-      "name": "Dove Gray 400",
-      "value": "#807f81"
+      "name": "Gray 500",
+      "value": "#636364"
     },
     {
-      "name": "Dove Gray 500",
-      "value": "#636264"
+      "name": "Gray 600",
+      "value": "#484749"
     },
     {
-      "name": "Dove Gray 600",
-      "value": "#555456"
+      "name": "Gray 700",
+      "value": "#3a3a3c"
     },
     {
-      "name": "Dove Gray 700",
-      "value": "#3f3f40"
+      "name": "Gray 800",
+      "value": "#2e2e2f"
     },
     {
-      "name": "Dove Gray 800",
-      "value": "#353536"
+      "name": "Gray 900",
+      "value": "#242425"
     },
     {
-      "name": "Dove Gray 900",
-      "value": "#262627"
+      "name": "Blue 100",
+      "value": "#e8f1ff"
     },
     {
-      "name": "Dove Gray 950",
-      "value": "#1f1f1f"
+      "name": "Blue 200",
+      "value": "#d4e9ff"
     },
     {
-      "name": "Royal Blue 50",
-      "value": "#e7f1ff"
+      "name": "Blue 300",
+      "value": "#a9cbff"
     },
     {
-      "name": "Royal Blue 100",
-      "value": "#deeaff"
+      "name": "Blue 400",
+      "value": "#83a4ff"
     },
     {
-      "name": "Royal Blue 200",
-      "value": "#b9ceff"
+      "name": "Blue 500",
+      "value": "#5a78fc"
     },
     {
-      "name": "Royal Blue 300",
-      "value": "#9fb9ff"
+      "name": "Blue 600",
+      "value": "#3b51d3"
     },
     {
-      "name": "Royal Blue 400",
-      "value": "#7494ff"
-    },
-    {
-      "name": "Royal Blue 500",
-      "value": "#5977fc"
-    },
-    {
-      "name": "Royal Blue 600",
-      "value": "#3a50d2"
-    },
-    {
-      "name": "Royal Blue 700",
+      "name": "Blue 700",
       "value": "#2936b7"
     },
     {
-      "name": "Royal Blue 800",
-      "value": "#1f2a94"
+      "name": "Blue 800",
+      "value": "#202b94"
     },
     {
-      "name": "Royal Blue 900",
-      "value": "#0d0c64"
-    },
-    {
-      "name": "Royal Blue 950",
+      "name": "Blue 900",
       "value": "#070846"
     },
     {

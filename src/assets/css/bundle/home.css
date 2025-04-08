@@ -27,7 +27,7 @@
   mix-blend-mode: plus-lighter;
 }
 
-[data-theme="dark"] .home .hero > svg {
+[data-theme='dark'] .home .hero > svg {
   mix-blend-mode: plus-lighter;
   opacity: 0.1;
 }
@@ -207,7 +207,7 @@
   block-size: calc(var(--space-s) * 2);
   inline-size: calc(var(--space-s) * 2);
   background: var(--color-blue);
-  color: var(--color-royal-blue-50);
+  color: var(--color-blue-100);
   font-size: var(--size-step-2);
   font-weight: var(--font-medium);
   display: flex;

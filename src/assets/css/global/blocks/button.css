@@ -58,12 +58,12 @@
 /* Variants */
 .button[data-button-variant='blue'] {
   --button-bg: var(--color-blue);
-  --button-color: var(--color-royal-blue-50);
+  --button-color: var(--color-blue-100);
 }
 
 .button[data-button-variant='pink'] {
   --button-bg: var(--color-pink);
-  --button-color: var(--color-medium-red-violet-50);
+  --button-color: var(--color-light);
 }
 
 .button[data-button-variant='gold'] {

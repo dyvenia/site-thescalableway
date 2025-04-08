@@ -7,7 +7,7 @@
   position: relative;
 }
 .logo svg {
-  color: var(--color-royal-blue-500);
+  color: var(--color-blue-500);
   block-size: auto;
 }
 
