@@ -27,10 +27,10 @@ This website transmits itself using HTTPS, encrypting all data between the brows
 **Data controller**
 {{ personal.address }}
 
-If you have any questions or doubts, please contact us: <a href="mailto:{{ personal.email }}">{{ personal.email }}</a>.
+If you have any questions or doubts, please contact us: {{ personal.email }}.
 
 **Changes to the policy**
 If qw change the content of this policy, those changes will be effective at the time qw post them here.
 
 **Complaints**
-If you have any reason to complain about the way qw handle your privacy, please contact us by email: <a href="mailto:{{ personal.email }}">{{ personal.email }}</a>.
+If you have any reason to complain about the way qw handle your privacy, please contact us by email: {{ personal.email }}.
