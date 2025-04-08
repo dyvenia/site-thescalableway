@@ -12,6 +12,7 @@
             aria-expanded="false"
             aria-labelledby="mainnav-{{ loop.index }}"
             aria-controls="mainnav-{{ loop.index }}-sub"
+            data-btn-submenu
           >
             {{ item.text }} {% svg "misc/chev-down" %}
           </button>
@@ -63,6 +64,7 @@
       aria-expanded="false"
       aria-controls="mainnav"
       class="cluster"
+      data-btn-drawer
     >
       <span>{{ meta.navigation.navLabel }}</span>
 
