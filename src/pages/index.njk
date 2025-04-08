@@ -218,10 +218,9 @@ title: The Scalable Way
       <div class="feature |  region">
         <custom-masonry layout="50-50">
 
-                   <!-- loop posts -->
          {% set itemList = collections.allPosts %}
          {% asyncEach item in itemList.slice(0, 4) %}
-           {% set definedDate = item.date %}
+         {% set headingLevel = "h3" %}
            {% include "partials/card-blog.njk" %}
          {% endeach %}
 
