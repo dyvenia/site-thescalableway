@@ -12,7 +12,7 @@
     "clean:og": "rimraf src/assets/og-images",
     "favicons": "node ./src/_config/setup/generate-favicons.js",
     "colors": "node ./src/_config/setup/create-colors.js",
-    "dev:11ty": "cross-env ELEVENTY_ENV=development eleventy --serve --watch --quiet",
+    "dev:11ty": "cross-env ELEVENTY_ENV=development eleventy --serve --quiet",
     "dev:search": "npx pagefind --site '_site' --serve",
     "build:11ty": "cross-env ELEVENTY_ENV=production eleventy",
     "build:search": "npx pagefind --site '_site'",
