@@ -44,6 +44,11 @@
       "name": "Step 5",
       "min": 37,
       "max": 88
+    },
+    {
+      "name": "Step Logo",
+      "min": 16,
+      "max": 22
     }
   ]
 }

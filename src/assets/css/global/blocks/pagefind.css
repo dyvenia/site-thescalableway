@@ -6,8 +6,15 @@
   order: 0;
   background: none;
   border: none;
-  padding-block: var(--space-s) var(--space-2xs);
+  padding: var(--space-2xs);
   cursor: pointer;
+  margin-inline-end: 4em;
+}
+
+.search-toggle svg {
+  block-size: auto;
+  stroke-width: 2.5px;
+  font-size: var(--size-step-0);
 }
 
 @media screen(navigation) {
@@ -15,12 +22,10 @@
     position: absolute;
     inset-inline-end: 0;
     inset-block-start: 0;
+    margin-inline-end: 0;
+    padding-block: var(--space-s) var(--space-2xs);
+    padding-inline: var(--space-2xs);
   }
-}
-
-.search-toggle svg {
-  block-size: auto;
-  stroke-width: 2.5px;
 }
 
 pagefind-search {

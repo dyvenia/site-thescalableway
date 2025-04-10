@@ -19,8 +19,9 @@ export const creator = {
   social: 'https://front-end.social/@lene'
 };
 export const pathToSvgLogo = 'src/assets/svg/brand/logo-spaced.svg'; // used for favicon generation
-export const themeColor = '#f5f5f6'; //  Manifest: defines the default theme color for the application
-export const themeBgColor = '#f5f5f6'; // Manifest: defines a placeholder background color for the application page to display before its stylesheet is loaded
+export const themeColor = '#070846'; //  Manifest: defines the default theme color for the application
+export const themeLight = '#f5f5f6'; // used for meta tag theme-color, if light colors are prefered. best use value set for light bg
+export const themeDark = '#262627'; // used for meta tag theme-color, if dark colors are prefered. best use value set for dark bg
 export const opengraph_default = '/assets/images/template/opengraph-default.jpg'; // fallback/default meta image
 export const opengraph_default_alt = 'Visible content: The Scalable Way'; // alt text for default meta image"
 export const blog = {
@@ -62,7 +63,8 @@ export const navigation = {
   ariaTop: 'Main',
   ariaBottom: 'Complementary',
   ariaPlatforms: 'Platforms',
-  drawerNav: false
+  drawerNav: true,
+  subMenu: true
 };
 export const themeSwitch = {
   title: 'Theme',

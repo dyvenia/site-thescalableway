@@ -1,0 +1,27 @@
+---
+layout: base
+schema: blog
+---
+
+<div class="region blog">
+  <div class="wrapper flow">
+    <h1>{{ title }}</h1>
+
+    {% if image %}
+      {% image image, alt or "", credit, "eager", "feature" %}
+    {% endif %}
+    {% set definedDate = date %}
+    {% include "partials/date.njk" %}
+
+    <div class="flow prose">{{ content | safe }}</div>
+    <div class="mt-xl-2xl">{% include "partials/hubspot-form.njk" %}</div>
+  </div>
+
+  {%- css "local" -%}
+    {%- include 'css/post.css' -%}
+  {%- endcss -%}
+
+  {% js "defer" %}
+    {% include "scripts/dialog.js" %}
+  {% endjs %}
+</div>

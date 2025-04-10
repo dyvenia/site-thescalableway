@@ -18,7 +18,7 @@ dotenv.config();
 import yaml from 'js-yaml';
 
 //  config import
-import {getAllPosts, onlyMarkdown, tagList} from './src/_config/collections.js';
+import {getAllPosts, getAllCaseStudies, onlyMarkdown, tagList} from './src/_config/collections.js';
 import events from './src/_config/events.js';
 import filters from './src/_config/filters.js';
 import plugins from './src/_config/plugins.js';
@@ -32,11 +32,13 @@ export default async function (eleventyConfig) {
   eleventyConfig.addLayoutAlias('base', 'base.njk');
   eleventyConfig.addLayoutAlias('page', 'page.njk');
   eleventyConfig.addLayoutAlias('post', 'post.njk');
+  eleventyConfig.addLayoutAlias('case_study', 'case_study.njk');
   eleventyConfig.addLayoutAlias('tags', 'tags.njk');
   eleventyConfig.addLayoutAlias('single_author', 'single_author.njk');
 
   //	---------------------  Collections
   eleventyConfig.addCollection('allPosts', getAllPosts);
+  eleventyConfig.addCollection('allCaseStudies', getAllCaseStudies);
   eleventyConfig.addCollection('onlyMarkdown', onlyMarkdown);
   eleventyConfig.addCollection('tagList', tagList);
 
@@ -96,6 +98,8 @@ export default async function (eleventyConfig) {
     eleventyConfig.on('eleventy.after', events.svgToJpeg);
   }
 
+  eleventyConfig.on('eleventy.after', events.tableSawWrapper);
+
   // --------------------- Passthrough File Copy
 
   eleventyConfig.addPassthroughCopy({'src/admin_dev': 'admin_dev'}); // don't process the CMS folder
@@ -116,7 +120,8 @@ export default async function (eleventyConfig) {
     'src/assets/images/favicon/*': '/',
 
     // -- node_modules
-    'node_modules/lite-youtube-embed/src/lite-yt-embed.{css,js}': `assets/components/`
+    'node_modules/lite-youtube-embed/src/lite-yt-embed.{css,js}': `assets/components/`,
+    'node_modules/@zachleat/table-saw/table-saw.js': `assets/components/table-saw.js`
   });
 
   // --------------------- Build Settings
