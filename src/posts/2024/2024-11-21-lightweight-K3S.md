@@ -70,7 +70,7 @@ The goal? A platform that’s lightweight, scalable, and future-ready without ov
 
 Even the best-designed data platform is useless if it’s not integrated. No matter how carefully you choose your architecture, your platform’s success hinges on how well its core components—ingestion, transformation, and serving—work together. These phases can only operate efficiently when they are tightly aligned.
 
-![](/src/assets/images/data_engineering_lifecycle-1.png)
+![](/assets/images/data_engineering_lifecycle.png)
 
 _Adapted from "Fundamentals of Data Engineering: Plan and Build Robust Data Systems" by Joe Reis & Matt Housley_
 
@@ -158,7 +158,7 @@ The most feature-rich solution-managed Kubernetes supports autoscaling, spot ins
 
 The lightweight Kubernetes on a single Virtual Machine (VM) setup strikes an ideal balance between cost efficiency and operational flexibility. By leveraging lightweight Kubernetes (K3S), you gain the core benefits of Kubernetes with significantly reduced overhead, making it perfect for smaller environments or projects with constrained resources. Its streamlined architecture ensures smooth operations without the complexity of managing a full Kubernetes cluster. The diagram illustrates a basic architecture that effectively meets most requirements for running Prefect flows in a scalable manner.
 
-![](/src/assets/images/prefect_flow_architecture-1.png)
+![](/assets/images/prefect_flow_architecture.png)
 
 Using Helm charts to deploy the Prefect Worker simplifies orchestration, ensuring seamless integration with existing systems while minimizing manual configurations. Helm also makes updates easier, promotes standardization, and reduces deployment errors. 
 
