@@ -48,7 +48,7 @@ However, this lack of clearly defined roles and boundaries typically creates cha
 - Team friction arising from ambiguous responsibilities and overlapping ownership
 - An overemphasis on technical tools and implementation details, rather than addressing the more fundamental needs of role clarity and process alignment
 
-# Working with an external partner
+## Working with an external partner
 
 In this workflow, there are already quite a few roles and tasks — and in reality, even more can be involved. For example, handling data privacy in Europe requires a solid understanding of GDPR. Given the range of responsibilities and the breadth of expertise needed to run a data department effectively, many data and analytics teams choose to rely on external partners. However, this isn't always straightforward. External teams often create strong and rigid boundaries between themselves (the extended team) and the customer’s in-house team (the internal team), which can hinder collaboration.
 
