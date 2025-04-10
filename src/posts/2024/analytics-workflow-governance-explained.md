@@ -1,5 +1,5 @@
 ---
-title: Roles in the context of the Analytics Workflow
+title: Roles in the Context of the Analytics Workflow
 date: 2025-03-27T10:47:00
 author: Alessio Civitillo
 description: Code-based analytics workflows offer a unique advantage - the ability to combine robust collaboration with strict governance. While technically straightforward to implement, this approach only reaches its full potential when aligned with well-adapted business and analytics processes.
