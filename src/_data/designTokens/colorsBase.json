@@ -1,19 +1,20 @@
 {
   "title": "Colors",
   "description": "Hex color codes that can be shared, cross-platform. They can be converted at point of usage, such as HSL for web or CMYK for print. neutral and colors are converted to color scales, fixedColors are kept as they are",
-  "neutral": [
+  "shades_neutral": [
     {
-      "name": "Dove Gray",
+      "name": "Gray",
       "value": "#68676C"
     }
   ],
-  "colors": [
+  "shades_vibrant": [
     {
-      "name": "Royal Blue",
+      "name": "Blue",
       "value": "#4862E5"
     }
   ],
-  "fixedColors": [
+  "light_dark": [],
+  "standalone": [
     {
       "name": "Gold",
       "value": "#DFBA56"

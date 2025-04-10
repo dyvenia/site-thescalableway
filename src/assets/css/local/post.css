@@ -46,6 +46,10 @@
   grid-column: feature;
 }
 
+.post.case-study .blog .wrapper > * {
+  grid-column: content;
+}
+
 .post p:empty {
   display: none;
 }

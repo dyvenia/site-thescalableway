@@ -113,8 +113,8 @@ title: The Scalable Way
 </div>
 
 <div class="highlight-two | wrapper">
-  <div class="full wrapper section" style="--spot-color: var(--color-dove-gray-700)">
-    <article class="full  intro | section__inner wrapper region flow prose text-center text-dove-gray-50">
+  <div class="full wrapper section" style="--spot-color: var(--color-gray-700)">
+    <article class="full  intro | section__inner wrapper region flow prose text-center text-gray-100">
       <h2 class="text-step-2">
         {{ highlight_two.title1 }}
         <span class="block text-step-3 text-pink">{{ highlight_two.title2 }} </span>
@@ -128,7 +128,7 @@ title: The Scalable Way
   <article class="full region flow">
     <h2 class="text-step-3 text-center">
       {{ foundations_titles.title1 }}
-      <span class="block uppercase text-royal-blue-500">{{ foundations_titles.title2 }} </span>
+      <span class="block uppercase text-blue-500">{{ foundations_titles.title2 }} </span>
     </h2>
     <div class="split region">
       {% svg "brand/brick" %}
@@ -153,7 +153,7 @@ title: The Scalable Way
       <h2>{{ about.title }}</h2>
       <div class="flow">{{ about.content | markdownFormat | safe }}</div>
     </header>
-    <div class="grid region" data-layout="thirds">
+    <div class="grid mt-xl-2xl" data-layout="thirds">
       {% for member in collections.team_members %}
       {% if member.data.show_on_about %}
         <div class="about__content flow">
@@ -215,13 +215,12 @@ title: The Scalable Way
         <p>{{ blog.intro }}</p>
       {% endif %}
 
-      <div class="feature |  region">
+      <div class="feature | mt-l-xl">
         <custom-masonry layout="50-50">
 
-                   <!-- loop posts -->
          {% set itemList = collections.allPosts %}
          {% asyncEach item in itemList.slice(0, 4) %}
-           {% set definedDate = item.date %}
+         {% set headingLevel = "h3" %}
            {% include "partials/card-blog.njk" %}
          {% endeach %}
 
@@ -231,7 +230,7 @@ title: The Scalable Way
   </section>
 </div>
 
-{%- css "inline" -%}
+{%- css "local" -%}
   {%- include 'css/home.css' -%}
   {%- include 'css/column.css' -%}
   {%- include "css/custom-card.css" -%}

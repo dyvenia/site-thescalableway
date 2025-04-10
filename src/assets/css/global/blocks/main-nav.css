@@ -6,7 +6,7 @@
   order: 1;
 }
 
-.mainnav:has([aria-expanded='true']) {
+.mainnav:has(.nav-drawer-toggle[aria-expanded='true']) {
   --nav-position: fixed;
   inset-inline-end: var(--gap);
 }
@@ -15,21 +15,25 @@
   /* configuration */
   --gutter: var(--space-xs) var(--space-3xs);
   --cluster-vertical-alignment: center;
+  --cluster-horizontal-alignment: flex-start;
   --nav-list-background: var(--color-bg-accent);
   --nav-list-shadow: -5px 0 11px 0 hsl(0 0% 0% / 0.2);
   --nav-list-layout: column;
   --nav-list-height: 100dvh;
   --nav-list-padding: var(--space-2xl) var(--space-s);
   --nav-list-position: fixed;
-  --nav-list-width: 100%;
+  --nav-list-width: min(25rem, 100vw);
   --nav-list-visibility: hidden;
-  --nav-list-margin: var(--space-2xs) 0;
+  --nav-list-opacity: 0;
+  --nav-list-margin: 0;
+  --nav-list-align-items: stretch;
 
   background: var(--nav-list-background);
   box-shadow: var(--nav-list-shadow);
   display: flex;
   flex-direction: var(--nav-list-layout);
   flex-wrap: wrap;
+  align-items: var(--nav-list-align-items);
   list-style: none;
   margin: var(--nav-list-margin);
   padding: var(--nav-list-padding);
@@ -37,7 +41,7 @@
   inset-block-start: 0;
   inset-inline-end: 0;
   inline-size: var(--nav-list-width);
-  opacity: 0;
+  opacity: var(--nav-list-opacity);
   transition:
     opacity 0.3 var(--nav-list-timing-function),
     visibility 0.3s ease-in-out;
@@ -50,9 +54,9 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .mainnav ul {
+  .mainnav > ul {
     --nav-list-transform: translateX(100%);
-    opacity: 1;
+    --nav-list-opacity: 1;
     transform: var(--nav-list-transform);
     transition:
       transform 0.5s var(--nav-list-timing-function),
@@ -64,40 +68,53 @@
   }
 }
 
-.mainnav [aria-expanded='true'] + ul {
+.mainnav .nav-drawer-toggle[aria-expanded='true'] + ul {
   --nav-list-visibility: visible;
   --nav-list-transform: translateX(0);
-  opacity: 1;
+  --nav-list-opacity: 1;
 }
 
-.mainnav button {
-  --gutter: var(--space-2xs);
+/* avoid scrolling when drawer is open */
+body:has(.nav-drawer-toggle[aria-expanded='true']) {
+  overflow: hidden;
+}
+
+.mainnav .nav-drawer-toggle {
+  --gutter: 0.2em;
   --cluster-vertical-alignment: center;
   display: var(--nav-button-display, flex);
   position: relative;
   z-index: 2;
-  padding: var(--space-2xs) 0;
+  padding: var(--space-3xs);
   line-height: var(--leading-flat);
+  border-radius: var(--border-radius-medium);
+  background: var(--color-blue);
+  color: var(--color-light);
 }
 
 .mainnav span {
-  font-weight: var(--font-bold);
+  font-weight: var(--font-medium);
   text-transform: uppercase;
   font-family: var(--font-display);
   font-size: var(--size-step-min-1);
 }
 
 .mainnav svg {
-  block-size: 0.9em;
+  block-size: 0.8em;
   color: var(--color-text);
-  stroke-width: 3;
+  stroke-width: 2.5;
+  pointer-events: auto;
 }
 
-.mainnav [aria-expanded='true'] svg {
+.mainnav .nav-drawer-toggle svg {
+  color: var(--color-light);
+}
+
+.mainnav .nav-drawer-toggle[aria-expanded='true'] svg {
   transform: rotate(45deg);
 }
 
-.mainnav a {
+.mainnav :is(a, .nav-sublist-toggle) {
   /* configuration */
   --nav-item-background: transparent;
   --nav-item-text-color: var(--color-text);
@@ -119,7 +136,18 @@
   text-box-edge: cap alphabetic;
 }
 
-.mainnav a:is(:hover, :focus) {
+@media screen(ltnav) {
+  .mainnav :is(a, .nav-sublist-toggle) {
+    font-size: var(--size-step-1);
+    inline-size: 100%;
+  }
+
+  .mainnav .nav-sublist a {
+    font-size: var(--size-step-0);
+  }
+}
+
+.mainnav :is(a, .nav-sublist-toggle):hover {
   --nav-item-background: transparent;
   --nav-item-text-color: var(--color-text);
   --nav-item-decoration-color: var(--color-text);
@@ -127,10 +155,54 @@
 
 .mainnav [aria-current='page'],
 .mainnav [data-state='active'] {
-  --nav-item-background: var(--color-text);
-  --nav-item-text-color: var(--color-light);
-  --nav-item-decoration-color: transparent;
+  --nav-item-background: transparent;
+  --nav-item-text-color: var(--color-text);
+  --nav-item-decoration-color: var(--color-text);
 }
+
+/* sub menu */
+.mainnav .nav-sublist-toggle {
+  overflow: visible;
+}
+
+.mainnav .nav-sublist-toggle[aria-expanded='false'] + ul {
+  display: none;
+}
+
+.mainnav .nav-sublist {
+  --nav-sublist-position: relative;
+  --nav-sublist-background: var(--color-bg);
+  --nav-sublist-border: transparent;
+  --nav-sublist-width: 100%;
+  --nav-list-visibility: visible;
+  --nav-list-opacity: 1;
+  gap: var(--space-2xs);
+  box-shadow: none;
+  position: var(--nav-sublist-position);
+  inline-size: var(--nav-sublist-width);
+  block-size: auto;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  border: 3px solid var(--nav-sublist-border);
+  padding: var(--space-2xs);
+  background: var(--nav-sublist-background);
+  z-index: 2;
+}
+
+.mainnav .nav-sublist-toggle[aria-expanded='true'] svg {
+  transform: rotate(45deg);
+}
+
+/* if active submenu */
+.mainnav li:has(a[data-state='active']) button {
+  --nav-item-background: transparent;
+  --nav-item-text-color: var(--color-text);
+  --nav-item-decoration-color: var(--color-text);
+}
+
+/* last child */
 
 .mainnav > ul:first-of-type > li:last-child a {
   --nav-item-background: var(--color-blue);
@@ -157,21 +229,37 @@
 
   .mainnav ul {
     --gutter: var(--space-2xs);
+    --cluster-horizontal-alignment: flex-start;
     --nav-list-layout: row;
     --nav-list-position: static;
     --nav-list-padding: 0;
+    --nav-list-margin: 0;
     --nav-list-height: auto;
     --nav-list-width: auto;
     --nav-list-shadow: none;
     --nav-list-visibility: visible;
+    --nav-list-opacity: 1;
     --nav-list-transform: translateX(0);
+    --nav-list-align-items: center;
   }
 
-  .mainnav [aria-current='page'],
-  .mainnav [data-state='active'] {
-    --nav-item-background: transparent;
-    --nav-item-text-color: var(--color-text);
-    --nav-item-decoration-color: var(--color-text);
+  .mainnav a {
+    --nav-item-padding: var(--space-xs) var(--space-2xs);
+    --nav-item-font-size: var(--size-step-0);
+  }
+
+  .mainnav .nav-sublist-toggle {
+    --nav-item-padding: var(--space-2xs) var(--space-3xs);
+  }
+
+  .mainnav .nav-sublist {
+    --nav-sublist-position: absolute;
+    --nav-sublist-background: var(--color-bg-accent-2);
+    --nav-sublist-border: transparent;
+    --nav-sublist-width: 10em;
+    inset-block-start: calc(var(--space-xl) - var(--space-2xs) + 1px);
+    inset-inline-start: calc(var(--space-2xs) / -1);
+    align-items: stretch;
   }
 }
 
@@ -179,22 +267,19 @@
 assumes that the button doesn’t exist without JS, making the list the first child within the navigation. */
 
 .mainnav ul:first-child {
+  --cluster-horizontal-alignment: flex-start;
   --nav-list-layout: row;
   --nav-list-position: static;
   --nav-list-padding: 0;
+  --nav-list-margin: 0;
   --nav-list-height: auto;
   --nav-list-width: auto;
   --nav-list-shadow: none;
   --nav-list-visibility: visible;
+  --nav-list-opacity: 1;
   --nav-list-transform: translateX(0);
+  --nav-list-align-items: center;
   margin-inline: calc(var(--space-4xs) / -1);
-}
-
-.mainnav ul:first-child [aria-current='page'],
-.mainnav ul:first-child [data-state='active'] {
-  --nav-item-background: transparent;
-  --nav-item-text-color: var(--color-text);
-  --nav-item-decoration-color: var(--color-text);
 }
 
 /* make menu wrap without drawer */

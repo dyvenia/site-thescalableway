@@ -1,15 +1,15 @@
 ---
 layout: base
-title: Blog
-description: 'Welcome to The Scalable Way Blog — your source for insights, strategies, and best practices in data platform engineering, analytics, and data science.'
+title: Case studies
+description: 'Explore our success stories, which showcase how our approach to data platform engineering has helped businesses achieve greater scalability, efficiency, and reliability in their data operations.'
 bodyClass: insights
 footerSpace: mt-2xl
 pagination:
-  data: collections.allPosts
+  data: collections.allCaseStudies
   size: 6
-permalink: 'blog/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html'
+permalink: 'case-studies/{% if pagination.pageNumber >=1 %}page-{{ pagination.pageNumber + 1 }}/{% endif %}index.html'
 intro: >
-  Welcome to The Scalable Way Blog — your source for insights, strategies, and best practices in data platform engineering, analytics, and data science.
+  Explore our success stories, which showcase how our approach to data platform engineering has helped businesses achieve greater scalability, efficiency, and reliability in their data operations.
 ---
 
 <div class="wrapper flow">
@@ -34,6 +34,8 @@ intro: >
 
   <custom-masonry layout="50-50">
 		{% asyncEach item in pagination.items %}
+			{% set definedDate = item.date %}
+
 			{% include "partials/card-blog.njk" %}
 		{% endeach %}
 	</custom-masonry>

@@ -1,0 +1,47 @@
+table-saw {
+  display: block;
+}
+
+table {
+  border: var(--stroke);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-weight: var(--font-bold);
+  line-height: var(--leading-fine);
+  background: var(--color-bg-accent);
+}
+
+thead th {
+  padding-block: var(--space-2xs);
+}
+
+td,
+th {
+  padding: var(--space-2xs) var(--space-xs);
+}
+
+th:not(:only-of-type) {
+  border-block-end: var(--stroke);
+}
+
+th:only-of-type {
+  border-inline-end: var(--stroke);
+}
+
+tr:not(:first-of-type) {
+  border-block-start: var(--stroke);
+}
+
+@media screen(sm) {
+  :is(th, td) ~ :is(th, td) {
+    border-inline-start: var(--stroke);
+  }
+
+  tr + tr :is(th, td) {
+    border-block-start: var(--stroke);
+  }
+}

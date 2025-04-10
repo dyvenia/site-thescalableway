@@ -3,19 +3,21 @@
 const nav = document.querySelector('nav');
 const list = nav.querySelector('ul');
 const burgerClone = document.querySelector('#burger-template').content.cloneNode(true);
-const button = burgerClone.querySelector('button');
+const buttonDrawer = burgerClone.querySelector('button[data-btn-drawer]');
 
-button.addEventListener('click', e => {
-  const isOpen = button.getAttribute('aria-expanded') === 'true';
-  button.setAttribute('aria-expanded', !isOpen);
+list.style.setProperty('display', 'flex');
+
+buttonDrawer.addEventListener('click', e => {
+  const isOpen = buttonDrawer.getAttribute('aria-expanded') === 'true';
+  buttonDrawer.setAttribute('aria-expanded', !isOpen);
 });
 
 const disableMenu = () => {
-  button.setAttribute('aria-expanded', false);
+  buttonDrawer.setAttribute('aria-expanded', false);
 };
 
 //  close on escape
-nav.addEventListener('keyup', e => {
+document.addEventListener('keyup', e => {
   if (e.code === 'Escape') {
     disableMenu();
   }

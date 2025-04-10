@@ -9,8 +9,13 @@ export default {
       url: '/our-process/'
     },
     {
-      text: 'Blog',
-      url: '/blog/'
+      text: 'Learn',
+      url: '/learn/',
+      submenu: [
+        {text: 'Blog', url: '/blog/'},
+        {text: 'Case Studies', url: '/case-studies/'},
+        {text: 'Lessons', url: 'https://github.com/thescalableway/edp-learning'}
+      ]
     }
   ],
   bottom: [

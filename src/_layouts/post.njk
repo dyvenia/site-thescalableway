@@ -20,24 +20,26 @@ schema: blog
         1
       %}
         <!-- tags -->
-        {% for tag in tags %}{% if tag != "posts" %}
+        {% for tag in tags %}{% if tag != "posts" and tag != "case-studies" %}
           <a class="button" data-small-button data-ghost-button href="/tags/{{ tag }}"> {{ tag }} </a>
         {% endif %}{% endfor %}
       {% endif %}
     </p>
 
-    <p class="meta | cluster gutter-s mt-xl">
-      {% set postAuthor = author %}
+    {% if author %}
+      <p class="meta | cluster gutter-s mt-xl">
+        {% set postAuthor = author %}
 
-      {% for author in collections.team_members %}
-        {% if author.data.name == postAuthor %}
-          <a href="{{ author.url }}" class="cluster gutter-xs">
-            {% image "." + author.data.image, author.data.name, null, null, null, "aspect-1 rounded-full object-cover", [100], "100px" %}
-            <span> by {{ author.data.name }}</span>
-          </a>
-        {% endif %}
-      {% endfor %}
-    </p>
+        {% for author in collections.team_members %}
+          {% if author.data.name == postAuthor %}
+            <a href="{{ author.url }}" class="cluster gutter-xs">
+              {% image "." + author.data.image, author.data.name, null, null, null, "aspect-1 rounded-full object-cover", [100], "100px" %}
+              <span> by {{ author.data.name }}</span>
+            </a>
+          {% endif %}
+        {% endfor %}
+      </p>
+    {% endif %}
 
     {% if toc %}
       <div class="toc-container | relative">
@@ -46,9 +48,9 @@ schema: blog
       </div>
     {% endif %}
 
-    <div class="sidebar gutter-s relative">{{ content | safe }}</div>
+    <div class="sidebar gutter-s relative flow">{{ content | safe }}</div>
 
-    <div class="sidebar gutter-lg relative mt-xl-2xl">
+    <div class="sidebar sidebar-newsletter gutter-lg relative mt-xl-2xl">
       <div></div>
       {% include "partials/hubspot-form.njk" %}
     </div>
@@ -69,7 +71,7 @@ schema: blog
   </div>
 </div>
 
-{%- css "inline" -%}
+{%- css "local" -%}
   {%- include 'css/post.css' -%}
   {%- include 'css/footnotes.css' -%}
 {%- endcss -%}

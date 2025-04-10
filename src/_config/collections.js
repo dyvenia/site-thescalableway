@@ -3,6 +3,11 @@ export const getAllPosts = collection => {
   return collection.getFilteredByGlob('./src/posts/**/*.md').reverse();
 };
 
+/** All case-studies as a collection. */
+export const getAllCaseStudies = collection => {
+  return collection.getFilteredByGlob('./src/case_studies/**/*.md').reverse();
+};
+
 /** All markdown files as a collection for sitemap.xml */
 export const onlyMarkdown = collection => {
   return collection.getFilteredByGlob('./src/**/*.{md,njk}');
@@ -13,7 +18,9 @@ export const tagList = collection => {
   const tagsSet = new Set();
   collection.getAll().forEach(item => {
     if (!item.data.tags) return;
-    item.data.tags.filter(tag => !['posts', 'docs', 'all'].includes(tag)).forEach(tag => tagsSet.add(tag));
+    item.data.tags
+      .filter(tag => !['posts', 'case-studies', 'all'].includes(tag))
+      .forEach(tag => tagsSet.add(tag));
   });
   return Array.from(tagsSet).sort();
 };

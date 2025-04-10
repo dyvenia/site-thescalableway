@@ -18,7 +18,7 @@
 }
 
 .theme-switch .button[aria-pressed='true'] {
-  --_color-primary-contrast: var(--color-royal-blue-600);
+  --_color-primary-contrast: var(--color-blue-600);
   --button-bg: var(--_color-primary-contrast);
   --button-color: var(--color-light);
   --button-border-color: var(--_color-primary-contrast);

@@ -1,54 +1,52 @@
 import fs from 'node:fs';
 import Color from 'colorjs.io';
-import rgbHex from 'rgb-hex';
 
 const colorsBase = JSON.parse(fs.readFileSync('./src/_data/designTokens/colorsBase.json', 'utf-8'));
 
-const generateColorPalette = baseColorHex => {
+const generatePalette = (baseColorHex, steps) => {
   const baseColor = new Color(baseColorHex).to('oklch');
 
-  const steps = [
-    {label: '50', lightness: 0.96, chroma: baseColor.c * 0.19, hue: baseColor.h},
-    {label: '100', lightness: 0.94, chroma: baseColor.c * 0.45, hue: baseColor.h},
-    {label: '200', lightness: 0.86, chroma: baseColor.c * 0.76, hue: baseColor.h},
-    {label: '300', lightness: 0.8, chroma: baseColor.c * 0.86, hue: baseColor.h},
-    {label: '400', lightness: 0.7, chroma: baseColor.c * 0.96, hue: baseColor.h},
-    {label: '500', lightness: 0.62, chroma: baseColor.c * 1, hue: baseColor.h},
-    {label: '600', lightness: 0.5, chroma: baseColor.c * 1, hue: baseColor.h},
-    {label: '700', lightness: 0.42, chroma: baseColor.c * 1, hue: baseColor.h},
-    {label: '800', lightness: 0.36, chroma: baseColor.c * 0.85, hue: baseColor.h},
-    {label: '900', lightness: 0.25, chroma: baseColor.c * 0.72, hue: baseColor.h},
-    {label: '950', lightness: 0.2, chroma: baseColor.c * 0.55, hue: baseColor.h}
-  ];
+  return steps.map(step => {
+    const color = new Color('oklch', [step.lightness, baseColor.c * step.chromaFactor, baseColor.h]).to(
+      'srgb'
+    );
 
-  return steps.map(step => ({
-    name: `${step.label}`,
-    value: '#' + rgbHex(new Color('oklch', [step.lightness, step.chroma, step.hue]).to('srgb').toString())
-  }));
+    const [r, g, b] = color.coords.map(value => Math.round(Math.min(Math.max(value * 255, 0), 255)));
+
+    const hexValue = `#${r.toString(16).padStart(2, '0')}${g
+      .toString(16)
+      .padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+
+    return {
+      name: `${step.label}`,
+      value: hexValue
+    };
+  });
 };
 
-const generateNeutralPalette = baseColorHex => {
-  const baseColor = new Color(baseColorHex).to('oklch');
+const vibrantSteps = [
+  {label: '100', lightness: 0.96, chromaFactor: 0.19},
+  {label: '200', lightness: 0.94, chromaFactor: 0.45},
+  {label: '300', lightness: 0.86, chromaFactor: 0.78},
+  {label: '400', lightness: 0.75, chromaFactor: 0.9},
+  {label: '500', lightness: 0.62, chromaFactor: 1},
+  {label: '600', lightness: 0.5, chromaFactor: 1},
+  {label: '700', lightness: 0.42, chromaFactor: 1},
+  {label: '800', lightness: 0.36, chromaFactor: 0.85},
+  {label: '900', lightness: 0.2, chromaFactor: 0.55}
+];
 
-  const steps = [
-    {label: '50', lightness: 0.973, chroma: baseColor.c * 0.12, hue: baseColor.h},
-    {label: '100', lightness: 0.9, chroma: baseColor.c * 0.14, hue: baseColor.h},
-    {label: '200', lightness: 0.8, chroma: baseColor.c * 0.2, hue: baseColor.h},
-    {label: '300', lightness: 0.7, chroma: baseColor.c * 0.25, hue: baseColor.h},
-    {label: '400', lightness: 0.6, chroma: baseColor.c * 0.3, hue: baseColor.h},
-    {label: '500', lightness: 0.5, chroma: baseColor.c * 0.35, hue: baseColor.h},
-    {label: '600', lightness: 0.45, chroma: baseColor.c * 0.3, hue: baseColor.h},
-    {label: '700', lightness: 0.37, chroma: baseColor.c * 0.28, hue: baseColor.h},
-    {label: '800', lightness: 0.33, chroma: baseColor.c * 0.25, hue: baseColor.h},
-    {label: '900', lightness: 0.27, chroma: baseColor.c * 0.22, hue: baseColor.h},
-    {label: '950', lightness: 0.24, chroma: baseColor.c * 0.2, hue: baseColor.h}
-  ];
-
-  return steps.map(step => ({
-    name: `${step.label}`,
-    value: '#' + rgbHex(new Color('oklch', [step.lightness, step.chroma, step.hue]).to('srgb').toString())
-  }));
-};
+const neutralSteps = [
+  {label: '100', lightness: 0.97, chromaFactor: 0.12},
+  {label: '200', lightness: 0.9, chromaFactor: 0.14},
+  {label: '300', lightness: 0.75, chromaFactor: 0.14},
+  {label: '400', lightness: 0.6, chromaFactor: 0.25},
+  {label: '500', lightness: 0.5, chromaFactor: 0.3},
+  {label: '600', lightness: 0.4, chromaFactor: 0.35},
+  {label: '700', lightness: 0.35, chromaFactor: 0.3},
+  {label: '800', lightness: 0.3, chromaFactor: 0.27},
+  {label: '900', lightness: 0.26, chromaFactor: 0.25}
+];
 
 const colorTokens = {
   title: colorsBase.title,
@@ -56,8 +54,8 @@ const colorTokens = {
   items: []
 };
 
-colorsBase.neutral.forEach(color => {
-  const palette = generateNeutralPalette(color.value);
+colorsBase.shades_neutral.forEach(color => {
+  const palette = generatePalette(color.value, neutralSteps);
   palette.forEach(shade => {
     colorTokens.items.push({
       name: `${color.name} ${shade.name}`,
@@ -66,8 +64,8 @@ colorsBase.neutral.forEach(color => {
   });
 });
 
-colorsBase.colors.forEach(color => {
-  const palette = generateColorPalette(color.value);
+colorsBase.shades_vibrant.forEach(color => {
+  const palette = generatePalette(color.value, vibrantSteps);
   palette.forEach(shade => {
     colorTokens.items.push({
       name: `${color.name} ${shade.name}`,
@@ -76,7 +74,32 @@ colorsBase.colors.forEach(color => {
   });
 });
 
-colorsBase.fixedColors.forEach(color => {
+colorsBase.light_dark.forEach(color => {
+  colorTokens.items.push({
+    name: color.name,
+    value: color.value
+  });
+
+  const lightDark = new Color(color.value).to('oklch');
+  const subduedColor = new Color('oklch', [
+    lightDark.l,
+    lightDark.c * 0.8, // reduce chroma by 20%
+    lightDark.h
+  ]).to('srgb');
+
+  const [r, g, b] = subduedColor.coords.map(value => Math.round(Math.min(Math.max(value * 255, 0), 255)));
+
+  const subduedHex = `#${r.toString(16).padStart(2, '0')}${g
+    .toString(16)
+    .padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+
+  colorTokens.items.push({
+    name: `${color.name} Subdued`,
+    value: subduedHex
+  });
+});
+
+colorsBase.standalone.forEach(color => {
   colorTokens.items.push({
     name: color.name,
     value: color.value

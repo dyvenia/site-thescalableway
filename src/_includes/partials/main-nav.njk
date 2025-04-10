@@ -1,23 +1,54 @@
-<!-- toggle drawer menu in _data/meta.js -->
+<!-- toggle drawer / submenu in _data/meta.js -->
 {% set drawerNav = meta.navigation.drawerNav %}
+{% set subMenu = meta.navigation.subMenu %}
 
 <nav id="mainnav" class="mainnav" aria-label="{{ meta.navigation.ariaTop }}">
   <ul class="cluster" role="list" no-flash>
     {% for item in navigation.top %}
-      <li>
-        <a
-          href="{{ item.url }}"
-          {{
-            helpers.getLinkActiveState(item.url,
-            page.url)
-            |
-            safe
-          }}
-          >{{ item.text }}</a
-        >
-      </li>
+      {% if item.submenu %}
+        <li class="relative">
+          <button
+            class="nav-sublist-toggle"
+            aria-expanded="false"
+            aria-labelledby="mainnav-{{ loop.index }}"
+            aria-controls="mainnav-{{ loop.index }}-sub"
+            data-btn-submenu
+          >
+            {{ item.text }} {% svg "misc/chev-down" %}
+          </button>
+          <ul class="nav-sublist" id="mainnav-{{ loop.index }}-sub">
+            {% for subitem in item.submenu %}
+              <li>
+                <a
+                  href="{{ subitem.url }}"
+                  {{
+                    helpers.getLinkActiveState(subitem.url, page.url)
+                    | safe
+                  }}
+                  >{{ subitem.text }}</a
+                >
+              </li>
+            {% endfor %}
+          </ul>
+        </li>
+      {% else %}
+        <li>
+          <a
+            href="{{ item.url }}"
+            {{
+              helpers.getLinkActiveState(item.url,
+              page.url)
+              |
+              safe
+            }}
+            >{{ item.text }}</a
+          >
+        </li>
+      {% endif %}
     {% endfor %}
-    <li><a href="{{ meta.book_call_link }}" target="blank"> {{ meta.book_call }}  </a></li>
+    <li>
+      <a class="no-indicator" href="{{ meta.book_call_link }}" target="blank"> {{ meta.book_call }} </a>
+    </li>
   </ul>
 </nav>
 
@@ -27,7 +58,14 @@
   <!-- see also: https://kittygiraudel.com/2022/09/30/templating-in-html/ -->
 
   <template id="burger-template">
-    <button type="button" aria-expanded="false" aria-controls="mainnav" class="cluster">
+    <button
+      class="nav-drawer-toggle | cluster"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mainnav"
+      class="cluster"
+      data-btn-drawer
+    >
       <span>{{ meta.navigation.navLabel }}</span>
 
       <svg
@@ -48,7 +86,17 @@
 {% endif %}
 
 {% if drawerNav %}
+  {% css "local" %}
+    {% include "css/nav-main-drawer-cls.css" %}
+  {% endcss %}
+
   {% js "defer" %}
     {% include "scripts/nav-drawer.js" %}
+  {% endjs %}
+{% endif %}
+
+{% if subMenu %}
+  {% js "defer" %}
+    {% include "scripts/nav-sub.js" %}
   {% endjs %}
 {% endif %}
