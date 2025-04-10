@@ -1,6 +1,6 @@
 ---
 title: Deploying Prefect on any Cloud Using a Single Virtual Machine
-date: 2025-01-15 09:29:00
+date: 2025-01-15T09:29:00
 author: Karol Wolski
 description: A pattern to improve observability, monitoring and, ultimately, data operations with Prefect. We show how to find the right trade off between number of deployments and improved operations.
 tags:
@@ -14,12 +14,12 @@ internal_notes: |-
 
   Choosing the right approach to build and maintain a data platform is often a daunting task for organizations. With an overwhelming number of options available, finding a solution that balances simplicity, scalability, and future-proofing while also addressing the challenges of hiring people skilled enough for developing this solution can be a complex endeavor.
 
-  In this article, I aim to:
+  In this article, I aim to:   
 
-  - Highlight the key challenges organizations face when deciding on data platform architecture, such as simplicity versus scalability, designing a future-proof solution, and acquiring the right talent for maintenance.
-  - Focus on a practical solution without opening debate about orchestration tools like Prefect, Airflow, or Dagster. For the sake of clarity, this article assumes the use of Prefect as the orchestration tool and there will be dedicated article for comparison of those orchestrator tools.
-  - Present the most viable options for running Prefect flows and discuss why a single VM with K3s is an excellent choice.
-  - Provide a high-level overview of the proposed architecture and the required steps for implementation. This is not a step-by-step guide, so specifics like Terraform scripts or GitHub workflow configurations are intentionally omitted.
+  - Highlight the key challenges organizations face when deciding on data platform architecture, such as simplicity versus scalability, designing a future-proof solution, and acquiring the right talent for maintenance.   
+  - Focus on a practical solution without opening debate about orchestration tools like Prefect, Airflow, or Dagster. For the sake of clarity, this article assumes the use of Prefect as the orchestration tool and there will be dedicated article for comparison of those orchestrator tools.   
+  - Present the most viable options for running Prefect flows and discuss why a single VM with K3s is an excellent choice.   
+  - Provide a high-level overview of the proposed architecture and the required steps for implementation. This is not a step-by-step guide, so specifics like Terraform scripts or GitHub workflow configurations are intentionally omitted.   
 
   By the end, readers should have a clearer understanding of how to approach a straightforward and scalable data platform setup using Prefect and K3s using single Virtual Machine on GCP.
 
@@ -70,7 +70,7 @@ The goal? A platform that’s lightweight, scalable, and future-ready without ov
 
 Even the best-designed data platform is useless if it’s not integrated. No matter how carefully you choose your architecture, your platform’s success hinges on how well its core components—ingestion, transformation, and serving—work together. These phases can only operate efficiently when they are tightly aligned.
 
-![](/src/assets/images/data_engineering_lifecycle-1.png)
+![](/assets/images/data_engineering_lifecycle.png)
 
 _Adapted from "Fundamentals of Data Engineering: Plan and Build Robust Data Systems" by Joe Reis & Matt Housley_
 
@@ -158,7 +158,7 @@ The most feature-rich solution-managed Kubernetes supports autoscaling, spot ins
 
 The lightweight Kubernetes on a single Virtual Machine (VM) setup strikes an ideal balance between cost efficiency and operational flexibility. By leveraging lightweight Kubernetes (K3S), you gain the core benefits of Kubernetes with significantly reduced overhead, making it perfect for smaller environments or projects with constrained resources. Its streamlined architecture ensures smooth operations without the complexity of managing a full Kubernetes cluster. The diagram illustrates a basic architecture that effectively meets most requirements for running Prefect flows in a scalable manner.
 
-![](/src/assets/images/prefect_flow_architecture-1.png)
+![](/assets/images/prefect_flow_architecture.png)
 
 Using Helm charts to deploy the Prefect Worker simplifies orchestration, ensuring seamless integration with existing systems while minimizing manual configurations. Helm also makes updates easier, promotes standardization, and reduces deployment errors. 
 

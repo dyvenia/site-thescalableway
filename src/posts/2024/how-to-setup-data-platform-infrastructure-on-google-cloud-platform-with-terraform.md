@@ -1,6 +1,6 @@
 ---
 title: How to Setup Data Platform Infrastructure on Google Cloud Platform with Terraform
-date: 2025-03-05 13:31:00
+date: 2025-03-05T13:31:00
 author: Karol Wolski
 description: Learn how to set up a secure, scalable data platform infrastructure on Google Cloud Platform (GCP) using Terraform. This step-by-step guide covers VPC configuration, Compute Engine setup, firewall rules, Identity-Aware Proxy (IAP), Cloud NAT, and more, ensuring a cost-effective, flexible, and secure foundation for your data platform.
 tags:
@@ -136,7 +136,7 @@ sudo apt update && sudo apt install terraform
 Similarly to Terraform, the gcloud CLI can be installed as per the [official instructions](https://cloud.google.com/sdk/docs/install). For Ubuntu, run:
 
 ```bash
-
+ 
 sudo apt-get update
 sudo apt-get install apt-transport-https ca-certificates gnupg curl
 curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo gpg --dearmor
@@ -253,7 +253,7 @@ Once we have our service account JSON prepared, export of credentials is necessa
 Then, with the usage of gcloud CLI, a new bucket with the applied policy should be created:
 
 ```bash
-gcloud storage buckets create gs://test-project-tfstate --location=us-central1
+gcloud storage buckets create gs://test-project-tfstate --location=us-central1 
 --uniform-bucket-level-access
 
 gcloud storage buckets add-iam-policy-binding gs://test-project-tfstate \
@@ -267,7 +267,7 @@ Once completed, it should be available in the GCP Console. To check it, go to `N
 
 ## Phase 2: Installing & Deploying Infrastructure with Terraform
 
-To set up the environment, Terraform will handle provisioning all the required GCP resources. By the end of this process, your directory structure will look like this:
+To set up the environment, Terraform will handle provisioning all the required GCP resources. By the end of this process, your directory structure will look like this: 
 
 ```bash
 $ tree
@@ -339,7 +339,7 @@ variable "filesystem" {
 }
 
 variable "image" {
-  default =
+  default = 
 "projects/ubuntu-os-cloud/global/images/ubuntu-2404-noble-amd64-v20241115"
 }
 
@@ -360,7 +360,7 @@ variable "region" {
 }
 
 variable "service_account" {
-  default =
+  default = 
 "serviceAccount:test-service-account@test-project.iam.gserviceaccount.com"
 }
 
@@ -581,7 +581,7 @@ You can access a Virtual Vachine securely using only a service account token and
 - Log in to your Google Cloud account using the following command:
 
 ```bash
-gcloud auth activate-service-account
+gcloud auth activate-service-account 
 test-service-account@test-project.iam.gserviceaccount.com --key-file
  ~/.config/gcloud.json
 gcloud config set project test-project
