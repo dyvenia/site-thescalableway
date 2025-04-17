@@ -13,7 +13,7 @@ An analytics workflow documents the journey from raw data to production-ready da
 
 To manage this governance effectively, several roles are typically involved. It's becoming increasingly rare to see a single analyst handle the entire end-to-end process of creating a report or data model. Instead, the trend is moving toward a growing number of specialized roles, each with distinct responsibilities.
 
-![typical code-based analytics workflow](/src/assets/images/blog/mermaid-diagram-2025-03-27-102930.png)
+![typical code-based analytics workflow](/src/assets/images/blog/analytics_workflow.png)
 
 ## Key Roles
 
@@ -54,7 +54,7 @@ In this workflow, there are already quite a few roles and tasks — and in reali
 
 One practical way to navigate the tension between collaboration and rigid boundaries is to establish a clear RACI matrix from the very beginning. This matrix serves as a shared reference to define roles and responsibilities, helping both internal and extended teams understand who is Responsible, Accountable, Consulted, and Informed for each task. It provides structure without creating silos, enabling smoother handovers and aligned expectations.
 
-![RACI Matrix](/src/assets/images/blog/raci_matrix.png "Example of RACI Matrix in the Analytics Workflow")
+![RACI Matrix](/src/assets/images/blog/RACI_analytics_workflows.png "Example of RACI Matrix in the Analytics Workflow")
 
 ## Conclusions
 
