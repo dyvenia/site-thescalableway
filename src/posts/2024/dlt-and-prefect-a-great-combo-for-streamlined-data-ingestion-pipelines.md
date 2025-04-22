@@ -59,7 +59,7 @@ Luckily, in recent years, with the growing adoption of software engineering prac
 
 In this article, we explore how dlt and Prefect can be seamlessly integrated to implement a best-practice data ingestion component of a modern data platform. Our insights are grounded in real-world experience designing and implementing scalable, code-based data platforms with these open-source tools.
 
-## A short introduction to dlt and Prefect
+## A Short Introduction to dlt and Prefect
 
 ### dlt
 
@@ -95,11 +95,11 @@ Similar to a dlt pipeline, the same flow can be reused with different sets of pa
 In this article, we utilize this fact by utilizing a single `extract_and_load()` flow capable of executing any dlt pipeline, depending on the parameters passed to it. As a result, each ingestion becomes a new Prefect deployment rather than a new flow, which has a major consequence: deployments can be defined with YAML, which means that they don’t require any Python code to be written, which means users don’t need to set up a local Python development environment just to eg. ingest a new table with an existing pipeline. Instead, we can, for example, expose a simple application that allows non-technical users to create new deployments with a few clicks.
 - **Deployment:** A deployment is a way to run a flow with a specific set of parameters and environment configuration. While most environment configurations in Prefect would typically be defined at the workspace level, deployments allow for overriding some of these settings, including on a per-run basis, which simplifies testing and debugging.
 
-## Creating data connectors and pipelines with dlt
+## Creating Data Connectors and Pipelines with dlt
 
 Now that we’ve covered the theoretical underpinnings of dlt and Prefect, it’s time to see these concepts in action. We’ll explore how to implement best-practice dlt pipelines and bring these tools to life.
 
-### Data pipeline features
+### Data Pipeline Features
 
 Alright, before we dive into the technical part, let’s start with the basics. A production-grade data pipeline needs to have several key features:
 
@@ -153,13 +153,13 @@ Data anonymization and/or pseudonymization are crucial to ensure compliance with
 
 1. During the ingestion phase (in which case the original data never enters the destination system)
 
-![](/src/assets/images/data_masking_ingestion_phase.png)
+![data masking in data ingestion](/src/assets/images/data_masking_ingestion_phase.png)
 
 2. During the transformation phase (in which case private data is stored in one or more layers in the destination system but hidden from the eyes of end users)
 
-![](/src/assets/images/data_masking_transformation_phase.png)
+![data masking in transformation](/src/assets/images/data_masking_transformation_phase.png)
 
-While dlt doesn’t provide built-in anonymization features, it provides the necessary tools to implement the first option effectively.
+While dlt doesn’t provide built-in anonymization features, it does provide the necessary tools to implement the first option effectively.
 
 For more information, see the [example](https://dlthub.com/docs/general-usage/customising-pipelines/pseudonymizing_columns) in the official documentation.
 
@@ -179,7 +179,7 @@ In cases where further parallelization is needed (i.e., the workload exceeds the
 
 As the topic of incremental loading can be complex even for seasoned data engineers, we’ve prepared a diagram of all the viable ELT patterns:
 
-![](/assets/images/elt_patterns.png)
+![Extract load transform patterns](/assets/images/elt_patterns.png)
 
 **NOTE:** dlt also provides sub-types of the “merge” disposition, including [SCD type 2](https://dlthub.com/blog/scd2-and-incremental-loading); however, for clarity, we did not include these in the diagram. For more information on these subtypes, see [relevant documentation](https://dlthub.com/docs/general-usage/incremental-loading#merge-incremental-loading).
 
@@ -187,13 +187,13 @@ The choice of a specific implementation depends on what is supported by the sour
 
 The following diagram from [dlt’s official documentation](https://dlthub.com/docs/general-usage/incremental-loading#two-simple-questions-determine-the-write-disposition-you-use) also provides a good overview of when to choose which write disposition:
 
-![](/assets/images/dlt_choosing_write_disposition.png)
+![how to choose write dispositionin in dlt](/assets/images/dlt_choosing_write_disposition.png)
 
-## Orchestrating data pipelines with Prefect
+## Orchestrating Data Pipelines with Prefect
 
 Orchestrating data pipelines with Prefect can streamline your workflow and significantly improve efficiency. Let’s dive into the best practices for implementing Prefect flows and how they integrate smoothly with your data pipelines.
 
-### Orchestration job features
+### Orchestration Job Features
 
 Ideally, the orchestration layer is a thin wrapper over the underlying data pipeline logic. Whenever a feature can be implemented at the pipeline level, it should be implemented there in order to prevent excessive coupling with the orchestration layer and minimize complexity, which simplifies self-service data ingestion.
 
@@ -212,15 +212,15 @@ With Prefect, you can set up [alerts](https://docs.prefect.io/v3/automate/events
 
 While we can (and, where possible, should) implement retries and [timeouts](https://dlthub.com/docs/general-usage/http/requests#customizing-retry-settings) at the pipeline level, Prefect provides these features at the task and flow level. Think of this as a last-resort, catch-all mechanism that allows data engineers to ensure timeouts and retries are enforced regardless of how well the dlt pipeline or helper code is written, again lowering the bar for self-service data ingestion.
 
-#### Secret management
+#### Secret Management
 
 Security is always a top concern, and Prefect’s secret management integrations make it easier than ever to store and handle secrets. Whether it’s Google Cloud Secret Manager or AWS Secret Manager, Prefect allows you to securely retrieve credentials and pass them to the dlt pipeline. This approach ensures that no credentials are stored locally, and administrators have fine-grained control over access by utilizing Prefect’s Role-Based Access Control (RBAC).
 
-#### Distributed processing
+#### Distributed Processing
 
 While any code-based orchestration tool allows for distributed processing, this feature is rarely required at the pipeline level in recent times. Firstly, data ingestion tools such as dlt are capable of efficiently utilizing machine resources, including parallelization and efficient and safe use of memory. Secondly, virtual machines have grown bigger—we can now easily rent VMs with hundreds of cores and hundreds of gigabytes of RAM. Therefore, typically, distributed processing is only required in case we need to run multiple resource-hungry pipelines in parallel.
 
-## Production workflow
+## Production Workflow
 
 Now that we’ve outlined the essential features of a production-grade dlt pipeline and Prefect flow, let’s break down the steps of creating and orchestrating data ingestion pipelines in production.
 
@@ -228,7 +228,7 @@ Now that we’ve outlined the essential features of a production-grade dlt pipel
 
 The diagram below illustrates the key steps in this production workflow.
 
-![](/assets/images/ingestion_pipeline_workflow_overview.png)
+![data pipeline workflow](/assets/images/ingestion_pipeline_workflow_overview.png)
 
 1. **Create a dlt pipeline:** We start by creating a dlt pipeline (if the one we need doesn’t exist yet). Once the pipeline is finished and tests pass, we can move on to the next step.
 2. **Create Prefect deployment**: We create a Prefect deployment for the pipeline. Notice we utilize Prefect’s `prefect.yaml` file together with a single `extract_and_load()` flow capable of executing any dlt pipeline to drastically simplify this process.
@@ -248,33 +248,33 @@ While dlt is highly configurable and allows for a lot of customization and optim
 
 The ID settings will make our data easier to work with for downstream users, as well as make our loads (especially incremental ones) easier to debug.
 
-### Creating a dlt pipeline
+### Creating a dlt Pipeline
 
-#### Pipeline design
+#### Pipeline Design
 
 We start by creating a dlt pipeline, following the best practices detailed in the [Creating data connectors and pipelines with dlt](#creating-data-connectors-and-pipelines-with-dlt) section above.
 
 For testability and modularity, we recommend splitting the pipeline into a resource (source data) and pipeline (journey and destination) parts. This way, you can easily test each part separately.
 
-#### Inspecting the data manually
+#### Inspecting the Data Manually
 
 At any stage of pipeline development, you can manually inspect the loaded data, e.g., by printing it to the console or by checking the database directly.
 
-#### Testing the pipeline
+#### Testing the Pipeline
 
 For integration testing, you can use DuckDB as a destination system. It’s lightweight and allows you to quickly check ingested data, so you can iterate faster.
 
-### Creating a Prefect flow and deployment
+### Creating a Prefect Flow and Deployment
 
-#### Flow design
+#### Flow Design
 
 After the dlt pipeline is working, it’s time to wrap it in a Prefect task and flow. Keep the orchestration layer simple—use a single `extract_and_load()` flow for all data ingestion tasks. With Prefect deployments handling the pipeline name and arguments, you can set everything up with just a few lines of YAML.
 
-#### Handling pipeline secrets
+#### Handling Pipeline Secrets
 
 Secrets should be passed through a special dictionary parameter, such as secrets. These secrets should then extracted from Prefect blocks and forwarded to the dlt pipeline, ensuring they are securely handled.
 
-### Deploying to production
+### Deploying to Production
 
 A pull request with the new deployment should automatically trigger the CI/CD process in our project repository’s CI/CD pipelines. We will soon dive deeper into how to implement this process using GitHub Actions in a separate article, so stay tuned!
 
@@ -286,11 +286,11 @@ This approach ensures flexibility, scalability, and cost-effectiveness, making i
 
 ## Next steps
 
-### Data transformation
+### Data Transformation
 
 dlt and Prefect (with the help of [dbt](https://www.getdbt.com/)) are just as good at data transformation as they are at data ingestion. Stay tuned as we explore how to integrate these tools for data transformation in a future article!
 
-### Ready to dive deeper?
+### Ready to Dive Deeper?
 
 If you’re ready to build a cutting-edge data platform with dlt and Prefect, [get in touch](https://meetings-eu1.hubspot.com/alessio-civitillo/the-scalable-way?uuid=c632809d-d480-4e70-97d3-e9705516be86). We offer expert guidance to help you set up every component and provide a fully equipped template Git repository with production-grade code. No fluff—just practical, scalable solutions designed to handle real-world challenges and set your data workflows up for long-term success.
 
