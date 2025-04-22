@@ -77,7 +77,7 @@ By using Terraform to manage infrastructure as code, we ensure that our setup is
 
 Let's get started on building a solid, scalable data platform infrastructure on GCP—one that will grow with your organization’s data needs. 
 
-## Infrastructure overview 
+## Infrastructure Overview 
 
 Before we dive into the step-by-step process of setting up your data platform on GCP, let’s take a first look at the key components that make up the environment we’ll be building: 
 
@@ -182,11 +182,11 @@ Subsequently, configure the desired Cloud project, default Compute Region, and Z
 
 To create a GCP Service Account, navigate to the [Google Cloud Console](https://console.cloud.google.com/), select the correct project, and go to `Navigation Menu (3 lines) > IAM & Admin > Service Accounts.`
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXc1TgHsR3qEuG9bcgopOx6uBYHrSzX2oPt_TQCbkSUNf7AjyYRsBTWeXSkQfpgftfqDVVqoauRXopL3x2hkI00zSf31WV389Ct6UEhKrSTZ-uOEGT0Q8YkviWlhH4baVqeMmr4WyA?key=ayESoQytAoVyFyBIrtLBvJIi)
+![how to set up a google cloud platform service account](https://lh7-rt.googleusercontent.com/docsz/AD_4nXc1TgHsR3qEuG9bcgopOx6uBYHrSzX2oPt_TQCbkSUNf7AjyYRsBTWeXSkQfpgftfqDVVqoauRXopL3x2hkI00zSf31WV389Ct6UEhKrSTZ-uOEGT0Q8YkviWlhH4baVqeMmr4WyA?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 Click `Create Service Account` and provide the required information.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXetaXEX-qcU99pfZQsqy7nzdHfp3XZeBw8htHvksfdCaInoFUjhab-b7vdlsEnPMfPKnTnR-R4wkFRLr2bh-_yLeLCdCtj8z1RucsLTuXQJ76cvO8NOQR--jyxu9vl0-vv20H87Gg?key=ayESoQytAoVyFyBIrtLBvJIi)
+![how to create service account on goocle cloud platform](https://lh7-rt.googleusercontent.com/docsz/AD_4nXetaXEX-qcU99pfZQsqy7nzdHfp3XZeBw8htHvksfdCaInoFUjhab-b7vdlsEnPMfPKnTnR-R4wkFRLr2bh-_yLeLCdCtj8z1RucsLTuXQJ76cvO8NOQR--jyxu9vl0-vv20H87Gg?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 When prompted to **Grant this service account access to a project**, select the appropriate role. In this guide, we use the **Owner** role for simplicity, but it’s advisable to limit permissions to only what's necessary.
 
@@ -198,11 +198,11 @@ Finally, in the **Grant users access to this service account** step, assign acce
 
 In the service account interface, go to `Actions (3 dots) > Manage keys`.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcoer8AkQbGSwjkEaGIVee6_bWlLZVPW4inEJZf7R3iizVjj8kuGtbVvK-_4yh-0b7H8JIiz3D24bacv9pe5TQtJNzUQn7m-MRvsy6YiTY34inPpJGDSBwcUKKJdD37h1VEJeFewQ?key=ayESoQytAoVyFyBIrtLBvJIi)
+![how to set up json key in google cloud platform](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcoer8AkQbGSwjkEaGIVee6_bWlLZVPW4inEJZf7R3iizVjj8kuGtbVvK-_4yh-0b7H8JIiz3D24bacv9pe5TQtJNzUQn7m-MRvsy6YiTY34inPpJGDSBwcUKKJdD37h1VEJeFewQ?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 Select `Add Key > Create new key > JSON` to download the JSON key file. Keep this file secure, as it will be required for Terraform configuration.
 
-### Step 5: Activating service account
+### Step 5: Activating the Service Account
 
 After downloading the JSON key, activate the service account locally with the following command:
 
@@ -214,7 +214,7 @@ gcloud auth activate-service-account
 
 This step enables the service account for use in the local environment, ensuring access to necessary GCP resources with IAP tunnel functionality.
 
-### Step 6: Generating HMAC key to buckets
+### Step 6: Generating HMAC Key to Buckets
 
 To enable file uploads to Cloud Storage, some libraries require an HMAC token in addition to a JSON key. To generate an HMAC token:
 
@@ -222,7 +222,7 @@ To enable file uploads to Cloud Storage, some libraries require an HMAC token in
 - Under `Service account HMAC`, click `Create a key for service account`.
 - Once created, the token will be marked as 'Active'.
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOs9OkC4jMW4sVqX7HcAshQCW5uQxDGhRpK9BnKLJCrnrikDYs6pZJShJf7KypE73asBaVn5R0cnb9nug_z-ztVB2KjNE1h_k-3Mz1fjKQLLzCfTqZF9fF7B2UFEHTkj-y7aUcUA?key=ayESoQytAoVyFyBIrtLBvJIi)
+![how to generate HMAC key in google cloud platform](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcOs9OkC4jMW4sVqX7HcAshQCW5uQxDGhRpK9BnKLJCrnrikDYs6pZJShJf7KypE73asBaVn5R0cnb9nug_z-ztVB2KjNE1h_k-3Mz1fjKQLLzCfTqZF9fF7B2UFEHTkj-y7aUcUA?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 For basic configuration, this step is not required. However, for ingestion, the key must be added to Google Secret Manager to ensure it's accessible for flow runs.
 
@@ -244,9 +244,9 @@ However, Terraform itself cannot create the bucket required for storing its stat
 
 To create a new bucket using the `gcloud CLI`, export the necessary credentials and then proceed with the bucket creation process.
 
-### Step 9: Exporting Credentials and Setting up New Bucket
+### Step 9: Exporting Credentials and Setting up a New Bucket
 
-Once we have our service account JSON prepared, export of credentials is necessary to provide Application Default Credentials (ADC):
+Once we have our service account JSON prepared, an export of credentials is necessary to provide Application Default Credentials (ADC):
 
 `export GOOGLE_APPLICATION_CREDENTIALS=test-project-32206692d146.json`
 
@@ -263,7 +263,7 @@ gcloud storage buckets add-iam-policy-binding gs://test-project-tfstate \
 
 Once completed, it should be available in the GCP Console. To check it, go to `Navigation Menu > Cloud Storage > Buckets`:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXd5iYcgIiWgSpHzi95K7EwaQ_zXivweAmA24MlD3XGJz5s_0CSTf26eU4mbMBexPv9vvlOuWGV5XD_3tzLOSKxv_jB1R190Fp4Eh_d07dh9HSLKeYXBBF_Ta0pEBCSeKznPuKII?key=ayESoQytAoVyFyBIrtLBvJIi)
+![how to set up a new bucket on google cloud platform](https://lh7-rt.googleusercontent.com/docsz/AD_4nXd5iYcgIiWgSpHzi95K7EwaQ_zXivweAmA24MlD3XGJz5s_0CSTf26eU4mbMBexPv9vvlOuWGV5XD_3tzLOSKxv_jB1R190Fp4Eh_d07dh9HSLKeYXBBF_Ta0pEBCSeKznPuKII?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 ## Phase 2: Installing & Deploying Infrastructure with Terraform
 
@@ -489,7 +489,7 @@ resource "google_storage_bucket_iam_binding" "bucket_admin" {
 
 With the environment outlined, let’s provision the infrastructure by validating, formatting, and applying the configuration.
 
-### Step 1: Infrastructure provisioning with Terraform
+### Step 1: Infrastructure Provisioning with Terraform
 
 Once the necessary files are prepared, validate and format the configuration:
 
@@ -523,7 +523,7 @@ google_compute_subnetwork.subnet_edp
 google_project_iam_member.project
 ```
 
-### Step 2: Setup Verification
+### Step 2: Set up Verification
 
 Verify the resources by logging into the GCP Console. Confirm the creation of **VPC and Subnet, Virtual Machine, Firewall Rule, IAP SSH Permission, Cloud Router, and NAT Gateway**. Navigate to the following sections:
 
@@ -531,41 +531,41 @@ Verify the resources by logging into the GCP Console. Confirm the creation of **
 
 Go to `Navigation Menu > VPC Network > VPC Networks`:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXf-4dP5sXZQjQDusA1Wnv_57tTmj2voRyVDeZ1QT5BvWkvxgdqM3m2kmb1vcrzGvtmJSA9wX9_Hxn4xn63NchO8Wk2O3NxuCSVHmMFfRuJhPLvXBygwCh8bme8KA6rVVNweXm-r?key=ayESoQytAoVyFyBIrtLBvJIi)
+![how to verify set up on google cloud platform with VPC](https://lh7-rt.googleusercontent.com/docsz/AD_4nXf-4dP5sXZQjQDusA1Wnv_57tTmj2voRyVDeZ1QT5BvWkvxgdqM3m2kmb1vcrzGvtmJSA9wX9_Hxn4xn63NchO8Wk2O3NxuCSVHmMFfRuJhPLvXBygwCh8bme8KA6rVVNweXm-r?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 Click on the VPC and check the `Subnets` tab:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXedDhX5_rjSe2ybLhzVWd0xy0ooGnzLhkmJcTgparyX2sR-yMO7eGOt9r0heXdkFRnziLx5xLd--vVukuQSErv5IhtBw5wiSuvk3FUbz9jSSq5l_W9pVoQ9XweBHQeHvBDBfSmWCA?key=ayESoQytAoVyFyBIrtLBvJIi)
+![verifying google cloud platform setupn on VPC](https://lh7-rt.googleusercontent.com/docsz/AD_4nXedDhX5_rjSe2ybLhzVWd0xy0ooGnzLhkmJcTgparyX2sR-yMO7eGOt9r0heXdkFRnziLx5xLd--vVukuQSErv5IhtBw5wiSuvk3FUbz9jSSq5l_W9pVoQ9XweBHQeHvBDBfSmWCA?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 - **Virtual Machine**
 
 Navigate to `Navigation Menu > Compute Engine > VM instances`:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcFYXAnORh2zXt_XNlihkU60T6qqznyvu47RGd39-xp9kXQPuz85pw7oHKmX2_p55zj6JktxGDDOWM7jqrv9yJobB9BG_6E40N9hUdnLU2LDd1udmkF5MPTzvLbQjyda3jpgDvAEA?key=ayESoQytAoVyFyBIrtLBvJIi)
+![how to verify set up on google cloud platform on VM](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcFYXAnORh2zXt_XNlihkU60T6qqznyvu47RGd39-xp9kXQPuz85pw7oHKmX2_p55zj6JktxGDDOWM7jqrv9yJobB9BG_6E40N9hUdnLU2LDd1udmkF5MPTzvLbQjyda3jpgDvAEA?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 - **Firewall Rule**
 
 Go to `Navigation Menu > VPC Network > Firewall`:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXePVLH6Fr5ZqwvSpc_-m3lj6lcRJJ3tDdgI3IhtEMePBV1RMoXMFKDj-OI7cvBW7xy9kBvwqYVdWhtK4S5hmxPMfrznuQfe0UFLXzLkO1q5a9DTFW-i-7mW8AyUxw-mCBCkFHa8?key=ayESoQytAoVyFyBIrtLBvJIi)
+![how to verify set up on google cloud platform with Firewall rule](https://lh7-rt.googleusercontent.com/docsz/AD_4nXePVLH6Fr5ZqwvSpc_-m3lj6lcRJJ3tDdgI3IhtEMePBV1RMoXMFKDj-OI7cvBW7xy9kBvwqYVdWhtK4S5hmxPMfrznuQfe0UFLXzLkO1q5a9DTFW-i-7mW8AyUxw-mCBCkFHa8?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 - **IAM Role**
 
 Navigate to `Navigation Menu > IAM & Admin > IAM`, and `View by roles`:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeGtbfPmtcZv9c_od0nKFlGIaPUQZOyjO5LGsLx7O8yy1XxbMOLsjGdf2rCZb1nhfZkN3MLWR3gjIwh6aNjMrF8jTgme3txtdCfovKFb3yWe5Av2GQTWLzIZpXsG4SJ3uHuVPEJTg?key=ayESoQytAoVyFyBIrtLBvJIi)
+![how to verify set up on google cloud platform with IAM role](https://lh7-rt.googleusercontent.com/docsz/AD_4nXeGtbfPmtcZv9c_od0nKFlGIaPUQZOyjO5LGsLx7O8yy1XxbMOLsjGdf2rCZb1nhfZkN3MLWR3gjIwh6aNjMrF8jTgme3txtdCfovKFb3yWe5Av2GQTWLzIZpXsG4SJ3uHuVPEJTg?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 - **Cloud NAT gateway**
 
 Go to `Navigation Menu > Network Connectivity > Cloud Routers > Open Cloud Router`:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcc62u5rIRFqK3V5flEzv_1yOK9I1MVcpVi3JM0l2GLnxHIf-9wROXQ7YUp0xb2HeVp6M6nt5FAcPX-Y8cV7OlbNYSjNzLN4tru4-VLSfi2TItLAcxBi13EiA50HnckDFpXu5A_PQ?key=ayESoQytAoVyFyBIrtLBvJIi)
+![how to verify set up on google cloud platform with Cloud NAT gateway](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcc62u5rIRFqK3V5flEzv_1yOK9I1MVcpVi3JM0l2GLnxHIf-9wROXQ7YUp0xb2HeVp6M6nt5FAcPX-Y8cV7OlbNYSjNzLN4tru4-VLSfi2TItLAcxBi13EiA50HnckDFpXu5A_PQ?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 - **Cloud NAT**
 
 Navigate to `Navigation Menu > Network Services > Cloud NAT`:
 
-![](https://lh7-rt.googleusercontent.com/docsz/AD_4nXf-GORRqmSpPTUJJ66SpQzXt1Xb2TNY333FnJVhL2gcm4SYsRCPnHZt2QIH5P8XuZJmXCr4QIUQRZL4WlfKIsginyI-RlE9N3DCjKYKwi0usD5EG3Yu3-2TzxyaFP3mGuNQUzCFqg?key=ayESoQytAoVyFyBIrtLBvJIi)
+![how to verify set up on google cloud platform with Cloud NAT](https://lh7-rt.googleusercontent.com/docsz/AD_4nXf-GORRqmSpPTUJJ66SpQzXt1Xb2TNY333FnJVhL2gcm4SYsRCPnHZt2QIH5P8XuZJmXCr4QIUQRZL4WlfKIsginyI-RlE9N3DCjKYKwi0usD5EG3Yu3-2TzxyaFP3mGuNQUzCFqg?key=ayESoQytAoVyFyBIrtLBvJIi)
 
 - **SSH Access to Virtual Machine using GCP Console**
 
@@ -602,7 +602,7 @@ Once the keys are created, access to the virtual machine will be automatically e
 Setting up a data platform infrastructure on Google Cloud Platform using Terraform provides a solid foundation for organizations looking to leverage the power of their data. This approach offers several key benefits:
 
 - Scalability and Flexibility: The server-based approach with a single VM provides an excellent starting point that can easily be expanded as your data needs grow.
-- Security: By leveraging Google Cloud's Identity-Aware roxy (IAP), we've ensured that access to our resources is tightly controlled and secure.
+- Security: By leveraging Google Cloud's Identity-Aware Proxy (IAP), we've ensured that access to our resources is tightly controlled and secure.
 - Infrastructure as Code: Using Terraform allows for version-controlled, reproducible infrastructure deployments, making it easier to manage and update your environment over time.
 - Cost-Effectiveness: Starting with a single VM setup is often more budget-friendly for initial deployments or smaller-scale projects.
 - Simplified Management: With fewer components to manage initially, maintenance and troubleshooting become more straightforward.
