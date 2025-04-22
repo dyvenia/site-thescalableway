@@ -5,7 +5,7 @@ author: Alessio Civitillo
 description: Code-based analytics workflows offer a unique advantage - the ability to combine robust collaboration with strict governance. While technically straightforward to implement, this approach only reaches its full potential when aligned with well-adapted business and analytics processes.
 tags:
   - governance
-  - analytics-workflow
+  - analytics workflow
   - roles
 internal_notes: No notes
 ---
@@ -37,7 +37,7 @@ Because roles usually tackle different problems, it is a good idea to measure pe
 | Data Platform Engineer | - Speed of new data platform features<br>- Reliability of the data platform<br>- Data analysts' support and satisfaction |
 | Data Engineer | - Speed of new data ingestions<br>- Reliability of data pipelines<br>- Data analysts' support and satisfaction |
 
-## Understanding the Need of Roles
+## Understanding the Need for Roles
 
 Analytics teams often tend to combine roles or leave them loosely defined. This approach is understandable, and sometimes even beneficial, in the early stages of an analytics initiative. After all, when starting out, the priority is delivering business value quickly, and formal roles and approval processes can slow things down.
 
@@ -48,13 +48,13 @@ However, this lack of clearly defined roles and boundaries typically creates cha
 - Team friction arising from ambiguous responsibilities and overlapping ownership
 - An overemphasis on technical tools and implementation details, rather than addressing the more fundamental needs of role clarity and process alignment
 
-## Working with an external partner
+## Working With an External Partner
 
 In this workflow, there are already quite a few roles and tasks, and in reality, even more can be involved. For example, handling data privacy in Europe requires a solid understanding of GDPR. Given the range of responsibilities and the breadth of expertise needed to run a data department effectively, many data and analytics teams choose to rely on external partners. However, this isn't always straightforward. External teams often create strong and rigid boundaries between themselves (the extended team) and the customer’s in-house team (the internal team), which can hinder collaboration.
 
 One practical way to navigate the tension between collaboration and rigid boundaries is to establish a clear RACI matrix from the very beginning. This matrix serves as a shared reference to define roles and responsibilities, helping both internal and extended teams understand who is Responsible, Accountable, Consulted, and Informed for each task. It provides structure without creating silos, enabling smoother handovers and aligned expectations.
 
-![RACI Matrix](/src/assets/images/blog/RACI_analytics_workflows.png "Example of RACI Matrix in the Analytics Workflow")
+![data analytics team RACI Matrix](/src/assets/images/blog/RACI_analytics_workflows.png "Example of RACI Matrix in the Analytics Workflow")
 
 ## Conclusions
 
