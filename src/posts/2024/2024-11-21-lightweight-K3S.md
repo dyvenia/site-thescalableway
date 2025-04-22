@@ -41,20 +41,20 @@ internal_notes: |-
   - Lightweight Prefect Deployment Solution
   - Conclusion
 ---
-Choosing the right data platform architecture is quite a challenge for any organization. It’s a balancing act: you need something that delivers immediate value while staying flexible enough for future growth—all without sacrificing scalability, simplicity, or efficiency.
+Choosing the right data platform architecture is quite a challenge for any organization. It’s a balancing act: you need something that delivers immediate value while staying flexible enough for future growth, all without sacrificing scalability, simplicity, or efficiency.
 
 This article offers a thoughtful guide to the decision-making process behind choosing Prefect with lightweight Kubernetes (K3S) on a single Virtual Machine (VM) with any cloud provider. You’ll explore:
 
 - Why simplicity and flexibility are essential for modern data platforms.
 - Key considerations for selecting the right data orchestration tool.
 - Insights into serverless vs server-based execution of Prefect flows.
-- Approaches to run a server-based Prefect worker
+- Approaches to running a server-based Prefect worker
 
 Rather than a step-by-step tutorial, this guide is designed to help you make solid platform architecture decisions and design a solution tailored to your organization’s unique needs. Let’s dive in.
 
-## Challenges With Picking Data Platform Architecture
+## Challenges With Picking a Data Platform Architecture
 
-The options for building a data platform are endless—but many fall short. With the rise of affordable cloud storage, expectations have changed, leaving many once-revolutionary legacy systems struggling to keep up. At the same time, new solutions making big claims often fail, either missing critical features or bogging organizations down with unnecessary complexity. For smaller companies, the challenge is even greater—a data platform should drive business value, not require a dedicated team just to maintain it. 
+The options for building a data platform are endless, but many fall short. With the rise of affordable cloud storage, expectations have changed, leaving many once-revolutionary legacy systems struggling to keep up. At the same time, new solutions making big claims often fail, either missing critical features or bogging organizations down with unnecessary complexity. For smaller companies, the challenge is even greater—a data platform should drive business value, not require a dedicated team just to maintain it. 
 
 Starting small may seem practical, but early shortcuts can turn into major obstacles as the platform grows. Undoing poor architectural choices later is often costly and disruptive. That’s why **choosing a solution that is both simple and scalable from the outset is essential**. 
 
@@ -62,15 +62,15 @@ For decision-makers, this journey begins by stepping back and evaluating both th
 
 ![data platform maturity](/src/assets/images/data_platform_maturity_curve.png)
 
-Depending on the organization’s data technology maturity level, your platform must adapt. This article focuses on those in the middle of the curve—where simple scripts and ad-hoc solutions are no longer enough, but advanced features like autoscaling aren’t yet necessary. At this stage, the platform delivers tangible business value and is steadily becoming integral to operations. Downtime—whether it lasts hours, a day, or even a week—is growing increasingly expensive.
+Depending on the organization’s data technology maturity level, your platform must adapt. This article focuses on those in the middle of the curve, where simple scripts and ad-hoc solutions are no longer enough, but advanced features like autoscaling aren’t yet necessary. At this stage, the platform delivers tangible business value and is steadily becoming integral to operations. Downtime—whether it lasts hours, a day, or even a week—is growing increasingly expensive.
 
 The goal? A platform that’s lightweight, scalable, and future-ready without overcomplicating things.
 
-## Data Platform Orchestration: the Key to Seamless Integration 
+## Data Platform Orchestration: The Key to Seamless Integration 
 
 Even the best-designed data platform is useless if it’s not integrated. No matter how carefully you choose your architecture, your platform’s success hinges on how well its core components—ingestion, transformation, and serving—work together. These phases can only operate efficiently when they are tightly aligned.
 
-![](/assets/images/data_engineering_lifecycle.png)
+![data enginnering stages lifecycl](/assets/images/data_engineering_lifecycle.png)
 
 _Adapted from "Fundamentals of Data Engineering: Plan and Build Robust Data Systems" by Joe Reis & Matt Housley_
 
@@ -99,7 +99,7 @@ The three leading orchestration tools in the market are:
 - **Prefect:** A modern, cloud-agnostic, and easy-to-configure solution emphasizing scalability, portability, and developer-friendly features that allow for flexible orchestration. Prefect’s architecture also supports running workflows in hybrid environments, seamlessly bridging on-premises and cloud solutions.
 - **Dagster:** Designed for data-aware orchestration, Dagster prioritizes validation, lineage, and developer productivity, making it ideal for teams handling complex pipelines.
 
-At The Scalable Way we have worked with both Airflow and Prefect in a few projects, we advise Prefect for lightweight setup with less deployment things to worry about.
+At The Scalable Way, we have worked with both Airflow and Prefect in a few projects. We advise Prefect for a lightweight setup with fewer deployment things to worry about.
 
 ## What is Prefect Cloud?
 
@@ -115,7 +115,7 @@ By automating the orchestration layer, Prefect Cloud allows teams to focus on bu
 
 ### Common Struggle for Prefect Users: Deployment
 
-Adopting Prefect as an orchestrator unlocks many possibilities but like any powerful tool, it comes with a learning curve. Prefect flexibility and a developer-first approach can initially feel daunting for teams unfamiliar with building solid deployment solutions. 
+Adopting Prefect as an orchestrator unlocks many possibilities, but like any powerful tool, it comes with a learning curve. Prefect flexibility and a developer-first approach can initially feel daunting for teams unfamiliar with building solid deployment solutions. 
 
 Prefect’s philosophy emphasizes providing tools rather than prescribing solutions, allowing users to adapt its features to their specific needs. While this approach offers flexibility and scalability, it can leave data engineers uncertain about where to start with scalable deployment practices like CI/CD pipelines and autoscaling. 
 
@@ -130,7 +130,7 @@ Serverless solutions, though convenient, are best suited for simpler workflows, 
 
 1. **Startup Overhead**: Prefect Worker images often have heavy dependencies, increasing flow initialization time. This leads to latency, as serverless platforms can introduce delays between task executions due to event-driven triggers. A long-running server with a persistent Prefect Worker is usually much quicker.
 2. **Vendor Lock-In**: Serverless solutions are often tightly integrated with specific cloud providers, making it difficult to migrate workflows across platforms. Even Prefect Work Pools, though useful, have limited functionality at the Pro tier.
-3. **Cost Management**: Serverless can be cost-effective for intermittent workloads but can become expensive with unpredictable usage patterns. Managing costs is trickier compared to traditional server-based setups.
+3. **Cost Management**: Serverless can be cost-effective for intermittent workloads, but can become expensive with unpredictable usage patterns. Managing costs is trickier compared to traditional server-based setups.
 4. **Limited Control and Security Concerns**: Serverless architectures limit control over the execution environment, as all logic runs on cloud provider-managed machines. This raises security risks, especially for companies dealing with sensitive data or operating in highly regulated industries, due to reduced visibility and potential vulnerabilities in shared infrastructure.
 5. **Token Management and Data Access Risks**: Serverless setups require Prefect to hold a token for accessing cloud resources, creating security risks if mismanaged. Server-based setups mitigate this by reversing the data flow, allowing the server to pull from Prefect, and reducing the risk of data breaches or unintended data exposure.
 
@@ -154,11 +154,11 @@ It's not as simple as a Systemd setup because of the introduction of Kubernetes 
 
 The most feature-rich solution-managed Kubernetes supports autoscaling, spot instances, and integrations with tools like Active Directory. It is ideal for comprehensive data platforms. However, this approach adds operational complexity and may be excessive for smaller projects.
 
-## Recommended Setup for getting started: Lightweight Kubernetes on a Single Virtual Machine
+## Recommended Setup for Getting Started: Lightweight Kubernetes on a Single Virtual Machine
 
 The lightweight Kubernetes on a single Virtual Machine (VM) setup strikes an ideal balance between cost efficiency and operational flexibility. By leveraging lightweight Kubernetes (K3S), you gain the core benefits of Kubernetes with significantly reduced overhead, making it perfect for smaller environments or projects with constrained resources. Its streamlined architecture ensures smooth operations without the complexity of managing a full Kubernetes cluster. The diagram illustrates a basic architecture that effectively meets most requirements for running Prefect flows in a scalable manner.
 
-![](/assets/images/prefect_flow_architecture.png)
+![lightweight data platform setup](/assets/images/prefect_flow_architecture.png)
 
 Using Helm charts to deploy the Prefect Worker simplifies orchestration, ensuring seamless integration with existing systems while minimizing manual configurations. Helm also makes updates easier, promotes standardization, and reduces deployment errors. 
 
