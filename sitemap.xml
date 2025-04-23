@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/deploying-prefect-on-any-cloud-using-a-single-virtual-machine/</loc>
+        <lastmod>2025-01-15T09:29:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/dlt-and-prefect-a-great-combo-for-streamlined-data-ingestion-pipelines/</loc>
+        <lastmod>2025-01-27T12:54:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/breaking-down-prefect-deployments-to-improve-the-data-ops-efficiency/</loc>
+        <lastmod>2025-01-28T09:45:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/case-studies/a-case-study/</loc>
+        <lastmod>2025-02-24T10:58:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/what-is-a-modular-data-platform/</loc>
+        <lastmod>2025-02-24T10:58:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/organizing-networking-for-data-platforms-key-connectivity-options/</loc>
+        <lastmod>2025-03-05T09:50:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/how-to-setup-data-platform-infrastructure-on-google-cloud-platform-with-terraform/</loc>
+        <lastmod>2025-03-05T13:31:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/roles-in-the-context-of-the-analytics-workflow/</loc>
+        <lastmod>2025-03-27T10:47:00.000Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/tags/analytics workflow/</loc>
+        <lastmod>2025-04-23T06:36:51.616Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/tags/</loc>
+        <lastmod>2025-04-23T06:36:51.616Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/about/</loc>
+        <lastmod>2025-04-23T06:36:51.616Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/author/</loc>
+        <lastmod>2025-04-23T06:36:51.616Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/blog/</loc>
+        <lastmod>2025-04-23T06:36:51.616Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/case-studies/</loc>
+        <lastmod>2025-04-23T06:36:51.616Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/</loc>
+        <lastmod>2025-04-23T06:36:51.616Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/imprint/</loc>
+        <lastmod>2025-04-23T06:36:51.617Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/our-process/</loc>
+        <lastmod>2025-04-23T06:36:51.617Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/privacy/</loc>
+        <lastmod>2025-04-23T06:36:51.617Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/subscribe/</loc>
+        <lastmod>2025-04-23T06:36:51.617Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/author/alessio-civitillo/</loc>
+        <lastmod>2025-04-23T06:36:51.618Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/author/karol-wolski/</loc>
+        <lastmod>2025-04-23T06:36:51.618Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/author/mateusz-pazdzior/</loc>
+        <lastmod>2025-04-23T06:36:51.618Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+    
+
+      
+        
+      
+
+      <url>
+        <loc>http://localhost:8080/author/michał-zawadzki/</loc>
+        <lastmod>2025-04-23T06:36:51.618Z</lastmod>
+        <changefreq>monthly</changefreq>
+    </url>
+    
+  
+</urlset>
