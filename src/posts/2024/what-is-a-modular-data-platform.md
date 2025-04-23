@@ -45,7 +45,7 @@ Modern data analytics can get complicated. With an abundance of tools, conflicti
 The evolution of data platforms has been driven by two primary goals:
 
 - **Doing Analytics Better:** improving analytics work with more efficient storage and retrieval of business and machine data; moving insights generation closer to the domain experts by improving self-service tools and processes
-- **Doing Better Analytics:** increasing the value of analytics by having more and deeper insights; leverage statistical modeling, machine learning, and AI to improve the quality of business decisions
+- **Doing Better Analytics:** increasing the value of analytics by having more and deeper insights; leveraging statistical modeling, machine learning, and AI to improve the quality of business decisions
 
 And so, while SQL, which was invented in 1975, remains at the core of analytics, there have been significant advances in technology. 
 
@@ -81,7 +81,7 @@ Since raw data can be messy and inconsistent, preparation is necessary to clean,
 - Data anonymization
 - Structuring into standardized formats such as Delta Tables or Apache Iceberg Parquet files
 
-Note that both data masking and anonymization could be done also during landing on data “in-transit” to avoid storing sensitive information on the platform. 
+Note that both data masking and anonymization could also be done during landing on data “in-transit” to avoid storing sensitive information on the platform. 
 
 Data engineers typically handle this step using workflow tools like Alteryx, Azure Data Factory, or programming languages such as Python.
 

@@ -122,7 +122,7 @@ Initially, with just 10 objects in the database, it works well enough. But as th
 
 1. **Difficult Monitoring:** A single failure makes the entire flow as failed, forcing data engineers to dig through logs to identify the problematic element.
 
-![Single Monolithic Flow_difficult monitorig](/src/assets/images/difficult_monitoring.png)
+![Single Monolithic Flow difficult monitorig](/src/assets/images/difficult_monitoring.png)
 
 2. **Limited Reusability:** It’s hard to run deployments for one table or only failed objects without re-running the entire flow. 
 3. **Reduced Scheduling Flexibility:** Monoflow might require running all tasks together, even when only a subset of tasks needs frequent execution.
@@ -157,7 +157,7 @@ Here’s why granular flow deployments are worth the effort: 
 7. **Granular Scheduling**: Some tables need to be refreshed three times daily, but some should be reloaded monthly only. The granular approach allows for more playing with the schedule. 
 8. **SLA Reporting:** It’s simpler, as the real situation is shown on the run level, and failure means real failure. 
 
-![granular flow deployments_SLA reporting](/src/assets/images/sla_reporting.png)
+![granular flow deployments SLA reporting](/src/assets/images/sla_reporting.png)
 
 ## Conclusion
 
