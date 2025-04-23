@@ -49,9 +49,9 @@ In this article, we’ll explore the options of organizing networking in data pl
 
 ## Data Platform Architecture and Networking
 
-The below diagram presents the reference architecture for the ELT process as a whole, outlining the key components and workflows involved. Each stage has its own phases, with Ingest being part of data extraction, Land being the process of loading data, and Prepare with Model being transformation.
+The diagram below presents the reference architecture for the ELT process as a whole, outlining the key components and workflows involved. Each stage has its own phases, with Ingest being part of data extraction, Land being the process of loading data, and Prepare with Model being the transformation.
 
-![data platform architecture](/src/assets/images/blog/Modular_Data_Platform.png)
+![modular data platform architecture](/src/assets/images/blog/Modular_Data_Platform.png)
 
 To better understand how networking ties into a data platform, let's examine a second diagram, which shifts focus to the networking aspects of the data platform architecture.
 
@@ -154,7 +154,7 @@ Since cloud providers use different naming conventions (AWS: accounts, Azure: su
 
 The implementation process varies depending on whether the VPCs are located within the same project or separate ones. Therefore, we will discuss these scenarios separately to highlight their unique characteristics and requirements.
 
-#### VPC Peering within a single project
+#### VPC Peering Within a Single Project
 
 Connecting two networks within the same project is a streamlined process. It requires no additional permissions and can be configured entirely from a single account. This peering effectively extends the network, making all resources in the peered network accessible from the first network.
 
@@ -162,7 +162,7 @@ As with other networking options, additional firewall rules or ACLs can be imple
 
 ![VPC Peering within a single project](/src/assets/images/blog/vpc_peering_single.png)
 
-#### VPC Peering across separate projects
+#### VPC Peering Across Separate Projects
 
 When peering VPCs between different projects, additional security and administrative steps are required:
 
