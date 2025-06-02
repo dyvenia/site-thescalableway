@@ -42,6 +42,11 @@
   </head>
 
   <body class="{{ layout }} {{ bodyClass }}">
+    {% set indicateActiveHome %}
+      {% if page.url == "/" %}
+        aria-current=page
+      {% endif %}
+    {% endset %}
     {% include "partials/header.njk" %}
 
     <main id="main" class="{{ mainClass }}" data-pagefind-body>{{ content | safe }}</main>

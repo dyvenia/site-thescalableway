@@ -6,7 +6,7 @@
   order: 0;
   background: none;
   border: none;
-  padding: var(--space-2xs);
+  padding: var(--space-3xs) var(--space-2xs);
   cursor: pointer;
   margin-inline-end: 4em;
 }
@@ -23,8 +23,7 @@
     inset-inline-end: 0;
     inset-block-start: 0;
     margin-inline-end: 0;
-    padding-block: var(--space-s) var(--space-2xs);
-    padding-inline: var(--space-2xs);
+    padding: var(--space-2xs);
   }
 }
 

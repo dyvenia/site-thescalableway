@@ -18,7 +18,7 @@ export const creator = {
   website: 'https://www.lenesaile.com',
   social: 'https://front-end.social/@lene'
 };
-export const pathToSvgLogo = 'src/assets/svg/brand/logo-spaced.svg'; // used for favicon generation
+export const pathToSvgLogo = 'src/assets/svg/brand/symbol-spaced.svg'; // used for favicon generation
 export const themeColor = '#070846'; //  Manifest: defines the default theme color for the application
 export const themeLight = '#f5f5f6'; // used for meta tag theme-color, if light colors are prefered. best use value set for light bg
 export const themeDark = '#262627'; // used for meta tag theme-color, if dark colors are prefered. best use value set for dark bg

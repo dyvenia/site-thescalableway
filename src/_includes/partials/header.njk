@@ -1,13 +1,14 @@
 <header class="site-header | wrapper">
   <a href="#main" class="skip-link">{{ meta.skipContent }}</a>
 
-  <div class="popout | relative repel ontop gutter-3xs">
-    <a href="/" class="logo | cluster gutter-2xs" {% if page.url == "/" %}aria-current="page"{% endif %}>
+  <div class="popout | relative repel ontop gutter-3xs items-start">
+    <a href="/" class="logo" {{ indicateActiveHome }}>
       {% svg "brand/logo" %}
-      {{ meta.siteName }}
+      <span class="visually hidden"> {{ meta.siteName }} </span>
       <span class="dyvenia | cluster gutter-3xs text-step-min-2 text-gray-500">
         by {% svg "brand/dyvenia" %}</span
       >
+      <span class="visually hidden"> Dyvenia </span>
     </a>
 
     <!-- Search Wrapper for Both Views -->

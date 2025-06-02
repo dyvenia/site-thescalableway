@@ -1,24 +1,25 @@
 .logo {
-  --gutter: var(--space-xs);
-  padding: var(--space-xs) 0;
+  display: grid;
+  gap: 0;
+
   font-size: var(--size-step-logo);
   text-decoration: none;
   font-weight: var(--font-medium);
   position: relative;
+  justify-items: end;
 }
+
+@media screen(navigation) {
+  .logo {
+    padding-block: var(--space-3xs);
+  }
+}
+
 .logo svg {
   color: var(--color-blue-500);
   block-size: auto;
 }
 
-.logo .dyvenia {
-  position: absolute;
-  inset-inline-end: -1em;
-  inset-block-end: 0.2em;
-  /* z-index: 1; */
-}
-
 .logo .dyvenia svg {
-  block-size: 1lh;
-  margin-block-start: 0.1em;
+  block-size: 1.15lh;
 }
