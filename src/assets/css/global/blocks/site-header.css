@@ -1,4 +1,5 @@
 .site-header {
   background: var(--color-bg-accent);
   z-index: 2;
+  padding-block: var(--space-xs);
 }

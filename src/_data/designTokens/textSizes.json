@@ -47,8 +47,8 @@
     },
     {
       "name": "Step Logo",
-      "min": 16,
-      "max": 22
+      "min": 22,
+      "max": 40
     }
   ]
 }
