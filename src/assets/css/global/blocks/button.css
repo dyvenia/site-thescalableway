@@ -91,7 +91,12 @@
   --button-padding: var(--space-4xs) var(--space-2xs);
   --button-text-transform: uppercase;
 }
-/* Radius variants */
-.button[data-button-radius='hard'] {
-  --button-radius: 0;
+
+.button[data-pill-button] {
+  --button-radius: var(--border-radius-medium);
+  --button-bg: var(--color-bg-accent-2);
+  --button-color: var(--color-text);
+  --button-border-width: 0;
+  --button-padding: var(--space-3xs) var(--space-2xs);
+  --button-font-weight: var(--font-regular);
 }

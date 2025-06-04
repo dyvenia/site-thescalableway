@@ -1,6 +1,7 @@
 {% set headingLevel = headingLevel | default("h2") %}
 {% set definedDate = definedDate | default(item.date) %}
 {% set showTags = showTags | default(true) %}
+{% set showDescription = showDescription | default(true) %}
 
 <custom-card clickable>
   <{{ headingLevel }} class="text-step-2" slot="headline">
@@ -16,7 +17,9 @@
       {% endfor %}
     </div>
   {% endif %}
-  <div slot="content" webc:nokeep>{{ item.data.description | markdownFormat | safe }}</div>
+  {% if showDescription %}
+    <div slot="content" webc:nokeep>{{ item.data.description | markdownFormat | safe }}</div>
+  {% endif %}
 </custom-card>
 
 {% css "local" %}
