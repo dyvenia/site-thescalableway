@@ -92,17 +92,13 @@ docker push ghcr.io/<your_github_organisation>/edp-flows:<tag>
 
 This is a manual step for now, but don’t worry—we’ll automate it with GitHub Actions soon. For now, you’ve got a solid, reliable foundation for running flows in a clean, isolated environment every single time.
 
-## 
-
-Prefect Worker
+## Prefect Worker
 
 Once the Docker image is ready, the next step is orchestrating flows execution. That’s where the Prefect worker comes in. Workers are long-running processes that poll work pools for scheduled flow runs and execute them. If you want to dive deeper into the range of possibilities, [Prefect’s documentation](https://docs.prefect.io/v3/deploy/infrastructure-concepts/workers) is a great resource.
 
 For our setup, we’ll use the Kubernetes worker type and deploy it with the official [Prefect Helm Chart](https://github.com/PrefectHQ/prefect-helm/tree/main/charts/prefect-worker).
 
-### 
-
-How Prefect Executes Flow Runs
+### How Prefect Executes Flow Runs
 
 Prefect workers are responsible for:
 
@@ -113,9 +109,7 @@ Prefect workers are responsible for:
 
 This dynamic approach means you can flexibly scale, update, and manage your workflow execution environments.
 
-### 
-
-Prefect Worker Configuration
+### Prefect Worker Configuration
 
 Here’s a minimal `values.yaml` example, sufficient to get a Prefect worker running via Helm:
 
