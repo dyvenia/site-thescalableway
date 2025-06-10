@@ -2,13 +2,13 @@
 title: 'Getting to Your First Flow Run: Prefect Worker & Deployment Setup'
 date: 2025-06-10 11:00:00
 author: Karol Wolski
-description: Get your first data ingestion workflow up and running with Prefect, Docker, and Kubernetes. This hands-on guide walks through containerizing flow execution, deploying Prefect workers, and managing clean deployment configurations. Build a scalable, maintainable orchestration layer as the next step in your modern data platform journey.
+description: Run your first data ingestion workflow with Prefect, Docker, and Kubernetes. This guide walks through containerized flow execution, Prefect worker deployment, and clean deployment configs, laying the foundation for a scalable, maintainable orchestration layer.
 tags:
-  - prefect, data platform architecture,  workflow orchestration, Kubernetes
+  - prefect,data platform architecture,workflow orchestration,Kubernetes
 internal_notes: |-
-  **Audience:**&#32;Data Engineer / DevOps Engineer trying to set up a data platform
+  **Audience:** Data Engineer / DevOps Engineer trying to set up a data platform
 
-  **Purpose:**&#32;(Internal usage only):
+  **Purpose:** (Internal usage only):
 
   How-to document that explains all necessary steps to prepare the basic configuration for Prefect worker to run the first deployment
 ---
