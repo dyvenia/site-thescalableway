@@ -242,8 +242,8 @@ prefect-version: 3.3.7
 
 definitions:
   schedules:
-    cron\_default: &cron\_default
-      cron: "0 0 \* \* \*"
+    cron_default: &cron_default
+      cron: "0 0 * * *"
       timezone: "UTC"
       active: false
 
@@ -251,23 +251,23 @@ build: null
 push: null
 
 pull:
-  - prefect.deployments.steps.set\_working\_directory:
+  - prefect.deployments.steps.set_working_directory:
       directory: /opt/prefect
-  - prefect.deployments.steps.git\_clone:
-      repository: https://github.com/<your\_github\_organisation>/edp-flows.git
-      access\_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
-  - prefect.deployments.steps.run\_shell\_script:
+  - prefect.deployments.steps.git_clone:
+      repository: https://github.com/<your_github_organisation>/edp-flows.git
+      access_token: "\{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
+  - prefect.deployments.steps.run_shell_script:
       directory: "/opt/prefect/edp-flows"
       script: |
         uv pip install --no-cache --system .
 
 deployments:
-  - name: hello\_world
+  - name: hello_world
     description: "Test hello-world deployment."
     schedules:
-      - <<: \*cron\_default
-        cron: "5 0 \* \* \*"
-    entrypoint: src/edp\_flows/flows/hello\_world.py:hello\_world\_flow
+      - <<: *cron_default
+        cron: "5 0 * * *"
+    entrypoint: src/edp_flows/flows/hello_world.py:hello_world_flow
     parameters:
       text: "Hello, world!"
 ```
