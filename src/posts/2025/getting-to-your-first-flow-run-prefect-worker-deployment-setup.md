@@ -21,6 +21,7 @@ This article picks up where we left off. It’s the third part in a series desig
 In [Part 1](https://thescalableway.com/blog/deploying-prefect-on-any-cloud-using-a-single-virtual-machine/), I explored architectural approaches and proposed a lightweight Kubernetes setup running on a single VM. While it doesn’t offer full high availability, this setup has proven to be a practical starting point, especially for teams with limited cloud-native experience. It allows organizations to grow along the data maturity curve without the overhead of more complex solutions.
 
 [Part 2](https://thescalableway.com/blog/how-to-setup-data-platform-infrastructure-on-google-cloud-platform-with-terraform/) focused on provisioning the infrastructure using Terraform on Google Cloud Platform (GCP). We used GCP as an example, but the underlying architectural principles are cloud-agnostic and applicable across providers.
+
 Now that the infrastructure is ready, this article walks through the next milestone: configuring all the components required to execute your first data ingestion workflow.
 
 ## Data Platform Components Overview
@@ -67,8 +68,9 @@ dependencies = [
 ]
 ```
 
-Once dependencies are set, run uv sync. This generates a uv.lock file, locking all versions for reproducibility. This file, along with your pyproject.toml, is all you need for the build process.
-The Dockerfile itself is rather straightforward, assuming we need to prepare the uv to install system dependencies to be used inside the container without an additional virtual environment:
+Once dependencies are set, run `uv sync`. This generates a `uv.lock` file, locking all versions for reproducibility. This file, along with your `pyproject.toml`, is all you need for the build process.
+
+The Dockerfile itself is rather straightforward, assuming we need to prepare the `uv` to install system dependencies to be used inside the container without an additional virtual environment:
 
 ```bash
 FROM prefecthq/prefect:3.3.7-python3.12
