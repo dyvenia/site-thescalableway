@@ -60,7 +60,7 @@ Building a dedicated Docker image ensures that flow runs are reproducible and de
 
 For most data teams, starting with the official Prefect image is the way to go. It includes all the Prefect orchestration tools out of the box, so you don’t have to reinvent the wheel. Manage dependencies via `uv` and a `pyproject.toml`: 
 
-```TOML
+```toml
 dependencies = [
     "prefect[docker,github,gcp]>=3.3.7",
     "dlt[mssql,parquet]>=1.8.1",
@@ -72,7 +72,7 @@ Once dependencies are set, run `uv sync`. This generates a `uv.lock` file, locki
 
 The Dockerfile itself is rather straightforward, assuming we need to prepare the `uv` to install system dependencies to be used inside the container without an additional virtual environment:
 
-```Docker
+```docker
 FROM prefecthq/prefect:3.3.7-python3.12
 
 RUN pip install uv --no-cache
@@ -115,7 +115,7 @@ This dynamic approach means you can flexibly scale, update, and manage your work
 
 Here’s a minimal `values.yaml` example, sufficient to get a Prefect worker running via Helm:
 
-```YAML
+```yaml
 worker:
   image:
     repository: prefecthq/prefect
@@ -152,7 +152,7 @@ In a Kubernetes environment, the base job template defines how Prefect spins up 
 - The namespace for job creation
 - Other Kubernetes settings include image pull secrets, retry limits, and job cleanup.
 
-```JSON
+```json
 {
   "variables": {
     "type": "object",
@@ -225,7 +225,7 @@ You can customize this further as needed, and include the template in your Prefe
 ```bash
 helm upgrade prefect-worker --install prefect/prefect-worker \
             -n prefect \
-            -f \${{ helm_values_path }}
+            -f ${\{ helm_values_path }}
 ```
 
  Once deployed, your worker should appear in the Work Pool section in Prefect Cloud. 
@@ -244,7 +244,7 @@ Once your Prefect worker is up and running, you’re ready to register your firs
 
 The `prefect.yaml` file describes base settings for all deployments, with additional instructions for preparing the execution environment for a deployment run. It can be initialized with the `prefect init` command, and after filling in the data, you might end up with a file like this:
 
-```YAML
+```yaml
 name: prefect-deployments
 prefect-version: 3.3.7
 
@@ -263,7 +263,7 @@ pull:
       directory: /opt/prefect
   - prefect.deployments.steps.git_clone:
       repository: https://github.com/<your_github_organisation>/edp-flows.git
-      access_token: "\{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
+      access_token: "{\{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
   - prefect.deployments.steps.run_shell_script:
       directory: "/opt/prefect/edp-flows"
       script: |
@@ -291,7 +291,7 @@ deployments:
 
 As Prefect flows aren't covered in detail here, we’ll use a simple "Hello, World!" example for illustration. In your actual use case, this is where you would implement the logic for your first ingestion workflow, tailored to your specific data source and target (such as a data warehouse or lake). Here is `hello_world.py`:
 
-```Python
+```python
 """A flow to demonstrate how to log messages in Prefect flows."""
 
 from prefect import flow, get_run_logger, task
