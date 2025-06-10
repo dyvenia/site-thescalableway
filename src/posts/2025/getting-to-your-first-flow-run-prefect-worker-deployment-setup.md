@@ -60,7 +60,7 @@ Building a dedicated Docker image ensures that flow runs are reproducible and de
 
 For most data teams, starting with the official Prefect image is the way to go. It includes all the Prefect orchestration tools out of the box, so you don’t have to reinvent the wheel. Manage dependencies via `uv` and a `pyproject.toml`: 
 
-```TOML
+```bash
 dependencies = [
     "prefect[docker,github,gcp]>=3.3.7",
     "dlt[mssql,parquet]>=1.8.1",
@@ -72,7 +72,7 @@ Once dependencies are set, run `uv sync`. This generates a `uv.lock` file, locki
 
 The Dockerfile itself is rather straightforward, assuming we need to prepare the `uv` to install system dependencies to be used inside the container without an additional virtual environment:
 
-```Docker
+```bash
 FROM prefecthq/prefect:3.3.7-python3.12
 
 RUN pip install uv --no-cache
@@ -115,7 +115,7 @@ This dynamic approach means you can flexibly scale, update, and manage your work
 
 Here’s a minimal `values.yaml` example, sufficient to get a Prefect worker running via Helm:
 
-```YAML
+```bash
 worker:
   image:
     repository: prefecthq/prefect
@@ -152,7 +152,7 @@ In a Kubernetes environment, the base job template defines how Prefect spins up 
 - The namespace for job creation
 - Other Kubernetes settings include image pull secrets, retry limits, and job cleanup.
 
-```JSON
+```bash
 {
   "variables": {
     "type": "object",
@@ -220,7 +220,15 @@ In a Kubernetes environment, the base job template defines how Prefect spins up 
 }
 ```
 
-You can customize this further as needed, and include the template in your Prefect worker configuration. Once deployed, your worker should appear in the Work Pool section in Prefect Cloud. 
+You can customize this further as needed, and include the template in your Prefect worker configuration. To deploy a worker, it’s enough to run the helm command:
+
+```bash
+helm upgrade prefect-worker --install prefect/prefect-worker \
+            -n prefect \
+            -f ${{ helm_values_path }}
+```
+
+ Once deployed, your worker should appear in the Work Pool section in Prefect Cloud. 
 
 ![prefect work pool](https://lh7-rt.googleusercontent.com/docsz/AD_4nXdNG7lL33CZfcuZrl8NH6szeJAjeH7VqQ0MT64dwn0isKBBcSgQLTH9wtSPiYW1YnShPgXFYrknsDZ0yxdeUx-n3GlTax38R2zAzveuBzC2TOLdpe_EtaKwAr4YUbC0XXOqdsvmaQ?key=ayESoQytAoVyFyBIrtLBvJIi)
 
@@ -236,14 +244,14 @@ Once your Prefect worker is up and running, you’re ready to register your firs
 
 The `prefect.yaml` file describes base settings for all deployments, with additional instructions for preparing the execution environment for a deployment run. It can be initialized with the `prefect init` command, and after filling in the data, you might end up with a file like this:
 
-```YAML
+```bash
 name: prefect-deployments
 prefect-version: 3.3.7
 
 definitions:
   schedules:
-    cron_default: &cron_default
-      cron: "0 0 * * *"
+    cron\_default: &cron\_default
+      cron: "0 0 \* \* \*"
       timezone: "UTC"
       active: false
 
@@ -251,23 +259,23 @@ build: null
 push: null
 
 pull:
-  - prefect.deployments.steps.set_working_directory:
+  - prefect.deployments.steps.set\_working\_directory:
       directory: /opt/prefect
-  - prefect.deployments.steps.git_clone:
-      repository: https://github.com/<your_github_organisation>/edp-flows.git
-      access_token: "\{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
-  - prefect.deployments.steps.run_shell_script:
+  - prefect.deployments.steps.git\_clone:
+      repository: https://github.com/<your\_github\_organisation>/edp-flows.git
+      access\_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
+  - prefect.deployments.steps.run\_shell\_script:
       directory: "/opt/prefect/edp-flows"
       script: |
         uv pip install --no-cache --system .
 
 deployments:
-  - name: hello_world
+  - name: hello\_world
     description: "Test hello-world deployment."
     schedules:
-      - <<: *cron_default
-        cron: "5 0 * * *"
-    entrypoint: src/edp_flows/flows/hello_world.py:hello_world_flow
+      - <<: \*cron\_default
+        cron: "5 0 \* \* \*"
+    entrypoint: src/edp\_flows/flows/hello\_world.py:hello\_world\_flow
     parameters:
       text: "Hello, world!"
 ```
@@ -283,7 +291,7 @@ deployments:
 
 As Prefect flows aren't covered in detail here, we’ll use a simple "Hello, World!" example for illustration. In your actual use case, this is where you would implement the logic for your first ingestion workflow, tailored to your specific data source and target (such as a data warehouse or lake). Here is `hello_world.py`:
 
-```Python
+```bash
 """A flow to demonstrate how to log messages in Prefect flows."""
 
 from prefect import flow, get_run_logger, task
