@@ -15,13 +15,6 @@ internal_notes: |-
 
   How-to document that explains all necessary steps to prepare the basic configuration for Prefect worker to run the first deployment
 ---
-```yaml
-pull:
-  - prefect.deployments.steps.git_clone:
-      access_token: "'{{'prefect.blocks.github-credentials.edp-github-credentials.token '}}'"
-```
-
-
 You’ve laid the groundwork: the infrastructure is in place. The next logical step is turning that foundation into something functional, running your first data ingestion workflow. That moment when everything connects for the first time can feel like crossing an invisible line: from setup to real-world execution.
 This article picks up where we left off. It’s the third part in a series designed to guide data engineers through the complete journey of building a modern data platform. 
 
@@ -183,10 +176,10 @@ In a Kubernetes environment, the base job template defines how Prefect spins up 
   },
   "job_configuration": {
     "env": {},
-    "name": "{{ name }}",
+    "name": "{{ '{{' }} name {{ '}}' }}",
     "labels": {},
     "command": "",
-    "namespace": "{{ namespace }}",
+    "namespace": "{{ '{{' }} namespace {{ '}}' }}",
     "job_manifest": {
       "kind": "Job",
       "spec": {
@@ -197,7 +190,7 @@ In a Kubernetes environment, the base job template defines how Prefect spins up 
               {
                 "env": [],
                 "name": "prefect-job",
-                "image": "{{ image }}",
+                "image": "{{ '{{' }} image {{ '}}' }}",
                 "imagePullPolicy": "Always",
                 "envFrom": [],
                 "volumeMounts": []
@@ -218,7 +211,7 @@ In a Kubernetes environment, the base job template defines how Prefect spins up 
         "ttlSecondsAfterFinished": 7200
       },
       "metadata": {
-        "namespace": "{{ namespace }}"
+        "namespace": "{{ '{{' }} namespace {{ '}}' }}"
       },
       "apiVersion": "batch/v1"
     },
@@ -232,7 +225,7 @@ You can customize this further as needed, and include the template in your Prefe
 ```bash
 helm upgrade prefect-worker --install prefect/prefect-worker \
             -n prefect \
-            -f ${{ helm_values_path }}
+            -f ${{ '{{' }} helm_values_path {{ '}}' }}
 ```
 
  Once deployed, your worker should appear in the Work Pool section in Prefect Cloud. 
