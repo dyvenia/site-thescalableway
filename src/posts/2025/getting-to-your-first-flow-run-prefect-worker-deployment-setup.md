@@ -263,7 +263,7 @@ pull:
       directory: /opt/prefect
   - prefect.deployments.steps.git_clone:
       repository: https://github.com/<your_github_organisation>/edp-flows.git
-      access_token: "{\u200B{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
+      { access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}" }
   - prefect.deployments.steps.run_shell_script:
       directory: "/opt/prefect/edp-flows"
       script: |
