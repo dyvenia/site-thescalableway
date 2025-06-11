@@ -15,6 +15,24 @@ internal_notes: |-
 
   How-to document that explains all necessary steps to prepare the basic configuration for Prefect worker to run the first deployment
 ---
+```yaml
+pull:
+  - prefect.deployments.steps.git_clone:
+         access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
+         access_token: "&#123;&#123; prefect.blocks.github-credentials.edp-github-credentials.token &#125;&#125;"
+
+{{=<% %>=}}
+         access_token: "<% prefect.blocks.github-credentials.edp-github-credentials.token %>"
+<%={{ }}=%>
+```
+
+<pre><code>
+pull:
+  - prefect.deployments.steps.git_clone:
+      access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
+</code></pre>
+
+
 You’ve laid the groundwork: the infrastructure is in place. The next logical step is turning that foundation into something functional, running your first data ingestion workflow. That moment when everything connects for the first time can feel like crossing an invisible line: from setup to real-world execution.
 This article picks up where we left off. It’s the third part in a series designed to guide data engineers through the complete journey of building a modern data platform. 
 
@@ -244,13 +262,6 @@ Once your Prefect worker is up and running, you’re ready to register your firs
 
 The `prefect.yaml` file describes base settings for all deployments, with additional instructions for preparing the execution environment for a deployment run. It can be initialized with the `prefect init` command, and after filling in the data, you might end up with a file like this:
 
-access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
-`access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"`
-access_token: "\{\{ prefect.blocks.github-credentials.edp-github-credentials.token \}\}"
-access_token: "{\{ prefect.blocks.github-credentials.edp-github-credentials.token }\}"
-access_token: "{ { prefect.blocks.github-credentials.edp-github-credentials.token } }"
-access_token: "{\u200B{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
-
 ```yaml
 name: prefect-deployments
 prefect-version: 3.3.7
@@ -270,7 +281,7 @@ pull:
       directory: /opt/prefect
   - prefect.deployments.steps.git_clone:
       repository: https://github.com/<your_github_organisation>/edp-flows.git
-      access_token: "&#123;&#123; prefect.blocks.github-credentials.edp-github-credentials.token &#125;&#125;"
+      access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
   - prefect.deployments.steps.run_shell_script:
       directory: "/opt/prefect/edp-flows"
       script: |
