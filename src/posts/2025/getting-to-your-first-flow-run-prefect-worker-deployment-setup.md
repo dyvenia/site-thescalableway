@@ -18,12 +18,7 @@ internal_notes: |-
 ```yaml
 pull:
   - prefect.deployments.steps.git_clone:
-         access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
-         access_token: "&#123;&#123; prefect.blocks.github-credentials.edp-github-credentials.token &#125;&#125;"
-
-{{=<% %>=}}
-         access_token: "<% prefect.blocks.github-credentials.edp-github-credentials.token %>"
-<%={{ }}=%>
+      access_token: "{{ '{{' }} prefect.blocks.github-credentials.edp-github-credentials.token {{ '}}' }}"
 ```
 
 <pre><code>
