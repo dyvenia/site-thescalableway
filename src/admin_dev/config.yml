@@ -151,8 +151,25 @@ collections:
           hint: 'Add full LinkedIn URL'
         }
       - {label: 'Show on About Page?', name: 'show_on_about', widget: 'boolean', default: false}
+      - {label: 'Role', name: 'role', widget: 'string', required: false}
       - {label: 'Short Description', name: 'description_short', widget: 'text'}
       - {label: 'Long Description', name: 'description_long', widget: 'markdown'}
+      - {
+          label: 'Expertise',
+          name: 'expertise',
+          widget: 'list',
+          required: false,
+          collapsed: true,
+          field: {label: 'Item', name: 'item', widget: 'string'}
+        }
+      - {
+          label: 'Technologies',
+          name: 'technologies',
+          widget: 'list',
+          required: false,
+          collapsed: true,
+          field: {label: 'Item', name: 'item', widget: 'string'}
+        }
 
   - name: 'our_process'
     label: 'Our Process'
