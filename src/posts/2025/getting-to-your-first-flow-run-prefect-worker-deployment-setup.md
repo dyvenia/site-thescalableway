@@ -244,6 +244,13 @@ Once your Prefect worker is up and running, you’re ready to register your firs
 
 The `prefect.yaml` file describes base settings for all deployments, with additional instructions for preparing the execution environment for a deployment run. It can be initialized with the `prefect init` command, and after filling in the data, you might end up with a file like this:
 
+access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
+`access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"`
+access_token: "\{\{ prefect.blocks.github-credentials.edp-github-credentials.token \}\}"
+access_token: "{\{ prefect.blocks.github-credentials.edp-github-credentials.token }\}"
+access_token: "{ { prefect.blocks.github-credentials.edp-github-credentials.token } }"
+access_token: "{\u200B{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
+
 ```yaml
 name: prefect-deployments
 prefect-version: 3.3.7
@@ -263,7 +270,7 @@ pull:
       directory: /opt/prefect
   - prefect.deployments.steps.git_clone:
       repository: https://github.com/<your_github_organisation>/edp-flows.git
-      `access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"`
+      access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
   - prefect.deployments.steps.run_shell_script:
       directory: "/opt/prefect/edp-flows"
       script: |
