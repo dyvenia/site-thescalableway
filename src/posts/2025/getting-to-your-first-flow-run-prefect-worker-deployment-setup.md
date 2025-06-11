@@ -18,14 +18,8 @@ internal_notes: |-
 ```yaml
 pull:
   - prefect.deployments.steps.git_clone:
-      access_token: "{{ '{{' }} prefect.blocks.github-credentials.edp-github-credentials.token {{ '}}' }}"
+      access_token: "'{{'prefect.blocks.github-credentials.edp-github-credentials.token '}}'"
 ```
-
-<pre><code>
-pull:
-  - prefect.deployments.steps.git_clone:
-      access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
-</code></pre>
 
 
 You’ve laid the groundwork: the infrastructure is in place. The next logical step is turning that foundation into something functional, running your first data ingestion workflow. That moment when everything connects for the first time can feel like crossing an invisible line: from setup to real-world execution.
@@ -276,7 +270,7 @@ pull:
       directory: /opt/prefect
   - prefect.deployments.steps.git_clone:
       repository: https://github.com/<your_github_organisation>/edp-flows.git
-      access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
+      access_token: "{{ '{{' }} prefect.blocks.github-credentials.edp-github-credentials.token {{ '}}' }}"
   - prefect.deployments.steps.run_shell_script:
       directory: "/opt/prefect/edp-flows"
       script: |
