@@ -19,7 +19,7 @@ export const tagList = collection => {
   collection.getAll().forEach(item => {
     if (!item.data.tags) return;
     item.data.tags
-      .filter(tag => !['posts', 'case-studies', 'all'].includes(tag))
+      .filter(tag => !['posts', 'case-studies', 'all', 'pages', 'team_members'].includes(tag))
       .forEach(tag => tagsSet.add(tag));
   });
   return Array.from(tagsSet).sort();
