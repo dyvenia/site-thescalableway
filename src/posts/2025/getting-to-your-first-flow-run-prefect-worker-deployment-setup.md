@@ -225,7 +225,7 @@ You can customize this further as needed, and include the template in your Prefe
 ```bash
 helm upgrade prefect-worker --install prefect/prefect-worker \
             -n prefect \
-            -f ${\{ helm_values_path }}
+            -f ${{ helm_values_path }}
 ```
 
  Once deployed, your worker should appear in the Work Pool section in Prefect Cloud. 
@@ -263,7 +263,7 @@ pull:
       directory: /opt/prefect
   - prefect.deployments.steps.git_clone:
       repository: https://github.com/<your_github_organisation>/edp-flows.git
-      access_token: "{\{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
+      access_token: "{{ prefect.blocks.github-credentials.edp-github-credentials.token }}"
   - prefect.deployments.steps.run_shell_script:
       directory: "/opt/prefect/edp-flows"
       script: |
