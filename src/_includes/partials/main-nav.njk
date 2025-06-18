@@ -47,7 +47,9 @@
       {% endif %}
     {% endfor %}
     <li>
-      <a class="no-indicator" href="{{ meta.book_call_link }}" target="blank"> {{ meta.book_call }} </a>
+      <a class="no-indicator plausible-event-name=CTA+Nav" href="{{ meta.book_call_link }}" target="blank">
+        {{ meta.book_call }}
+      </a>
     </li>
   </ul>
 </nav>
