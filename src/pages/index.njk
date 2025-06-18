@@ -86,7 +86,7 @@ title: The Scalable Way
     <header class="flow">
       <h1>{{ hero.title }}</h1>
       {{ hero.subtitle | markdownFormat | safe }}
-      <a href="{{ hero.button_target }}" class="button"> {{ hero.button_text }} {% svg "misc/arrow" %}</a>
+      <a href="{{ hero.button_target }}" class="button plausible-event-name=CTA+Hero"> {{ hero.button_text }} {% svg "misc/arrow" %}</a>
     </header>
     {% svg "brand/simple" %}
     {% svg "brand/staggered" %}
