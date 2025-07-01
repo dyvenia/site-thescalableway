@@ -1,0 +1,160 @@
+---
+title: Learn more
+permalink: /learn-more/index.html
+description: 'At The Scalable Way, we believe that data-driven success comes from precise execution and scalable solutions.'
+layout: base
+bodyClass: learn-more
+footerSpace: mt-2xl
+hero:
+  title: Is your analytics workflow ready to scale?
+  subtitle: 'Finding out is the first step. Understand how your data platform supports (or limits) your ability to scale your entire workflow.'
+  button_text: Test your scalability
+  button_target: https://thescalableway.scoreapp.com/
+intro:
+  content: |-
+    Scaling an analytics workflow isn’t just about tools; it’s about how the whole system works together.
+    And your data platform is the foundation of that system.
+
+    That’s why we created a short, focused assessment to evaluate where you stand across six core areas:
+
+    - Workflow & Automation
+    - Infrastructure & Deployment
+    - DataOps & Processing
+    - Architecture & Connectivity
+    - Governance & Security
+
+    In just a few minutes, you’ll get an overview that surfaces both strengths and gaps, so you can better understand how ready your data platform is to scale.
+highlight:
+  title: What really matters is what happens next
+  content: |-
+    Knowing where you stand is useful, but what you do next is what will shape how usable, reliable, and scalable your data platform actually becomes.
+
+    If you’d like support figuring out these next steps, we’re here to help.
+
+    Together, we can take a look at where you are now, spot bottlenecks and blind spots, and lay out a clear, practical roadmap to improve your platform’s scalability, automation, and stability.
+
+talk:
+  title: Ready to talk?
+  subtitle: |-
+    If you’re already thinking, “Yep, this is what we need”, go ahead and reach out. We’d be glad to hear from you.
+  button_text: Book a Free Call
+  button_target: https://www.google.com/url?q=https://meetings-eu1.hubspot.com/alessio-civitillo/the-scalable-way?uuid%3Daf4321bb-7f76-4f87-a3a0-c2aaaf2b2364&sa=D&source=docs&ust=1751358906431249&usg=AOvVaw30lFhbvH6zoCEKpqEx6R-Z
+  altContact: |-
+    Or email us at <hello@thescalableway.com>.
+  image: ./src/assets/images/backgrounds/sfondi-dyvenia27.jpg
+
+about:
+  title: Why us
+  content1: |-
+    We're a team of experienced experts across both business and data engineering fields. We work directly with data and analytics leaders to help them build reliable, scalable, and efficient platforms.
+
+    No fluff. No layers. Just the people doing the work.
+
+    This is who you'll be talking to:
+  content2: |-
+    Check out our [blog](/blog/) to see what they're into, and [subscribe](/subscribe/) to keep up with what's new.
+
+thinking:
+  title: Still thinking about it?
+  content: |-
+    That’s totally fine.
+    If you’re not sure whether your needs match what we offer, start by [taking the assessment](https://thescalableway.scoreapp.com/).
+    It’ll give you a quick snapshot of how your data platform is performing. And if it turns out the results aren’t where you’d like them to be, that’s exactly what we’re here for.
+---
+
+<div class="hero-wrapper wrapper">
+  <div class="clip | full"></div>
+  <div class="hero | full region wrapper">
+    <div class="feature sidebar" data-direction="rtl">
+      <header class="flow">
+        <h1 class="text-step-3">{{ hero.title }}</h1>
+        {{ hero.subtitle | markdownFormat | safe }}
+        <a href="{{ hero.button_target }}" class="button plausible-event-name=CTA+Learn+Scalability">
+          {{ hero.button_text }} {% svg "misc/arrow" %}</a
+        >
+      </header>
+      {% svg "brand/scale" %}
+    </div>
+  </div>
+</div>
+
+<div class="intro | wrapper">
+  <article class="region flow prose">{{ intro.content | markdownFormat | safe }}</article>
+</div>
+
+<div class="highlight | wrapper">
+  <div class="full wrapper section" style="--spot-color: var(--color-blue-accent)">
+    <article class="full  intro | section__inner wrapper  region">
+      <div class="feature flow prose">
+        <h2 class="text-step-3">{{ highlight.title }}</h2>
+        <p>{{ highlight.content | markdownFormat | safe }}</p>
+      </div>
+      {% svg "brand/forward" %}
+    </article>
+  </div>
+</div>
+
+<div class="talk | section page-header">
+  {% svg "divider/soft-top-bubble", null, "seperator small" %}
+
+  {% if talk.image %}
+    {% image talk.image, "" %}
+  {% endif %}
+
+  <div class="section__inner region region-space-l text-blue-100 ">
+    <div class="wrapper flow">
+      <h2 class="text-step-4">{{ talk.title }}</h2>
+
+      <div class="sidebar text-step-1" data-direction="rtl">
+        {{ talk.subtitle | markdownFormat | safe }}
+        <div class="flow">
+          <a
+            href="{{ talk.button_target }}"
+            class="button flow-space-l no-indicator plausible-event-name=CTA+Learn+Book+Call"
+          >
+            {{ talk.button_text }} {% svg "misc/arrow" %}</a
+          >
+          <div class="text-step-min-1">{{ talk.altContact | markdownFormat | safe }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="about | wrapper">
+  <article class="feature | region flow wrapper">
+    <header class="flow">
+      <h2>{{ about.title }}</h2>
+      <div class="flow">{{ about.content1 | markdownFormat | safe }}</div>
+    </header>
+    <div class="full grid mt-xl" data-layout="thirds">
+      {% for member in collections.team_members %}
+        {% if member.data.show_on_about %}
+          <div class="about__content flow">
+            {% image "." + member.data.image, "" %}
+
+            <h3>
+              <a href="/author/{{ member.data.name | slugify }}" class="no-underline"
+                >{{ member.data.name }}</a
+              >
+            </h3>
+            {{ member.data.description_short | markdownFormat | safe }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="flow-space-xl text-center text-step-2">{{ about.content2 | markdownFormat | safe }}</div>
+  </article>
+</div>
+
+<div class="thinking | wrapper">
+  <header class="header | region flow prose">
+    <h2 class="text-step-3">{{ thinking.title }}</h2>
+    {{ thinking.content | markdownFormat | safe }}
+  </header>
+</div>
+
+{%- css "local" -%}
+  {%- include 'css/learn-more.css' -%}
+  {%- include "css/page-header.css" -%}
+{%- endcss -%}

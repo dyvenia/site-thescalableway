@@ -1,0 +1,126 @@
+.learn-more main wrapper > * {
+  border-inline-end: 1px solid var(--color-bg-accent);
+}
+
+.learn-more .hero-wrapper {
+  background: var(--color-bg);
+}
+
+.learn-more .hero-wrapper > * {
+  grid-row: 1;
+}
+
+.learn-more .clip {
+  clip-path: polygon(0 0, 84rem 0, 0 47rem, 0 100%);
+  background: var(--color-bg-accent);
+  z-index: 1;
+}
+
+.learn-more .hero {
+  --button-icon-size: 1.8ch;
+  block-size: clamp(35rem, 70vh, 45rem);
+  display: grid;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.learn-more .hero .sidebar {
+  --sidebar-content-min-width: 40%;
+  --sidebar-target-width: clamp(25rem, 30vw, 30rem);
+  align-items: center;
+}
+
+.learn-more .hero .sidebar > svg {
+  inline-size: 100%;
+  block-size: auto;
+  /* mix-blend-mode: plus-lighter; */
+}
+
+.learn-more .hero .sidebar > svg .inner {
+  color: var(--color-blue-600);
+}
+
+.learn-more .hero .sidebar > svg .middle {
+  color: var(--color-blue-400);
+}
+
+.learn-more .hero .sidebar > svg .outer {
+  color: var(--color-blue-400);
+}
+
+[data-theme='dark'] .learn-more .hero .sidebar > svg {
+  mix-blend-mode: plus-lighter;
+  opacity: 0.1;
+}
+
+@media screen(max) {
+  .learn-more .hero .sidebar > svg {
+    mix-blend-mode: normal;
+    opacity: 1;
+  }
+}
+
+.learn-more .highlight article > * {
+  grid-row: 1;
+}
+
+.learn-more .highlight svg {
+  grid-column: content-start / full-end;
+  inline-size: clamp(18ch, 40vw, 25rem);
+  block-size: auto;
+  color: var(--color-blue);
+  translate: 0 70%;
+  place-self: end;
+  z-index: 1;
+}
+
+@media screen(max) {
+  .learn-more .highlight svg {
+    grid-column: content-end / full-end;
+    align-self: center;
+    justify-self: end;
+    translate: 0 0;
+  }
+}
+
+.learn-more .page-header .wrapper > * {
+  justify-self: start;
+}
+
+.learn-more .about .grid {
+  --gutter: var(--space-m);
+  --grid-min-item-size: clamp(16rem, 28%, 25rem);
+}
+
+.learn-more .about .about__content p {
+  font-size: var(--size-step-min-1);
+}
+
+/* clickable */
+
+.learn-more .about .about__content:hover,
+.learn-more .about .about__content:focus-within {
+  border: 4px solid var(--color-bg-accent);
+  background: var(--color-bg-accent);
+}
+
+.learn-more .about .about__content:focus-within a:focus {
+  outline: none;
+}
+.learn-more .about .about__content {
+  position: relative;
+  padding: var(--space-3xs);
+  border: 4px solid var(--color-bg);
+}
+.learn-more .about .about__content a:after {
+  bottom: 0;
+  content: '';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.learn-more .thinking {
+  background: var(--color-bg-accent);
+}
