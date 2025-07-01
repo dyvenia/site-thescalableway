@@ -48,11 +48,6 @@
   color: var(--color-blue-400);
 }
 
-[data-theme='dark'] .learn-more .hero .sidebar > svg {
-  mix-blend-mode: plus-lighter;
-  opacity: 0.1;
-}
-
 @media screen(max) {
   .learn-more .hero .sidebar > svg {
     mix-blend-mode: normal;
