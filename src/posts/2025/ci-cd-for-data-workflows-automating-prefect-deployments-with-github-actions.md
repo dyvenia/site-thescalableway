@@ -89,7 +89,7 @@ CI/CD for data platforms comes with its own set of challenges, especially compar
 
 - **Docker Image Pipeline:** Dedicated workflow for building, testing, and deploying container images, including all the flow dependencies.
 - **Prefect Worker Management:** The only long-living process requiring separate CI/CD for updates of the application itself and the base job template used in flow runs.
-- **Deployment Configuration:&#32;**Independent workflow for managing Prefect deployment definitions and versioning.
+- **Deployment Configuration:** Independent workflow for managing Prefect deployment definitions and versioning.
 
 2. **More Moving Parts to Coordinate**
 
@@ -149,7 +149,7 @@ This workflow is triggered by changes to any of the following files:
 1. **Check version increase:** Validates that the version number was bumped correctly (e.g., 1.2.3 → 1.2.4, 1.3.0, or 2.0.0). To calculate acceptable versions after an increase, there is the `christian-draeger/increment-semantic-version@1.2.3` action for GitHub that can calculate the next patch, minor, and major version, which can later be compared with the actual version that was manually increased by the developer.
 2. **Build DEV Image:** Builds a unique, versioned DEV image for the edp-flows. It can be tagged using the pattern:
 
-`${VERSION}-pr-$'{{ github.event.number }}'-run-$'{{ github.run_number }}`
+`${VERSION}-pr-${{'{{}} github.event.number {{'}}'}}-run-${{'{{`}} github.run_number {{'}}'}}`
 
 The image is then pushed to the GitHub Container Registry. In the [previous blog post](https://thescalableway.com/blog/getting-to-your-first-flow-run-prefect-worker-and-deployment-setup/), we prepared an example Dockerfile. Here's what a GitHub workflow to handle it might look like:
 
