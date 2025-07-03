@@ -87,9 +87,9 @@ CI/CD for data platforms comes with its own set of challenges, especially compar
 
 1. **Different Workflows for Different Parts**
 
-- Docker Image Pipeline: Dedicated workflow for building, testing, and deploying container images, including all the flow dependencies.
-- Prefect Worker Management: The only long-living process requiring separate CI/CD for updates of the application itself and the base job template used in flow runs.
-- Deployment Configuration: Independent workflow for managing Prefect deployment definitions and versioning.
+- **Docker Image Pipeline:** Dedicated workflow for building, testing, and deploying container images, including all the flow dependencies.
+- **Prefect Worker Management:** The only long-living process requiring separate CI/CD for updates of the application itself and the base job template used in flow runs.
+- **Deployment Configuration:** Independent workflow for managing Prefect deployment definitions and versioning.
 
 2. **More Moving Parts to Coordinate**
 
@@ -312,7 +312,7 @@ This workflow is triggered by changes to any of the following files:
 2. **Update DEV Prefect work pool:** Updates the Prefect worker's base job template on DEV environment to apply any required configuration changes.
 3. **Update PROD Prefect work pool:** Updates the Prefect worker's base job template on PROD environment to apply any required configuration changes.
 
-> **Note:** These first two workflows affect infrastructure only; they don’t touch actual Prefect deployments. The next workflow handles that.
+**_Note:_**_&#32;These first two workflows affect infrastructure only; they don’t touch actual Prefect deployments. The next workflow handles that._
 
 #### Workflow 3: Prefect Deployment Orchestration
 
