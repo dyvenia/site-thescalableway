@@ -137,7 +137,7 @@ Let’s take a closer look at all of them.
 
 #### Workflow 1: Flows Image Builder
 
-image
+![flows image workflow](/src/assets/images/blog/flows_image_workflow.png)
 
 This workflow is triggered by changes to any of the following files:
 
@@ -294,7 +294,7 @@ We can utilize an additional `prepare` job that will pre-define values used late
 
 #### Workflow 2: Prefect Worker Updates
 
-image
+![prefect worker workflow](/src/assets/images/blog/prefect_worker_workflow.png)
 
 This workflow is triggered by changes to any of the following files:
 
@@ -316,7 +316,7 @@ This workflow is triggered by changes to any of the following files:
 
 #### Workflow 3: Prefect Deployment Orchestration
 
-foto
+![Prefect Deployment Orchestration](/src/assets/images/blog/data_ingestion_pipeline_workflow.png)
 
 Triggered by changes to `prefect.yaml` or any source code within src directory.
 
@@ -402,7 +402,7 @@ This script can be added to the workflow to automate schedule enabling.
 
 You can verify the **branch references** used in deployments by checking the assigned tag or the Configuration tab in Prefect Cloud. For example, in the screenshot below, the deployment runs on branch `feature_branch_1`.
 
-foto
+![verify branch references](/src/assets/images/blog/feature_branch.png)
 
 ## Conclusion & series summary
 
