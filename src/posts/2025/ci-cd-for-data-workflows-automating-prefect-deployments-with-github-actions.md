@@ -12,9 +12,9 @@ tags:
   - data platform architecture
   - ''
 internal_notes: |-
-  **Audience:**&#32;Data Engineer / DevOps Engineer trying to setup data platform
+  **Audience:** Data Engineer / DevOps Engineer trying to setup data platform
 
-  **Purpose:**&#32;(Internal usage only):
+  **Purpose:** (Internal usage only):
 
   How-to document that explains all necessary steps to prepare basic CI/CD workflow for deploying prefect worker and deployments.
 
@@ -46,9 +46,7 @@ If deploying it means copying files, running CLI commands, or manually registeri
 
 Welcome to Part 4 of our data platform series, where we bring automation and resilience to the forefront by introducing CI/CD for your data workflows. If you’ve followed along, you’ve seen how each layer builds on the last: from architecture through infrastructure to operational readiness. But just to be sure we’re on the same page…
 
-## 
-
-Let’s recap…
+## Let’s recap…
 
 In **Part 1** ([Deploying Prefect on any Cloud Using a Single Virtual Machine](https://thescalableway.com/blog/deploying-prefect-on-any-cloud-using-a-single-virtual-machine/)), we explored the architectural foundations of a modern data platform. We discussed why simplicity, flexibility, and scalability matter, and how a lightweight Kubernetes setup on a single VM can deliver immediate value while laying the groundwork for future growth. 
 
@@ -60,13 +58,9 @@ Now, in **Part 4**, we turn our attention to automation. You’ll learn how to i
 
 Whether your goal is to reduce manual intervention, boost reliability, or accelerate delivery, this final part will equip you with patterns and real-world guidance to make your data platform production-ready. Let’s delve in!
 
-## 
+## CI/CD Foundations for Data Platforms
 
-CI/CD Foundations for Data Platforms
-
-### 
-
-Why is CI/CD so important?
+### Why is CI/CD so important?
 
 CI/CD (Continuous Integration and Continuous Deployment) is key to building reliable, scalable, and collaborative data platforms. Manual processes, such as registering deployments by hand or managing configurations outside of version control, can easily slow things down and lead to mistakes. Here’s how automation makes a big difference in modern data workflows:
 
@@ -88,9 +82,7 @@ As your data platform and team grow, manual processes quickly become bottlenecks
 
 Setting up a strong CI/CD foundation creates a more stable, transparent, and scalable environment. It lets your data engineers spend more time delivering value and less time fixing avoidable problems.
 
-### 
-
-What makes data pipeline CI/CD different from traditional software?
+### What makes data pipeline CI/CD different from traditional software?
 
 CI/CD for data platforms comes with its own set of challenges, especially compared to traditional software development. This is mainly because tools like Prefect act as orchestrators, running workflows inside separate, containerized environments. This setup introduces a few extra layers to manage:
 
@@ -107,13 +99,9 @@ CI/CD for data platforms comes with its own set of challenges, especially compar
 
 Unlike in traditional software, where a single build moves through environments, data platforms rely on multiple components that each need to be managed separately. Because of this, automation has to be thoughtfully designed to keep everything in sync. Done right, it helps teams move faster without sacrificing reliability.
 
-## 
+## GitHub CI/CD Workflows for a Data Platform
 
-GitHub CI/CD Workflows for a Data Platform
-
-### 
-
-Repository structure
+### Repository structure
 
 Before diving into the workflows, here’s a quick look at the repository structure established so far. While this isn’t the complete repository, the following directories and files are the main ones that trigger CI/CD processes:
 
@@ -150,7 +138,7 @@ Let’s take a closer look at all of them.
 
 #### Workflow 1: Flows Image Builder
 
-![flow image builder](https://lh7-rt.googleusercontent.com/docsz/AD_4nXfUTtoGfKhtDdOv-BH42b5UhkEaXVvGpYZWueB7Jm9uyfwPYF0-F6rrlB7JyFxVXPsn7CvtGYXA5rJV_NN7WSRjLUdwLTSAjEsfh30GjZQ2zjZoqo4MX7ByDD7Tm7xDLR9Mte9k?key=ayESoQytAoVyFyBIrtLBvJIi)
+image
 
 This workflow is triggered by changes to any of the following files:
 
@@ -203,7 +191,7 @@ jobs:
         run: docker buildx rm builder
 ```
 
-3. **Update DEV Prefect work pool:&#32;**Updates the base job template on the DEV environment to reference the newly built Docker image. During this step, it is essential to update the image inside the `baseJobTemplate` definition to the newly created one, which can be handled even with a simple replacement:
+3. **Update DEV Prefect work pool:** Updates the base job template on the DEV environment to reference the newly built Docker image. During this step, it is essential to update the image inside the `baseJobTemplate` definition to the newly created one, which can be handled even with a simple replacement:
 
 ```yaml
 jobs:
@@ -307,7 +295,7 @@ We can utilize an additional `prepare` job that will pre-define values used late
 
 #### Workflow 2: Prefect Worker Updates
 
-![prefect worker workflow](https://lh7-rt.googleusercontent.com/docsz/AD_4nXezoUKYdTsvoQIKBcJSj2aT7VQClRbWh0vTMFtK5rxEITxTs3Kxl_5IaKxAJu-jdbjm0Rv4XhBvuOax4tw_zXxm8DNJEJ92E35OaVj83bJW6lpzbE4WwnFpYbXu9fOBNUQ5_iZq_Q?key=ayESoQytAoVyFyBIrtLBvJIi)
+image
 
 This workflow is triggered by changes to any of the following files:
 
@@ -329,7 +317,7 @@ This workflow is triggered by changes to any of the following files:
 
 #### Workflow 3: Prefect Deployment Orchestration
 
-![prefect deployment orchestration](https://lh7-rt.googleusercontent.com/docsz/AD_4nXf9hCvVqC6sSp7cLLaVSNZ23rixWOTnqk9eRAP9mS49orQUPiMT_XIPWGivT-AP_bOrDTSOC64nWWJL6aKw9ZzC5j3VIH0l0ay2SGAizqTPDXP8zQ9nRzTaW_e2JxwnZRTQHrBrSA?key=ayESoQytAoVyFyBIrtLBvJIi)
+foto
 
 Triggered by changes to `prefect.yaml` or any source code within src directory.
 
@@ -415,7 +403,7 @@ This script can be added to the workflow to automate schedule enabling.
 
 You can verify the **branch references** used in deployments by checking the assigned tag or the Configuration tab in Prefect Cloud. For example, in the screenshot below, the deployment runs on branch `feature_branch_1`.
 
-![pull steps feature branch](https://lh7-rt.googleusercontent.com/docsz/AD_4nXcqN5MmxUivDabif7ChfqLxBMW8qNGK15BoUIWYm3Qfq4rqrkNKKQOJ-UZE1I5LDuGR2LL4ggfkXFwn1DnX8NEiVMWBjmdmFtbtcAxbRt9HME_hzhCpboX0vXZ-zyh7gRnz_WMJiA?key=ayESoQytAoVyFyBIrtLBvJIi)
+foto
 
 ## Conclusion & series summary
 
@@ -433,4 +421,4 @@ And here in **Part 4**, we brought everything together by introducing CI/CD auto
 
 The main takeaway is that adopting CI/CD for data platforms is not just about tools but about changing how your team works. Automation connects development and production, reduces risk, and frees your engineers to focus on data rather than infrastructure.
 
-Thanks so much for following along. For more tips and updates, check out my other articles, subscribe to our newsletter, and connect with me on LinkedIn. Let’s keep the conversation about smarter data platforms going.
+Thanks so much for following along. For more tips and updates, check out my [**other articles**](https://thescalableway.com/author/karol-wolski/), subscribe to our **newsletter**, and connect with me on [**LinkedIn**](https://www.linkedin.com/in/wolski-karol/). Let’s keep the conversation about smarter data platforms going.
