@@ -10,14 +10,14 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 def protect_correct_brackets(content: str) -> str:
-    content = content.replace("{{ '{{' }}", "[[LEFT_OK]]")
-    content = content.replace("{{ '}}' }}", "[[RIGHT_OK]]")
+    content = content.replace("{{ '{{' }}", "[[LEFT-HAND_SINGS_OK]]")
+    content = content.replace("{{ '}}' }}", "[[RIGHT-HAND_SINGS_OK]]")
 
-    content = content.replace("{{", "[[LEFT_OK]]")
-    content = content.replace("}}", "[[RIGHT_OK]]")
+    content = content.replace("{{", "[[LEFT-HAND_SINGS_OK]]")
+    content = content.replace("}}", "[[RIGHT-HAND_SINGS_OK]]")
 
-    content = content.replace("[[LEFT_OK]]", "{{ '{{' }}")
-    content = content.replace("[[RIGHT_OK]]", "{{ '}}' }}")
+    content = content.replace("[[LEFT-HAND_SINGS_OK]]", "{{ '{{' }}")
+    content = content.replace("[[RIGHT-HAND_SINGS_OK]]", "{{ '}}' }}")
 
     return content
 

@@ -11,7 +11,8 @@ Before using the script, make sure you have the following:
 - Python 3.x Installed
 
     You need **Python 3 or newer** installed on your system.
-    Download it from the official website: [https://www.python.org/](https://www.python.org/downloads/windows/)
+    Download it from the official website: [https://www.python.org/](https://www.python.org/downloads/windows/) (Choose Windows installer (64-bit))
+
     During installation, make sure to check the option:  
     **✔ Add Python to PATH**
 
@@ -36,7 +37,7 @@ cd .\Desktop\
     ```
 
 2. Open the file for example in Notepad.
-3. Paste the full content of the `fix_md.py` script.
+3. Paste the full content of the `fix_md.py` script and save (CTRL + S).
 
 ### 3. Create an Empty Markdown File
 
