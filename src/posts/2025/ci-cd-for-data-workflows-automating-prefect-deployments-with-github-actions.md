@@ -173,18 +173,18 @@ jobs:
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
-          registry: ${{ inputs.registry }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: ${{ '{{' }} inputs.registry {{ '}}' }}
+          username: ${{ '{{' }} github.actor {{ '}}' }}
+          password: ${{ '{{' }} secrets.GITHUB_TOKEN {{ '}}' }}
 
       - name: "Build and Push Docker Image"
         uses: docker/build-push-action@v6
         with:
           context: ./
-          file: ${{ inputs.dockerfile }}
-          platforms: ${{ inputs.platforms }}
-          push: ${{ inputs.push }}
-          tags: ${{ inputs.registry }}/${{ inputs.organization}}/${{ inputs.image_name }}:${{ inputs.image_tag }}
+          file: ${{ '{{' }} inputs.dockerfile {{ '}}' }}
+          platforms: ${{ '{{' }} inputs.platforms {{ '}}' }}
+          push: ${{ '{{' }} inputs.push {{ '}}' }}
+          tags: ${{ '{{' }} inputs.registry {{ '}}' }}/${{ '{{' }} inputs.organization{{ '}}' }}/${{ '{{' }} inputs.image_name {{ '}}' }}:${{ '{{' }} inputs.image_tag {{ '}}' }}
 
       - name: Cleanup the builder
         run: docker buildx rm builder
@@ -196,7 +196,7 @@ jobs:
 jobs:
   prefect-worker-helm:
     name: Prepare prefect worker
-    runs-on: ${{ inputs.runs_on }}
+    runs-on: ${{ '{{' }} inputs.runs_on {{ '}}' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -212,19 +212,19 @@ jobs:
           apiVersion: v1
           kind: Namespace
           metadata:
-            name: ${{ inputs.namespace }}
+            name: ${{ '{{' }} inputs.namespace {{ '}}' }}
           EOF
 
       - name: Replace default flow image
         run: |
-          sed -i "s|DEFAULT_FLOW_IMAGE|${{ inputs.default_flow_image }}|g" ${{ inputs.helm_values_path }}
+          sed -i "s|DEFAULT_FLOW_IMAGE|${{ '{{' }} inputs.default_flow_image {{ '}}' }}|g" ${{ '{{' }} inputs.helm_values_path {{ '}}' }}
 
       - name: Run Helm upgrade commands
         run: |
           helm upgrade prefect-worker --install prefect/prefect-worker \
-            -n ${{ inputs.namespace }} \
-            --version ${{ inputs.prefect_chart_version }} \
-            -f ${{ inputs.helm_values_path }}
+            -n ${{ '{{' }} inputs.namespace {{ '}}' }} \
+            --version ${{ '{{' }} inputs.prefect_chart_version {{ '}}' }} \
+            -f ${{ '{{' }} inputs.helm_values_path {{ '}}' }}
 ```
 
 Just like with creating a namespace, any missing resources can also be created. Usually, this includes a secret with the `PREFECT_API_KEY` and `registry credentials` secret for downloading private flow images, but additional secrets or configurations may also be needed.
@@ -236,7 +236,7 @@ Just like with creating a namespace, any missing resources can also be created. 
 ```yaml
 jobs:
   prepare:
-    if: ${{ github.event.pull_request.merged }}
+    if: ${{ '{{' }} github.event.pull_request.merged {{ '}}' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -246,17 +246,17 @@ jobs:
         run: echo "version=$(grep -Po '(?<=^version = ")[^"]*' pyproject.toml)" | tee -a $GITHUB_OUTPUT
 
     outputs:
-      VERSION: ${{ steps.get-version.outputs.version }}
+      VERSION: ${{ '{{' }} steps.get-version.outputs.version {{ '}}' }}
 
   tag-and-release:
-    if: ${{ github.event.pull_request.merged }}
+    if: ${{ '{{' }} github.event.pull_request.merged {{ '}}' }}
     needs: [prepare]
     name: Tag and release new version (if applicable)
     runs-on: ubuntu-latest
     permissions:
       contents: write
     outputs:
-      TAG_CREATED: ${{ steps.check-tag.outputs.exists != 'true' }}
+      TAG_CREATED: ${{ '{{' }} steps.check-tag.outputs.exists != 'true' {{ '}}' }}
 
     steps:
       - uses: actions/checkout@v4
@@ -267,7 +267,7 @@ jobs:
         uses: mukunku/tag-exists-action@v1.6.0
         id: check-tag
         with:
-          tag: v${{ needs.prepare.outputs.VERSION }}
+          tag: v${{ '{{' }} needs.prepare.outputs.VERSION {{ '}}' }}
 
       - uses: fregante/setup-git-user@v2
         if: steps.check-tag.outputs.exists != 'true'
@@ -275,15 +275,15 @@ jobs:
       - name: Publish the new tag
         if: steps.check-tag.outputs.exists != 'true'
         run: |
-          git tag -a v${{ needs.prepare.outputs.VERSION }} -m "Release v${{ needs.prepare.outputs.VERSION }}"
-          git push origin v${{ needs.prepare.outputs.VERSION }}
+          git tag -a v${{ '{{' }} needs.prepare.outputs.VERSION {{ '}}' }} -m "Release v${{ '{{' }} needs.prepare.outputs.VERSION {{ '}}' }}"
+          git push origin v${{ '{{' }} needs.prepare.outputs.VERSION {{ '}}' }}
 
       - name: Create a release
         if: steps.check-tag.outputs.exists != 'true'
         uses: ncipollo/release-action@v1
         with:
           generateReleaseNotes: true
-          tag: v${{ needs.prepare.outputs.VERSION }}
+          tag: v${{ '{{' }} needs.prepare.outputs.VERSION {{ '}}' }}
 ```
 
 We can utilize an additional `prepare` job that will pre-define values used later in our workflow, simplifying its logic.
@@ -341,7 +341,7 @@ jobs:
         run: pip install -q PyYAML prefect
 
       - name: Get all deployments from prefect.yaml
-        if: ${{ inputs.deployments == 'all' }}
+        if: ${{ '{{' }} inputs.deployments == 'all' {{ '}}' }}
         run: echo "DEPLOYMENT_NAMES=$(cat prefect.yaml | yq '.deployments[].name' | paste -sd ",")" | tee -a $GITHUB_ENV
 ```
 
@@ -357,7 +357,7 @@ As a target solution, we want a script that detects changes to deployments in th
 
       - name: Register all deployments
         run: |
-              for deployment_name in $(echo ${{ env.DEPLOYMENT_NAMES }} | tr ',' '\n'); do
+              for deployment_name in $(echo ${{ '{{' }} env.DEPLOYMENT_NAMES {{ '}}' }} | tr ',' '\n'); do
 
         prefect --no-prompt deploy \
             -n "$deployment_name"
