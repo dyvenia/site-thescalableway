@@ -10,7 +10,6 @@ tags:
   - CI/CD
   - data workflows
   - data platform architecture
-  - ''
 internal_notes: |-
   **Audience:** Data Engineer / DevOps Engineer trying to setup data platform
 
@@ -88,9 +87,9 @@ CI/CD for data platforms comes with its own set of challenges, especially compar
 
 1. **Different Workflows for Different Parts**
 
-- Docker Image Pipeline: Dedicated workflow for building, testing, and deploying container images, including all the flow dependencies.
-- Prefect Worker Management: The only long-living process requiring separate CI/CD for updates of the application itself and the base job template used in flow runs.
-- Deployment Configuration: Independent workflow for managing Prefect deployment definitions and versioning.
+- **Docker Image Pipeline:** Dedicated workflow for building, testing, and deploying container images, including all the flow dependencies.
+- **Prefect Worker Management:** The only long-living process requiring separate CI/CD for updates of the application itself and the base job template used in flow runs.
+- **Deployment Configuration:&#32;**Independent workflow for managing Prefect deployment definitions and versioning.
 
 2. **More Moving Parts to Coordinate**
 
@@ -138,7 +137,7 @@ Let’s take a closer look at all of them.
 
 #### Workflow 1: Flows Image Builder
 
-image
+![flows image builder](/src/assets/images/blog/flows_image_workflow-1.png)
 
 This workflow is triggered by changes to any of the following files:
 
@@ -295,7 +294,7 @@ We can utilize an additional `prepare` job that will pre-define values used late
 
 #### Workflow 2: Prefect Worker Updates
 
-image
+![prefect worker updates](/src/assets/images/blog/prefect_worker_workflow-1.png)
 
 This workflow is triggered by changes to any of the following files:
 
@@ -313,11 +312,11 @@ This workflow is triggered by changes to any of the following files:
 2. **Update DEV Prefect work pool:** Updates the Prefect worker's base job template on DEV environment to apply any required configuration changes.
 3. **Update PROD Prefect work pool:** Updates the Prefect worker's base job template on PROD environment to apply any required configuration changes.
 
-> **Note:** These first two workflows affect infrastructure only; they don’t touch actual Prefect deployments. The next workflow handles that.
+**_Note:_**_&#32;These first two workflows affect infrastructure only; they don’t touch actual Prefect deployments. The next workflow handles that._
 
 #### Workflow 3: Prefect Deployment Orchestration
 
-foto
+![prefect deployment orchestration](/src/assets/images/blog/data_ingestion_pipeline_workflow-1.png)
 
 Triggered by changes to `prefect.yaml` or any source code within src directory.
 
@@ -403,7 +402,7 @@ This script can be added to the workflow to automate schedule enabling.
 
 You can verify the **branch references** used in deployments by checking the assigned tag or the Configuration tab in Prefect Cloud. For example, in the screenshot below, the deployment runs on branch `feature_branch_1`.
 
-foto
+![verify branch references](/src/assets/images/blog/feature_branch.png)
 
 ## Conclusion & series summary
 
