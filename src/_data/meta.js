@@ -1,4 +1,5 @@
 export const url = process.env.URL || 'http://localhost:8080';
+export const productionUrl = 'https://thescalableway.com';
 export const siteName = 'The Scalable Way';
 export const siteDescription = 'Empowering Data Platforms with Precision and Scale';
 export const siteType = 'Organization'; // schema

@@ -35,11 +35,15 @@
 
     <!-- 7 defer  -->
     {% include "head/js-defer.njk" %}
-    <script
-      defer
-      data-domain="thescalableway.com"
-      src="https://plausible.io/js/script.tagged-events.js"
-    ></script>
+
+    {%- if url == productionUrl -%}
+      <!-- 7 plausible  -->
+      <script
+        defer
+        data-domain="thescalableway.com"
+        src="https://plausible.io/js/script.tagged-events.js"
+      ></script>
+    {% endif %}
 
     <!-- 8 meta tags, icons, open graph etc.  -->
     {% include "head/meta-info.njk" %}
