@@ -57,13 +57,7 @@
     {% endset %}
     {% include "partials/header.njk" %}
 
-    <main id="main" class="{{ mainClass }}" data-pagefind-body>
-      <pre>
-Context: {{ process.env.CONTEXT }} <br> Production: {{ isProduction }}
-      </pre>
-
-      {{ content | safe }}
-    </main>
+    <main id="main" class="{{ mainClass }}" data-pagefind-body>{{ content | safe }}</main>
 
     {% include "partials/footer.njk" %}
   </body>
