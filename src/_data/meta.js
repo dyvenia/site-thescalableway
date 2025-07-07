@@ -1,6 +1,17 @@
-export const url = process.env.URL || 'http://localhost:8080';
-export const domain = new URL(url).hostname; // 'thescalableway.com' or 'localhost'
-export const isProduction = domain === 'dev--thescalableway.netlify.app';
+const rawUrl = process.env.URL || process.env.DEPLOY_PRIME_URL || 'http://localhost:8080';
+const hostname = new URL(rawUrl).hostname;
+export const url = rawUrl;
+export const domain = hostname;
+export const isProduction = hostname === 'thescalableway.com';
+
+console.log('DEBUG:', {
+  URL: process.env.URL,
+  DEPLOY_PRIME_URL: process.env.DEPLOY_PRIME_URL,
+  NODE_ENV: process.env.NODE_ENV,
+  url,
+  domain,
+  isProduction
+});
 
 export const siteName = 'The Scalable Way';
 export const siteDescription = 'Empowering Data Platforms with Precision and Scale';
