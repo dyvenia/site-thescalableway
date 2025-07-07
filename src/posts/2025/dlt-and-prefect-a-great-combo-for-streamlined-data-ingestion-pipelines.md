@@ -46,7 +46,7 @@ internal_notes: |-
 ---
 **Doing data ingestion right is hard…**
 
-Despite advances in data engineering, data ingestion—the Extract and Load (EL) steps of the [ELT](https://dyvenia.com/resources/data-glossary/#E-glossary) process—remains a persistent challenge for many data teams.
+Despite advances in data engineering, data ingestion, which includes the Extract and Load (EL) steps of the ELT process, remains a persistent challenge for many data teams.
 
 This complexity is often due to the real-world limitations of open-source tools, leading teams to opt for UI-based solutions. While these tools are great for getting started quickly, they often lack the flexibility and scalability required for production-grade data platforms.
 In the era of AI, UI-based tools face one more limitation: they miss out on most of the benefits of the advanced code generation capacity of modern LLMs (Large Language Models)[[1]](#footnotes).
