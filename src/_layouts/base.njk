@@ -57,7 +57,14 @@
     {% endset %}
     {% include "partials/header.njk" %}
 
-    <main id="main" class="{{ mainClass }}" data-pagefind-body>{{ content | safe }}</main>
+    <main id="main" class="{{ mainClass }}" data-pagefind-body>
+      {%- if draft -%}
+        <p class="button  mx-auto flex justify-center" data-small-button data-button-variant="tertiary">
+          draft
+        </p>
+      {%- endif %}
+      {{ content | safe }}
+    </main>
 
     {% include "partials/footer.njk" %}
   </body>

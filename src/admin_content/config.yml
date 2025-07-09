@@ -85,6 +85,12 @@ collections:
           - {label: 'Layout', name: 'layout', widget: 'hidden'}
           - {label: 'Body Class', name: 'bodyClass', widget: 'hidden'}
           - {label: 'Footer Space', name: 'footerSpace', widget: 'hidden'}
+          - {
+              label: 'Draft',
+              name: 'draft',
+              widget: 'boolean',
+              hint: 'Set to true to mark this page as a draft and not publish it.'
+            }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
