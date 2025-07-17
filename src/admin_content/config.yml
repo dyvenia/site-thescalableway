@@ -68,6 +68,72 @@ collections:
               - {label: 'Prefix', name: 'prefix', widget: 'string'}
               - {label: 'Description', name: 'description', widget: 'markdown'}
 
+  - name: 'learn_more'
+    label: 'Learn More Page'
+    icon: 'info'
+    create: false
+    extension: 'njk'
+    format: 'frontmatter'
+    files:
+      - file: 'src/pages/learn-more.njk'
+        label: 'Learn More'
+        name: 'learn_more'
+        fields:
+          - {label: 'Title', name: 'title', widget: 'string'}
+          - {label: 'Permalink', name: 'permalink', widget: 'hidden'}
+          - {label: 'Description', name: 'description', widget: 'string'}
+          - {label: 'Layout', name: 'layout', widget: 'hidden'}
+          - {label: 'Body Class', name: 'bodyClass', widget: 'hidden'}
+          - {label: 'Footer Space', name: 'footerSpace', widget: 'hidden'}
+          - {
+              label: 'Draft',
+              name: 'draft',
+              widget: 'boolean',
+              hint: 'Set to true to mark this page as a draft and not publish it.'
+            }
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Subtitle', name: 'subtitle', widget: 'markdown'}
+              - {label: 'Button Text', name: 'button_text', widget: 'string'}
+              - {label: 'Button Target', name: 'button_target', widget: 'string'}
+          - label: 'Intro'
+            name: 'intro'
+            widget: 'object'
+            fields:
+              - {label: 'Content', name: 'content', widget: 'markdown'}
+          - label: 'Highlight'
+            name: 'highlight'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'markdown'}
+          - label: 'Talk'
+            name: 'talk'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Subtitle', name: 'subtitle', widget: 'markdown'}
+              - {label: 'Button Text', name: 'button_text', widget: 'string'}
+              - {label: 'Button Target', name: 'button_target', widget: 'string'}
+              - {label: 'Alt Contact', name: 'altContact', widget: 'markdown'}
+              - {label: 'Image', name: 'image', widget: 'hidden', required: false}
+          - label: 'About'
+            name: 'about'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content 1', name: 'content1', widget: 'markdown'}
+              - {label: 'Content 2', name: 'content2', widget: 'markdown'}
+          - label: 'Thinking'
+            name: 'thinking'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'markdown'}
+
   - name: 'blog'
     label: 'Posts'
     label_singular: 'Post'
