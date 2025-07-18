@@ -110,6 +110,6 @@ This partnership approach ensures the platform remains relevant and valuable as 
 
 By combining expert consulting with hands-on implementation, we helped our client transform a legacy data stack into a robust, modern platform. Today, their internal teams can move faster, operate more independently, and focus on driving business value rather than maintaining brittle systems.
 
-______________________________________________________________
+______________________________________________________________________________________
 
 Are you also looking to scale up your data operations? Discover how our Data Platform as a Code program can help modernize and future-proof your infrastructure. Schedule a free consultation today!
