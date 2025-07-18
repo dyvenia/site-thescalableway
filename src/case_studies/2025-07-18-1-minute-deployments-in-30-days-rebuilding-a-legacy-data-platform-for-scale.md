@@ -1,7 +1,7 @@
 ---
 title: '1-Minute Deployments in 30 Days: Rebuilding a Legacy Data Platform for Scale'
 date: 2025-07-21 14:51:00
-description: See how we rebuilt a legacy data platform in just 30 days, enabling 1-minute deployments, automated CI/CD, and scalable self-service workflows. Learn how our phased, “as-code” strategy modernized infrastructure, eliminated bottlenecks, and empowered lean teams to move faster and build for the future.
+description: See how we rebuilt a legacy data platform in 30 days, enabling 1-minute deployments, automated CI/CD, and scalable self-service. Our “as-code” strategy eliminated bottlenecks and empowered lean teams to move fast and build for the future.
 internal_notes: TPS anonymized case study
 ---
 A multi-site U.S.-based service organization was experiencing growing friction with its legacy data platform. As the business scaled, its infrastructure started to show signs of strain. Workflows were fragmented, deployments were manual and error-prone, and technical debt accumulated over time. The data team found themselves focused more on operational firefighting than on innovation. 
