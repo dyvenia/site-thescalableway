@@ -23,8 +23,7 @@ Lack of isolated environments: Every change had to be carefully managed in produ
 
 It was clear that supporting day-to-day operations and long-term growth would be an uphill battle without foundational changes.
 
-## 
-The Strategic Approach: Build for Today, Design for Tomorrow
+## The Strategic Approach: Build for Today, Design for Tomorrow
 
 
 When The Scalable Way came onboard, the mission was clear: modernize the platform to meet today’s operational demands while making it scalable and sustainable for the future. Together, we adopted a phased approach to tackle the transformation methodically.
@@ -74,7 +73,7 @@ Behind the scenes, automation and infrastructure improvements made workflows fas
 
 The results spoke for themselves. In just a few months, the client went from reactive operations to proactive development:
 
-- **Scalability:&#32;**The platform now supports the addition of new workflows and data sources with minimal engineering effort. 
+- **Scalability:** The platform now supports the addition of new workflows and data sources with minimal engineering effort. 
 - **Faster delivery cycles:** CI/CD automation significantly reduced time-to-deployment and the risk of manual errors. Prefect deployments were split to handle individual tables instead of entire data sources, allowing quick retries for failed tables without rerunning the whole pipeline. Deployments are fully automated and take about one minute to merge from a pull request. 
 - **Reliability:** Environment separation ensured safe testing and consistent production behavior, reducing operational incidents. 
 - **Security improvements:** All services run securely within a private cloud setup, with no exposure to the public internet.
@@ -85,7 +84,9 @@ The results spoke for themselves. In just a few months, the client went from rea
 
 Rather than building a dedicated in-house platform team, the client adopted a **fractional team model** managed by The Scalable Way. This structure provided all the necessary expertise at a fraction of the cost of traditional hiring.
 
+
 | **Role** | **Time Allocation** |
+| --- | --- |
 | DevOps Engineer | 30% |
 | Data Platform Engineer | 50% |
 | Project Manager | 10% |
