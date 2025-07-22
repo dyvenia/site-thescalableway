@@ -7,7 +7,9 @@
   <{{ headingLevel }} class="text-step-2" slot="headline">
     <a href="{{ item.url | url }}">{{ item.data.title }}</a>
   </{{ headingLevel }}>
-  <span class="text-pink uppercase font-medium" slot="date"> {% include "partials/date.njk" %} </span>
+  {% if definedDate %}
+    <span class="text-pink uppercase font-medium" slot="date"> {% include "partials/date.njk" %} </span>
+  {% endif %}
   {% if showTags and item.data.tags.length > 1 %}
     <div slot="tag" class="cluster gutter-2xs">
       {% for tag in item.data.tags %}

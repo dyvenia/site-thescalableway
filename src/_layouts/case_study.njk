@@ -10,8 +10,6 @@ schema: blog
     {% if image %}
       {% image image, alt or "", credit, "eager", "feature" %}
     {% endif %}
-    {% set definedDate = date %}
-    {% include "partials/date.njk" %}
 
     <div class="flow prose">{{ content | safe }}</div>
     <div class="mt-xl-2xl">{% include "partials/hubspot-form.njk" %}</div>
