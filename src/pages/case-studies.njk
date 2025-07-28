@@ -29,29 +29,21 @@ intro: >
     {{ intro | markdownFormat | safe }}
   </div>
 
-<section class="feature" aria-describedby="blog-section">
-  <h2 id="blog-section" class="visually-hidden">Blog posts</h2>
+  <section class="feature" aria-describedby="blog-section">
+    <h2 id="blog-section" class="visually-hidden">Blog posts</h2>
 
-  <custom-masonry layout="50-50">
-		{% asyncEach item in pagination.items %}
-			{% set definedDate = item.date %}
+    <custom-masonry layout="50-50">
+      {% asyncEach item in pagination.items %}
+        {% set definedDate = false %}
+        {% include "partials/card-blog.njk" %}
+      {% endeach %}
+    </custom-masonry>
+  </section>
 
-			{% include "partials/card-blog.njk" %}
-		{% endeach %}
-	</custom-masonry>
-</section>
-
-
-  <!-- set collection to paginate -->
   {% set collectionToPaginate = collections.posts %}
-  <!-- set target pagination settings in meta.js -->
   {% set metaKey = "blog" %}
   <!-- if the number of items in the collection is greater than the number of items shown on one page -->
   {% if collectionToPaginate.length > pagination.size %}
-    <!-- include pagination -->
     {% include 'partials/pagination.njk' %}
   {% endif %}
-
-
-
 </div>
