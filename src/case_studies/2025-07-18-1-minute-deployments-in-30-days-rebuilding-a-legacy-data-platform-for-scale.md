@@ -8,7 +8,7 @@ A multi-site U.S.-based service organization was experiencing growing friction w
 
 That’s when they partnered with The Scalable Way to rearchitect their data platform. The goal: streamline operations, reduce overhead, enable automation, and lay the groundwork for long-term scalability and self-service capabilities. 
 
-The results of the collaboration spoke for themselves. In just 30 days, the client moved from a fragmented system to a modern, automated platform built for scale. Deployments now take less than a minute, workflows run on secure cloud infrastructure, and pipelines are fully templatized and reusable. With 99.11% success, zero incidents, and 100% uptime, the platform is stable, fast, and ready for growth.
+The results? In just 30 days, the client moved from a fragmented system to a modern, automated platform built for scale. Deployments now take less than a minute, workflows run on secure cloud infrastructure, and pipelines are fully templatized and reusable. With 99.11% success, zero incidents, and 100% uptime, the platform is stable, fast, and ready for growth.
 
 ![data platform performance](/src/assets/images/blog/data_platform_performance.png)
 
