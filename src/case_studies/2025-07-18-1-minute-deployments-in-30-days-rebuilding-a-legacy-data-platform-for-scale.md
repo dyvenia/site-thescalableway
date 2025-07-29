@@ -8,6 +8,12 @@ A multi-site U.S.-based service organization was experiencing growing friction w
 
 That’s when they partnered with The Scalable Way to rearchitect their data platform. The goal: streamline operations, reduce overhead, enable automation, and lay the groundwork for long-term scalability and self-service capabilities. 
 
+The results of the collaboration spoke for themselves. In just 30 days, the client moved from a fragmented system to a modern, automated platform built for scale. Deployments now take less than a minute, workflows run on secure cloud infrastructure, and pipelines are fully templatized and reusable. With 99.11% success, zero incidents, and 100% uptime, the platform is stable, fast, and ready for growth.
+
+![](/src/assets/images/blog/data platform_performance.png)
+
+Here’s how we made it happen.
+
 ## The Challenge: Legacy Systems Holding Back Growth
 
 Operating across dozens of physical locations, the client depends on real-time, data-driven decisions to keep operations running smoothly. However, as the organization matured, its existing data setup gradually became a bottleneck. 
@@ -98,6 +104,6 @@ This partnership approach ensures the platform remains relevant and valuable as 
 
 By combining expert consulting with hands-on implementation, we helped our client transform a legacy data stack into a robust, modern platform. Today, their internal teams can move faster, operate more independently, and focus on driving business value rather than maintaining brittle systems.
 
-**______________**__
+**____**__
 
 Are you also looking to scale up your data operations? Discover how our Data Platform as a Code program can help modernize and future-proof your infrastructure. Schedule a free consultation today!
