@@ -1,0 +1,6 @@
+message: We may load third-party embeds (e.g., calendar schedule). Please choose whether to enable these. Learn more in our <a href="/privacy">privacy policy</a>.
+accept: Accept
+decline: Decline
+change: Change preferences
+placeholder: This content is blocked until you accept cookies.
+calendar_placeholder: The HubSpot calendar widget is blocked due to cookie preferences. Learn more about this widget in our <a href="/privacy/#meeting-scheduling">privacy policy</a>. <br>You may also use the <a href="https://meetings-eu1.hubspot.com/alessio-civitillo/the-scalable-way">external link to schedule a meeting.</a>
