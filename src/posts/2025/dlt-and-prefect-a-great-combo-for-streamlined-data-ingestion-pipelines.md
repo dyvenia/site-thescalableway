@@ -292,7 +292,7 @@ dlt and Prefect (with the help of [dbt](https://www.getdbt.com/)) are just as go
 
 ### Ready to Dive Deeper?
 
-If you’re ready to build a cutting-edge data platform with dlt and Prefect, [get in touch](https://meetings-eu1.hubspot.com/alessio-civitillo/the-scalable-way?uuid=c632809d-d480-4e70-97d3-e9705516be86). We offer expert guidance to help you set up every component and provide a fully equipped template Git repository with production-grade code. No fluff—just practical, scalable solutions designed to handle real-world challenges and set your data workflows up for long-term success.
+If you’re ready to build a cutting-edge data platform with dlt and Prefect, [get in touch](https://meetings-eu1.hubspot.com/alessio-civitillo/the-scalable-way?uuid=871f7790-0d02-4f3a-9287-3c0f24b53ba2). We offer expert guidance to help you set up every component and provide a fully equipped template Git repository with production-grade code. No fluff—just practical, scalable solutions designed to handle real-world challenges and set your data workflows up for long-term success.
 
 ## Footnotes
 
