@@ -4,7 +4,10 @@ date: 2025-02-10 09:30:00
 author: Alessio Civitillo
 description: Learn why modularity is crucial for building scalable, efficient data architectures. This article covers the core components of modern data platforms, from ingestion to governance, and shares best practices for flexibility, interoperability, and security.
 tags:
-  - Data Platform, Data Governance, Modularity, Modern Data Stack
+  - Data Platform
+  - Data Governance
+  - Modularity
+  - Modern Data Stack
 internal_notes: The purpose of this article is to explain what a data platform is. We want to give confidence to the reader in our reference architecture by explaining a bit of the history of data platforms and then giving some thoughts around modularity. Some readers might come from a more classic IT background, and they might have different terminologies, such as OLAP cubes, data warehouse, and cubes. We want the reader to not only understand the typical modern data platform reference architecture, which is everywhere now but also to understand the importance of modularity and good design decisions.
 ---
 Modern data analytics can get complicated. With an abundance of tools, conflicting methodologies, and ever-evolving technologies, mistakes can be costly. However, at its core, data analytics remains grounded in a few fundamental principles. Understanding these fundamentals while leveraging modular and well-designed data platforms can significantly improve operational efficiency and decision-making.
