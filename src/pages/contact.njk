@@ -1,0 +1,46 @@
+---
+title: Let’s Talk About Your Data Platform
+permalink: /contact/index.html
+description: 'At The Scalable Way, we believe that data-driven success comes from precise execution and scalable solutions.'
+layout: base
+footerSpace:
+intro: |
+  Let us understand your current setup, goals, and challenges.
+  In a quick (and free!) intro call, we’ll listen, share ideas, and sketch out a high-level plan with options, timelines, and next steps. No commitment. No strings attached.
+contact:
+  title: 'Contact us:'
+  mail: hello@thescalableway.com
+  book: 'Or book a call using the calendar:'
+  linkedin: 'Find us on LinkedIn'
+  linkedinUrl: https://www.linkedin.com/company/scalable-way
+---
+
+<div class="wrapper region flow">
+  <header class="flow">
+    <h1 class="text-balance">{{ title }}</h1>
+    <div class="flow">{{ intro | markdownFormat | safe }}</div>
+  </header>
+  <section class="flow">
+    <h2>{{ contact.title }}</h2>
+    <a class="cluster gutter-2xs" href="{{ contact.mail }}">{% svg "misc/mail" %} {{ contact.mail }}</a>
+    <a class="cluster gutter-2xs no-indicator" href="{{ contact.linkedinUrl }}"
+      >{% svg "platform/linkedin" %} {{ contact.linkedin }}</a
+    >
+    <a class="cluster gutter-2xs no-indicator" href="#meetings-iframe"
+      >{% svg "misc/calendar" %} {{ contact.book }}</a
+    >
+  </section>
+  <div class="full mt-xl">
+    <div
+      id="meetings-iframe"
+      class="meetings-iframe-container"
+      data-src="https://meetings-eu1.hubspot.com/alessio-civitillo/the-scalable-way?embed=true"
+      data-consent-script="blocked"
+      data-consent-placeholder='<div class="wrapper"><div class="flow" style="border: 1px dashed currentColor; padding: 1rem;"><p>{{ consent.calendar_placeholder | safe }}</p><button type="button" class="button" data-consent-banner data-small-button data-pill-button>{{ consent.change }}</button></div></div>'
+    ></div>
+    <script
+      type="text/javascript"
+      src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"
+    ></script>
+  </div>
+</div>

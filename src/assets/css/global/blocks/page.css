@@ -1,0 +1,11 @@
+.page.simple :is(h2, h3, h4) {
+  font-weight: var(--font-bold);
+}
+
+.page.simple h2 {
+  font-size: var(--size-step-1);
+}
+
+.page.simple h3 {
+  font-size: var(--size-step-0);
+}

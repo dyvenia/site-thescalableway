@@ -21,12 +21,14 @@
         {% endfor %}
       </nav>
 
-      <nav class="footer__meta | cluster" aria-label="{{ meta.navigation.ariaPlatforms }}">
+      <nav class="footer__meta | cluster gutter-4xs" aria-label="{{ meta.navigation.ariaPlatforms }}">
         <!-- gets the first item from the feed loop set in meta -->
         <a href="{{ meta.blog.feedLinks[0].url }}" rel="alternate" type="{{ meta.blog.feedLinks[0].type }}">
           <span class="visually-hidden">{{ meta.blog.feedLinks[0].title }}</span>
           {% svg "misc/rss" %}
         </a>
+
+        <button data-consent-banner>{% svg "misc/cookie" %}</button>
 
         {% for key, value in personal.platforms %}
           {% if value != "" %}
