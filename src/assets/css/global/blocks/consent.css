@@ -9,6 +9,7 @@
   max-inline-size: min(95vw, 30rem);
   font-size: var(--size-step-min-1);
   border: 1px solid var(--color-bg-accent);
+  z-index: 10;
 }
 
 .consent.contain {
@@ -16,4 +17,10 @@
   overflow: auto;
   max-inline-size: calc(100% - (var(--margin) * 2));
   max-block-size: calc(100% - (var(--margin) * 2));
+}
+
+.consent .service-item {
+  padding-block: var(--space-2xs);
+  border-block-start: 1px solid var(--color-bg-accent-2);
+  border-radius: var(--button-radius-small);
 }

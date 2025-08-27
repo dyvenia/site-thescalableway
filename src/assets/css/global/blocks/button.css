@@ -78,6 +78,13 @@
   --button-hover-color: var(--color-bg);
 }
 
+.button[data-ghost-button-reverse] {
+  --button-bg: var(--color-text);
+  --button-border-color: var(--color-bg);
+  --button-color: var(--color-bg);
+  --button-hover-color: var(--color-text);
+}
+
 .button[data-ghost-button]:hover {
   --_ghost-hover-bg: var(--button-bg);
   --_ghost-hover-bg: color-mix(in oklab, var(--button-bg) 95%, var(--color-dark));
@@ -90,6 +97,7 @@
   --button-font-size: var(--size-step-min-2);
   --button-padding: var(--space-4xs) var(--space-2xs);
   --button-text-transform: uppercase;
+  --button-font-weight: var(--font-regular);
 }
 
 .button[data-pill-button] {
