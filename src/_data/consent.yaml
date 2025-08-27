@@ -1,6 +1,11 @@
 message: We may load third-party embeds (e.g., calendar schedule). Please choose whether to enable these. Learn more in our <a href="/privacy">privacy policy</a>.
-accept: Accept
-decline: Decline
+accept: Accept All
+decline: Decline All
+preferences: Manage Preferences
 change: Change preferences
 placeholder: This content is blocked until you accept cookies.
 calendar_placeholder: The HubSpot calendar widget is blocked due to cookie preferences. Learn more about this widget in our <a href="/privacy/#meeting-scheduling">privacy policy</a>. <br>You may also use the <a href="https://meetings-eu1.hubspot.com/alessio-civitillo/the-scalable-way">external link to schedule a meeting.</a>
+preferences_intro: Choose which cookies you want to allow. You can change these settings at any time.
+essential_description: These cookies are necessary for the website to function and cannot be disabled.
+analytics_description: We use privacy-friendly analytics (Plausible) to understand website usage without tracking individuals.
+embeds_description: Third-party embeds like HubSpot calendar may collect data when enabled. <br>You may also use the <a href="https://meetings-eu1.hubspot.com/alessio-civitillo/the-scalable-way">external link to schedule a meeting.</a>

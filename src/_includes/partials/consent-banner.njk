@@ -1,11 +1,59 @@
-<div id="consent-banner" class="consent flow" hidden>
-  <p>{{ consent.message | safe }}</p>
-  <div class="cluster gutter-2xs">
-    <button type="button" class="button" data-consent-decline data-small-button data-pill-button>
-      {{ consent.decline }}
+<div
+  id="consent-banner"
+  class="consent flow"
+  hidden
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="consent-title"
+  aria-describedby="consent-description"
+>
+  <h2 id="consent-title" class="visually-hidden">Cookie Consent</h2>
+  <p id="consent-description">{{ consent.message | safe }}</p>
+
+  <div class="consent-services flow">
+    <div class="service-item repel gutter-2xs">
+      <div>
+        <h3 class="text-step-min-1">HubSpot Calendar</h3>
+        <p class="text-step-min-1 text-gray">Meeting scheduling widget (collects IP, browser data)</p>
+      </div>
+      <div class="cluster gutter-2xs">
+        <button
+          type="button"
+          class="button"
+          data-service-decline="hubspot"
+          data-small-button
+          data-ghost-button-reverse
+        >
+          Decline
+        </button>
+        <button
+          type="button"
+          class="button"
+          data-service-accept="hubspot"
+          data-ghost-button-reverse
+          data-small-button
+        >
+          Accept
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!--
+  <div class="cluster gutter-2xs mt-m">
+    <button
+      type="button"
+      class="button"
+      data-consent-decline
+      data-small-button
+      data-pill-button
+      data-button-variant="secondary"
+    >
+      Decline All
     </button>
     <button type="button" class="button" data-consent-accept data-small-button data-pill-button>
-      {{ consent.accept }}
+      Accept All
     </button>
   </div>
+  -->
 </div>
