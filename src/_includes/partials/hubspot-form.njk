@@ -6,13 +6,37 @@
       {{ meta.newsletter_consent_message | markdownFormat | safe }}
     </label>
 
-    <div class="sidebar" data-direction="rtl">
-      <div>
-        <label class="visually-hidden"> Subscribe to Newsletter</label>
-        <input type="email" name="email" autocomplete="email" placeholder="Type your email..." required />
+    <div class="flow gutter-xs">
+      <div class="cluster gutter-xs">
+        <div>
+          <label class="visually-hidden">First Name</label>
+          <input type="text" name="firstname" autocomplete="given-name" placeholder="First Name" required />
+        </div>
+        <div>
+          <label class="visually-hidden">Last Name</label>
+          <input type="text" name="lastname" autocomplete="family-name" placeholder="Last Name" required />
+        </div>
+        <div class="flow-space-s">
+          <label class="visually-hidden">Company Name</label>
+          <input type="text" name="company" autocomplete="organization" placeholder="Company Name" />
+        </div>
       </div>
 
-      <button class="button" type="submit" data-button-variant="blue">Submit</button>
+      <div class="sidebar" data-direction="rtl">
+        <div>
+          <label class="visually-hidden">Email Address</label>
+          <input
+            type="email"
+            name="email"
+            autocomplete="email"
+            placeholder="Email Address"
+            required
+            class="no-right-line"
+          />
+        </div>
+
+        <button class="button" type="submit" data-button-variant="blue">Submit</button>
+      </div>
     </div>
   </form>
 
