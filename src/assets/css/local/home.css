@@ -1,5 +1,6 @@
 .home h1 {
   font-weight: var(--font-light);
+  text-wrap: balance;
 }
 
 /* ------------------- hero */
@@ -70,6 +71,14 @@
 
 /* ------------------- sections */
 
+/* intro */
+
+.home .intro strong {
+  color: var(--color-pink);
+}
+
+/* build-and-run */
+
 /* highlight-1 */
 
 .home .highlight-one {
@@ -81,7 +90,7 @@
   max-inline-size: 58ch;
 }
 
-.home .highlight-one span {
+.home .highlight-one :is(em, span) {
   color: var(--color-pink);
 }
 
@@ -135,9 +144,16 @@
   color: var(--color-bg-accent-2);
 }
 
-.home .foundations .timeline {
+.home .foundations .timeline-container {
   grid-row: 1;
   grid-column: 1 / -1;
+}
+
+.home .foundations .timeline-container > p {
+  max-inline-size: 40ch;
+  text-wrap: pretty;
+  color: var(--color-blue-accent-4);
+  margin-block-end: var(--space-m);
 }
 
 @media screen(sm) {
@@ -145,7 +161,7 @@
     grid-column: 1/ 5;
   }
 
-  .home .foundations .timeline {
+  .home .foundations .timeline-container {
     grid-column: 2 / -1;
   }
 }
@@ -156,7 +172,7 @@
     color: var(--color-text);
   }
 
-  .home .foundations .timeline {
+  .home .foundations .timeline-container {
     grid-column: 4 / -1;
   }
 }

@@ -273,14 +273,15 @@ layout: base
       {% endif %}
 
       <div class="feature">
-        <custom-masonry layout="50-50">
-        <!-- loop posts -->
-        {% set itemList = collections.allPosts %}
-        {% asyncEach item in itemList.slice(0, 4) %}
-          {% set definedDate = item.date %}
-          {% include "partials/card-blog.njk" %}
-        {% endeach %}
-        </custom-masonry>
+        <div class="grid gutter-s">
+
+          {% set itemList = collections.allPosts %}
+          {% asyncEach item in itemList.slice(0, 3) %}
+          {% set headingLevel = "h3" %}
+            {% include "partials/card-blog.njk" %}
+          {% endeach %}
+
+         </div>
       </div>
     </div>
   </section>

@@ -1,42 +1,69 @@
 ---
 hero:
-  title: Empowering Analytics Teams with Scalable and Automated Data Platforms
-  subtitle: '**The Scalable Way** is a professional services agency bringing software engineering practices to data platforms in order to achieve higher scalability, cost effectiveness, usability and reliability.'
-  button_text: Let's talk
+  title: Platform Engineering for Modern Data Teams
+  subtitle: |-
+    You write Python and SQL. We glue it all together: CI/CD, support, training, orchestration, testing, observability—so you can build the right things with confidence and keep your stack stable.
+
+    Modern data teams need more than tools; they need a platform that just works and a data platform team that is easy to work with.
+  button_text: Get a Free Architecture Review
   button_target: /contact/
 intro:
-  title: Is your data tech stack working with you or against you?
+  title: Why Most Data Teams Struggle
   content: |-
-    Most data professionals are stuck navigating complex analytics workflows. They deal with fragmented access, manual maintenance, “ad hoc” pipelines, and weak security and governance—largely because they rely on a patchwork of poorly integrated tools instead of a cohesive data platform.
+    **Your data stack may be holding you back.**
 
-    In contrast, high-performing analytics teams prioritize scalable solutions, borrowing best practices from software development. These solutions are automated, provide streamlined workflows, ensure a strong developer experience, are secure by default, and consistently deliver reliable production insights. A well-designed data platform is essential to achieve these outcomes.
+    Many teams are stuck managing fragile pipelines, patchy tooling, and manual workflows. Without structure, even great tools become a source of constant friction.
+
+    Instead of building insights, your team is stuck maintaining duct-taped pipelines.
+
+    **That’s where we come in.**
+
+    We bring platform engineering practices such as CI/CD, infrastructure-as-code, observability, and automation to modern data teams.
+
+    More importantly, we bring a data platform team that wants to work with you, that understands the importance of answering questions, helping out, and proactively fixing production issues.
+build_and_run:
+  title: We Build & Run Platforms That Scale
+  content_left: |-
+    We’re not just **advisors**.
+
+    We’re hands-on **data engineers and platform builders**.
+  content_right: |-
+    **Every day, we manage:**
+    - 25,000+ flow runs
+    - 5,000+ data flows
+    - 100TB+ of live, production data
+    We’ve seen what works and what breaks at scale.
 highlight_one:
-  title: We help data analytics teams & departments achieve greater efficiency and more robust solutions in production
-  subtitle: by helping with developing infrastructure, ingestion, transformation, and documentation as code; training your teams on the enhanced development workflow; servicing recurring data ops and data platform needs.
+  title: The Real Problem Isn’t the Tools, It’s the Lack of Platform Engineering
+  subtitle: |-
+    _*_ Even with powerful tools like Databricks, Snowflake, Fabric, or Airflow, most teams end up stuck in the same frustrating patterns: quick ad hoc fixes and “temporary” scripts that linger, manual operations with minimal monitoring, unreliable deployments, and mounting technical debt. The root of the problem? Tools alone don’t make a platform.
+
+    What teams really need is platform engineering—the structure that turns scattered tools into a reliable, scalable foundation.
+about:
+  title: Meet the Team
+  content: |-
+    We believe automation, developer experience, and clean architecture are non-negotiables for modern analytics.
+
+    With 30+ years of combined experience in infrastructure, data platforms, and data engineering, we help teams move faster and more confidently.
 highlight_two:
   title1: The ultimate data platform goal?
   title2: Stuff just works!
   content: Unfortunately, many data analytics departments don’t end up where they had hoped. They struggle to build reliable data pipelines, they don’t manage to automate, and because of that, they have problems onboarding users and excessive manual work.
 foundations_titles:
-  title1: The 5 data platform
-  title2: foundations
+  title1: How High-Performing Data Teams
+  title2: build
+  subtitle: "Top teams borrow from software engineering to make analytics infrastructure scale:"
 foundations_elements:
-  - title: Automation
-    content: with solid CI/CD and documentation
-  - title: Developer Experience
-    content: Intuitive tools, clear APIs, and robust frameworks
-  - title: Scalability
-    content: Growing usage without exponentially growing tech debt and costs
-  - title: Governance & Security
-    content: Data governance, networking, and access
-  - title: Data Readiness
-    content: Clean, consistent, and enriched data for analysis
-about:
-  title: About us
-  content: |-
-    We believe in automation and good developer experience.
-
-    With a combined 30+ years of experience in infrastructure, data platforms, and data engineering, we are on a mission to help data analytics teams build more robust and scalable solutions.
+  - title: Automated from the start
+    content: CI/CD, testing, versioning, docs as code
+  - title: Developer-friendly
+    content: Fast feedback, intuitive tools, reusable patterns
+  - title: Secure & governed by default
+    content: No shared creds, no blind spots
+  - title: Production-grade
+    content: Resilient pipelines and clear monitoring
+  - title: Built to scale
+    content: Handle more users, more data, fewer fire drills
 whyus_intro:
   title: Why do clients come to us?
   content: Analytics Departments and Teams typically suffer from one or more of these **11 challenges**
@@ -64,7 +91,7 @@ whyus_elements:
   - title: Difficulty in onboarding talent.
     content: Experiencing challenges when onboarding new analysts to the complex web of tools in use
 our_services:
-  title: Our Services
+  title: You Choose How You Work With Us
 our_services_items:
   - title: Development
     prefix: Data Platform
@@ -72,6 +99,33 @@ our_services_items:
   - title: Operations
     prefix: Data Platform
     description: Ensure continuous, reliable data platform performance through proactive monitoring, maintenance, and automated operational workflows.
+talk:
+  title: Not Sure Yet? Start With Clarity
+  subtitle: |-
+    **Is your platform slowing you down? Most data teams aren’t sure until it’s too late.**
+    Find out in 3 minutes with our scalability checkup.
+    - Get a personalized score across five core dimensions.
+    - Identify hidden bottlenecks before they become critical.
+    - No fluff, just real, practical insights.
+  button_text: Take the Assessment
+  button_target: https://thescalableway.scoreapp.com/
+  image: ./src/assets/images/backgrounds/sfondi-dyvenia27.jpg
+faq:
+  title: FAQ
+  intro: Curious to know more? Schedule a call and get all your questions answered!
+  cta:
+    label: Let’s talk
+    target: /contact/
+  items:
+    - title: Do we need a partner if we already use Fabric / Databricks / Snowflake?
+      content: |-
+        Yes. These tools are powerful, but they need structure, integration, and governance to deliver.
+    - title: Will you replace our engineers?
+      content: |-
+        No. We coach, document, and train so your team can take over fully.
+    - title: What happens after onboarding?
+      content: |-
+        After onboarding, you choose what’s next. We either hand everything over, with complete documentation and support as needed, or continue working with you through a support service and ad hoc development.
 description: Eleventy starter using modern CSS, fluid type, fluid spacing, flexible layout and progressive enhancement.
 bodyClass: home
 blog:
@@ -95,21 +149,52 @@ title: The Scalable Way
 
 <div class="intro | wrapper">
   <article class="region flow prose">
-    <h2 class="text-step-2">{{ intro.title }}</h2>
+    <h2>{{ intro.title }}</h2>
     {{ intro.content | markdownFormat | safe }}
   </article>
 </div>
 
+<div class="intro | wrapper">
+  <article class="region flow prose feature" style="--region-space-top: 0">
+    <h2 class="heading-line">{{ build_and_run.title }}</h2>
+      <div class="grid" data-layout="50-50">
+          <div class="text-step-2">{{ build_and_run.content_left | markdownFormat | safe }}</div>
+          <div>{{ build_and_run.content_right | markdownFormat | safe }}</div>
+      </div>
+  </article>
+</div>
+
 <div class="highlight-one | wrapper">
-  <div class="full wrapper section" style="--spot-color: var(--color-blue-accent)">
-    <article class="full  intro | section__inner wrapper  region">
+  <div class="full wrapper section" style="--spot-color: var(--color-bg-accent-2)">
+    <article class="full  intro | section__inner wrapper region">
       <div class="feature flow prose">
         <h2 class="text-step-3">{{ highlight_one.title }} <span>*</span></h2>
-        <p class="text-step-min-1"><span>*</span> {{ highlight_one.subtitle }}</p>
+        <div class="text-step-min-1 flow">{{ highlight_one.subtitle | markdownFormat | safe }}</div>
       </div>
       {% svg "brand/rings" %}
     </article>
   </div>
+</div>
+
+<div class="about | wrapper">
+  <article class="feature | region">
+    <header class="grid" data-layout="thirds">
+      <h2>{{ about.title }}</h2>
+      <div class="flow">{{ about.content | markdownFormat | safe }}</div>
+    </header>
+    <div class="grid mt-xl-2xl" data-layout="thirds">
+      {% for member in collections.team_members %}
+      {% if member.data.show_on_about %}
+        <div class="about__content flow">
+          {% image "." + member.data.image, "" %}
+
+          <h3>{{ member.data.name }}</h3>
+          {{ member.data.description_short | markdownFormat | safe }}
+        </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </article>
 </div>
 
 <div class="highlight-two | wrapper">
@@ -130,40 +215,22 @@ title: The Scalable Way
       {{ foundations_titles.title1 }}
       <span class="block uppercase text-blue-500">{{ foundations_titles.title2 }} </span>
     </h2>
-    <div class="split region">
+    <div class="split region region-space-l">
       {% svg "brand/brick" %}
-      <ol class="timeline">
-        {% for key in foundations_elements %}
-          <li>
-            <span>{{ loop.index }}</span>
-            <div class="flow flow-space-3xs">
-              <h3 class="text-step-1">{{ key.title }}</h3>
-              <p>{{ key.content }}</p>
-            </div>
-          </li>
-        {% endfor %}
-      </ol>
-    </div>
-  </article>
-</div>
-
-<div class="about | wrapper">
-  <article class="feature | region">
-    <header class="grid" data-layout="thirds">
-      <h2>{{ about.title }}</h2>
-      <div class="flow">{{ about.content | markdownFormat | safe }}</div>
-    </header>
-    <div class="grid mt-xl-2xl" data-layout="thirds">
-      {% for member in collections.team_members %}
-      {% if member.data.show_on_about %}
-        <div class="about__content flow">
-          {% image "." + member.data.image, "" %}
-
-          <h3>{{ member.data.name }}</h3>
-          {{ member.data.description_short | markdownFormat | safe }}
-        </div>
-      {% endif %}
-      {% endfor %}
+      <div class="timeline-container | flow">
+        {{ foundations_titles.subtitle | markdownFormat | safe }}
+        <ol class="timeline">
+          {% for key in foundations_elements %}
+            <li>
+              <span>{{ loop.index }}</span>
+              <div class="flow flow-space-3xs">
+                <h3 class="text-step-1">{{ key.title }}</h3>
+                <p>{{ key.content }}</p>
+              </div>
+            </li>
+          {% endfor %}
+        </ol>
+      </div>
     </div>
   </article>
 </div>
@@ -206,6 +273,59 @@ title: The Scalable Way
   </div>
 </div>
 
+<div class="talk | section page-header">
+  {% svg "divider/soft-top-bubble", null, "seperator small" %}
+
+  {% if talk.image %}
+    {% image talk.image, "" %}
+  {% endif %}
+
+  <div class="section__inner region region-space-l text-blue-100 ">
+    <div class="wrapper flow">
+      <h2 class="left">{{ talk.title }}</h2>
+
+      <div class="sidebar" data-direction="rtl">
+        <div class="flow">
+          {{ talk.subtitle | markdownFormat | safe }}
+        </div>
+        <div class="flow">
+          <a
+            href="{{ talk.button_target }}"
+            class="button flow-space-l no-indicator plausible-event-name=CTA+Learn+Book+Call"
+          >
+            {{ talk.button_text }} {% svg "misc/arrow" %}</a
+          >
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="faq | wrapper region">
+  <div class="sidebar">
+    <div class="flow">
+      <h2>{{ faq.title }}</h2>
+      <p>{{ faq.intro }}</p>
+      <a href="{{ faq.cta.target }}" class="button flow-space-l no-indicator" data-button-variant="blue">
+        {{ faq.cta.label }} {% svg "misc/arrow" %}</a
+      >
+    </div>
+    <div class="details flow">
+      <div class="control | cluster" aria-label="{{ meta.details.aria }}">
+        <button id="expandAll" class="button" data-small-button>{{ meta.details.expand }}</button>
+        <button id="collapseAll" class="button" data-small-button>{{ meta.details.collapse }}</button>
+      </div>
+      {%- for item in faq.items -%}
+        <details id="{{ item.title | slugify }}" class="prose">
+          <summary>{{ item.title }}</summary>
+          {{- item.content | markdownFormat | safe -}}
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
 <div class="wrapper">
   <section class="full | region">
     <div class="wrapper flow prose">
@@ -216,15 +336,15 @@ title: The Scalable Way
       {% endif %}
 
       <div class="feature | mt-l-xl">
-        <custom-masonry layout="50-50">
+        <div class="grid gutter-s">
 
          {% set itemList = collections.allPosts %}
-         {% asyncEach item in itemList.slice(0, 4) %}
+         {% asyncEach item in itemList.slice(0, 3) %}
          {% set headingLevel = "h3" %}
            {% include "partials/card-blog.njk" %}
          {% endeach %}
 
-        </custom-masonry>
+        </div>
       </div>
     </div>
   </section>
@@ -234,4 +354,10 @@ title: The Scalable Way
   {%- include 'css/home.css' -%}
   {%- include 'css/column.css' -%}
   {%- include "css/custom-card.css" -%}
+  {%- include "css/details.css" -%}
+  {%- include "css/page-header.css" -%}
 {%- endcss -%}
+
+{% js "defer" %}
+{% include "scripts/details.js" %}
+{% endjs %}
