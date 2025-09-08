@@ -156,6 +156,10 @@
   margin-block-end: var(--space-m);
 }
 
+.home .foundations.how .timeline-container > p {
+  color: var(--color-pink);
+}
+
 @media screen(sm) {
   .home .foundations svg {
     grid-column: 1/ 5;
@@ -207,6 +211,10 @@
   z-index: 0;
 }
 
+.home .foundations.how .timeline li::after {
+  background: var(--color-pink);
+}
+
 .home .foundations .timeline li:last-child::after {
   display: none;
 }
@@ -232,6 +240,10 @@
   border-radius: 50%;
   position: absolute;
   inset-inline-start: 0;
+}
+
+.home .foundations.how .timeline span {
+  background: var(--color-pink);
 }
 
 .home .foundations .timeline div {
@@ -316,7 +328,7 @@
   border-radius: var(--border-radius-small);
   border: 1px solid var(--color-blue-accent-3);
   padding: var(--space-xs);
-  margin-block-start: var(--space-l);
+  margin-block-start: var(--space-s);
   position: relative;
 }
 
@@ -324,7 +336,7 @@
   grid-column: span 2;
 }
 
-.home .services svg {
+.home .services .arrows {
   grid-column: content-start / full-end;
   position: absolute;
   inset-inline-end: var(--space-m);
