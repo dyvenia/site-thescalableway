@@ -251,6 +251,39 @@
   margin-block-start: var(--space-3xs);
 }
 
+/* works with stack */
+
+.home .works {
+  overflow: hidden;
+}
+
+.home .works svg {
+  block-size: auto;
+  color: var(--color-bg-accent);
+  grid-column: full;
+  inline-size: clamp(40ch, 60vw, 55rem);
+  inset-block-start: var(--space-s);
+  inset-inline-start: 0;
+  position: absolute;
+  translate: var(--space-xl) calc(var(--space-2xl) * -1);
+  rotate: 25deg;
+  z-index: -1;
+}
+
+/* you get */
+
+.home .you_get li {
+  --cluster-wrap: nowrap;
+  --gutter: var(--space-xs);
+  border: 2px solid var(--color-gray-600);
+  padding: var(--space-xs);
+  border-radius: var(--border-radius-small);
+}
+
+.home .you_get svg {
+  color: var(--color-blue);
+}
+
 /* about */
 
 .home .about .grid {
