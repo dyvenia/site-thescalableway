@@ -1,6 +1,6 @@
 ---
 title: 'SAP Data Ingestion with Python: A Technical Breakdown of Using the SAP RFC Protocol'
-date: 2025-09-16 10:00:00
+date: 2025-09-12 10:00:00
 author: Mateusz Paździor
 description: Streamline SAP data integration with Python by leveraging the RFC protocol. This interview with the lead engineer of a new SAP RFC Connector explores the challenges of large-scale data extraction and explains how a C++ integration improves stability, speed, and reliability for modern data workflows.
 tags:
