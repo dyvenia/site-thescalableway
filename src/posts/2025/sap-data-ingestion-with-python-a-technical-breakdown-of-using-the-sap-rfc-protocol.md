@@ -1,6 +1,6 @@
 ---
 title: 'SAP Data Ingestion with Python: A Technical Breakdown of Using the SAP RFC Protocol'
-date: 2025-09-12 14:49:00
+date: 2025-09-12 10:00:00
 author: Mateusz Paździor
 description: Streamline SAP data integration with Python by leveraging the RFC protocol. This interview with the lead engineer of a new SAP RFC Connector explores the challenges of large-scale data extraction and explains how a C++ integration improves stability, speed, and reliability for modern data workflows.
 tags:
@@ -19,9 +19,13 @@ That’s why we’re working on a new Python library to replace pyRFC, focused o
 
 To dig into how this actually works, I’ve talked with Dominik ‒ a senior software engineer with more than ten years of experience, a computer science lecturer, and the tech lead of this project. In this conversation, he shares his knowledge, best practices, and lessons learned while building an SAP connector in Python using the RFC protocol.
 
+**_________**
+
 #### **Can you give us a general overview of how SAP RFC works?**
 
 SAP Remote Function Call is a communication mechanism that allows one system to execute functions in another system as if they were local calls. It is primarily used to integrate different SAP modules, connect SAP with external applications, and support distributed processing. RFC works by exposing specific function modules in SAP that are marked as “remote-enabled,” meaning they can be invoked across system boundaries. When an RFC is triggered, the caller system packages the request, sends it over the network, and waits for a response (in synchronous mode) or continues processing without waiting (in asynchronous mode). This approach provides a standardized and reliable way for SAP systems and external programs to exchange data and trigger business logic, making RFC a cornerstone of SAP interoperability.
+
+![sap rfc](/src/assets/images/blog/SAP RFC-1.png)
 
 #### **What are some of the challenges of using SAP RFC for ingesting data with Python?**
 
