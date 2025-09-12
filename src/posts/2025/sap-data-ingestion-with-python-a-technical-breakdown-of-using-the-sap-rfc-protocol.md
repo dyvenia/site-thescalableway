@@ -25,7 +25,7 @@ To dig into how this actually works, I’ve talked with Dominik ‒ a senior sof
 
 SAP Remote Function Call is a communication mechanism that allows one system to execute functions in another system as if they were local calls. It is primarily used to integrate different SAP modules, connect SAP with external applications, and support distributed processing. RFC works by exposing specific function modules in SAP that are marked as “remote-enabled,” meaning they can be invoked across system boundaries. When an RFC is triggered, the caller system packages the request, sends it over the network, and waits for a response (in synchronous mode) or continues processing without waiting (in asynchronous mode). This approach provides a standardized and reliable way for SAP systems and external programs to exchange data and trigger business logic, making RFC a cornerstone of SAP interoperability.
 
-![SAP RF](/src/assets/images/blog/SAP RFC.png)
+![SAP RFC](/src/assets/images/blog/SAP RFC-1.png)
 
 #### **What are some of the challenges of using SAP RFC for ingesting data with Python?**
 
