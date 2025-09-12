@@ -19,7 +19,7 @@ That’s why we’re working on a new Python library to replace pyRFC, focused o
 
 To dig into how this actually works, I’ve talked with Dominik ‒ a senior software engineer with more than ten years of experience, a computer science lecturer, and the tech lead of this project. In this conversation, he shares his knowledge, best practices, and lessons learned while building an SAP connector in Python using the RFC protocol.
 
-**_____**
+**____________**
 
 #### **Can you give us a general overview of how SAP RFC works?**
 
