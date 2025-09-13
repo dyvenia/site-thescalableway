@@ -193,7 +193,7 @@ title: The Scalable Way
 </div>
 
 <div class="intro | wrapper">
-  <article class="prose region flow">
+  <article class="prose region flow feature">
     <h2>{{ intro.title }}</h2>
     {{ intro.content | markdownFormat | safe }}
   </article>
@@ -210,7 +210,7 @@ title: The Scalable Way
 </div>
 
 <div class="highlight-one | wrapper">
-  <div class="full wrapper section" style="--spot-color: var(--color-bg-accent-2)">
+  <div class="full wrapper section" style="--spot-color: var(--color-blue-accent)">
     <article class="full  intro | section__inner wrapper region">
       <div class="prose feature flow">
         <h2 class="text-step-3">{{ highlight_one.title }} <span>*</span></h2>
@@ -361,6 +361,7 @@ title: The Scalable Way
      {% set itemCount = itemList.slice(0, 3) | length %}
      <div class="grid gutter-s" data-layout="{% if itemCount >= 3 %}thirds-small{% else %}50-50{% endif %}">
        {% asyncEach item in itemList.slice(0, 3) %}
+       {% set definedDate = false %}
        {% set headingLevel = "h3" %}
          {% include "partials/card-blog.njk" %}
        {% endeach %}
@@ -456,6 +457,7 @@ title: The Scalable Way
 
          {% set itemList = collections.allPosts %}
          {% asyncEach item in itemList.slice(0, 3) %}
+         {% set showTags = false %}
          {% set headingLevel = "h3" %}
            {% include "partials/card-blog.njk" %}
          {% endeach %}

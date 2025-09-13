@@ -8,7 +8,7 @@
     <a href="{{ item.url | url }}">{{ item.data.title }}</a>
   </{{ headingLevel }}>
   {% if definedDate %}
-    <span class="text-pink uppercase font-medium" slot="date"> {% include "partials/date.njk" %} </span>
+    <span class="font-medium uppercase text-pink" slot="date"> {% include "partials/date.njk" %} </span>
   {% endif %}
   {% if showTags and item.data.tags.length > 1 %}
     <div slot="tag" class="cluster gutter-3xs">
