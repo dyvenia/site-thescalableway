@@ -11,7 +11,7 @@ local_backend: true
 backend:
   name: github
   repo: dyvenia/site-thescalableway
-  branch: dev
+  branch: content
 
 # The folder used to store uploaded images
 media_folder: '/src/assets/images/'
