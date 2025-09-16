@@ -19,7 +19,7 @@ That’s why we’re working on a new Python library to replace pyRFC, focused o
 
 To dig into how this actually works, I’ve talked with Dominik ‒ a senior software engineer with more than ten years of experience, a computer science lecturer, and the tech lead of this project. In this conversation, he shares his knowledge, best practices, and lessons learned while building an SAP connector in Python using the RFC protocol.
 
-**________________________________________________________**
+**__________**
 
 #### **Can you give us a general overview of how SAP RFC works?**
 
@@ -97,7 +97,7 @@ Incremental ingestions with SAP RFC are not straightforward, because RFC itself 
 
 **Connection:**
 
-```
+```python
    def con(self) -> sap_rfc_connector.SapRfcConnector:
         """The C+++ connection to SAP."""
         if self._con is not None:
@@ -109,7 +109,7 @@ Incremental ingestions with SAP RFC are not straightforward, because RFC itself 
 
 **Call:**
 
-```
+```python
     def call(self, func: str, *args, **kwargs) -> dict[str, Any]:
         """Call a SAP RFC function."""
         func_caller = sap_rfc_connector.SapFunctionCaller(self.con)   
@@ -120,7 +120,7 @@ Incremental ingestions with SAP RFC are not straightforward, because RFC itself 
 
 **One of the approaches to avoid pandas for the data ingestion (POC):**
 
-```
+```plain
            # Check and skip if there is no data returned.
             try:
                 if response["DATA"]:
@@ -162,7 +162,7 @@ Incremental ingestions with SAP RFC are not straightforward, because RFC itself 
                 break
 ```
 
-**___________________________________________________________**
+**_____________**
 
 #### **Conclusion**
 
