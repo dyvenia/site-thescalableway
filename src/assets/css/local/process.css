@@ -352,24 +352,3 @@
   margin-inline-start: var(--space-s);
   margin-block-start: var(--space-3xs);
 }
-
-/* faq */
-
-.faq .prose ul {
-  padding-inline-start: 0.2ch;
-}
-
-.faq .prose li::marker {
-  color: var(--color-pink);
-  content: '';
-}
-
-.faq .prose ul ul {
-  margin-top: var(--space-s);
-  padding-inline-start: 1ch;
-}
-
-.faq .prose li li::marker {
-  color: var(--color-pink);
-  content: '- ';
-}

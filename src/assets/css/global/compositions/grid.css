@@ -33,7 +33,17 @@ to change how empty grid tracks are handled */
   --grid-min-item-size: clamp(16rem, 50vw, 28rem);
 }
 
+.grid[data-layout='50-50-small'] {
+  --grid-placement: auto-fit;
+  --grid-min-item-size: clamp(16rem, 50vw, 20rem);
+}
+
 .grid[data-layout='thirds'] {
   --grid-placement: auto-fit;
   --grid-min-item-size: clamp(16rem, 33%, 30rem);
+}
+
+.grid[data-layout='thirds-small'] {
+  --grid-placement: auto-fit;
+  --grid-min-item-size: clamp(16rem, 33%, 20rem);
 }

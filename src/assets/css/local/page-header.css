@@ -41,8 +41,11 @@
 
 .page-header .wrapper > * {
   grid-column: content-start / feature-end;
-  justify-self: center;
   z-index: 1;
+}
+
+.page-header .wrapper > *:not(.left) {
+  justify-self: center;
 }
 
 @media screen(md) {
