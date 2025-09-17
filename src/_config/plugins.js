@@ -13,10 +13,6 @@ import {drafts} from './plugins/drafts.js';
 // Custom transforms
 import {htmlConfig} from './plugins/html-config.js';
 
-// Custom template language
-import {cssConfig} from './plugins/css-config.js';
-import {jsConfig} from './plugins/js-config.js';
-
 export default {
   EleventyRenderPlugin,
   EleventyHtmlBasePlugin,
@@ -26,7 +22,5 @@ export default {
   eleventyImageTransformPlugin,
   markdownLib,
   drafts,
-  htmlConfig,
-  cssConfig,
-  jsConfig
+  htmlConfig
 };

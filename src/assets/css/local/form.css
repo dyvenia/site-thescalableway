@@ -1,15 +1,9 @@
 form .sidebar {
-  --flow-space: var(--space-s);
+  --flow-space: var(--space-xs);
   --gutter: 0;
   --sidebar-target-width: min(25rem, 25%);
   --sidebar-content-min-width: 20%;
   max-inline-size: 40rem;
-}
-
-@media screen(sm) {
-  form .sidebar {
-    margin-inline-start: calc(var(--space-xs) * 2);
-  }
 }
 
 form .sidebar > * {
@@ -20,17 +14,21 @@ form .sidebar > * {
   padding: calc(var(--space-3xs) + 0.05em) var(--space-xs);
   border-radius: var(--border-radius-small);
   border: 1px solid var(--color-mid);
-  border-inline-end: none;
   background: var(--color-bg);
   color: var(--color-text);
   inline-size: 100%;
   block-size: max-content;
+  max-inline-size: 42rem;
+}
 
-  &::placeholder {
-    color: var(--color-mid);
-    opacity: 1;
-    font-size: var(--size-step-min-1);
-  }
+input.no-right-line {
+  border-inline-end: none;
+}
+
+:is(input:not([type='checkbox'], [type='radio'], [type='color']), select, textarea)::placeholder {
+  color: var(--color-mid);
+  opacity: 1;
+  font-size: var(--size-step-min-1);
 }
 
 label {

@@ -4,7 +4,7 @@ date: 2025-05-19 09:00:00
 description: Discover how we seamlessly migrated 450+ workflows to Prefect 2 in under 40 days without downtime. Learn how our ‘as-code’ strategy, automation, and smart planning made a complex transition fast, smooth, and scalable.
 internal_notes: '**Prefect 1 to Prefect 2 migration case study**'
 ---
-Migrating workflow orchestration is a complex process, especially when dealing with hundreds of deployments. When Prefect announced that Prefect Cloud 1 accounts would be frozen, we faced the challenge of upgrading our client’s extensive infrastructure to Prefect 2 while ensuring zero downtime. 
+Migrating workflow orchestration is a complex process, especially when dealing with hundreds of deployments. When Prefect announced that Prefect Cloud 1 accounts would be frozen, we faced the challenge of upgrading our client’s extensive infrastructure to Prefect 2 while ensuring zero downtime.
 While the new version introduced several improvements, such as improved scheduling and enhanced cloud-native capabilities, the migration itself was quite a challenge. Still, we successfully transitioned all workflows seamlessly without interfering with data ingestion continuity through careful planning, automation, and leveraging Python's flexibility. This case study explores our migration strategy's key challenges, solutions, and impact.
 
 ## The Challenge: Overcoming Key Migration Obstacles
@@ -22,7 +22,7 @@ While the shift from Prefect 1 to Prefect 2 introduced major improvements in arc
 
 With over **450 flows** to migrate, our top priority was to ensure a smooth transition while avoiding disruptions to existing workflows.
 
-## Our Solution: Making the Most of Our ‘As-Code’ Approach 
+## Our Solution: Making the Most of Our ‘As-Code’ Approach
 
 
 Our migration approach leveraged Python’s flexibility and our “as code” framework to make the transition as seamless as possible. Since we had already structured all workflows in Python, adapting them to Prefect 2’s new architecture was significantly easier. Key strategies included:
@@ -52,7 +52,7 @@ The migration process followed a structured approach:
 ### Step 1: Refactoring Code: Adopting Prefect 2 Syntax and Logic
 
 
-In Prefect 1, workflows had to be defined as directed acyclic graphs (DAGs), explicitly declaring dependencies between tasks. This requirement has been removed in Prefect 2. Flows are now defined using plain Python logic without needing to be structured as DAGs. In practice, this meant we transitioned from Prefect 1’s `@prefect.task` and `@prefect.flow` to Prefect 2’s `@task` and `@flow` decorators. We also ensured compatibility by testing each refactored flow in an isolated environment. 
+In Prefect 1, workflows had to be defined as directed acyclic graphs (DAGs), explicitly declaring dependencies between tasks. This requirement has been removed in Prefect 2. Flows are now defined using plain Python logic without needing to be structured as DAGs. In practice, this meant we transitioned from Prefect 1’s `@prefect.task` and `@prefect.flow` to Prefect 2’s `@task` and `@flow` decorators. We also ensured compatibility by testing each refactored flow in an isolated environment.
 
 
 Here is an example of a code modification:
@@ -75,7 +75,7 @@ def transform_data(data):
 
 with Flow("ETL Flow") as flow:
     raw_data = extract_data()
-    processed_data = transform_data(raw_data)  
+    processed_data = transform_data(raw_data) 
 ```
 
 **After (Prefect 2):**
@@ -105,12 +105,12 @@ We adopted Prefect 2’s integrated UI and observability features, enhancing vis
 ### Step 3: Optimizing Performance: Using Dynamic Task Mapping
 
 
-We wrote custom scripts to update flow parameters and deployment configurations across all the flows, significantly reducing manual effort and making the migration scalable. We also implemented dynamic task mapping, which allowed us to parallelize operations and optimize performance during execution. 
+We wrote custom scripts to update flow parameters and deployment configurations across all the flows, significantly reducing manual effort and making the migration scalable. We also implemented dynamic task mapping, which allowed us to parallelize operations and optimize performance during execution.
 
 ### Step 4: Adapting Infrastructure: Ensuring Compatibility with Prefect 2
 
 
-We restructured our infrastructure to align with Prefect 2’s architecture, including setting up new work pools and queues for more efficient task distribution. Then, we ensured compatibility with our Kubernetes setup for agent deployment, maintaining complete control over execution environments. 
+We restructured our infrastructure to align with Prefect 2’s architecture, including setting up new work pools and queues for more efficient task distribution. Then, we ensured compatibility with our Kubernetes setup for agent deployment, maintaining complete control over execution environments.
 
 ### Step 5: Defining Deployments: Building Around Prefect 2’ Model
 

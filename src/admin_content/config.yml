@@ -11,7 +11,7 @@ local_backend: true
 backend:
   name: github
   repo: dyvenia/site-thescalableway
-  branch: dev
+  branch: content
 
 # The folder used to store uploaded images
 media_folder: '/src/assets/images/'
@@ -36,8 +36,13 @@ collections:
           - {label: 'Learn More Button Target', name: 'hero.button_target', widget: 'string'}
           - {label: 'Introduction Title', name: 'intro.title', widget: 'string'}
           - {label: 'Introduction Content', name: 'intro.content', widget: 'markdown'}
+          - {label: 'Build and Run Title', name: 'build_and_run.title', widget: 'string'}
+          - {label: 'Build and Run Content Left', name: 'build_and_run.content_left', widget: 'markdown'}
+          - {label: 'Build and Run Content Right', name: 'build_and_run.content_right', widget: 'markdown'}
           - {label: 'Highlight One Title', name: 'highlight_one.title', widget: 'string'}
           - {label: 'Highlight One Subtitle', name: 'highlight_one.subtitle', widget: 'markdown'}
+          - {label: 'About Us', name: 'about.title', widget: 'string'}
+          - {label: 'About Us', name: 'about.content', widget: 'markdown'}
           - {label: 'Highlight Two Title One', name: 'highlight_two.title1', widget: 'string'}
           - {label: 'Highlight Two Title Two', name: 'highlight_two.title2', widget: 'string'}
           - {label: 'Highlight Two Content', name: 'highlight_two.content', widget: 'markdown'}
@@ -46,27 +51,102 @@ collections:
           - label: 'Foundations Keys'
             name: 'foundations_elements' #<- this doesn't seem to work
             widget: 'list'
+            collapsed: true
             fields:
               - {label: 'Title', name: 'title', widget: 'string'}
               - {label: 'Content', name: 'content', widget: 'string'}
-          - {label: 'About Us', name: 'about.title', widget: 'string'}
-          - {label: 'About Us', name: 'about.content', widget: 'markdown'}
           - {label: 'Why Us', name: 'whyus_intro.title', widget: 'string'}
           - {label: 'Why Us Intro', name: 'whyus_intro.content', widget: 'string'}
           - label: 'Why Us - Elements'
             name: 'whyus_elements'
             widget: 'list'
+            collapsed: true
             fields:
               - {label: 'Title', name: 'title', widget: 'string'}
               - {label: 'Content', name: 'content', widget: 'string'}
+          - label: 'How Section'
+            name: 'how'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Intro', name: 'intro', widget: 'string'}
+          - label: 'How Elements'
+            name: 'how_elements'
+            widget: 'list'
+            collapsed: true
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'string'}
+          - label: 'Works Section'
+            name: 'works'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'markdown'}
+          - label: 'You Get Section'
+            name: 'you_get'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'markdown'}
+              - label: 'You Get Items'
+                name: 'items'
+                widget: 'list'
+                collapsed: true
+                field: {label: 'Item', name: 'item', widget: 'string'}
+          - label: 'Results Section'
+            name: 'results'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'markdown'}
           - {label: 'Our Services', name: 'our_services.title', widget: 'string'}
+          - {label: 'Our Services Button Text', name: 'our_services.button_text', widget: 'string'}
+          - {label: 'Our Services Button Target', name: 'our_services.button_target', widget: 'string'}
           - label: 'Our Services Items'
             name: 'our_services_items'
             widget: 'list'
+            collapsed: true
             fields:
               - {label: 'Title', name: 'title', widget: 'string'}
-              - {label: 'Prefix', name: 'prefix', widget: 'string'}
-              - {label: 'Description', name: 'description', widget: 'markdown'}
+              - {label: 'Description', name: 'description', widget: 'string'}
+          - label: 'Talk Section'
+            name: 'talk'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Subtitle', name: 'subtitle', widget: 'markdown'}
+              - {label: 'Button Text', name: 'button_text', widget: 'string'}
+              - {label: 'Button Target', name: 'button_target', widget: 'string'}
+              - {label: 'Image', name: 'image', widget: 'hidden'}
+          - label: 'FAQ Section'
+            name: 'faq'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Intro', name: 'intro', widget: 'string'}
+              - label: 'Call to Action'
+                name: 'cta'
+                widget: 'object'
+                fields:
+                  - {label: 'Label', name: 'label', widget: 'string'}
+                  - {label: 'Target', name: 'target', widget: 'string'}
+              - label: 'FAQ Items'
+                name: 'items'
+                widget: 'list'
+                collapsed: true
+                fields:
+                  - {label: 'Title', name: 'title', widget: 'string'}
+                  - {label: 'Content', name: 'content', widget: 'markdown'}
+          - label: 'Blog Section'
+            name: 'blog'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Intro', name: 'intro', widget: 'string'}
 
   - name: 'contact'
     label: 'Contact'
@@ -233,6 +313,7 @@ collections:
               - label: 'FAQ Items'
                 name: 'items'
                 widget: 'list'
+                collapsed: true
                 fields:
                   - {label: 'Title', name: 'title', widget: 'string'}
                   - {label: 'Content', name: 'content', widget: 'markdown'}
