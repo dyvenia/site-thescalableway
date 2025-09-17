@@ -98,68 +98,68 @@ Incremental ingestions with SAP RFC are not straightforward, because RFC itself 
 **Connection:**
 
 ```python
-   def con(self) -> sap_rfc_connector.SapRfcConnector:
-        """The C+++ connection to SAP."""
-        if self._con is not None:
-            return self._con
-        con = sap_rfc_connector.SapRfcConnector(**self.credentials)
-        self._con = con
-        return con
+def con(self) -> sap_rfc_connector.SapRfcConnector:
+    """The C+++ connection to SAP."""
+    if self._con is not None:
+        return self._con
+    con = sap_rfc_connector.SapRfcConnector(**self.credentials)
+    self._con = con
+    return con
 ```
 
 **Call:**
 
 ```python
-    def call(self, func: str, *args, **kwargs) -> dict[str, Any]:
-        """Call a SAP RFC function."""
-        func_caller = sap_rfc_connector.SapFunctionCaller(self.con)   
-        result = func_caller.smart_call(func, *args, **kwargs)
+def call(self, func: str, *args, **kwargs) -> dict[str, Any]:
+    """Call a SAP RFC function."""
+    func_caller = sap_rfc_connector.SapFunctionCaller(self.con)   
+    result = func_caller.smart_call(func, *args, **kwargs)
 
-        return result
+    return result
 ```
 
 **One of the approaches to avoid pandas for the data ingestion (POC):**
 
-```plain
-           # Check and skip if there is no data returned.
-            try:
-                if response["DATA"]:
-                    logger.debug("checking data")
-                    if print_regular:
-                        print_regular("checking data")
-                    record_key = "WA"
-                    data_raw = np.array(response["DATA"])
-                    
-                    # Save raw data to CSV file immediately
-                    logger.debug(f"Saving {len(data_raw)} rows to CSV file...")
-                    if print_regular:
-                        print_regular(f"Saving {len(data_raw)} rows to CSV file...")
-                    with open(temp_csv_path, 'w', newline='', encoding='utf-8') as csvfile:
-                        writer = csv.writer(csvfile)
-                        # Write header
-                        writer.writerow(fields)
-                        # Write data rows
-                        for row_data in data_raw:
-                            try:
-                                split_data = row_data[record_key].split(sep)
-                                if len(split_data) == len(fields):
-                                    writer.writerow(split_data)
-                                else:
-                                    logger.warning(f"Row data length mismatch: expected {len(fields)}, got {len(split_data)}")
-                            except Exception as e:
-                                logger.error(f"Error processing row: {e}")
-                                continue
-                    
-                    logger.debug(f"Saved data to {temp_csv_path}")
-                    if print_regular:
-                        print_regular(f"Saved data to {temp_csv_path}")
-                    del response
-                    del data_raw
-            except Exception as e:
-                logger.error(f"Error: {e}")
-                if print_regular:
-                    print_regular(f"Error: {e}")
-                break
+```python
+# Check and skip if there is no data returned.
+try:
+    if response["DATA"]:
+        logger.debug("checking data")
+        if print_regular:
+            print_regular("checking data")
+        record_key = "WA"
+        data_raw = np.array(response["DATA"])
+        
+        # Save raw data to CSV file immediately
+        logger.debug(f"Saving {len(data_raw)} rows to CSV file...")
+        if print_regular:
+            print_regular(f"Saving {len(data_raw)} rows to CSV file...")
+        with open(temp_csv_path, 'w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.writer(csvfile)
+            # Write header
+            writer.writerow(fields)
+            # Write data rows
+            for row_data in data_raw:
+                try:
+                    split_data = row_data[record_key].split(sep)
+                    if len(split_data) == len(fields):
+                        writer.writerow(split_data)
+                    else:
+                        logger.warning(f"Row data length mismatch: expected {len(fields)}, got {len(split_data)}")
+                except Exception as e:
+                    logger.error(f"Error processing row: {e}")
+                    continue
+        
+        logger.debug(f"Saved data to {temp_csv_path}")
+        if print_regular:
+            print_regular(f"Saved data to {temp_csv_path}")
+        del response
+        del data_raw
+except Exception as e:
+    logger.error(f"Error: {e}")
+    if print_regular:
+        print_regular(f"Error: {e}")
+    break
 ```
 
 **_____________**
