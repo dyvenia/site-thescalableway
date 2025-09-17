@@ -19,7 +19,7 @@ That’s why we’re working on a new Python library to replace pyRFC, focused o
 
 To dig into how this actually works, I’ve talked with Dominik ‒ a senior software engineer with more than ten years of experience, a computer science lecturer, and the tech lead of this project. In this conversation, he shares his knowledge, best practices, and lessons learned while building an SAP connector in Python using the RFC protocol.
 
-**__________**
+**______**
 
 #### **Can you give us a general overview of how SAP RFC works?**
 
@@ -62,7 +62,7 @@ This means developers must implement batching, efficient memory handling, and so
 
 #### **Can you explain how you interface a C++ library with Python?**
 
-Interfacing a C++ library with Python involves creating a thin wrapper layer that makes the C++ functions and classes look like native Python objects. To achieve that, we use **pybind11,&#32;**which handles this translation by generating a Python extension module that directly calls into the compiled C++ code. Once built, the module can be imported into Python just like any other package, allowing Python code to invoke high-performance C++ logic seamlessly. This approach avoids costly inter-process communication and provides a clean way to combine Python’s flexibility with the speed and efficiency of C++. Our C++ library is currently called SAP RFC Connector and has its own documentation available in a [dedicated repository](https://github.com/dyvenia/sap_rfc_connector/blob/main/README.md).
+Interfacing a C++ library with Python involves creating a thin wrapper layer that makes the C++ functions and classes look like native Python objects. To achieve that, we use **pybind11,&#32;**which handles this translation by generating a Python extension module that directly calls into the compiled C++ code. Once built, the module can be imported into Python just like any other package, allowing Python code to invoke high-performance C++ logic seamlessly. This approach avoids costly inter-process communication and provides a clean way to combine Python’s flexibility with the speed and efficiency of C++. 
 
 #### **How can ingestion speed be optimized?**
 
@@ -162,7 +162,7 @@ except Exception as e:
     break
 ```
 
-**_____________**
+**_________**
 
 #### **Conclusion**
 
