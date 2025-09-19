@@ -7,6 +7,7 @@ tags:
   - prefect
   - data platform architecture
   - orchestration
+  - productized data platform
 internal_notes: |-
   ### The Simplest Way to Set Up Scalable Data Platform on Google Cloud Platform (GCP)
 
