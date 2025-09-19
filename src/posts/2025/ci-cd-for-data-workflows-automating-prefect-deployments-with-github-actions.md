@@ -10,6 +10,7 @@ tags:
   - CI/CD
   - data workflows
   - data platform architecture
+  - productized data platform
 internal_notes: |-
   **Audience:** Data Engineer / DevOps Engineer trying to setup data platform
 
