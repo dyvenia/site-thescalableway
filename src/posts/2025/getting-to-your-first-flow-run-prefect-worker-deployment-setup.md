@@ -8,6 +8,7 @@ tags:
   - data platform architecture
   - workflow orchestration
   - Kubernetes
+  - productized data platform
 internal_notes: |-
   **Audience:** Data Engineer / DevOps Engineer trying to set up a data platform
 
