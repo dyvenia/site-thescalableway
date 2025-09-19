@@ -8,6 +8,7 @@ tags:
   - terraform
   - data platform architecture
   - prefect
+  - productized data platform
 internal_notes: |-
   **Audience:** Data Engineer / DevOps Engineer trying to setup data platform
 
