@@ -7,29 +7,28 @@
     </label>
 
     <div class="flow gutter-xs">
-      <div class="cluster gutter-xs">
-        <div>
-          <label class="visually-hidden">First Name</label>
-          <input type="text" name="firstname" autocomplete="given-name" placeholder="First Name" required />
-        </div>
-        <div>
-          <label class="visually-hidden">Last Name</label>
-          <input type="text" name="lastname" autocomplete="family-name" placeholder="Last Name" required />
-        </div>
-        <div class="flow-space-s">
-          <label class="visually-hidden">Company Name</label>
-          <input type="text" name="company" autocomplete="organization" placeholder="Company Name" />
-        </div>
+      <div class="sidebar">
+        <label for="firstname">First Name</label>
+        <input type="text" name="firstname" id="firstname" autocomplete="given-name" placeholder="" />
+      </div>
+      <div class="sidebar">
+        <label for="lastname">Last Name</label>
+        <input type="text" name="lastname" id="lastname" autocomplete="family-name" placeholder="" />
+      </div>
+      <div class="sidebar">
+        <label for="company">Company Name</label>
+        <input type="text" name="company" id="company" autocomplete="organization" placeholder="" />
       </div>
 
-      <div class="sidebar" data-direction="rtl">
-        <div>
-          <label class="visually-hidden">Email Address</label>
+      <div class="sidebar email" data-direction="rtl">
+        <div class="flow">
+          <label for="email">Email Address</label>
           <input
             type="email"
             name="email"
+            id="email"
             autocomplete="email"
-            placeholder="Email Address"
+            placeholder=""
             required
             class="no-right-line"
           />
@@ -45,6 +44,10 @@
     <div data-hubspot-error class="hidden">{{ meta.newsletter_error_message }}</div>
     <div data-hubspot-consent-error class="hidden">{{ meta.newsletter_consent_required }}</div>
   </div>
+
+  <p class="text-step-min-1 text-gray">
+    Asterisk (<span class="text-pink">*</span>) indicates required fields.
+  </p>
 </aside>
 
 {% css "local" %}
