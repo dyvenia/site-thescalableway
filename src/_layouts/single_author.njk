@@ -2,7 +2,7 @@
 layout: base
 ---
 
-<div class="region wrapper flow prose" style="--region-space-top: var(--space-xl-2xl)">
+<div class="prose region wrapper flow" style="--region-space-top: var(--space-xl-2xl)">
   <div class="sidebar" style="--sidebar-target-width: 12rem; --sidebar-content-min-width: 55%;">
     {% image "." + image, "", null, "eager", null, "rounded-full aspect-1 object-cover" %}
 
@@ -10,7 +10,7 @@ layout: base
       <header class="repel">
         <div>
           <h1 class="text-step-3">{{ name }}</h1>
-          {% if role %}<p class="text-step-min-1 font-bold">{{ role }}</p>{% endif %}
+          {% if role %}<p class="font-bold text-step-min-1">{{ role }}</p>{% endif %}
         </div>
 
         {% if linkedin %}
@@ -27,7 +27,7 @@ layout: base
       {% if expertise.length or technologies.length %}
         <div class="grid gutter-s">
           {% if expertise.length %}
-            <article class="border p-2xs rounded-medium flow prose">
+            <article class="prose border p-2xs rounded-medium flow">
               <h2 class="text-step-0">Expertise</h2>
               <ul class="text-step-min-1 flow-space-xs" style="--list-padding: var(--space-4xs);">
                 {% for item in expertise %}
@@ -72,4 +72,9 @@ layout: base
   </ul>
 
   {% include "partials/hubspot-form.njk" %}
+  <p>
+    <a class="button" href="/author/" data-small-button data-pill-button>
+      {% svg 'misc/arrow' %} All authors</a
+    >
+  </p>
 </div>

@@ -14,6 +14,7 @@ export default {
       submenu: [
         {text: 'Blog', url: '/blog/'},
         {text: 'Case Studies', url: '/case-studies/'},
+        {text: 'Test Your Platform', url: 'https://thescalableway.scoreapp.com/'},
         {text: 'Lessons', url: 'https://github.com/thescalableway/edp-learning'}
       ]
     }

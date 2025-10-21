@@ -1,9 +1,16 @@
 form .sidebar {
   --flow-space: var(--space-xs);
+  --gutter: var(--space-3xs);
+  --sidebar-target-width: 8rem;
+  --sidebar-content-min-width: 50%;
+  max-inline-size: 40rem;
+  align-items: center;
+}
+
+form .sidebar.email {
   --gutter: 0;
   --sidebar-target-width: min(25rem, 25%);
   --sidebar-content-min-width: 20%;
-  max-inline-size: 40rem;
 }
 
 form .sidebar > * {
@@ -33,6 +40,14 @@ input.no-right-line {
 
 label {
   line-height: var(--leading-fine);
+  font-size: var(--size-step-min-1);
+}
+
+input[required] + p::after,
+label:has(+ input:not([type='checkbox'])[required])::after {
+  content: '*';
+  color: var(--color-pink);
+  margin-inline-start: var(--space-4xs);
 }
 
 form button {
@@ -115,5 +130,6 @@ button + .newsletter > * {
 .full .newsletter {
   background: var(--color-bg);
   border-block-end: 1px solid var(--color-bg-accent-2);
-  padding: 0;
+  padding-inline: 0;
+  padding-block-end: var(--space-2xs);
 }

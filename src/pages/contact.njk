@@ -22,7 +22,9 @@ contact:
   </header>
   <section class="flow">
     <h2>{{ contact.title }}</h2>
-    <a class="cluster gutter-2xs" href="{{ contact.mail }}">{% svg "misc/mail" %} {{ contact.mail }}</a>
+    <a class="cluster gutter-2xs" href="mailto:{{ contact.mail }}"
+      >{% svg "misc/mail" %} {{ contact.mail }}</a
+    >
     <a class="cluster gutter-2xs no-indicator" href="{{ contact.linkedinUrl }}"
       >{% svg "platform/linkedin" %} {{ contact.linkedin }}</a
     >

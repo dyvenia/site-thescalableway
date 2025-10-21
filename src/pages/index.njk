@@ -230,12 +230,11 @@ title: The Scalable Way
     <div class="grid mt-xl-2xl" data-layout="thirds">
       {% for member in collections.team_members %}
       {% if member.data.show_on_about %}
-        <div class="about__content flow">
+        <custom-card clickable small-padding img-3-2 slight-border>
           {% image "." + member.data.image, "" %}
-
-          <h3>{{ member.data.name }}</h3>
-          {{ member.data.description_short | markdownFormat | safe }}
-        </div>
+          <h3 class="text-step-1" slot="headline">  <a href="{{ member.url }}">{{ member.data.name }}</a></h3>
+          <div slot="content" webc:nokeep>{{ member.data.description_short | markdownFormat | safe }}</div>
+        </custom-card>
       {% endif %}
       {% endfor %}
     </div>
