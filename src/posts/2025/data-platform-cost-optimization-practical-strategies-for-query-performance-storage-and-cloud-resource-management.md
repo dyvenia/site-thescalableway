@@ -93,7 +93,7 @@ The way users access data significantly impacts platform costs. Centralized arch
 
 ### **Self-Service vs. Centralized Reporting**: 
 
-Self-service analytics tools empower users but can lead to inefficient ad-hoc queries consuming excessive resources. Balance this by providing pre-aggregated datasets, semantic layers, and curated data marts for common analysis patterns, as well as proper training. Centralized reporting through scheduled dashboards and reports consolidates repetitive queries into single executions shared across users.
+Self-service analytics tools empower users but can lead to inefficient ad-hoc queries that consume excessive resources. Balance this by providing pre-aggregated datasets, semantic layers, and curated data marts for common analysis patterns and proper training. Centralized reporting through scheduled dashboards and reports consolidates repetitive queries into single executions shared across users.
 
 ### **Aggregation Layers**: 
 
