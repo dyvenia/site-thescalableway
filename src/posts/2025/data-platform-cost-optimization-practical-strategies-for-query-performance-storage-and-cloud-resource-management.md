@@ -68,12 +68,7 @@ Infrastructure typically represents one of the largest expenses in a data platfo
 
 Where possible, commit to reserved capacity for predictable, steady-state workloads. BigQuery with committed slot reservations can save 40-60% compared to on-demand for high-usage scenarios ([docs](https://cloud.google.com/bigquery/docs/reservations-tasks)). Redshift Reserved Instances provide up to 62.5% savings with 1-year or 3-year commitments. Analyze your past 3-6 months of usage to identify the minimum baseline capacity required during low-demand periods - this becomes your reserved capacity floor. Configure auto-scaling on top of this baseline to handle variable workloads and peak demand, ensuring you only pay for additional resources when actually needed rather than over-provisioning for worst-case scenarios. This hybrid approach balances cost predictability through reservations with elasticity through auto-scaling, optimizing both budget and performance. Below you can find an example pricing discount for Redshift Reserved Instances:
 
-| **Pricing model** | **Upfront payment** | **Price [%]** | **Price/month [%]** |
-| On-demand | N/A | - | 100% |
-| Reservation for 1 year | 0% | - | 70% |
-| Reservation for 1 year | 100% | 792% | 66% |
-| Reservation for 3 year | 0% | - | 43% |
-| Reservation for 3 year | 100% | 1,350% | 37.5% |
+![Reserved Capacity Strategy](/src/assets/images/blog/reserved_capacity_strategy.png)
 
 ### **Auto-Scaling Configuration**: 
 
