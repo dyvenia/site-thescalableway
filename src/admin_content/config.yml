@@ -24,39 +24,71 @@ collections:
     icon: 'home'
     create: false
     extension: 'njk'
-    format: 'frontmatter'
     files:
       - file: 'src/pages/index.njk'
         label: 'Home'
         name: 'home'
         fields:
-          - {label: 'Hero Title', name: 'hero.title', widget: 'string'}
-          - {label: 'Hero Subtitle', name: 'hero.subtitle', widget: 'markdown'}
-          - {label: 'Learn More Button Text', name: 'hero.button_text', widget: 'string'}
-          - {label: 'Learn More Button Target', name: 'hero.button_target', widget: 'string'}
-          - {label: 'Introduction Title', name: 'intro.title', widget: 'string'}
-          - {label: 'Introduction Content', name: 'intro.content', widget: 'markdown'}
-          - {label: 'Build and Run Title', name: 'build_and_run.title', widget: 'string'}
-          - {label: 'Build and Run Content Left', name: 'build_and_run.content_left', widget: 'markdown'}
-          - {label: 'Build and Run Content Right', name: 'build_and_run.content_right', widget: 'markdown'}
-          - {label: 'Highlight One Title', name: 'highlight_one.title', widget: 'string'}
-          - {label: 'Highlight One Subtitle', name: 'highlight_one.subtitle', widget: 'markdown'}
-          - {label: 'About Us', name: 'about.title', widget: 'string'}
-          - {label: 'About Us', name: 'about.content', widget: 'markdown'}
-          - {label: 'Highlight Two Title One', name: 'highlight_two.title1', widget: 'string'}
-          - {label: 'Highlight Two Title Two', name: 'highlight_two.title2', widget: 'string'}
-          - {label: 'Highlight Two Content', name: 'highlight_two.content', widget: 'markdown'}
-          - {label: '5 Foundations Title One', name: 'foundations_titles.title1', widget: 'string'}
-          - {label: '5 Foundations Title Two', name: 'foundations_titles.title2', widget: 'string'}
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Subtitle', name: 'subtitle', widget: 'markdown'}
+              - {label: 'Learn More Button Text', name: 'button_text', widget: 'string'}
+              - {label: 'Learn More Button Target', name: 'button_target', widget: 'string'}
+          - label: 'Introduction'
+            name: 'intro'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'markdown'}
+          - label: 'Build and Run'
+            name: 'build_and_run'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content Left', name: 'content_left', widget: 'markdown'}
+              - {label: 'Content Right', name: 'content_right', widget: 'markdown'}
+          - label: 'Highlight One'
+            name: 'highlight_one'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Subtitle', name: 'subtitle', widget: 'markdown'}
+          - label: 'About Us'
+            name: 'about'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'markdown'}
+          - label: 'Highlight Two'
+            name: 'highlight_two'
+            widget: 'object'
+            fields:
+              - {label: 'Title One', name: 'title1', widget: 'string'}
+              - {label: 'Title Two', name: 'title2', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'markdown'}
+          - label: '5 Foundations Titles'
+            name: 'foundations_titles'
+            widget: 'object'
+            fields:
+              - {label: 'Title One', name: 'title1', widget: 'string'}
+              - {label: 'Title Two', name: 'title2', widget: 'string'}
+              - {label: 'Subtitle', name: 'subtitle', widget: 'string'}
           - label: 'Foundations Keys'
-            name: 'foundations_elements' #<- this doesn't seem to work
+            name: 'foundations_elements'
             widget: 'list'
             collapsed: true
             fields:
               - {label: 'Title', name: 'title', widget: 'string'}
               - {label: 'Content', name: 'content', widget: 'string'}
-          - {label: 'Why Us', name: 'whyus_intro.title', widget: 'string'}
-          - {label: 'Why Us Intro', name: 'whyus_intro.content', widget: 'string'}
+          - label: 'Why Us Intro'
+            name: 'whyus_intro'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'string'}
           - label: 'Why Us - Elements'
             name: 'whyus_elements'
             widget: 'list'
@@ -103,9 +135,13 @@ collections:
             fields:
               - {label: 'Title', name: 'title', widget: 'string'}
               - {label: 'Content', name: 'content', widget: 'markdown'}
-          - {label: 'Our Services', name: 'our_services.title', widget: 'string'}
-          - {label: 'Our Services Button Text', name: 'our_services.button_text', widget: 'string'}
-          - {label: 'Our Services Button Target', name: 'our_services.button_target', widget: 'string'}
+          - label: 'Our Services'
+            name: 'our_services'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Button Text', name: 'button_text', widget: 'string'}
+              - {label: 'Button Target', name: 'button_target', widget: 'string'}
           - label: 'Our Services Items'
             name: 'our_services_items'
             widget: 'list'
@@ -153,7 +189,6 @@ collections:
     icon: 'mail'
     create: false
     extension: 'njk'
-    format: 'frontmatter'
     files:
       - file: 'src/pages/contact.njk'
         label: 'Contact Page'
@@ -205,7 +240,6 @@ collections:
     icon: 'timeline'
     create: false
     extension: 'njk'
-    format: 'frontmatter'
     files:
       - file: 'src/pages/our-process.njk'
         label: 'Our Process'
@@ -323,7 +357,6 @@ collections:
     icon: 'info'
     create: false
     extension: 'njk'
-    format: 'frontmatter'
     files:
       - file: 'src/pages/learn-more.njk'
         label: 'Learn More'
@@ -452,7 +485,6 @@ collections:
     icon: 'policy'
     create: false
     extension: 'md'
-    format: 'frontmatter'
     files:
       - file: 'src/pages/privacy.md'
         label: 'Privacy Policy'
@@ -482,7 +514,6 @@ collections:
     folder: 'src/team'
     create: true
     extension: 'md'
-    format: 'frontmatter'
     slug: '{{slug}}'
     media_folder: '/src/assets/images/team/'
     fields:
