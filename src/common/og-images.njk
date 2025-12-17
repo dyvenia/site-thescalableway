@@ -34,6 +34,10 @@ eleventyExcludeFromCollections: true
     {% set verticalStartingPoint = 210 %}
     {% elseif numberOfLines == 5 %}
     {% set verticalStartingPoint = 170 %}
+    {% elseif numberOfLines == 6 %}
+    {% set verticalStartingPoint = 160 %}
+    {% elseif numberOfLines == 7 %}
+    {% set verticalStartingPoint = 160 %}
   {% endif %}
 
 
@@ -78,6 +82,6 @@ eleventyExcludeFromCollections: true
     letter-spacing="-0.5"
   >
     <!-- <tspan x="160" y="580">{{ meta.siteName }} · {{ meta.url | replace("https://", "") | replace("http://", "") }}</tspan> -->
-    <tspan x="{{ horizontalStartingPoint }}" y="580">{{ meta.siteName }}</tspan>
+    <tspan x="{{ horizontalStartingPoint }}" y="600">{{ meta.siteName }}</tspan>
   </text>
 </svg>
