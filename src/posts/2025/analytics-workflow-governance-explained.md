@@ -60,7 +60,7 @@ One practical way to navigate the tension between collaboration and rigid bounda
 
 A well-structured analytics workflow is essential for turning raw data into reliable insights. As analytics initiatives mature, the need for governance, role clarity, and collaboration becomes increasingly important. Specialized roles such as data analysts, data engineers, and platform engineers each contribute unique expertise, and their impact should be measured differently to reflect their responsibilities.
 
-Clearly defined roles and processes—such as code reviews, CI/CD practices, and RACI matrices—not only support governance and maintainability but also foster collaboration across internal and external teams. While early-stage flexibility is useful, long-term success in data and analytics depends on thoughtful structure, cross-functional alignment, and a shared understanding of who does what, and why.
+Clearly defined roles and processes—such as code reviews, CI/CD practices, and RACI matrices—not only support governance and maintainability but also foster collaboration across internal and external teams. While early-stage flexibility is useful, long-term success in data and analytics depends on thoughtful structure, cross-functional alignment, and a shared understanding of who does what and why.
 
 ### Resources
 
