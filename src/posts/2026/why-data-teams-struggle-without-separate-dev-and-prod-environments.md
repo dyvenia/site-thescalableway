@@ -26,20 +26,20 @@ I’ve seen this play out in many companies:
 
 - Stakeholders stop trusting reports because they fail randomly ‒ and this is not just my experience: about [three-quarters of organizations](https://www.montecarlodata.com/blog-data-quality-survey) say business stakeholders are the ones who spot issues first, most of the time.
 - Business users build their own spreadsheets and one-off tools to “fix” gaps.
-- Data teams spend their time firefighting instead of improving pipelines. On average, data engineers spend [40% of their time](https://www.montecarlodata.com/blog-2022-data-quality-survey/) (roughly 2 days per week!) addressing bad data and unplanned issues.
+- Data teams spend their time firefighting instead of improving pipelines. On average, data engineers spend [40% of their time](https://www.montecarlodata.com/blog-2022-data-quality-survey/) (roughly 2 days per week!) addressing bad data and unplanned issues.  
 - Deployment windows shrink to late nights and weekends because no one trusts changes during business hours. And it’s not just time lost: over [70% of technology staff](https://www.pagerduty.com/blog/devops/unplanned-work-devops/) report being negatively impacted by unplanned work in three or more ways, including heightened stress and anxiety, reduced work-life balance, and less time to focus on strategic projects.
 
 For the people working inside these environments, the stress is constant. Engineers avoid trying new ideas because the cost of failure is too high. The pace of delivery slows, and eventually, good people leave for organizations where they can focus on building rather than patching.
 
 ## What a Healthy Setup Looks Like
 
-The solution is not complicated in principle: give development and production their own space. That means separate cloud accounts, databases, compute resources, and access controls. Tricks like using schema prefixes in the same warehouse don’t solve the problem ‒ they only create false security.
+The solution is not complicated in principle: give development and production their own space. That means separate cloud accounts, databases, compute resources, and access controls. Tricks like using schema prefixes in the same warehouse don’t solve the problem ‒ they only create false security. 
 
 A good development environment doesn’t need to be a full copy of production. It just needs to behave the same way. I live by those 3 golden practices for achieving this:
 
 1. Use infrastructure-as-code to keep environments consistent.
 2. Create smaller datasets that are representative of production (with sensitive data masked).
-3. Set up a clear path for code to move: dev → staging → production, with tests and reviews at each step.
+3. Set up a clear path for code to move: dev → staging → production, with tests and reviews at each step. 
 
 Version control (Git) underpins all of this. Every change should leave a trail, so you can review, roll back, and understand what’s running where.
 
@@ -55,17 +55,17 @@ A shift like this doesn’t happen overnight, and it shouldn’t. Most teams suc
 
 ## The Payoff: Stability, Speed, and Trust
 
-Companies that make this switch often see incident rates drop by 70–80% within the first six months. Deployments that once happened monthly shift to a weekly or even daily rhythm. Teams finally get space to experiment without the fear of breaking production, and business leaders start trusting dashboards again because they consistently work.
+Companies that make this switch often see significant drops in incident rates within the first six months ‒ based on our experience 50% in 3 months. Deployments that once happened monthly shift to a weekly or even daily rhythm. Teams finally get space to experiment without the fear of breaking production, and business leaders start trusting dashboards again because they consistently work.
 
 Inside the team, the shift is just as important. Instead of late-night firefighting, data professionals can focus on delivering value, exploring new tools, and building solutions that last.
 
 ## “But We’re Different…”
 
-Yes, yes, I know. “_It’s too expensive, too complicated, or not suitable for the amount of data we handle.”_ But here’s the reality:
+Yes, yes, I know. “It’s too expensive, too complicated, or not suitable for the amount of data we handle.” But here’s the reality:
 
 - **"We can't afford separate environments.”&#160;**
 
-Cloud platforms make it manageable. You don’t need full-scale production replicas; lightweight development instances are enough. For example, on Snowflake, small teams with 1TB of data and 5–10 users typically [spend $2,000–5,000 per month](https://keebo.ai/2025/03/07/snowflake-vs-databricks/) per environment, while Databricks costs are in a similar range for basic workloads. Compare that cost to your last outage.
+Cloud platforms make it manageable. You don't need full-scale production replicas; lightweight development instances are enough. For example, on **Azure Synapse Analytics**, small teams with 1TB of data and 5–10 users typically **spend $1,500–4,000 per month** per environment using serverless SQL pools with pause/resume capabilities. On **AWS Redshift Serverless**, similar workloads run [**$1,000–3,000 per month**](https://aws.amazon.com/redshift/pricing/) since you only pay for actual query time—no idle clusters burning money overnight. For even lighter workloads, **Amazon Athena** can drop costs to **$200–800 per month** when you're querying well-partitioned data in S3 ([at $5 per TB scanned](https://aws.amazon.com/athena/pricing/)). Compare that cost to your last outage.
 
 - **“We’re too small for such complexity.”&#160;**
 
@@ -73,7 +73,7 @@ Small teams need it most. If three people spend about 40% their time fixing brok
 
 - **“Our data is too big to duplicate.”&#160;**
 
-You don’t need to. Subsets, samples, or synthetic data usually give you what you need to test logic and performance.
+You don’t need to. [Subsets](https://www.datprof.com/solutions/data-subsetting-2/), samples, or synthetic data usually give you what you need to test logic and performance.
 
 ## Taking the First Step
 
