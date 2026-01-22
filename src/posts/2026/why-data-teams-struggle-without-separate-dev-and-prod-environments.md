@@ -1,6 +1,6 @@
 ---
 title: Why Data Teams Struggle Without Separate Dev and Prod Environments
-date: 2026-01-21 09:30:00
+date: 2026-01-22 13:00:00
 author: Mateusz Paździor
 description: When development and production share the same data environment, even small changes can trigger costly outages. This article explains why separating dev and prod is foundational for reliable analytics, and how teams can do it without overengineering or blowing the budget.
 tags:
@@ -10,6 +10,7 @@ tags:
   - CI/CD
 internal_notes: Article by Mateusz on why data teams struggle without separate dev and prod environments
 ---
+
 It’s Monday morning. The CEO’s dashboard shows zeros. Sales metrics are gone. The data team is digging through logs, trying to figure out which Friday deployment broke production. Familiar scenario?
 
 Unfortunately, this isn’t just an anecdote. Over the past three years, [50% of data centers experienced at least one impactful outage](https://www.coresite.com/blog/data-center-outage-trends-good-news-flags-in-the-uptime-institute-reports?hs_amp=true). Of these incidents, nearly 40% were caused by human error, with 85% stemming from staff failing to follow procedures or from process flaws ‒ issues that could often be avoided if analytics and production workloads were properly separated. And the consequences can be severe: more than half of these outages cost organizations over $100,000, and [one in five exceeded $1 million](https://www.scribd.com/document/890018493/2025-Annual-Outage-Exec-Summary-UI).
