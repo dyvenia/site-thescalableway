@@ -1,6 +1,6 @@
 import Image from '@11ty/eleventy-img';
 import path from 'node:path';
-import htmlmin from 'html-minifier-terser';
+import {optimize} from 'svgo';
 
 const stringifyAttributes = attributeMap => {
   return Object.entries(attributeMap)
@@ -11,50 +11,62 @@ const stringifyAttributes = attributeMap => {
     .join(' ');
 };
 
-export const imageShortcode = async (
-  src,
-  alt = '',
-  caption = '',
-  loading = 'lazy',
-  containerClass,
-  imageClass,
-  widths = [650, 960, 1200],
-  sizes = 'auto',
-  formats = ['webp', 'jpeg']
-) => {
+const errorSrcRequired = shortcodeName => {
+  throw new Error(`src parameter is required for {% ${shortcodeName} %} shortcode`);
+};
+
+// Handles SVG processing
+const processSvg = async (src, alt, imageClass) => {
   // Prepend "./src" if not present
   if (!src.startsWith('./src')) {
     src = `./src${src}`;
   }
-  // check if source is SVG
-  if (path.extname(src).toLowerCase() === '.svg') {
-    const svgData = readFileSync(src, 'utf8');
-    const {data: optimizedSvg} = await optimize(svgData, {
-      plugins: [
-        {
-          name: 'removeDimensions',
-          params: {
-            enableViewBox: true
-          }
-        }
-      ]
-    });
 
-    const svgAttributes = stringifyAttributes({
-      'class': `svg-image ${className || ''}`.trim(),
-      'role': alt ? 'img' : 'presentation',
-      'aria-label': alt || undefined,
-      'aria-hidden': alt ? 'false' : 'true'
-    });
+  const metadata = await Image(src, {
+    formats: ['svg'],
+    dryRun: true
+  });
 
-    const svgElement = caption
-      ? `<figure class="flow ${className || ''}">
-            ${optimizedSvg.replace('<svg', `<svg ${svgAttributes}`)}
-            <figcaption>${caption}</figcaption>
-          </figure>`
-      : optimizedSvg.replace('<svg', `<svg ${svgAttributes}`);
+  let svgContent = metadata.svg[0].buffer.toString();
+  const optimizedSvg = await optimize(svgContent, {
+    plugins: [
+      'removeXMLNS',
+      {
+        name: 'preset-default'
+      }
+    ]
+  });
 
-    return htmlmin.minify(svgElement, {collapseWhitespace: true});
+  let finalSvgOutput = optimizedSvg.data.replace(
+    '<svg',
+    `<svg ${imageClass ? `class="${imageClass}"` : ''} ${alt ? `aria-label="${alt}"` : 'aria-hidden="true"'}`
+  );
+
+  return finalSvgOutput;
+};
+
+// Handles image processing
+const processImage = async options => {
+  let {
+    src,
+    alt = '',
+    caption = '',
+    loading = 'lazy',
+    containerClass,
+    imageClass,
+    widths = [650, 960, 1200],
+    sizes = 'auto',
+    formats = ['webp', 'jpeg']
+  } = options;
+
+  // Check if file is an SVG
+  if (src.endsWith('.svg')) {
+    return processSvg(src, alt, imageClass);
+  }
+
+  // Prepend "./src" if not present
+  if (!src.startsWith('./src')) {
+    src = `./src${src}`;
   }
 
   const metadata = await Image(src, {
@@ -69,9 +81,7 @@ export const imageShortcode = async (
     }
   });
 
-  const lowsrc = metadata.jpeg?.slice(-1)[0] ||
-    metadata.webp?.slice(-1)[0] ||
-    metadata.png?.slice(-1)[0] || {url: src, width: null, height: null};
+  const lowsrc = metadata.jpeg?.[metadata.jpeg.length - 1] || Object.values(metadata)[0]?.[Object.values(metadata)[0].length - 1];
 
   const imageSources = Object.values(metadata)
     .map(imageFormat => {
@@ -97,4 +107,40 @@ export const imageShortcode = async (
   return caption
     ? `<figure slot="image"${containerClass ? ` class="${containerClass}"` : ''}>${pictureElement}<figcaption>${caption}</figcaption></figure>`
     : `<picture slot="image"${containerClass ? ` class="${containerClass}"` : ''}>${imageSources}<img ${imageAttributes}></picture>`;
+};
+
+// Positional parameters (legacy)
+export const imageShortcode = async (
+  src,
+  alt,
+  caption,
+  loading,
+  containerClass,
+  imageClass,
+  widths,
+  sizes,
+  formats
+) => {
+  if (!src) {
+    errorSrcRequired('image');
+  }
+  return processImage({
+    src,
+    alt,
+    caption,
+    loading,
+    containerClass,
+    imageClass,
+    widths,
+    sizes,
+    formats
+  });
+};
+
+// Named parameters
+export const imageKeysShortcode = async (options = {}) => {
+  if (!options.src) {
+    errorSrcRequired('imageKeys');
+  }
+  return processImage(options);
 };
