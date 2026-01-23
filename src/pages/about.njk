@@ -22,7 +22,9 @@ intro: |
     {% for member in collections.team_members %}
       {% if member.data.show_on_about %}
         <div class="about__content flow grid gutter-m" data-layout="50-50">
-          {% image "." + member.data.image, "" %}
+          {% if member.data.image %}
+            {% image "." + member.data.image, "" %}
+          {% endif %}
           <div class="flow prose">
             <h3>{{ member.data.name }}</h3>
             {{ member.data.description_long | markdownFormat | safe }}

@@ -34,10 +34,25 @@ schema: blog
 
         {% for author in collections.team_members %}
           {% if author.data.name == postAuthor %}
-            <a href="{{ author.url }}" class="cluster gutter-xs">
-              {% image "." + author.data.image, author.data.name, null, null, null, "aspect-1 rounded-full object-cover", [100], "100px" %}
-              <span> by {{ author.data.name }}</span>
-            </a>
+            {% set authorImage = {
+                "alt": author.data.name,
+                "src": "." + author.data.image,
+                "imageClass": "aspect-1 rounded-full object-cover",
+                "widths": [100],
+                "sizes": "100px"
+            } %}
+
+            {% if author.data.create_profile !== false %}
+              <a href="{{ author.url }}" class="cluster gutter-xs">
+                {% imageKeys authorImage %}
+                <span> by {{ author.data.name }}</span>
+              </a>
+            {% else %}
+              <span class="cluster gutter-xs">
+                {% imageKeys authorImage %}
+                <span> by {{ author.data.name }}</span>
+              </span>
+            {% endif %}
           {% endif %}
         {% endfor %}
       </p>

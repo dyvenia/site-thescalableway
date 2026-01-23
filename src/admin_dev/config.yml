@@ -529,9 +529,16 @@ collections:
           hint: 'Add full LinkedIn URL'
         }
       - {label: 'Show on About Page?', name: 'show_on_about', widget: 'boolean', default: false}
+      - {
+          label: 'Create Profile Page?',
+          name: 'create_profile',
+          widget: 'boolean',
+          default: true,
+          hint: 'If false, author will not link out in blog posts'
+        }
       - {label: 'Role', name: 'role', widget: 'string', required: false}
-      - {label: 'Short Description', name: 'description_short', widget: 'text'}
-      - {label: 'Long Description', name: 'description_long', widget: 'markdown'}
+      - {label: 'Short Description', name: 'description_short', widget: 'text', required: false}
+      - {label: 'Long Description', name: 'description_long', widget: 'markdown', required: false}
       - {
           label: 'Expertise',
           name: 'expertise',
