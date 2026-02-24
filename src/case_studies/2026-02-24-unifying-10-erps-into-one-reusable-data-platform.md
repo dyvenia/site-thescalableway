@@ -105,10 +105,10 @@ Automated ingestion runs across more than ten ERP systems into the centralized d
 
 Beyond reporting frequency, structural improvements include:
 
-- New data sources can be added without redesigning the system. 
-- Connectors follow a shared architecture. 
-- Orchestration is centralized. 
-- Failures trigger notifications. 
+- New data sources can be added without redesigning the system.
+- Connectors follow a shared architecture.
+- Orchestration is centralized.
+- Failures trigger notifications.
 - Isolated development and production servers.
 - Code and deployments are version-controlled in a unified repository.
 
@@ -118,7 +118,8 @@ When something breaks, the team is notified immediately. When data behaves unexp
 
 The visible outcome was consolidated daily reporting across 40+ entities with near-complete revenue coverage.
 
-> _"dyvenia (the parent company of The Scalable Way) has transformed how we handle data governance and collaboration at our organization. The robust governance features have given us peace of mind, knowing that our data access and ownership controls are in place and secure. The solutions that dyvenia provides have allowed us to make better business decisions, knowing that we can depend on high-quality and real-time data.”_ \~Michael, SR FP&A Manager at\~LAPP
+> _"dyvenia (the parent company of The Scalable Way) has transformed how we handle data governance and collaboration at our organization. The robust governance features have given us peace of mind, knowing that our data access and ownership controls are in place and secure. The solutions that dyvenia provides have allowed us to make better business decisions, knowing that we can depend on high-quality and real-time data.”_ \
+                                                                              ~Michael, SR FP&A Manager at\~LAPP
 
 The deeper outcome was architectural. LAPP now operates on a structured, reusable ingestion framework with controlled orchestration, reproducible transformations, and centralized infrastructure.
 
