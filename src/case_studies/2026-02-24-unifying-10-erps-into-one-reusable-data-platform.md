@@ -1,7 +1,7 @@
 ---
 title: Unifying 10+ ERPs into One Reusable Data Platform
 date: 2026-02-24 14:39:00
-description: Learn how we transformed a fragmented ERP landscape into a centralized, reusable data platform delivering reliable daily insights at enterprise scale.
+description: Learn how we transformed a fragmented ERP landscape into a centralized, reusable data platform that replaced manual consolidation with automated ingestion, controlled orchestration, and traceable business logic, delivering reliable daily insights at enterprise scale.
 internal_notes: LAPP Case study
 ---
 
