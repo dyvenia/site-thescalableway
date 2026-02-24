@@ -77,7 +77,7 @@ As ingestion expanded, orchestration became central. Prefect was already in plac
 
 During the migration to Prefect 2, **dbt was introduced** to the platform, bringing structured transformation logic where previously there was none.
 
-Given SAP’s concurrency constraints, we implemented** structured multi-flows** to regulate parallelism and prevent overload.
+Given SAP’s concurrency constraints, we implemented structured multi-flows to regulate parallelism and prevent overload.
 
 Operational resilience improved significantly through:
 
