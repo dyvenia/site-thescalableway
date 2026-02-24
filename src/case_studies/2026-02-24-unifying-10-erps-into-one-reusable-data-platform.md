@@ -36,7 +36,7 @@ Leadership needed a consistent daily view of performance. The data team needed a
 
 ## Building the Foundation: Infrastructure, Ingestion, and Orchestration
 
-The first milestone came quickly.** Within 2 hours, we delivered a working SAP extraction prototype** that loaded data into a centralized data lake. This validated feasibility and created internal momentum.
+The first milestone came quickly. **Within 2 hours, we delivered a working SAP extraction prototype** that loaded data into a centralized data lake. This validated feasibility and created internal momentum.
 
 From there, the focus shifted to building durable foundations across three core layers.
 
@@ -73,7 +73,7 @@ As additional ERP systems were integrated, the same architectural pattern was re
 
 ### Orchestration Layer: Controlled, Observable, Recoverable
 
-As ingestion expanded, orchestration became central. Prefect was already in place when we began. A major milestone was the** migration and restructuring toward Prefect 2**, which significantly improved deployment control and flow management. We are currently migrating to Prefect 3 to further strengthen orchestration capabilities.
+As ingestion expanded, orchestration became central. Prefect was already in place when we began. A major milestone was the **migration and restructuring toward Prefect 2**, which significantly improved deployment control and flow management. We are currently migrating to Prefect 3 to further strengthen orchestration capabilities.
 
 During the migration to Prefect 2, **dbt was introduced** to the platform, bringing structured transformation logic where previously there was none.
 
@@ -85,7 +85,7 @@ Operational resilience improved significantly through:
 - Automated validation checks on reporting tables
 - Controlled reload mechanisms that prevent cascading failures
 
-Instead of manually debugging broken pipelines, the team gained structured **recovery and visibility**, enabling the system to become more** predictable**.
+Instead of manually debugging broken pipelines, the team gained structured recovery and visibility, enabling the system to become more **predictable**.
 
 ### Transformations: Transparent Business Logic with dbt
 
