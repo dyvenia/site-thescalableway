@@ -107,8 +107,8 @@ def transform_and_catalog(
 
 Two operational details are worth highlighting:
 
-- **`work_queue="dbt"`** routes the rescue run through the same queue pool as regular dbt deployments, making queue saturation visible and manageable.
-- **`dbt_selects` passed at runtime means the deployment never needs to be redeployed to handle a new scenario. At trigger time, the engineer fills in the selection string in the Prefect UI custom run dialog.
+- `work_queue="dbt"` routes the rescue run through the same queue pool as regular dbt deployments, making queue saturation visible and manageable.
+- `dbt_selects` passed at runtime means the deployment never needs to be redeployed to handle a new scenario. At trigger time, the engineer fills in the selection string in the Prefect UI custom run dialog.
 
 The deployment also runs dbt's built-in tests after each execution, so model correctness is validated automatically without a separate step.
 
