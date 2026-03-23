@@ -7,6 +7,7 @@ tags:
   - dbt
   - data reliability
   - pipeline recovery
+  - data engineering
 internal_notes: blog post on the rescue dbt_rerun deployment by Andrii Kachan
 ---
 
