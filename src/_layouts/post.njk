@@ -34,18 +34,26 @@ schema: blog
 
         {% for author in collections.team_members %}
           {% if author.data.name == postAuthor %}
-            {% set authorImage = {
-                "alt": author.data.name,
-                "src": "." + author.data.image,
-                "imageClass": "aspect-1 rounded-full object-cover",
-                "widths": [100],
-                "sizes": "100px"
-            } %}
+            {%
+              set authorImage = {
+                  "alt": author.data.name,
+                  "src": "." + author.data.image,
+                  "imageClass": "aspect-1 rounded-full object-cover",
+                  "widths": [100],
+                  "sizes": "100px"
+              }
+            %}
 
             {% if author.data.create_profile !== false %}
               <a href="{{ author.url }}" class="cluster gutter-xs">
                 {% imageKeys authorImage %}
                 <span> by {{ author.data.name }}</span>
+              </a>
+              {% elseif author.data.linkedin %}
+              <a href="{{ author.data.linkedin }}" class="cluster gutter-xs no-indicator" target="_blank">
+                {% imageKeys authorImage %}
+                <span> by {{ author.data.name }}</span>
+                {% svg "platform/linkedin" %}
               </a>
             {% else %}
               <span class="cluster gutter-xs">
