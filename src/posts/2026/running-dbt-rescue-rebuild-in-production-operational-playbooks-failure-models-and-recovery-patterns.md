@@ -53,19 +53,11 @@ Here is a compact guide to the selection patterns we use:
 
 **Intermediate models**
 
-| **Scenario** | **Selection** |
-| New intermediate model | dbt run --select int_model |
-| Updated intermediate model | dbt run --select +int_model+ |
-| New incremental intermediate | dbt run --select int_model (first build, no history yet) |
-| Updated incremental intermediate | dbt run --select +int_model+ --full-refresh |
+![](/src/assets/images/blog/intermediate_models.png)
 
 **Mart models**
 
-| **Scenario** | **Selection** |
-| New mart model | dbt run --select +mart_model |
-| Updated mart model | dbt run --select +mart_model+ |
-| New incremental mart | dbt run --select +mart_model --full-refresh |
-| Updated incremental mart | dbt run --select +mart_model+ --full-refresh |
+![](/src/assets/images/blog/mart_models.png)
 
 ## Using `--exclude` for partial progress recovery
 
@@ -87,7 +79,7 @@ Incremental models are where most rescue mistakes happen, because the wrong refr
 
 Incremental models represent the most complex rescue scenario, because the decision of whether to use `--full-refresh` has lasting consequences for both data correctness and warehouse load. Our incremental models typically use a `unique_key` for deduplication and an is_incremental() filter to restrict which data is loaded on each run, often tied to a date cursor or a calendar condition, such as a monthly refresh window. Understanding both of those constraints is a prerequisite for choosing the right rescue approach.
 
-**When to use ``--full-refresh``**
+**When to use \`\`--full-refresh\`\`**
 
 Use `--full-refresh` when the change invalidates the historical state of the table:
 
@@ -96,7 +88,7 @@ Use `--full-refresh` when the change invalidates the historical state of the tab
 - A bug produced an incorrect history that must be corrected.
 - A new column is being backfilled from source data that already exists in staging.
 
-**When not to use ``--full-refresh``**
+**When not to use \`\`--full-refresh\`\`**
 
 - Only future data will differ (for example, adding a new column with NULL values for historical rows is acceptable).
 - The model runs on a monthly cadence, and a normal incremental run will naturally pick up the change on its next scheduled execution.
