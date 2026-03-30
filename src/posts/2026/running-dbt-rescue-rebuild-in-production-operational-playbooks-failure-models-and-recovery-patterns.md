@@ -10,7 +10,7 @@ tags:
 internal_notes: part 2 of a dbt rescue pipeline series by Andrii Kachan
 ---
 
-In a previous blog post, we introduced **`dbt_rerun`**, a dedicated Prefect deployment we use as a rescue mechanism for production dbt pipelines. We discussed the problem it solves, why standard recovery options fall short, how the deployment is wired, and where it fits into our day-to-day development workflow.
+In a [previous blog post](https://thescalableway.com/blog/the-rescue-dbt_rerun-deployment-rebuilding-changed-and-broken-models-without-disrupting-production/), we introduced **`dbt_rerun`**, a dedicated Prefect deployment we use as a rescue mechanism for production dbt pipelines. We discussed the problem it solves, why standard recovery options fall short, how the deployment is wired, and where it fits into our day-to-day development workflow.
 
 Now, let’s focus on what happens after you click “run”. We’ll walk through how we actually use dbt_rerun in production: choosing the right dependency scope, managing queue and warehouse contention, recovering from outages, handling incremental models safely, and validating that the rescue truly fixed the issue. These are the patterns and guardrails we rely on during real incidents, where speed matters but correctness matters more.
 
