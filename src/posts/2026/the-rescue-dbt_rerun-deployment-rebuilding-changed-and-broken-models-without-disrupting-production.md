@@ -118,7 +118,7 @@ Before diving into individual scenarios, here is how **`dbt_rerun`** fits into o
 
 1. **Local development:** A Data Analyst builds or updates a dbt model locally against the sandbox schema ‒ a schema inside the production cluster that mirrors the structure of all production schemas.
 2. **Pull request and merge:** The Data Analyst opens a PR to main. Once approved and merged, the new or updated model code is live in the repository.
-3. **Rescue rebuild:** We trigger **`dbt_rerun`** to rebuild the changed model along with the appropriate upstream and downstream dependencies. This is the step that makes the production table reflect the new code.
+3. **Rescue rebuild:** We trigger \*\*`dbt_rerun`\*\* to rebuild the changed model along with the appropriate upstream and downstream dependencies. This is the step that makes the production table reflect the new code.
 4. **Scheduled runs proceed normally:** Once the rebuild is confirmed, the regular pipeline schedules pick up cleanly without encountering a code/table mismatch.
 
 This sequence applies equally to post-merge refreshes, hotfix recoveries, and outage remediations ‒ only the selection string and the urgency window change.
@@ -127,7 +127,7 @@ This sequence applies equally to post-merge refreshes, hotfix recoveries, and ou
 
 Triggering a rescue run at the wrong moment can cause more lateness than the original problem it is meant to solve.
 
-Our production environment typically runs five SQL queues in parallel. When four of those are occupied by scheduled deployments, taking the fifth with a heavy rescue run means that any new scheduled run that needs a queue will be blocked until the rescue completes. 
+Our production environment typically runs five SQL queues in parallel. When four of those are occupied by scheduled deployments, taking the fifth with a heavy rescue run means that any new scheduled run that needs a queue will be blocked until the rescue completes.
 
 If the rescue model is large or triggers a long chain of dependencies, this blockage can cause data latency across multiple downstream consumers.
 
@@ -146,6 +146,6 @@ The mitigation pattern for large reloads is to split by lineage: instead of one 
 
 ## What’s next
 
-The `dbt_rerun` deployment gives us a safe, controlled way to correct production state when models change or break, without touching schedules or resorting to heavy-handed reruns. But the deployment itself is only part of the solution. How and when it is used matters just as much as how it is wired. 
+The `dbt_rerun` deployment gives us a safe, controlled way to correct production state when models change or break, without touching schedules or resorting to heavy-handed reruns. But the deployment itself is only part of the solution. How and when it is used matters just as much as how it is wired.
 
-Watch out for part two of this post, where we’ll go deeper into the operational side: how we scope rescue runs in real incidents, how we recover from outages, how we handle incremental models and full-refresh decisions, and how we avoid turning a rescue into a second production issue. If you’re the one on call when data breaks, stay tuned.
+Watch out for [part two](https://thescalableway.com/blog/running-dbt-rescue-rebuild-in-production-operational-playbooks-failure-models-and-recovery-patterns/) of this post, where we’ll go deeper into the operational side: how we scope rescue runs in real incidents, how we recover from outages, how we handle incremental models and full-refresh decisions, and how we avoid turning a rescue into a second production issue. If you’re the one on call when data breaks, stay tuned.
