@@ -31,9 +31,9 @@ jobs:
         run: npm run build
 
       - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # 4.0.0
+        uses: JamesIves/github-pages-deploy-action@d92aa235d04922e8f08b40ce78cc5442fcfbfa2f # v4.8.0
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site # Adjust to your Eleventy output directory
-          destination_branch: gh-pages # Ensure this branch exists or can be created
-          force_orphan: true # Optional: Fixes potential branch conflicts
+          branch: gh-pages
+          folder: ./_site
+          single-commit: true
+          clean: true
