@@ -36,10 +36,10 @@ contact:
     <div
       id="meetings-iframe"
       class="meetings-iframe-container"
-      data-src="https://meetings-eu1.hubspot.com/mateusz-pazdzior?embed=true"
+      data-src="{{ meta.hubspot_calendar_url }}?embed=true"
       data-meetings-embed-script="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"
       data-consent-script="blocked"
-      data-consent-placeholder='<div class="wrapper"><div class="flow" style="border: 1px dashed currentColor; padding: 1rem;"><p>{{ consent.calendar_placeholder | safe }}</p><button type="button" class="button" data-consent-banner data-small-button data-pill-button>{{ consent.change }}</button></div></div>'
+      data-consent-placeholder='<div class="wrapper"><div class="flow" style="border: 1px dashed currentColor; padding: 1rem;"><p>{{ consent.calendar_placeholder | replace("__HUBSPOT_CALENDAR_URL__", meta.hubspot_calendar_url) | safe }}</p><button type="button" class="button" data-consent-banner data-small-button data-pill-button>{{ consent.change }}</button></div></div>'
     ></div>
   </div>
 </div>

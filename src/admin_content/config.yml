@@ -606,6 +606,12 @@ collections:
               widget: 'string',
               hint: 'Message shown when the user tries to submit without giving consent'
             }
+          - {
+              label: 'HubSpot calendar URL',
+              name: 'hubspot_calendar_url',
+              widget: 'string',
+              hint: 'Clean Public HubSpot meetings URL (no queries, no trailing slash). Used for contact page, consent placeholders (token __HUBSPOT_CALENDAR_URL__). Example: https://meetings-eu1.hubspot.com/mateusz-pazdzior'
+            }
 
   - name: 'consent'
     label: 'Cookie Consent'
@@ -651,5 +657,5 @@ collections:
               label: 'Calendar Placeholder Message',
               name: 'calendar_placeholder',
               widget: 'text',
-              hint: 'Specific message for blocked HubSpot calendar. Supports HTML links.'
+              hint: 'Message for blocked HubSpot calendar (HTML). Use __HUBSPOT_CALENDAR_URL__ where the booking URL should go (from Meta fields)'
             }
