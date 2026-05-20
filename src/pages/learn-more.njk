@@ -39,7 +39,6 @@ talk:
   subtitle: |-
     If you’re already thinking, “Yep, this is what we need”, go ahead and reach out. We’d be glad to hear from you.
   button_text: Book a Free Call
-  button_target: https://www.google.com/url?q=https://meetings-eu1.hubspot.com/alessio-civitillo/the-scalable-way?uuid%3Daf4321bb-7f76-4f87-a3a0-c2aaaf2b2364&sa=D&source=docs&ust=1751358906431249&usg=AOvVaw30lFhbvH6zoCEKpqEx6R-Z
   altContact: |-
     Or email us at <hello@thescalableway.com>.
   image: ./src/assets/images/backgrounds/sfondi-dyvenia27.jpg
@@ -110,7 +109,7 @@ thinking:
         {{ talk.subtitle | markdownFormat | safe }}
         <div class="flow">
           <a
-            href="{{ talk.button_target }}"
+            href="{{ meta.hubspot_calendar_url }}"
             class="button flow-space-l no-indicator plausible-event-name=CTA+Learn+Book+Call"
           >
             {{ talk.button_text }} {% svg "misc/arrow" %}</a
