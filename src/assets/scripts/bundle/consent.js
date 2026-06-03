@@ -109,6 +109,25 @@ function showPlaceholders() {
   });
 }
 
+/**
+ * HubSpot MeetingsEmbed appends an iframe asynchronously; if the script tag is on the page,
+ * the widget can appear after we show the placeholder. Only inject the embed script once
+ * the user has accepted the HubSpot service cookie.
+ */
+function loadHubSpotMeetingsEmbedIfEligible() {
+  const container = document.getElementById('meetings-iframe');
+  if (!container || !container.dataset.src) return;
+  const scriptUrl = container.dataset.meetingsEmbedScript;
+  if (!scriptUrl) return;
+  if (document.querySelector('script[data-hubspot-meetings-embed]')) return;
+
+  const script = document.createElement('script');
+  script.src = scriptUrl;
+  script.async = true;
+  script.dataset.hubspotMeetingsEmbed = '';
+  document.body.appendChild(script);
+}
+
 function handleAcceptAll() {
   const services = getAllServices();
   services.forEach(service => setServiceCookie(service, 'true'));
@@ -147,6 +166,9 @@ function checkConsent() {
   const allDecided = services.every(service => getServiceCookie(service) !== '');
 
   if (hasAccepted && allDecided) {
+    if (getServiceCookie('hubspot') === 'true') {
+      loadHubSpotMeetingsEmbedIfEligible();
+    }
     return;
   } else if (allDecided && !hasAccepted) {
     showPlaceholders();
