@@ -306,8 +306,20 @@ collections:
             name: 'intro'
             widget: 'object'
             fields:
-              - {label: 'Title', name: 'title', widget: 'markdown', hint: 'Use _italic_ for pink accent text. Start a new line for a line break.'}
+              - {
+                  label: 'Title',
+                  name: 'title',
+                  widget: 'markdown',
+                  hint: 'Use _italic_ for pink accent text. Start a new line for a line break.'
+                }
               - {label: 'Content', name: 'content', widget: 'markdown'}
+              - label: 'Header text align'
+                name: 'text_align'
+                widget: 'select'
+                default: 'center'
+                options:
+                  - {label: 'Left', value: 'left'}
+                  - {label: 'Center', value: 'center'}
           - label: 'What Are Section'
             name: 'what_are'
             widget: 'object'
@@ -324,6 +336,13 @@ collections:
             fields:
               - {label: 'Title', name: 'title', widget: 'string'}
               - {label: 'Intro', name: 'intro', widget: 'markdown'}
+              - label: 'Header text align'
+                name: 'text_align'
+                widget: 'select'
+                default: 'center'
+                options:
+                  - {label: 'Left', value: 'left'}
+                  - {label: 'Center', value: 'center'}
               - {label: 'Title Outcomes', name: 'title_outcomes', widget: 'string'}
               - {label: 'Title What', name: 'title_what', widget: 'string'}
           - label: 'Process Stages'
@@ -372,6 +391,13 @@ collections:
             fields:
               - {label: 'Title', name: 'title', widget: 'string'}
               - {label: 'Intro', name: 'intro', widget: 'markdown'}
+              - label: 'Header text align'
+                name: 'text_align'
+                widget: 'select'
+                default: 'center'
+                options:
+                  - {label: 'Left', value: 'left'}
+                  - {label: 'Center', value: 'center'}
           - label: 'Why Elements'
             name: 'why_elements'
             widget: 'list'

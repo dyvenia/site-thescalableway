@@ -1,14 +1,20 @@
-/* intro */
+/*  general header styles */
 
-.process .intro .header > * {
+.process .header {
+  grid-column: content;
+}
+
+.process .header[data-header-align='center'] > * {
   margin-inline: auto;
   text-align: center;
   text-wrap: balance;
 }
 
-.process .intro .header > p {
+.process .header[data-header-align='center'] > p {
   max-inline-size: 50ch;
 }
+
+/* intro */
 
 .process .intro .intro-title {
   text-wrap: balance;

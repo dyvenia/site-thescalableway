@@ -18,9 +18,10 @@ hero_layout:
   button_variant: default
 intro:
   title: |-
-    Our Modular 
+    Our Modular
     _Data Platform Framework_
   content: Our approach **prioritizes modularity and automation**. Rather than focusing solely on individual tools, we design platforms where components integrate seamlessly. A **streamlined developer experience** ensures adaptability, operational efficiency, and long-term scalability.
+  text_align: center
 what_are:
   title: What Is a Modular Data Platform?
   content: A modular data platform organizes data processing into distinct, interconnected components designed for a specific function. Each tool is optimized for a specific function and integrated through clear interfaces. Such architecture enhances scalability, simplifies maintenance, and improves reliability. It also enables automation through CI/CD pipelines while isolating failures to specific modules.
@@ -31,6 +32,7 @@ what_are:
 steps:
   title: Our Process
   intro: We follow a structured, outcome-driven process that helps your team move from firefighting and fragility to a stable, automated, and scalable data platform.
+  text_align: center
   title_outcomes: 'You get:'
   title_what: What we do?
 steps_elements:
@@ -80,6 +82,7 @@ why:
     Our approach combines modular design, automation-first principles, and software engineering discipline to make your data platform scalable, predictable, and easy to manage.
 
     You stay in control of scope, budget, and priorities, while we ensure fast, measurable outcomes at every step.
+  text_align: center
 why_elements:
   - title: Modular Design
     content: Ensures flexibility by focusing on well-defined components and interfaces.
@@ -126,7 +129,7 @@ layout: base
 {% include "partials/hero.njk" %}
 
 <div class="intro | wrapper">
-  <header class="header | region flow prose">
+  <header class="header | region flow prose" data-header-align="{{ intro.text_align or 'center' }}">
     <h2 class="intro-title | text-step-3">{{ intro.title | markdownInline | safe }}</h2>
     {{ intro.content | markdownFormat | safe }}
   </header>
@@ -147,7 +150,7 @@ layout: base
 
 <section class="steps | wrapper region" aria-labelledby="steps-title">
   <div class="feature">
-    <header id="steps-title" class="header | flow">
+    <header id="steps-title" class="header | flow" data-header-align="{{ steps.text_align or 'center' }}">
       <h2 class="text-step-3">{{ steps.title }}</h2>
       <p>{{ steps.intro }}</p>
     </header>
@@ -211,12 +214,12 @@ layout: base
 
 
 <div class="why | wrapper">
-  <article class="full region flow">
-    <header class="header | flow">
+  <article class="full region flow wrapper">
+    <header class="header | flow" data-header-align="{{ why.text_align or 'center' }}">
       <h2 class="text-step-3">{{ why.title }}</h2>
       <p>{{ why.intro }}</p>
     </header>
-    <div class="split mt-xl">
+    <div class="split mt-xl full">
       {% svg "brand/check" %}
       <ol class="timeline">
         {% for key in why_elements %}
