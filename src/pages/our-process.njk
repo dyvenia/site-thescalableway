@@ -9,7 +9,14 @@ hero:
     Our process transforms complex data development workflows & operations into reliable, automated systems.
   button_text: Learn more about how we work
   button_target: /contact/
-  image: ./src/assets/images/backgrounds/sfondi-dyvenia23.jpg
+  image: /assets/images/backgrounds/sfondi-dyvenia15.jpg
+  image_alt: ''
+hero_layout:
+  divider: divider/soft-bottom
+  background: blue
+  content_inline: left
+  region_space: xl-2xl
+  button_variant: default
 intro:
   title1: Our Modular
   title2: Data Platform Framework
@@ -115,23 +122,8 @@ blog:
 permalink: /our-process/index.html
 layout: base
 ---
-<header class="section page-header">
-  {% svg "divider/soft-top-bubble", null, "seperator small" %}
 
-  {% if hero.image %}
-    {% image hero.image, "", null, "eager" %}
-  {% endif %}
-
-  <div class="section__inner region region-space-xl">
-    <div class="wrapper flow">
-      <h1>{{ hero.title }}</h1>
-      {{ hero.subtitle | markdownFormat | safe }}
-      <a href="{{ hero.button_target }}" class="button flow-space-l no-indicator">
-        {{ hero.button_text }} {% svg "misc/arrow" %}</a
-      >
-    </div>
-  </div>
-</header>
+{% include "partials/hero.njk" %}
 
 <div class="intro | wrapper">
   <header class="header | region flow prose">
@@ -291,7 +283,7 @@ layout: base
 
 {%- css "local" -%}
   {%- include 'css/process.css' -%}
-  {%- include "css/page-header.css" -%}
+  {%- include "css/hero.css" -%}
   {%- include "css/details.css" -%}
 {%- endcss -%}
 

@@ -255,6 +255,53 @@ collections:
               - {label: 'Subtitle', name: 'subtitle', widget: 'markdown'}
               - {label: 'Button Text', name: 'button_text', widget: 'string'}
               - {label: 'Button Target', name: 'button_target', widget: 'string'}
+              - {label: 'Background image', name: 'image', widget: 'image', required: false}
+          - label: 'Hero Layout'
+            name: 'hero_layout'
+            widget: 'object'
+            fields:
+              - label: 'Divider'
+                name: 'divider'
+                widget: 'select'
+                default: 'divider/soft-top-bubble'
+                options:
+                  - {label: 'Soft wave', value: 'divider/soft-top-bubble'}
+                  - {label: 'Soft wave inverted', value: 'divider/soft-bottom'}
+                  - {label: 'None', value: 'none'}
+              - label: 'Background'
+                name: 'background'
+                widget: 'select'
+                default: 'blue-dark'
+                options:
+                  - {label: 'Blue dark', value: 'blue-dark'}
+                  - {label: 'Gray dark', value: 'gray-900'}
+                  - {label: 'Blue', value: 'blue'}
+                  - {label: 'Pink', value: 'pink'}
+                  - {label: 'Background accent', value: 'bg-accent'}
+              - label: 'Content inline'
+                name: 'content_inline'
+                widget: 'select'
+                default: 'left'
+                options:
+                  - {label: 'Left', value: 'left'}
+                  - {label: 'Center', value: 'center'}
+              - label: 'Region space'
+                name: 'region_space'
+                widget: 'select'
+                default: 'xl'
+                options:
+                  - {label: 'L', value: 'l'}
+                  - {label: 'XL', value: 'xl'}
+                  - {label: 'XL–2XL', value: 'xl-2xl'}
+              - label: 'Button variant'
+                name: 'button_variant'
+                widget: 'select'
+                default: 'default'
+                options:
+                  - {label: 'Default', value: 'default'}
+                  - {label: 'Blue', value: 'blue'}
+                  - {label: 'Pink', value: 'pink'}
+                  - {label: 'Gold', value: 'gold'}
           - label: 'Introduction'
             name: 'intro'
             widget: 'object'

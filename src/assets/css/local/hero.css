@@ -1,0 +1,124 @@
+.hero {
+  --hero-bg: var(--color-blue-800);
+  position: relative;
+  isolation: isolate;
+  background: var(--hero-bg);
+}
+
+.section.hero > .seperator {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* -------------------- content -------------------- */
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+}
+
+.hero[data-hero-divider] .hero__content {
+  --region-space-bottom: calc(var(--region-space-fallback) * 1.5);
+}
+
+.hero__content h1 {
+  text-wrap: pretty;
+  font-weight: var(--font-light);
+  line-height: var(--leading-flat);
+}
+
+.hero .wrapper > * {
+  grid-column: content-start / feature-end;
+}
+
+.hero .wrapper > :is(p, h1) {
+  color: var(--color-light);
+}
+
+.hero .wrapper > h1 {
+  max-inline-size: 30ch;
+}
+
+.hero .wrapper > p {
+  max-inline-size: 60ch;
+}
+
+/* -------------------- media -------------------- */
+
+.hero picture {
+  --flow-space: 0;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--hero-bg);
+  mix-blend-mode: darken;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+:root[data-theme='dark'] .hero picture {
+  mix-blend-mode: lighten;
+}
+
+.hero img {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+[data-theme='light'] .hero img {
+  filter: grayscale(100%) brightness(0.5) opacity(0.3) contrast(200%);
+}
+
+[data-theme='dark'] .hero img {
+  filter: grayscale(100%) brightness(0.7) opacity(0.5) contrast(200%);
+}
+
+/* -------------------- backgrounds -------------------- */
+
+.hero[data-hero-background='blue-dark'] {
+  --hero-bg: var(--color-blue-800);
+}
+
+.hero[data-hero-background='gray-900'] {
+  --hero-bg: var(--color-gray-900);
+}
+
+.hero[data-hero-background='blue'] {
+  --hero-bg: var(--color-blue-accent-5);
+}
+
+.hero[data-hero-background='pink'] {
+  --hero-bg: var(--color-pink);
+}
+
+.hero[data-hero-background='bg-accent'] {
+  --hero-bg: var(--color-bg-accent);
+}
+
+/* -------------------- variants -------------------- */
+
+.hero[data-hero-content-inline='left'] .wrapper > * {
+  justify-self: start;
+  text-align: start;
+}
+
+.hero[data-hero-content-inline='center'] .wrapper > * {
+  justify-self: center;
+  text-align: center;
+}
+
+/* no media */
+
+.hero[data-hero-media='none'] {
+  --hero-bg: var(--spot-color, var(--color-bg-accent));
+}
+
+.hero[data-hero-media='none'] .wrapper > :is(p, h1) {
+  color: var(--color-text);
+}
