@@ -1,21 +1,21 @@
-.process .header > * {
+/* intro */
+
+.process .intro .header > * {
   margin-inline: auto;
   text-align: center;
   text-wrap: balance;
 }
 
-.process .header > h2 {
-  max-inline-size: 20ch;
-}
-
-.process .header > p {
+.process .intro .header > p {
   max-inline-size: 50ch;
 }
 
-/* intro */
-
-.process .intro span {
+.process .intro .intro-title {
+  text-wrap: balance;
+}
+.process .intro .intro-title em {
   color: var(--color-pink);
+  font-style: normal;
 }
 
 .process .intro p {
