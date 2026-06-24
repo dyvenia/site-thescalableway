@@ -324,6 +324,13 @@ collections:
             name: 'what_are'
             widget: 'object'
             fields:
+              - label: 'Layout'
+                name: 'layout'
+                widget: 'select'
+                default: 'row'
+                options:
+                  - {label: 'Row', value: 'row'}
+                  - {label: 'Column', value: 'column'}
               - {label: 'Title', name: 'title', widget: 'string'}
               - {label: 'Content', name: 'content', widget: 'markdown'}
               - {label: 'Button Text', name: 'button_text', widget: 'string'}
@@ -423,6 +430,20 @@ collections:
                 fields:
                   - {label: 'Title', name: 'title', widget: 'string'}
                   - {label: 'Content', name: 'content', widget: 'markdown'}
+
+          - label: 'Blog Section'
+            name: 'blog'
+            widget: 'object'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Intro', name: 'intro', widget: 'string'}
+              - label: 'Header text align'
+                name: 'text_align'
+                widget: 'select'
+                default: 'center'
+                options:
+                  - {label: 'Left', value: 'left'}
+                  - {label: 'Center', value: 'center'}
 
   - name: 'learn_more'
     label: 'Learn More'

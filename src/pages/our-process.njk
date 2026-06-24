@@ -23,6 +23,7 @@ intro:
   content: Our approach **prioritizes modularity and automation**. Rather than focusing solely on individual tools, we design platforms where components integrate seamlessly. A **streamlined developer experience** ensures adaptability, operational efficiency, and long-term scalability.
   text_align: center
 what_are:
+  layout: row
   title: What Is a Modular Data Platform?
   content: A modular data platform organizes data processing into distinct, interconnected components designed for a specific function. Each tool is optimized for a specific function and integrated through clear interfaces. Such architecture enhances scalability, simplifies maintenance, and improves reliability. It also enables automation through CI/CD pipelines while isolating failures to specific modules.
   button_text: Learn More About Modular Data Platforms
@@ -118,10 +119,11 @@ faq:
       content: Absolutely. Our modular, code-first approach integrates with modern cloud and open-source technologies, though we don’t specialize in UI-based ETL tools.
     - title: Who from my team should be involved in the project?
       content: Data engineers, product owners, and business stakeholders, ensuring technical and business alignment from day one.
-blog:
-  title: Our Insights
-  intro: Selected Articles. Check our blog for more.
 bodyClass: process
+blog:
+  intro: Selected Articles. Check our blog for more.
+  title: Our Insights
+  text_align: center
 permalink: /our-process/index.html
 layout: base
 ---
@@ -136,7 +138,10 @@ layout: base
 </div>
 
 <div class="what | wrapper">
-  <article class="feature region  grid" data-layout="50-50">
+  <article
+    class="feature region grid"
+    data-layout="{% if what_are.layout == 'column' %}column{% else %}50-50{% endif %}"
+  >
     <div class="flow">
       <h2 class="text-step-2">{{ what_are.title }}</h2>
       {{ what_are.content | markdownFormat | safe }}
@@ -263,11 +268,13 @@ layout: base
 <div class="wrapper">
   <section class="full | region">
     <div class="wrapper flow prose">
-      <h2><a class="no-underline hover:underline" href="/insights/">{{ blog.title }}</a></h2>
+      <header class="header | flow" data-header-align="{{ blog.text_align or 'center' }}">
+        <h2><a class="no-underline hover:underline" href="/insights/">{{ blog.title }}</a></h2>
 
-      {% if blog.intro %}
-        <p>{{ blog.intro }}</p>
-      {% endif %}
+        {% if blog.intro %}
+          <p>{{ blog.intro }}</p>
+        {% endif %}
+      </header>
 
       <div class="feature">
         <div class="grid gutter-s">
