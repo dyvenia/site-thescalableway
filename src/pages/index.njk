@@ -181,19 +181,21 @@ permalink: /index.html
 title: The Scalable Way
 ---
 <div class="wrapper">
-  <div class="hero | wrapper">
+  <div class="hero | region wrapper">
+    <div class="hero__decoration | full wrapper">
+    {% svg "brand/simple" %}
+    {% svg "brand/staggered" %}
+  </div>
     <header class="flow">
       <h1>{{ hero.title }}</h1>
       {{ hero.subtitle | markdownFormat | safe }}
       <a href="{{ hero.button_target }}" class="button plausible-event-name=CTA+Hero"> {{ hero.button_text }} {% svg "misc/arrow" %}</a>
     </header>
-    {% svg "brand/simple" %}
-    {% svg "brand/staggered" %}
   </div>
 </div>
 
 <div class="intro | wrapper">
-  <article class="prose region flow feature">
+  <article class="prose region flow">
     <h2>{{ intro.title }}</h2>
     {{ intro.content | markdownFormat | safe }}
   </article>
