@@ -11,18 +11,21 @@ hero:
   button_target: /contact/
   image: /assets/images/backgrounds/sfondi-dyvenia15.jpg
 hero_layout:
-  divider: divider/soft-bottom
+  divider: divider/soft-top-bubble
   background: blue
   content_inline: left
   region_space: xl-2xl
   button_variant: default
 intro:
-  title1: What Happens When
-  title2: Complexity Outpaces Structure?
+  title: |-
+    What Happens When
+    _Complexity Outpaces Structure?_
   content: |-
     Pipelines multiply, ownership becomes unclear, deployments become harder to manage, and monitoring becomes inconsistent.
 
     The platform still works, but **nobody fully trusts it**.
+  title2: Complexity Outpaces Structure?
+  title1: What Happens When
 what_are:
   title: A Structured Path Back to Control
   content: |-
@@ -84,7 +87,7 @@ steps_elements:
 why:
   title: Why Our Process Works
   intro: |-
-    We focus on measurable improvements, not assumptions. 
+    We focus on measurable improvements, not assumptions.
 
     Every step is designed to reduce risk, validate impact, and build confidence before making larger investments.
 why_elements:
@@ -134,7 +137,6 @@ layout: base
 ---
 
 <header class="section page-header">
-  {% svg "divider/soft-top-bubble", null, "seperator small" %}
 
 {% include "partials/hero.njk" %}
 
