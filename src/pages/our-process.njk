@@ -9,14 +9,23 @@ hero:
     We help data teams introduce the engineering structure that their platforms are missing.
   button_text: Learn more about how we work
   button_target: /contact/
-  image: ./src/assets/images/backgrounds/sfondi-dyvenia23.jpg
+  image: /assets/images/backgrounds/sfondi-dyvenia15.jpg
+hero_layout:
+  divider: divider/soft-top-bubble
+  background: blue
+  content_inline: left
+  region_space: xl-2xl
+  button_variant: default
 intro:
-  title1: What Happens When
-  title2: Complexity Outpaces Structure?
+  title: |-
+    What Happens When
+    _Complexity Outpaces Structure?_
   content: |-
     Pipelines multiply, ownership becomes unclear, deployments become harder to manage, and monitoring becomes inconsistent.
 
     The platform still works, but **nobody fully trusts it**.
+  title2: Complexity Outpaces Structure?
+  title1: What Happens When
 what_are:
   title: A Structured Path Back to Control
   content: |-
@@ -78,7 +87,7 @@ steps_elements:
 why:
   title: Why Our Process Works
   intro: |-
-    We focus on measurable improvements, not assumptions. 
+    We focus on measurable improvements, not assumptions.
 
     Every step is designed to reduce risk, validate impact, and build confidence before making larger investments.
 why_elements:
@@ -128,32 +137,21 @@ layout: base
 ---
 
 <header class="section page-header">
-  {% svg "divider/soft-top-bubble", null, "seperator small" %}
 
-  {% if hero.image %}
-    {% image hero.image, "", null, "eager" %}
-  {% endif %}
-
-  <div class="section__inner region region-space-xl">
-    <div class="wrapper flow">
-      <h1>{{ hero.title }}</h1>
-      {{ hero.subtitle | markdownFormat | safe }}
-      <a href="{{ hero.button_target }}" class="button flow-space-l no-indicator">
-        {{ hero.button_text }} {% svg "misc/arrow" %}</a
-      >
-    </div>
-  </div>
-</header>
+{% include "partials/hero.njk" %}
 
 <div class="intro | wrapper">
-  <header class="header | region flow prose">
-    <h2 class="text-step-3">{{ intro.title1 }} <span>{{ intro.title2 }}</span></h2>
+  <header class="header | region flow prose" data-header-align="{{ intro.text_align or 'center' }}">
+    <h2 class="intro-title | text-step-3">{{ intro.title | markdownInline | safe }}</h2>
     {{ intro.content | markdownFormat | safe }}
   </header>
 </div>
 
 <div class="what | wrapper">
-  <article class="feature region  grid" data-layout="50-50">
+  <article
+    class="feature region grid"
+    data-layout="{% if what_are.layout == 'column' %}column{% else %}50-50{% endif %}"
+  >
     <div class="flow">
       <h2 class="text-step-2">{{ what_are.title }}</h2>
       {{ what_are.content | markdownFormat | safe }}
@@ -167,7 +165,7 @@ layout: base
 
 <section class="steps | wrapper region" aria-labelledby="steps-title">
   <div class="feature">
-    <header id="steps-title" class="header | flow">
+    <header id="steps-title" class="header | flow" data-header-align="{{ steps.text_align or 'center' }}">
       <h2 class="text-step-3">{{ steps.title }}</h2>
       <p>{{ steps.intro }}</p>
     </header>
@@ -231,12 +229,12 @@ layout: base
 
 
 <div class="why | wrapper">
-  <article class="full region flow">
-    <header class="header | flow">
+  <article class="full region flow wrapper">
+    <header class="header | flow" data-header-align="{{ why.text_align or 'center' }}">
       <h2 class="text-step-3">{{ why.title }}</h2>
       <p>{{ why.intro }}</p>
     </header>
-    <div class="split mt-xl">
+    <div class="split mt-xl full">
       {% svg "brand/check" %}
       <ol class="timeline">
         {% for key in why_elements %}
@@ -280,11 +278,13 @@ layout: base
 <div class="wrapper">
   <section class="full | region">
     <div class="wrapper flow prose">
-      <h2><a class="no-underline hover:underline" href="/insights/">{{ blog.title }}</a></h2>
+      <header class="header | flow" data-header-align="{{ blog.text_align or 'center' }}">
+        <h2><a class="no-underline hover:underline" href="/insights/">{{ blog.title }}</a></h2>
 
-      {% if blog.intro %}
-        <p>{{ blog.intro }}</p>
-      {% endif %}
+        {% if blog.intro %}
+          <p>{{ blog.intro }}</p>
+        {% endif %}
+      </header>
 
       <div class="feature">
         <div class="grid gutter-s">
@@ -303,7 +303,7 @@ layout: base
 
 {%- css "local" -%}
   {%- include 'css/process.css' -%}
-  {%- include "css/page-header.css" -%}
+  {%- include "css/hero.css" -%}
   {%- include "css/details.css" -%}
 {%- endcss -%}
 

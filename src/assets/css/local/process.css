@@ -1,47 +1,27 @@
-/* ------------------- hero / page-header */
+/*  general header styles */
 
-.process .page-header .wrapper > * {
-  justify-self: start;
+.process .header {
+  grid-column: content;
 }
 
-.process .page-header h1 {
-  font-weight: var(--font-light);
-  text-wrap: pretty;
-}
-
-.process .page-header .wrapper > p {
-  max-inline-size: 50ch;
-}
-
-.process .page-header picture {
-  max-block-size: 45rem;
-  background: var(--color-blue-accent-5);
-}
-
-@media screen(md) {
-  .process .page-header picture {
-    max-block-size: 40rem;
-  }
-}
-
-.process .header > * {
+.process .header[data-header-align='center'] > * {
   margin-inline: auto;
   text-align: center;
   text-wrap: balance;
 }
 
-.process .header > h2 {
-  max-inline-size: 20ch;
-}
-
-.process .header > p {
+.process .header[data-header-align='center'] > p {
   max-inline-size: 50ch;
 }
 
 /* intro */
 
-.process .intro span {
+.process .intro .intro-title {
+  text-wrap: balance;
+}
+.process .intro .intro-title em {
   color: var(--color-pink);
+  font-style: normal;
 }
 
 .process .intro p {
