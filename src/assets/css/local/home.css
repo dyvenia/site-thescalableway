@@ -11,54 +11,19 @@
   grid-row: 1;
   background: var(--color-bg-accent);
   display: grid;
-  block-size: clamp(35rem, 70vh, 45rem);
+  grid-template-rows: min-content;
   grid-column: full;
 }
 
-.home .hero > :is(svg, header) {
+.home .hero__decoration {
   grid-row: 1;
-}
-
-/* first blue pixel */
-.home .hero > svg {
-  grid-column: full;
-  inline-size: 100%;
-  block-size: auto;
-  color: var(--color-bg-accent-2);
-  mix-blend-mode: plus-lighter;
-}
-
-[data-theme='dark'] .home .hero > svg {
-  mix-blend-mode: plus-lighter;
-  opacity: 0.1;
-}
-
-@media screen(max) {
-  .home .hero > svg {
-    color: var(--color-text);
-    mix-blend-mode: normal;
-    opacity: 1;
-  }
-}
-
-.home .hero > svg:first-of-type {
-  grid-column: full-start / content-end;
-  transform: rotate(30deg);
-  inline-size: clamp(30ch, 30vw, 35rem);
-  margin-inline-start: -15ch;
-}
-
-.home .hero > svg:nth-of-type(2) {
-  grid-column: content-start / full-end;
-  justify-self: end;
-  align-self: center;
-  inline-size: clamp(50ch, 40vw, 60rem);
-  transform: rotate(210deg);
-  margin-inline-end: -20%;
-  margin-block-end: -10ch;
+  block-size: 0;
+  overflow: visible;
+  pointer-events: none;
 }
 
 .home .hero > header {
+  grid-row: 1;
   grid-column: content;
   background: transparent;
   z-index: 1;
@@ -67,6 +32,48 @@
 
 .home .hero > header p {
   max-inline-size: 45ch;
+}
+
+.home .hero > :is(svg, header) {
+  grid-row: 1;
+}
+
+/* general svg behavior */
+.home .hero__decoration > svg {
+  block-size: auto;
+  color: var(--color-bg-accent-2);
+  mix-blend-mode: plus-lighter;
+}
+
+[data-theme='dark'] .home .hero__decoration > svg {
+  mix-blend-mode: plus-lighter;
+  opacity: 0.1;
+}
+
+@media screen(max) {
+  .home .hero__decoration > svg {
+    color: var(--color-text);
+    mix-blend-mode: normal;
+    opacity: 1;
+  }
+}
+
+/* specific svg behavior */
+.home .hero__decoration > svg:first-of-type {
+  grid-column: full-start / content-end;
+  transform: rotate(30deg);
+  inline-size: clamp(30ch, 30vw, 35rem);
+  margin-inline-start: -15ch;
+}
+
+.home .hero__decoration > svg:nth-of-type(2) {
+  grid-column: content-start / full-end;
+  justify-self: end;
+  align-self: center;
+  inline-size: clamp(25ch, 35vw, 60rem);
+  transform: rotate(210deg);
+  margin-inline-end: -15%;
+  margin-block-end: -60%;
 }
 
 /* ------------------- sections */

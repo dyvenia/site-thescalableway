@@ -1,0 +1,43 @@
+{% set layout = hero_layout or {} %}
+
+{% set heroDivider = layout.divider if layout.divider is defined else "divider/soft-top-bubble" %}
+{% set heroBackground = layout.background or "blue-dark" %}
+{% set heroInline = layout.content_inline or "center" %}
+{% set heroRegionSpace = layout.region_space or "xl" %}
+{% set heroButtonVariant = layout.button_variant %}
+
+<header
+  class="section hero"
+  data-hero-media="{% if hero.image %}image{% else %}none{% endif %}"
+  data-hero-background="{{ heroBackground }}"
+  data-hero-content-inline="{{ heroInline }}"
+  {% if heroDivider and heroDivider != "none" %}data-hero-divider{% endif %}
+>
+  {% if heroDivider and heroDivider != "none" %}
+    {% svg heroDivider, null, "seperator small" %}
+  {% endif %}
+
+  {% if hero.image %}
+    {% image hero.image, "", null, "eager" %}
+  {% endif %}
+
+  <div class="hero__content | region region-space-{{ heroRegionSpace }}">
+    <div class="wrapper flow">
+      <h1>{{ hero.title }}</h1>
+
+      {% if hero.subtitle %}
+        {{ hero.subtitle | markdownFormat | safe }}
+      {% endif %}
+
+      {% if hero.button_text and hero.button_target %}
+        <a
+          href="{{ hero.button_target }}"
+          class="button flow-space-l no-indicator"
+          {% if heroButtonVariant and heroButtonVariant != "default" %}data-button-variant="{{ heroButtonVariant }}"{% endif %}
+        >
+          {{ hero.button_text }} {% svg "misc/arrow" %}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</header>
