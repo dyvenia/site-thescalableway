@@ -11,6 +11,7 @@ excludeFromSitemap: true
 {%- endif -%}
 {%- endfor -%}
 
-/insights/*  /blog/:splat  301
-/insights  /blog  301
-/insights/  /blog/  301
+/blog/*  https://dyvenia.com/insights/:splat  301!
+/blog/  https://dyvenia.com/insights/  301!
+/blog  https://dyvenia.com/insights/  301!
+/*  https://dyvenia.com/:splat  301!
